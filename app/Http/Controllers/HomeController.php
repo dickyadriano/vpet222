@@ -23,26 +23,38 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        return view('welcome', [
+            "title" => "Welcome "
+        ]);
     }
 
     public function handleAdmin(){
-        return view('admin.dashboard');
+        return view('admin.dashboard', [
+            "title" => "Admin Dashboard"
+        ]);
     }
 
     public function handleCustomer(){
-        return view('customer.dashboard');
+        return view('customer.dashboard', [
+            "title" => "Customer Dashboard"
+        ]);
     }
 
     public function handlePetShop(){
-        return view('petShop.dashboard');
+        return view('petShop.dashboard', [
+            "title" => "Pet Shop Dashboard"
+        ]);
     }
 
     public function handleVetClinic(){
-        return view('vetClinic.dashboard');
+        return view('vetClinic.dashboard', [
+            "title" => "Vet Clinic Dashboard"
+        ]);
     }
 
     public function handleVeterinary(){
-        return view('veterinary.dashboard');
+        return view('veterinary.dashboard', [
+            "title" => "Veterinary Dashboard"
+        ]);
     }
 }

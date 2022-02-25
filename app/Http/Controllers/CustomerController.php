@@ -55,7 +55,9 @@ class CustomerController extends Controller
         $customer = User::find($id);
 
         if(Auth::user()->id = $customer){
-            return view('customer.profile', compact('customer'));
+            return view('customer.profile', compact('customer'), [
+                "title" => "customer-profile",
+            ]);
         }else {
             return redirect()->route('customer.dashboard')
                 ->with('error', 'Sorry, you cant access this data!');

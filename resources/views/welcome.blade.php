@@ -80,8 +80,8 @@
                         @elseif(auth()->user()->type == 'customer')
                             <li class="nav-item">
                                 <a class="nav-link nav-link-icon" href="{{ route('dashboard-customer') }}">
-                                    <i class="ni ni-planet"></i>
-                                    <span class="nav-link-inner--text">Dashboard</span>
+                                    <i class="fa fa-store"></i>
+                                    <span class="nav-link-inner--text">Marketplace</span>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -90,17 +90,6 @@
                                     <span class="nav-link-inner--text">Profile</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link nav-link-icon" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                                    <i class="ni ni-user-run"></i>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                    <span>{{ __('Logout') }}</span>
-                                </a>
-                            </li>
-
                         @elseif(auth()->user()->type == 'vetClinic')
                             <li class="nav-item">
                                 <a class="nav-link nav-link-icon" href="{{ route('dashboard-vetClinic') }}">
@@ -141,6 +130,16 @@
                                 </a>
                             </li>
                         @endif
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-icon" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                <i class="ni ni-user-run"></i>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                                <span>{{ __('Logout') }}</span>
+                            </a>
+                        </li>
                     @endif
                 </ul>
             </div>
