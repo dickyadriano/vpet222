@@ -30,31 +30,48 @@
         <table class="table align-items-center">
             <thead class="thead-light">
             <tr>
+                <th scope="col" class="sort" data-sort="id">Product Id</th>
                 <th scope="col" class="sort" data-sort="name">Product Name</th>
                 <th scope="col" class="sort" data-sort="qty">QTY</th>
                 <th scope="col" class="sort" data-sort="qty">Price/unit</th>
+                <th scope="col" class="sort" data-sort="qty">Picture</th>
                 <th scope="col">Control</th>
             </tr>
             </thead>
             <tbody class="list">
-            <tr>
-                <td>aaa</td>
-                <td>aaa</td>
-                <td>aaa</td>
-                <td>
-                    <button class="btn btn-success">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>aaa</td>
-                <td>aaa</td>
-                <td>aaa</td>
-                <td>
-                    <button class="btn btn-success">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Wiskas</td>
+                    <td>100</td>
+                    <td>Rp. 125.000,00</td>
+                    <td>Wiskas.jpg</td>
+                    <td>
+                        <button class="btn btn-success">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Proplan</td>
+                    <td>50</td>
+                    <td>Rp. 500.000,00</td>
+                    <td>Proplan.jpg</td>
+                    <td>
+                        <button class="btn btn-success">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Royal Canin Kitten</td>
+                    <td>75</td>
+                    <td>Rp. 650.000,00</td>
+                    <td>Royal_Canin_Kitten.jpg</td>
+                    <td>
+                        <button class="btn btn-success">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
