@@ -31,13 +31,13 @@
                         <div class="row">
                             <div class="col">
                                 <img class="img-center img-thumbnail" src="{{ asset('argon/argon/img/theme/1639546957.jpg') }}">
-                                <h5 class="card-title text-uppercase text-muted mb-0 mt-1">Red T-shirt</h5>
-                                <span class="h2 font-weight-bold mb-0">350,000</span>
+                                <h5 class="card-title text-uppercase text-muted mb-0 mt-1">Drh. Lisa Pink</h5>
+                                <span class="h2 font-weight-bold mb-0">------</span>
                             </div>
                         </div>
                         <p class="mt-3 mb-0 text-muted text-sm">
                             <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 99+</span>
-                            <span class="text-nowrap">Sold</span>
+                            <span class="text-nowrap">Order</span>
                         </p>
                     </div>
                 </div>
@@ -48,13 +48,13 @@
                         <div class="row">
                             <div class="col">
                                 <img class="img-center img-thumbnail" src="{{ asset('argon/argon/img/theme/1639546488.jpg') }}">
-                                <h5 class="card-title text-uppercase text-muted mb-0 mt-1">Black Jacket</h5>
-                                <span class="h2 font-weight-bold mb-0">350,500</span>
+                                <h5 class="card-title text-uppercase text-muted mb-0 mt-1">Drh. Jacky Chung</h5>
+                                <span class="h2 font-weight-bold mb-0">------</span>
                             </div>
                         </div>
                         <p class="mt-3 mb-0 text-muted text-sm">
                             <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 99+</span>
-                            <span class="text-nowrap">Sold</span>
+                            <span class="text-nowrap">Order</span>
                         </p>
                     </div>
                 </div>
@@ -65,13 +65,13 @@
                         <div class="row">
                             <div class="col">
                                 <img class="img-center img-thumbnail" src="{{ asset('argon/argon/img/theme/1639551440.jpg') }}">
-                                <h5 class="card-title text-uppercase text-muted mb-0 mt-1">Mix Dress</h5>
-                                <span class="h2 font-weight-bold mb-0">400,000</span>
+                                <h5 class="card-title text-uppercase text-muted mb-0 mt-1">Drh. Felix Cley</h5>
+                                <span class="h2 font-weight-bold mb-0">------</span>
                             </div>
                         </div>
                         <p class="mt-3 mb-0 text-muted text-sm">
                             <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 99+</span>
-                            <span class="text-nowrap">Sold</span>
+                            <span class="text-nowrap">Order</span>
                         </p>
                     </div>
                 </div>
@@ -81,14 +81,14 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <img class="img-center img-thumbnail" src="{{ asset('argon/argon/img/theme/1639552372.jpg') }}">
-                                <h5 class="card-title text-uppercase text-muted mb-0 mt-1">Glasses</h5>
-                                <span class="h2 font-weight-bold mb-0">200,000</span>
+                                <img class="img-center img-thumbnail" src="{{ asset('argon/argon/img/theme/hae.jpeg') }}">
+                                <h5 class="card-title text-uppercase text-muted mb-0 mt-1">Drh. Usman Jaya</h5>
+                                <span class="h2 font-weight-bold mb-0">------</span>
                             </div>
                         </div>
                         <p class="mt-3 mb-0 text-muted text-sm">
                             <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 99+</span>
-                            <span class="text-nowrap">Sold</span>
+                            <span class="text-nowrap">Order</span>
                         </p>
                     </div>
                 </div>
@@ -98,14 +98,14 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <img class="img-center img-thumbnail" src="{{ asset('argon/argon/img/theme/1639551440.jpg') }}">
-                                <h5 class="card-title text-uppercase text-muted mb-0 mt-1">Earring</h5>
-                                <span class="h2 font-weight-bold mb-0">620,000</span>
+                                <img class="img-center img-thumbnail" src="{{ asset('argon/argon/img/theme/1640858248.jpg') }}">
+                                <h5 class="card-title text-uppercase text-muted mb-0 mt-1">Drh. Siti Nam</h5>
+                                <span class="h2 font-weight-bold mb-0">------</span>
                             </div>
                         </div>
                         <p class="mt-3 mb-0 text-muted text-sm">
                             <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 99+</span>
-                            <span class="text-nowrap">Sold</span>
+                            <span class="text-nowrap">Order</span>
                         </p>
                     </div>
                 </div>
@@ -115,14 +115,14 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <img class="img-center img-thumbnail" src="{{ asset('argon/argon/img/theme/1639546957.jpg') }}">
-                                <h5 class="card-title text-uppercase text-muted mb-0 mt-1">Lipstick</h5>
-                                <span class="h2 font-weight-bold mb-0">350,000</span>
+                                <img class="img-center img-thumbnail" src="{{ asset('argon/argon/img/theme/jisoo.jpg') }}">
+                                <h5 class="card-title text-uppercase text-muted mb-0 mt-1">Drh. Joy</h5>
+                                <span class="h2 font-weight-bold mb-0">------</span>
                             </div>
                         </div>
                         <p class="mt-3 mb-0 text-muted text-sm">
                             <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 99+</span>
-                            <span class="text-nowrap">Sold</span>
+                            <span class="text-nowrap">Order</span>
                         </p>
                     </div>
                 </div>
