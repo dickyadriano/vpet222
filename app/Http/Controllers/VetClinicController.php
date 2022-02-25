@@ -55,7 +55,9 @@ class VetClinicController extends Controller
         $vetClinic = User::find($id);
 
         if(Auth::user()->type == 'vetClinic'){
-            return view('vetClinic.profile', compact('vetClinic'));
+            return view('vetClinic.profile', compact('vetClinic'), [
+                "title" => "Vet Clinic Dashboard"
+            ]);
         }else{
             return redirect()->route('vetClinic.dashboard')
                 ->with('error','Sorry, you cant access this data!');
@@ -67,7 +69,9 @@ class VetClinicController extends Controller
         $vetClinic = User::find($id);
 
         if(Auth::user()->type == 'vetClinic'){
-            return view('vetClinic.medicine', compact('vetClinic'));
+            return view('vetClinic.medicine', compact('vetClinic'), [
+                "title" => "Manage Medicine"
+            ]);
         }else{
             return redirect()->route('vetClinic.medicine')
                 ->with('error','Sorry, you cant access this page!');

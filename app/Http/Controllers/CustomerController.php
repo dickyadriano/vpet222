@@ -60,8 +60,22 @@ class CustomerController extends Controller
             ]);
         }else {
             return redirect()->route('customer.dashboard')
-                ->with('error', 'Sorry, you cant access this data!');
+                ->with('error', 'Sorry, you cant access this page!');
         }
+    }
+
+    public function showService()
+    {
+        return view('customer.service', [
+            "title" => "Veterinary Service",
+        ]);
+    }
+
+    public function showLocation()
+    {
+        return view('customer.location', [
+            "title" => "Location",
+        ]);
     }
 
     /**

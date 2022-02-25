@@ -14,6 +14,8 @@
     <!-- Icons -->
     <link rel="stylesheet" href="{{asset('argon/assets/vendor/nucleo/css/nucleo.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('argon/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css')}}" type="text/css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{asset('css/vpet.css')}}" type="text/css">
     <!-- Page plugins -->
     <!-- Argon CSS -->
     <link rel="stylesheet" href="{{asset('argon/assets/css/argon.css?v=1.2.0')}}" type="text/css">
@@ -24,7 +26,40 @@
 <!-- Main content -->
 <div class="main-content" id="panel">
     @yield('main-content')
+
 </div>
+<div class="action {{ ($title === 'Customer Dashboard') || ($title === 'Veterinary Service') ? '' : 'hidden' }}" data-toggle="modal" data-target="#cart">
+    <span>
+        <i class="fas fa-cart-plus"></i>
+    </span>
+{{--    <ul>--}}
+{{--        <li>a</li>--}}
+{{--        <li>a</li>--}}
+{{--        <li>a</li>--}}
+{{--    </ul>--}}
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Your's Cart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Argon Scripts -->
 <!-- Core -->
 <script src="{{asset('argon/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
