@@ -39,15 +39,15 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Veterinary Service') ? 'active' : '' }}" href="#">
+                                <a class="nav-link {{ ($title === 'Veterinary Service') ? 'active' : '' }}" href="{{ route('customer-service') }}">
                                     <i class="fa fa-heartbeat text-primary"></i>
                                     <span class="nav-link-text">Veterinary Service</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Vet Clinic Location') ? 'active' : '' }}" href="#">
+                                <a class="nav-link {{ ($title === 'Location') ? 'active' : '' }}" href="{{ route('customer-location') }}">
                                     <i class="ni ni-square-pin text-primary"></i>
-                                    <span class="nav-link-text">Vet Clinic Location</span>
+                                    <span class="nav-link-text">Location</span>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -56,12 +56,12 @@
                                     <span class="nav-link-text">Diagnosis of Diseases</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'View Cart') ? 'active' : '' }}" href="#">
-                                    <i class="ni ni-basket text-primary"></i>
-                                    <span class="nav-link-text">View Cart</span>
-                                </a>
-                            </li>
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link {{ ($title === 'View Cart') ? 'active' : '' }}" href="#">--}}
+{{--                                    <i class="ni ni-basket text-primary"></i>--}}
+{{--                                    <span class="nav-link-text">View Cart</span>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
                             <li class="nav-item">
                                 <a class="nav-link {{ ($title === 'Order') ? 'active' : '' }}" href="#">
                                     <i class="ni ni-bag-17 text-primary"></i>
