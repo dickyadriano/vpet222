@@ -114,7 +114,7 @@
                             </li>
                         @elseif(auth()->user()->type == 'petShop')
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Manage Product') ? 'active' : '' }}" href="{{ route('petShop-product', Auth::user()->id) }}">
+                                <a class="nav-link {{ ($title === 'Manage Product') ? 'active' : '' }}" href="{{ route('petShop-product') }}">
                                     <i class="fas fa-box-open text-primary"></i>
                                     <span class="nav-link-text">Manage Product</span>
                                 </a>

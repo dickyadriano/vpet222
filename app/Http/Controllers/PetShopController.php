@@ -65,18 +65,11 @@ class PetShopController extends Controller
         }
     }
 
-    public function showProduct($id)
+    public function showProduct()
     {
-        $petShop = User::find($id);
-
-        if(Auth::user()->type == 'petShop'){
-            return view('petShop.product', compact('petShop'), [
-                "title" => "Manage Product"
-            ]);
-        }else{
-            return redirect()->route('petShop.product')
-                ->with('error','Sorry, you cant access this page!');
-        }
+        return view('petShop.product', [
+            "title" => "Manage Product"
+        ]);
     }
 
     /**
