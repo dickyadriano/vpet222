@@ -54,7 +54,7 @@
                     <td>2</td>
                     <td>Proplan</td>
                     <td>50</td>
-                    <td>Rp. 500.000,00</td>
+                    <td>Rp. 90.000,00</td>
                     <td>Proplan.jpg</td>
                     <td>
                         <button class="btn btn-success">Edit</button>
@@ -65,7 +65,7 @@
                     <td>3</td>
                     <td>Royal Canin Kitten</td>
                     <td>75</td>
-                    <td>Rp. 650.000,00</td>
+                    <td>Rp. 130.000,00</td>
                     <td>Royal_Canin_Kitten.jpg</td>
                     <td>
                         <button class="btn btn-success">Edit</button>
