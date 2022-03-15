@@ -78,6 +78,13 @@ class CustomerController extends Controller
         ]);
     }
 
+    public function showDiagnosis()
+    {
+        return view('customer.diagnosis', [
+            "title" => "Diagnosis of Diseases",
+        ]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

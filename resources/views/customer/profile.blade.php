@@ -25,7 +25,7 @@
                             <div class="col-lg-3 order-lg-2">
                                 <div class="card-profile-image">
                                     <a href="javascript:void(0)">
-                                        <img src="{{ asset('argon/argon/img/theme/' . Auth::user()->avatar) }}" class="rounded-circle" alt="profile_picture" style="width: 250px; height: 180px">
+                                        <img src="{{ asset('argon/argon/img/theme/' . Auth::user()->avatar) }}" class="rounded-circle" alt="profile_picture">
                                     </a>
                                 </div>
                             </div>

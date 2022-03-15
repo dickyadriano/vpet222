@@ -2,10 +2,20 @@
 <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
     <div class="scrollbar-inner">
         <!-- Brand -->
-        <div class="sidenav-header  align-items-center">
-            <a class="navbar-brand" href="#">
+        <div class="sidenav-header  d-flex  align-items-center">
+            <a class="navbar-brand" href="javascript:void(0)">
                 <img src="{{asset('argon/assets/img/brand/blue.png')}}" class="navbar-brand-img" alt="...">
             </a>
+            <div class=" ml-auto ">
+                <!-- Sidenav toggler -->
+                <div class="sidenav-toggler d-none d-xl-block" data-action="sidenav-unpin" data-target="#sidenav-main">
+                    <div class="sidenav-toggler-inner">
+                        <i class="sidenav-toggler-line"></i>
+                        <i class="sidenav-toggler-line"></i>
+                        <i class="sidenav-toggler-line"></i>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="navbar-inner">
             <!-- Collapse -->
@@ -17,13 +27,15 @@
                         @if(auth()->user()->type != 'customer')
                             <li class="nav-item">
                                 <a class="nav-link" href="http://127.0.0.1:8000/template">
-                                    <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
+                                    <i class="ni ni-tv-2 text-primary"></i>
+                                    <span class="nav-link-text">{{ __('Dashboard') }}</span>
                                 </a>
                             </li>
                         @endif
                         <li class="nav-item">
                             <a class="nav-link" href="http://127.0.0.1:8000/welcome">
-                                <i class="fas fa-home text-primary"></i> {{ __('Home') }}
+                                <i class="fas fa-home text-primary"></i>
+                                <span class="nav-link-text">{{ __('Home') }}</span>
                             </a>
                         </li>
                     </ul>
@@ -51,7 +63,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Diagnosis of Diseases') ? 'active' : '' }}" href="#">
+                                <a class="nav-link {{ ($title === 'Diagnosis of Diseases') ? 'active' : '' }}" href="{{ route('customer-diagnosis') }}">
                                     <i class="fa fa-heartbeat text-primary"></i>
                                     <span class="nav-link-text">Diagnosis of Diseases</span>
                                 </a>
@@ -95,7 +107,7 @@
                             </li>
                         @elseif(auth()->user()->type == 'vetClinic')
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Manage Medicine') ? 'active' : '' }}" href="{{ route('vetClinic-medicine', Auth::user()->id) }}">
+                                <a class="nav-link {{ ($title === 'Manage Medicine') ? 'active' : '' }}" href="{{ route('vetClinic-medicine') }}">
                                     <i class="fas fa-capsules text-primary"></i>
                                     <span class="nav-link-text">Manage Medicine</span>
                                 </a>
@@ -114,7 +126,7 @@
                             </li>
                         @elseif(auth()->user()->type == 'petShop')
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Manage Product') ? 'active' : '' }}" href="{{ route('petShop-product', Auth::user()->id) }}">
+                                <a class="nav-link {{ ($title === 'Manage Product') ? 'active' : '' }}" href="{{ route('petShop-product') }}">
                                     <i class="fas fa-box-open text-primary"></i>
                                     <span class="nav-link-text">Manage Product</span>
                                 </a>
@@ -133,19 +145,19 @@
                             </li>
                         @elseif(auth()->user()->type == 'admin')
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Manage Information') ? 'active' : '' }}" href="#">
+                                <a class="nav-link {{--{{ ($title === 'Manage Information') ? 'active' : '' }}--}}" href="#">
                                     <i class="ni ni-books text-primary"></i>
                                     <span class="nav-link-text">Manage Information</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Manage User') ? 'active' : '' }}" href="#">
+                                <a class="nav-link {{ Request::is('users') ? 'active' : '' }}" href="{{ route('users.index') }}">
                                     <i class="ni ni-badge text-primary"></i>
                                     <span class="nav-link-text">Manage User</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Payment') ? 'active' : '' }}" href="#">
+                                <a class="nav-link {{--{{ ($title === 'Payment') ? 'active' : '' }}--}}" href="#">
                                     <i class="ni ni-money-coins text-primary"></i>
                                     <span class="nav-link-text">Payment</span>
                                 </a>

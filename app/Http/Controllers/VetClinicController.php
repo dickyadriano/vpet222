@@ -64,18 +64,11 @@ class VetClinicController extends Controller
         }
     }
 
-    public function showMedicine($id)
+    public function showMedicine()
     {
-        $vetClinic = User::find($id);
-
-        if(Auth::user()->type == 'vetClinic'){
-            return view('vetClinic.medicine', compact('vetClinic'), [
-                "title" => "Manage Medicine"
-            ]);
-        }else{
-            return redirect()->route('vetClinic.medicine')
-                ->with('error','Sorry, you cant access this page!');
-        }
+        return view('vetClinic.medicine', [
+            "title" => "Manage Medicine"
+        ]);
     }
 
     /**
