@@ -2,8 +2,9 @@
 
 @section('main-content')
     @include('layouts.navbars.navbar')
+    @include('petShop.modal.addProduct')
     <!-- Header -->
-    <div class="header bg-gradient-primary pb-6">
+    <div class="header bg-gradient-primary">
         <div class="container-fluid">
             <div class="header-body">
                 <div class="row align-items-center py-4">
@@ -18,7 +19,7 @@
                         </nav>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
-                        <a href="#" class="btn btn-sm btn-neutral">
+                        <a href="#" class="btn btn-sm btn-neutral" data-toggle="modal" data-target="#ModalAdd">
                             <i class="fas fa-plus"></i> Add Product
                         </a>
                     </div>
@@ -75,4 +76,5 @@
             </tbody>
         </table>
     </div>
+
 @endsection
