@@ -11,6 +11,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
+                        Product Name
                         <div class="input-group input-group-alternative mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="ni ni-basket"></i></span>
@@ -20,6 +21,7 @@
                     </div>
 
                     <div class="form-group">
+                        Quantity
                         <div class="input-group input-group-alternative mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
@@ -29,6 +31,7 @@
                     </div>
 
                     <div class="form-group">
+                        Price/Unit
                         <div class="input-group input-group-alternative mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="ni ni-money-coins"></i></span>
@@ -37,14 +40,21 @@
                         </div>
                     </div>
 
-                    <form enctype="multipart/form-data" action="{!! route('petShop-profilePic') !!}" method="post">
+                    <div class="form-group">
                         @csrf
-                        <input type="file" name="avatar" class="form-control">
-                    </form>
+                        <label for="image">Product Picture</label>
+                        <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror">
 
-                    <form method="post">
+                        @error('image')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <form method="POST" action="{{ route('profile.update') }}">
+                        @csrf
+                        @method('put')
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary mt-4" id="submit_button" disabled>Add Product</button>
+                            <button type="submit" class="btn btn-primary mt-4" id="submit_button">Add Product</button>
                         </div>
                     </form>
                 </div>
