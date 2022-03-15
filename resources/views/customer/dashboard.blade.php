@@ -26,7 +26,7 @@
     <div class="container-fluid pt-3">
         <div class="row">
             <div class="col-xl-2 col-lg-4 pb-3">
-                <div class="card card-stats mb-4 mb-xl-0" style="height: 20rem;">
+                <div class="card card-stats mb-4 mb-xl-0" style="height: 22rem;">
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div class="col-xl-2 col-lg-4 pb-3">
-                <div class="card card-stats mb-4 mb-xl-0" style="height: 20rem;">
+                <div class="card card-stats mb-4 mb-xl-0" style="height: 22rem;">
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="col-xl-2 col-lg-4 pb-3">
-                <div class="card card-stats mb-4 mb-xl-0" style="height: 20rem;">
+                <div class="card card-stats mb-4 mb-xl-0" style="height: 22rem;">
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="col-xl-2 col-lg-4 pb-3">
-                <div class="card card-stats mb-4 mb-xl-0" style="height: 20rem;">
+                <div class="card card-stats mb-4 mb-xl-0" style="height: 22rem;">
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
@@ -94,7 +94,7 @@
                 </div>
             </div>
             <div class="col-xl-2 col-lg-4 pb-3">
-                <div class="card card-stats mb-4 mb-xl-0" style="height: 20rem;">
+                <div class="card card-stats mb-4 mb-xl-0" style="height: 22rem;">
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
@@ -111,7 +111,7 @@
                 </div>
             </div>
             <div class="col-xl-2 col-lg-4 pb-3">
-                <div class="card card-stats mb-4 mb-xl-0" style="height: 20rem;">
+                <div class="card card-stats mb-4 mb-xl-0" style="height: 22rem;">
                     <div class="card-body">
                         <div class="row">
                             <div class="col">

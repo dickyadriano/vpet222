@@ -18,7 +18,8 @@
     <link rel="stylesheet" href="{{asset('css/vpet.css')}}" type="text/css">
     <!-- Page plugins -->
     <!-- Argon CSS -->
-    <link rel="stylesheet" href="{{asset('argon/assets/css/argon.css?v=1.2.0')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/assets/css/argon.css?v=1.2.0')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/argonv2.css?v=1.2.1')}}" type="text/css">
 </head>
 
 <body>
@@ -28,7 +29,7 @@
     @yield('main-content')
 
 </div>
-<div class="action {{ ($title === 'Customer Dashboard') || ($title === 'Veterinary Service') ? '' : 'hidden' }}" data-toggle="modal" data-target="#cart">
+<div class="action {{--{{ ($title === 'Customer Dashboard') || ($title === 'Veterinary Service') ? '' : 'hidden' }}--}}" data-toggle="modal" data-target="#cart">
     <span>
         <i class="fas fa-cart-plus"></i>
     </span>
@@ -59,6 +60,16 @@
         </div>
     </div>
 </div>
+
+
+
+{{--<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">--}}
+{{--    <div class="modal-dialog modal-lg">--}}
+{{--        <div class="modal-content">--}}
+{{--            ...--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
 
 <!-- Argon Scripts -->
 <!-- Core -->

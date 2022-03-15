@@ -19,6 +19,7 @@
     <link href="{{asset('argon/argon/vendor/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
     <!-- Argon CSS -->
     <link type="text/css" href="{{asset('argon/argon/css/argon.css?v=1.0.0')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/argonv2.css?v=1.2.1')}}" type="text/css">
 </head>
 <body class="">
 @include('layouts.navbars.sidebar')
@@ -27,12 +28,15 @@
     @include('layouts.navbars.profilenavbar')
     @yield('main-content')
 </div>
-
-
-<script src="{{asset('argon/argon/vendor/jquery/dist/jquery.min.js')}}"></script>
-<script src="{{asset('argon/argon/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+<!-- Argon Scripts -->
+<!-- Core -->
+<script src="{{asset('argon/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+<script src="{{asset('argon/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('argon/assets/vendor/js-cookie/js.cookie.js')}}"></script>
+<script src="{{asset('argon/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js')}}"></script>
+<script src="{{asset('argon/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js')}}"></script>
 
 <!-- Argon JS -->
-<script src="{{asset('argon/argon/js/argon.js?v=1.0.0')}}"></script>
+<script src="{{asset('argon/assets/js/argon.js?v=1.2.0')}}"></script>
 </body>
 </html>

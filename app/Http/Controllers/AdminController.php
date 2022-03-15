@@ -62,6 +62,11 @@ class AdminController extends Controller
         }
     }
 
+    public function showUser()
+    {
+        return view('admin.user');
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
