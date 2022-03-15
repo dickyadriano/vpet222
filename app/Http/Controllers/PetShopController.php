@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Auth;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
@@ -41,7 +42,12 @@ class PetShopController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->image);
+        Product::create($request->all());
+        return redirect()->route('petShop-product')->with('success', 'New Product Added');
+    }
+
+    public function addProduct(){
+        return view('petShop.modal.addProduct');
     }
 
     /**
@@ -133,4 +139,6 @@ class PetShopController extends Controller
         }
         return back()->with('massage', 'Profile Picture Successfully Update!!!');
     }
+
+
 }
