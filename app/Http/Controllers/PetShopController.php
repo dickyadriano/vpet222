@@ -38,23 +38,20 @@ class PetShopController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
         Product::create($request->all());
-        return redirect()->route('petShop-product')->with('success', 'New Product Added');
-    }
 
-    public function addProduct(){
-        return view('petShop.modal.addProduct');
+        return redirect()->route('petShop-product')->with('success', 'New Product Added');
     }
 
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\PetShop  $petShop
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
     public function show($id)
     {
@@ -73,7 +70,8 @@ class PetShopController extends Controller
 
     public function showProduct()
     {
-        return view('petShop.product', [
+        $data = Product::all();
+        return view('petShop.product', compact('data'),[
             "title" => "Manage Product"
         ]);
     }

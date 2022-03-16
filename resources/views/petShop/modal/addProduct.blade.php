@@ -56,13 +56,13 @@
                         <div class="form-group text-center">
                             <button type="submit" class="btn btn-primary mt-4" id="submit_button">Add Product</button>
                         </div>
+                        @if (session('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('success') }}
+                            </div>
+                        @endif
                     </form>
                 </div>
-                @if (session('success'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('success') }}
-                    </div>
-                @endif
             </div>
         </div>
     </div>
