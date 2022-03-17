@@ -46,7 +46,9 @@
                     <td>{{$row->productName}}</td>
                     <td>{{$row->quantity}}</td>
                     <td>{{$row->price}}</td>
-                    <td>{{$row->image}}</td>
+                    <td>
+                        <img src="{{asset('img/productImage/'.$row->image)}}" alt="" style="width: 50px">
+                    </td>
                     <td>
                         <button class="btn btn-success">Edit</button>
                         <button class="btn btn-danger">Delete</button>

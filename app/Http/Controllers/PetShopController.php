@@ -42,8 +42,13 @@ class PetShopController extends Controller
      */
     public function store(Request $request)
     {
-        Product::create($request->all());
+        $data = Product::create($request->all());
 
+        if ($request->hasFile('image')){
+            $request->file('image')->move('img/productImage/', $request->file('image')->getClientOriginalName());
+            $data->image = $request->file('image')->getClientOriginalName();
+            $data->save();
+        }
         return redirect()->route('petShop-product')->with('success', 'New Product Added');
     }
 
