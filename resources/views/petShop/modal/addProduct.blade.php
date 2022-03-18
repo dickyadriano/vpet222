@@ -10,52 +10,57 @@
 
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        Product Name
-                        <div class="input-group input-group-alternative mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="ni ni-basket"></i></span>
-                            </div>
-                            <input class="form-control" placeholder="Product Name" type="text" name="productName" value="{{ old('ProductName') }}" required autofocus>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        Quantity
-                        <div class="input-group input-group-alternative mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
-                            </div>
-                            <input class="form-control" placeholder="Quantity" type="number" name="quantity" value="{{ old('Quantity') }}" required autofocus>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        Price/Unit
-                        <div class="input-group input-group-alternative mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="ni ni-money-coins"></i></span>
-                            </div>
-                            <input class="form-control" placeholder="Price/Unit" type="text" name="price" value="{{ old('Price') }}" required autofocus>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
+                    <form action="{{ route('petShop-product') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <label for="image">Product Picture</label>
-                        <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror">
 
-                        @error('image')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
+                        <div class="form-group">
+                            Product Name
+                            <div class="input-group input-group-alternative mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-basket"></i></span>
+                                </div>
+                                <input class="form-control" placeholder="Product Name" type="text" name="productName" value="{{ old('ProductName') }}" required autofocus>
+                            </div>
+                        </div>
 
-                    <form method="POST" action="{{ route('profile.update') }}">
-                        @csrf
-                        @method('put')
-                        <div class="text-center">
+                        <div class="form-group">
+                            Quantity
+                            <div class="input-group input-group-alternative mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
+                                </div>
+                                <input class="form-control" placeholder="Quantity" type="number" name="quantity" value="{{ old('Quantity') }}" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            Price/Unit
+                            <div class="input-group input-group-alternative mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-money-coins"></i></span>
+                                </div>
+                                <input class="form-control" placeholder="Price/Unit" type="text" name="price" value="{{ old('Price') }}" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @csrf
+                            <label for="image">Product Picture</label>
+                            <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror">
+
+                            @error('image')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group text-center">
                             <button type="submit" class="btn btn-primary mt-4" id="submit_button">Add Product</button>
                         </div>
+                        @if (session('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('success') }}
+                            </div>
+                        @endif
                     </form>
                 </div>
             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Auth;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
@@ -37,18 +38,25 @@ class PetShopController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-//        dd($request->image);
+        $data = Product::create($request->all());
+
+        if ($request->hasFile('image')){
+            $request->file('image')->move('img/productImage/', $request->file('image')->getClientOriginalName());
+            $data->image = $request->file('image')->getClientOriginalName();
+            $data->save();
+        }
+        return redirect()->route('petShop-product')->with('success', 'New Product Added');
     }
 
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\PetShop  $petShop
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
     public function show($id)
     {
@@ -67,7 +75,8 @@ class PetShopController extends Controller
 
     public function showProduct()
     {
-        return view('petShop.product', [
+        $data = Product::all();
+        return view('petShop.product', compact('data'),[
             "title" => "Manage Product"
         ]);
     }
@@ -133,4 +142,6 @@ class PetShopController extends Controller
         }
         return back()->with('massage', 'Profile Picture Successfully Update!!!');
     }
+
+
 }
