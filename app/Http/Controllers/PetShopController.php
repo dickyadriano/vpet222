@@ -49,7 +49,13 @@ class PetShopController extends Controller
             $data->image = $request->file('image')->getClientOriginalName();
             $data->save();
         }
-        return redirect()->route('petShop-product')->with('success', 'New Product Added');
+        return redirect()->route('petShop-product');
+    }
+
+    public function productData($id){
+        $data = Product::find($id);
+//        $data = DB::table('add_product')->where('id','=',$id)->get();
+        return view('petShop.modal.editProduct', compact('data'));
     }
 
     /**
@@ -112,9 +118,10 @@ class PetShopController extends Controller
      * @param  \App\Models\PetShop  $petShop
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PetShop $petShop)
+    public function destroy(Product $petShop)
     {
-        //
+        Product::destroy($petShop->id);
+        return redirect('/users')->with('success', 'Success delete user!!!');
     }
 
     /**
@@ -142,6 +149,5 @@ class PetShopController extends Controller
         }
         return back()->with('massage', 'Profile Picture Successfully Update!!!');
     }
-
 
 }
