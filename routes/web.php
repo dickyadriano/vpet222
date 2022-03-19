@@ -37,6 +37,7 @@ Route::get('/veterinary/{id}/profile', [App\Http\Controllers\VeterinaryControlle
 
 Route::get('/petShop/product', [App\Http\Controllers\PetShopController::class, 'showProduct'])->name('petShop-product');
 Route::get('/productData/{id}', [App\Http\Controllers\PetShopController::class, 'productData'])->name('productData');
+Route::get('/productDelete/{id}', [App\Http\Controllers\PetShopController::class, 'productDelete'])->name('productDelete');
 Route::post('/petShop/product', [App\Http\Controllers\PetShopController::class, 'store'])->name('petShop-product');
 
 Route::get('/vetClinic/medicine', [App\Http\Controllers\VetClinicController::class, 'showMedicine'])->name('vetClinic-medicine');

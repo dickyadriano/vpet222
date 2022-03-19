@@ -58,6 +58,12 @@ class PetShopController extends Controller
         return view('petShop.modal.editProduct', compact('data'));
     }
 
+    public function productDelete($id){
+        $data = Product::find($id);
+        $data->delete();
+        return redirect()->route('petShop-product');
+    }
+
     /**
      * Display the specified resource.
      *

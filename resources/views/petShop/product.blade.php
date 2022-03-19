@@ -3,7 +3,6 @@
 @section('main-content')
     @include('layouts.navbars.navbar')
     @include('petShop.modal.addProduct')
-    @include('petShop.modal.editProduct')
     <!-- Header -->
     <div class="header bg-gradient-primary">
         <div class="container-fluid">
@@ -51,8 +50,8 @@
                         <img src="{{asset('img/productImage/'.$row->image)}}" alt="" style="width: 50px">
                     </td>
                     <td>
-                        <a href="/productData/{{$row->id}}" class="btn btn-success" data-toggle="modal" data-target="#ModalEdit">Edit</a>
-                        <button class="btn btn-danger">Delete</button>
+                        <a href="/productData/{{$row->id}}" class="btn btn-success" >Edit</a>
+                        <a href="/productDelete/{{$row->id}}" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
             @endforeach
