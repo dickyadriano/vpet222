@@ -16,6 +16,6 @@ class Product extends Model
         'price',
         'image',
     ];
-    protected $table = 'add_product';
+    protected $table = 'products';
     public $timestamps = false;
 }

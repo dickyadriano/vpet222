@@ -54,7 +54,6 @@ class PetShopController extends Controller
 
     public function productData($id){
         $data = Product::find($id);
-//        $data = DB::table('add_product')->where('id','=',$id)->get();
         return view('petShop.modal.editProduct', compact('data'));
     }
 
@@ -93,6 +92,23 @@ class PetShopController extends Controller
         ]);
     }
 
+//    public function showEditProduct($id)
+//    {
+//        $petShop = Product::find($id);
+//        return view('petShop.modal.editProduct', compact('petShop'),[
+//            "title" => "Edit Product"
+//        ]);
+//    }
+
+    public function showService()
+    {
+        $petShop = User::find($id);
+        $data = Product::all();
+        return view('petShop.product', compact('data'),[
+            "title" => "Manage Product"
+        ]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -122,7 +138,7 @@ class PetShopController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\PetShop  $petShop
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function destroy(Product $petShop)
     {

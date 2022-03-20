@@ -35,10 +35,16 @@ Route::get('/petShop/{id}/profile', [App\Http\Controllers\PetShopController::cla
 Route::get('/vetClinic/{id}/profile', [App\Http\Controllers\VetClinicController::class, 'show'])->name('vetClinic-profile');
 Route::get('/veterinary/{id}/profile', [App\Http\Controllers\VeterinaryController::class, 'show'])->name('veterinary-profile');
 
+//ManageProductPetShop
 Route::get('/petShop/product', [App\Http\Controllers\PetShopController::class, 'showProduct'])->name('petShop-product');
 Route::get('/productData/{id}', [App\Http\Controllers\PetShopController::class, 'productData'])->name('productData');
-Route::get('/productDelete/{id}', [App\Http\Controllers\PetShopController::class, 'productDelete'])->name('productDelete');
+//Route::get('/productDelete/{id}', [App\Http\Controllers\PetShopController::class, 'productDelete'])->name('productDelete');
+Route::get('/productEdit/{id}', [App\Http\Controllers\PetShopController::class, 'showEditProduct'])->name('editProduct');
 Route::post('/petShop/product', [App\Http\Controllers\PetShopController::class, 'store'])->name('petShop-product');
+
+//AnimalCarePetShop
+Route::get('/petShop/petCare', [App\Http\Controllers\PetShopController::class, 'showPetCare'])->name('petShop-petCare');
+
 
 Route::get('/vetClinic/medicine', [App\Http\Controllers\VetClinicController::class, 'showMedicine'])->name('vetClinic-medicine');
 
@@ -71,4 +77,4 @@ Route::post('veterinary/profilepicture','App\Http\Controllers\VeterinaryControll
 
 
 Route::resource('users', \App\Http\Controllers\UserController::class);
-Route::resource('product', \App\Http\Controllers\PetShopController::class);
+Route::resource('product', \App\Http\Controllers\ProductController::class);
