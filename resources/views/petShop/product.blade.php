@@ -47,14 +47,13 @@
                     <td>{{$row->productName}}</td>
                     <td>{{$row->quantity}}</td>
                     <td>@currency($row->price),00-</td>
-{{--                    <td>Rp.{{ $row->price}},00-</td>--}}
                     <td>
                         <img src="{{asset('img/productImage/'.$row->image)}}" alt="" style="width: 50px">
                     </td>
                     <td class="align-middle">
                         <div class="row">
                             <a href="{{ route('product.edit', $row->id) }}" class="btn btn-success">Edit</a>
-                            <form action="/product/{{ $row->id }}" method="post" onclick="return confirm('Are you sure want to delete this user?')">
+                            <form action="{{route('product.destroy', $row->id)}}" method="post" onclick="return confirm('Are you sure want to delete this user?')">
                                 @method('delete')
                                 @csrf
                                 <button class="btn btn-danger">Delete</button>

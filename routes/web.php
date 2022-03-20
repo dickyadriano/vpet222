@@ -45,7 +45,6 @@ Route::post('/petShop/product', [App\Http\Controllers\PetShopController::class, 
 //AnimalCarePetShop
 Route::get('/petShop/petCare', [App\Http\Controllers\PetShopController::class, 'showPetCare'])->name('petShop-petCare');
 
-
 Route::get('/vetClinic/medicine', [App\Http\Controllers\VetClinicController::class, 'showMedicine'])->name('vetClinic-medicine');
 
 Route::get('/customer/vetService', [App\Http\Controllers\CustomerController::class, 'showService'])->name('customer-service');
@@ -75,6 +74,6 @@ Route::post('petShop/profilepicture','App\Http\Controllers\PetShopController@pro
 Route::post('vetClinic/profilepicture','App\Http\Controllers\VetClinicController@profilePicUpdate')->name('vetClinic-profilePic');
 Route::post('veterinary/profilepicture','App\Http\Controllers\VeterinaryController@profilePicUpdate')->name('veterinary-profilePic');
 
-
 Route::resource('users', \App\Http\Controllers\UserController::class);
 Route::resource('product', \App\Http\Controllers\ProductController::class);
+Route::resource('medicine', \App\Http\Controllers\MedicineController::class);

@@ -102,7 +102,7 @@ class PetShopController extends Controller
 
     public function showService()
     {
-        $petShop = User::find($id);
+//        $petShop = User::find($id);
         $data = Product::all();
         return view('petShop.product', compact('data'),[
             "title" => "Manage Product"
