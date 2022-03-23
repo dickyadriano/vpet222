@@ -31,7 +31,7 @@
                 Title
                 <div class="input-group input-group-alternative mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-basket"></i></span>
+                        <span class="input-group-text"><i class="ni ni-align-left-2"></i></span>
                     </div>
                     <input class="form-control" placeholder="Title" type="text" name="title"
                            value="{{ $information->title }}" required autofocus>
@@ -44,7 +44,8 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Information" type="text" name="information" value="{{ $information->information }}" required autofocus>
+                    <textarea class="form-control" rows="3" placeholder="Information" type="text"
+                              name="information" required autofocus>{{ $information->information }}</textarea>
                 </div>
             </div>
 
@@ -59,7 +60,7 @@
             </div>
 
             <div class="form-group text-center">
-                <button type="submit" class="btn btn-primary mt-4" id="submit_button">Edit Product</button>
+                <button type="submit" class="btn btn-primary mt-4" id="submit_button">Edit Information</button>
             </div>
             @if (session('success'))
                 <div class="alert alert-success" role="alert">
