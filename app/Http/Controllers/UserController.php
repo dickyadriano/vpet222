@@ -56,11 +56,13 @@ class UserController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('admin.modal.editUser', compact('user'),[
+            "title" => "Edit Product"
+        ]);
     }
 
     /**
@@ -68,11 +70,18 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $users)
     {
-        //
+        $users->update($request->all());
+
+        if ($request->hasFile('avatar')){
+            $request->file('avatar')->move('argon/argon/img/theme', $request->file('avatar')->getClientOriginalName());
+            $users->avatar = $request->file('avatar')->getClientOriginalName();
+            $users->save();
+        }
+        return redirect()->route('users.index');
     }
 
     /**
