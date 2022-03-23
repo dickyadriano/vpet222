@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -19,7 +20,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'admin',
                 'username' => 'admin',
                 'email' => 'admin@admin.com',
-                'password' => 'admin1',
+                'password' => Hash::make('admin1'),
                 'avatar' => '1646565347.jpg',
                 'phoneNo' => '66666666666',
                 'address' => 'admin',
@@ -28,10 +29,10 @@ class UsersTableSeeder extends Seeder
         ]);
         DB::table('users')->insert([
             [
-                'name' => 'custom',
-                'username' => 'custom',
-                'email' => 'custom@gmail.com',
-                'password' => 'custom',
+                'name' => 'customer',
+                'username' => 'customer',
+                'email' => 'customer@gmail.com',
+                'password' => Hash::make('customer'),
                 'avatar' => 'default.png',
                 'phoneNo' => '08217777777',
                 'address' => 'Jalan Stasiun',
@@ -43,8 +44,8 @@ class UsersTableSeeder extends Seeder
                 'name' => 'clinic',
                 'username' => 'clinic',
                 'email' => 'clinic@gmail.com',
-                'password' => 'clinic',
-                'avatar' => '1645600197.jpg',
+                'password' => Hash::make('clinic'),
+                'avatar' => 'default.png',
                 'phoneNo' => '12312312312',
                 'address' => 'clinic',
                 'type' => 'vetClinic'
@@ -55,7 +56,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'shop',
                 'username' => 'shop',
                 'email' => 'shop@gmail.com',
-                'password' => 'shop12',
+                'password' => Hash::make('petShop'),
                 'avatar' => 'default.png',
                 'phoneNo' => '12121212121',
                 'address' => 'shop',
@@ -64,10 +65,10 @@ class UsersTableSeeder extends Seeder
         ]);
         DB::table('users')->insert([
             [
-                'name' => 'veteri',
-                'username' => 'veteri',
+                'name' => 'veterinary',
+                'username' => 'veterinary',
                 'email' => 'veteri@gmail.com',
-                'password' => 'veteri',
+                'password' => Hash::make('veterinary'),
                 'avatar' => 'default.png',
                 'phoneNo' => '12121212122',
                 'address' => '12312123121',

@@ -107,19 +107,19 @@
                             </li>
                         @elseif(auth()->user()->type == 'vetClinic')
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Manage Medicine') ? 'active' : '' }}" href="{{ route('vetClinic-medicine') }}">
+                                <a class="nav-link {{ Request::is('medicine') ? 'active' : '' }}" href="{{ route('medicine.index') }}">
                                     <i class="fas fa-capsules text-primary"></i>
                                     <span class="nav-link-text">Manage Medicine</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Manage Vaccine') ? 'active' : '' }}" href="#">
+                                <a class="nav-link {{ Request::is('medicine') ? 'active' : '' }}" href="#">
                                     <i class="fas fa-syringe text-primary"></i>
                                     <span class="nav-link-text">Manage Vaccine</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Clinic Order') ? 'active' : '' }}" href="#">
+                                <a class="nav-link {{ Request::is('medicine') ? 'active' : '' }}" href="#">
                                     <i class="ni ni-bag-17 text-primary"></i>
                                     <span class="nav-link-text">Order</span>
                                 </a>
@@ -132,9 +132,15 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Animal Care and Grooming') ? 'active' : '' }}" href="#">
+                                <a class="nav-link {{ ($title === 'Animal Care') ? 'active' : '' }}" href="{{route('petShop-petCare')}}">
+                                    <i class="fas fa-calendar-day text-primary"></i>
+                                    <span class="nav-link-text">Animal Care</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ ($title === 'Grooming') ? 'active' : '' }}" href="#">
                                     <i class="fas fa-paw text-primary"></i>
-                                    <span class="nav-link-text">Animal Care and Grooming</span>
+                                    <span class="nav-link-text">Grooming</span>
                                 </a>
                             </li>
                             <li class="nav-item">

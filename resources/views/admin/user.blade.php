@@ -25,13 +25,13 @@
         <table class="table align-items-center">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col"></th>
+                    <th scope="col">Profile Picture</th>
                     <th scope="col" class="sort" data-sort="name">Name</th>
                     <th scope="col" class="sort" data-sort="name">Username</th>
                     <th scope="col" class="sort" data-sort="name">Email</th>
                     <th scope="col" class="sort" data-sort="name">Phone No</th>
                     <th scope="col" class="sort" data-sort="name">Role</th>
-                    <th scope="col"></th>
+                    <th scope="col">Control</th>
                 </tr>
             </thead>
             <tbody class="list">
@@ -43,19 +43,15 @@
                         <td>{{ $data_u['email'] }}</td>
                         <td>{{ $data_u['phoneNo'] }}</td>
                         <td>{{ $data_u['type'] }}</td>
-                        <td class="text-right">
-                            <div class="dropdown">
-                                <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                    <button class="dropdown-item btn btn-info shadow-none" data-toggle="modal" data-target=".bd-example-modal-lg">Info</button>
-                                    <form action="/users/{{ $data_u->id }}" method="post" onclick="return confirm('Are you sure want to delete this user?')">
-                                        @method('delete')
-                                        @csrf
-                                        <button class="dropdown-item btn btn-danger">Delete</button>
-                                    </form>
-                                </div>
+                        <td class="align-middle">
+                            <div class="row">
+{{--                                <a href="{{ route('users.edit', $data_u->id) }}" class="btn btn-success">Edit</a>--}}
+{{--                                <button class="btn btn-success" data-toggle="modal" data-target=".bd-example-modal-lg">Edit</button>--}}
+                                <form action="/users/{{ $data_u->id }}" method="post" onclick="return confirm('Are you sure want to delete this user?')">
+                                    @method('delete')
+                                    @csrf
+                                    <button class="btn btn-danger">Delete</button>
+                                </form>
                             </div>
                         </td>
                     </tr>

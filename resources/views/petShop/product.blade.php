@@ -3,6 +3,7 @@
 @section('main-content')
     @include('layouts.navbars.navbar')
     @include('petShop.modal.addProduct')
+
     <!-- Header -->
     <div class="header bg-gradient-primary">
         <div class="container-fluid">
@@ -45,13 +46,19 @@
                     <td>{{$row->id}}</td>
                     <td>{{$row->productName}}</td>
                     <td>{{$row->quantity}}</td>
-                    <td>{{$row->price}}</td>
+                    <td>@currency($row->price),00-</td>
                     <td>
                         <img src="{{asset('img/productImage/'.$row->image)}}" alt="" style="width: 50px">
                     </td>
-                    <td>
-                        <button class="btn btn-success">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
+                    <td class="align-middle">
+                        <div class="row">
+                            <a href="{{ route('product.edit', $row->id) }}" class="btn btn-success">Edit</a>
+                            <form action="{{route('product.destroy', $row->id)}}" method="post" onclick="return confirm('Are you sure want to delete this user?')">
+                                @method('delete')
+                                @csrf
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             @endforeach

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class UserController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data_user = User::all();
-        return view('admin.user', compact('data_user'));
-
+        //
     }
 
     /**
@@ -55,12 +52,12 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Product $product
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Product $product)
     {
-        return view('admin.modal.editUser', compact('user'),[
+        return view('petShop.modal.editProduct', compact('product'),[
             "title" => "Edit Product"
         ]);
     }
@@ -72,28 +69,27 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, User $users)
+    public function update(Request $request, Product $product)
     {
-        $users->update($request->all());
+        $product->update($request->all());
 
-        if ($request->hasFile('avatar')){
-            $request->file('avatar')->move('argon/argon/img/theme', $request->file('avatar')->getClientOriginalName());
-            $users->avatar = $request->file('avatar')->getClientOriginalName();
-            $users->save();
+        if ($request->hasFile('image')){
+            $request->file('image')->move('img/productImage/', $request->file('image')->getClientOriginalName());
+            $product->image = $request->file('image')->getClientOriginalName();
+            $product->save();
         }
-        return redirect()->route('users.index');
+        return redirect()->route('petShop-product');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(User $user)
+    public function destroy(Product $product)
     {
-        User::destroy($user->id);
-        return redirect('/users')->with('success', 'Success delete user!!!');
+        Product::destroy($product->id);
+        return redirect()->route('petShop-product');
     }
-
 }
