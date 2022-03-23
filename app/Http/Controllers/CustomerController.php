@@ -85,6 +85,20 @@ class CustomerController extends Controller
         ]);
     }
 
+    public function showOrder()
+    {
+        return view('customer.order', [
+            "title" => "Order Customer",
+        ]);
+    }
+
+    public function showReminder()
+    {
+        return view('customer.reminder', [
+            "title" => "Reminder",
+        ]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

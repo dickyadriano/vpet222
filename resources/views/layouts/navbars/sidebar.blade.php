@@ -75,13 +75,13 @@
 {{--                                </a>--}}
 {{--                            </li>--}}
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Order') ? 'active' : '' }}" href="#">
+                                <a class="nav-link {{ ($title === 'Order Customer') ? 'active' : '' }}" href="{{ route('customer-order') }}">
                                     <i class="ni ni-bag-17 text-primary"></i>
                                     <span class="nav-link-text">Order</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Reminder') ? 'active' : '' }}" href="#">
+                                <a class="nav-link {{ ($title === 'Reminder') ? 'active' : '' }}" href="{{ route('customer-reminder') }}">
                                     <i class="ni ni-time-alarm text-primary"></i>
                                     <span class="nav-link-text">Reminder</span>
                                 </a>
@@ -145,7 +145,7 @@
                             </li>
                         @elseif(auth()->user()->type == 'admin')
                             <li class="nav-item">
-                                <a class="nav-link {{--{{ ($title === 'Manage Information') ? 'active' : '' }}--}}" href="#">
+                                <a class="nav-link {{ Request::is('users') ? 'active' : '' }}" href="#">
                                     <i class="ni ni-books text-primary"></i>
                                     <span class="nav-link-text">Manage Information</span>
                                 </a>
@@ -157,7 +157,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{--{{ ($title === 'Payment') ? 'active' : '' }}--}}" href="#">
+                                <a class="nav-link {{ Request::is('users') ? 'active' : '' }}" href="#">
                                     <i class="ni ni-money-coins text-primary"></i>
                                     <span class="nav-link-text">Payment</span>
                                 </a>

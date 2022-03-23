@@ -42,6 +42,8 @@ Route::get('/vetClinic/medicine', [App\Http\Controllers\VetClinicController::cla
 Route::get('/customer/vetService', [App\Http\Controllers\CustomerController::class, 'showService'])->name('customer-service');
 Route::get('/customer/location', [App\Http\Controllers\CustomerController::class, 'showLocation'])->name('customer-location');
 Route::get('/customer/diagnosis', [App\Http\Controllers\CustomerController::class, 'showDiagnosis'])->name('customer-diagnosis');
+Route::get('/customer/order', [App\Http\Controllers\CustomerController::class, 'showOrder'])->name('customer-order');
+Route::get('/customer/reminder', [App\Http\Controllers\CustomerController::class, 'showReminder'])->name('customer-reminder');
 
 Route::get('/admin/manageUser', [App\Http\Controllers\AdminController::class, 'showUser'])->name('admin-user');
 
