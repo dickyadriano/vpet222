@@ -2,8 +2,9 @@
 
 @section('main-content')
     @include('layouts.navbars.navbar')
+    @include('petShop.modal.addProduct')
     <!-- Header -->
-    <div class="header bg-gradient-primary pb-6">
+    <div class="header bg-gradient-primary">
         <div class="container-fluid">
             <div class="header-body">
                 <div class="row align-items-center py-4">
@@ -18,7 +19,7 @@
                         </nav>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
-                        <a href="#" class="btn btn-sm btn-neutral">
+                        <a href="#" class="btn btn-sm btn-neutral" data-toggle="modal" data-target="#ModalAdd">
                             <i class="fas fa-plus"></i> Add Product
                         </a>
                     </div>
@@ -39,40 +40,23 @@
             </tr>
             </thead>
             <tbody class="list">
+            @foreach($data as $row)
                 <tr>
-                    <td>1</td>
-                    <td>Wiskas</td>
-                    <td>100</td>
-                    <td>Rp. 125.000,00</td>
-                    <td>Wiskas.jpg</td>
+                    <td>{{$row->id}}</td>
+                    <td>{{$row->productName}}</td>
+                    <td>{{$row->quantity}}</td>
+                    <td>{{$row->price}}</td>
+                    <td>
+                        <img src="{{asset('img/productImage/'.$row->image)}}" alt="" style="width: 50px">
+                    </td>
                     <td>
                         <button class="btn btn-success">Edit</button>
                         <button class="btn btn-danger">Delete</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Proplan</td>
-                    <td>50</td>
-                    <td>Rp. 90.000,00</td>
-                    <td>Proplan.jpg</td>
-                    <td>
-                        <button class="btn btn-success">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Royal Canin Kitten</td>
-                    <td>75</td>
-                    <td>Rp. 130.000,00</td>
-                    <td>Royal_Canin_Kitten.jpg</td>
-                    <td>
-                        <button class="btn btn-success">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
+
 @endsection
