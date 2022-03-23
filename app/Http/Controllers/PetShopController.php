@@ -49,7 +49,18 @@ class PetShopController extends Controller
             $data->image = $request->file('image')->getClientOriginalName();
             $data->save();
         }
-        return redirect()->route('petShop-product')->with('success', 'New Product Added');
+        return redirect()->route('petShop-product');
+    }
+
+    public function productData($id){
+        $data = Product::find($id);
+        return view('petShop.modal.editProduct', compact('data'));
+    }
+
+    public function productDelete($id){
+        $data = Product::find($id);
+        $data->delete();
+        return redirect()->route('petShop-product');
     }
 
     /**
@@ -75,6 +86,23 @@ class PetShopController extends Controller
 
     public function showProduct()
     {
+        $data = Product::where('userID', '=', Auth::user()->id)->get();
+        return view('petShop.product', compact('data'),[
+            "title" => "Manage Product"
+        ]);
+    }
+
+//    public function showEditProduct($id)
+//    {
+//        $petShop = Product::find($id);
+//        return view('petShop.modal.editProduct', compact('petShop'),[
+//            "title" => "Edit Product"
+//        ]);
+//    }
+
+    public function showService()
+    {
+//        $petShop = User::find($id);
         $data = Product::all();
         return view('petShop.product', compact('data'),[
             "title" => "Manage Product"
@@ -110,11 +138,12 @@ class PetShopController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\PetShop  $petShop
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function destroy(PetShop $petShop)
+    public function destroy(Product $petShop)
     {
-        //
+        Product::destroy($petShop->id);
+        return redirect('/users')->with('success', 'Success delete user!!!');
     }
 
     /**
@@ -142,6 +171,5 @@ class PetShopController extends Controller
         }
         return back()->with('massage', 'Profile Picture Successfully Update!!!');
     }
-
 
 }
