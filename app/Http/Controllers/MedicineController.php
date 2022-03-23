@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\medicine;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MedicineController extends Controller
 {
@@ -14,7 +15,7 @@ class MedicineController extends Controller
      */
     public function index()
     {
-        $show = Medicine::all();
+        $show = Medicine::where('userID', '=', Auth::user()->id)->get();
         return view('vetClinic.medicine', compact('show'),[
             "title" => "Manage Medicine"
         ]);

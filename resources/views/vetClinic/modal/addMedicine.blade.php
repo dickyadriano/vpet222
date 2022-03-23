@@ -13,6 +13,8 @@
                     <form action="{{ route('medicine.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
+                        <input class="form-control" placeholder="User ID" type="number" name="userID" value="{{ Auth::user()->id }}" required hidden readonly>
+
                         <div class="form-group">
                             Medicine Name
                             <div class="input-group input-group-alternative mb-3">
