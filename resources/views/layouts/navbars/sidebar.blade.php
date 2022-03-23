@@ -151,7 +151,7 @@
                             </li>
                         @elseif(auth()->user()->type == 'admin')
                             <li class="nav-item">
-                                <a class="nav-link {{--{{ ($title === 'Manage Information') ? 'active' : '' }}--}}" href="#">
+                                <a class="nav-link {{ Request::is('users') ? 'active' : '' }}" href="{{route('admin.index')}}">
                                     <i class="ni ni-books text-primary"></i>
                                     <span class="nav-link-text">Manage Information</span>
                                 </a>

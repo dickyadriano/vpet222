@@ -53,7 +53,7 @@
                     <td class="align-middle">
                         <div class="row">
                             <a href="{{ route('medicine.edit', $row->id) }}" class="btn btn-success">Edit</a>
-                            <form action="{{route('medicine.destroy', $row->id)}}" method="post" onclick="return confirm('Are you sure want to delete this user?')">
+                            <form action="{{route('medicine.destroy', $row->id)}}" method="post" onclick="return confirm('Are you sure want to delete this Medicine?')">
                                 @method('delete')
                                 @csrf
                                 <button class="btn btn-danger">Delete</button>
