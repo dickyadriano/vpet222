@@ -86,7 +86,7 @@ class PetShopController extends Controller
 
     public function showProduct()
     {
-        $data = Product::all();
+        $data = Product::where('userID', '=', Auth::user()->id)->get();
         return view('petShop.product', compact('data'),[
             "title" => "Manage Product"
         ]);
