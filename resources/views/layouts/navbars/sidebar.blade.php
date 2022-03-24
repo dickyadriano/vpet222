@@ -138,7 +138,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Grooming') ? 'active' : '' }}" href="#">
+                                <a class="nav-link {{ ($title === 'Grooming') ? 'active' : '' }}" href="{{route('grooming.index')}}">
                                     <i class="fas fa-paw text-primary"></i>
                                     <span class="nav-link-text">Grooming</span>
                                 </a>
