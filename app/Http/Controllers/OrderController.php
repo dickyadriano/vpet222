@@ -15,8 +15,16 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $show = Order::where('userID', '=', Auth::user()->id)->get();
+        $show = Order::where('petShopID', '=', Auth::user()->id)->get();
         return view('petShop.order', compact('show'),[
+            "title" => "Shop Order"
+        ]);
+    }
+
+    public function orderHistory()
+    {
+        $show = Order::where('petShopID', '=', Auth::user()->id)->get();
+        return view('petShop.modal.history', compact('show'),[
             "title" => "Shop Order"
         ]);
     }
@@ -46,11 +54,13 @@ class OrderController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function show(Order $order)
     {
-        //
+        return view('petShop.modal.orderInfo', compact('order'),[
+            "title" => "Shop Order"
+        ]);
     }
 
     /**
@@ -69,11 +79,13 @@ class OrderController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Order $order)
     {
-        //
+        $request->validate(['orderStatus'=>'required']);
+        $order->update($request->all());
+        return redirect()->route('order.index');
     }
 
     /**

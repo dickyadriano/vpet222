@@ -43,6 +43,7 @@ Route::post('/petShop/product', [App\Http\Controllers\PetShopController::class, 
 
 //AnimalCarePetShop
 Route::get('/petShop/petCare', [App\Http\Controllers\PetShopController::class, 'showPetCare'])->name('petShop-petCare');
+Route::get('/petShop/orderHistory', [App\Http\Controllers\OrderController::class, 'orderHistory'])->name('orderHistory');
 
 Route::get('/vetClinic/medicine', [App\Http\Controllers\VetClinicController::class, 'showMedicine'])->name('vetClinic-medicine');
 
