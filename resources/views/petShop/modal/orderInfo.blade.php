@@ -41,9 +41,9 @@
                     $user = $data;
                 }
             @endphp
-            <div class="form-group row">
-                <div class="col">
-                    <img src="{{asset('img/productImage/'.$product->image)}}" class="rounded" style="width: 200px; height: 200px">
+            <div class="form-group row" >
+                <div class="col text-center">
+                    <img src="{{asset('img/productImage/'.$product->image)}}" class="rounded" style="width: 200px">
                 </div>
             </div>
             <div class="form-group row">
