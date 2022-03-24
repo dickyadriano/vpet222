@@ -14,7 +14,7 @@
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/welcome"><i class="fas fa-home"></i></a></li>
                                 <li class="breadcrumb-item"><a href="{{ route('dashboard-petShop') }}">Dashboard</a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('petShop-product') }}">Manage Product</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('petCare.index') }}">Animal Care</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -23,63 +23,53 @@
         </div>
     </div>
     <div class="m-6">
-        <form action="{{route('product.update', $product->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('petCare.update', $petCare->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
             <div class="form-group">
-                Product Name
-                <div class="input-group input-group-alternative mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-basket"></i></span>
-                    </div>
-                    <input class="form-control" placeholder="Product Name" type="text" name="productName"
-                           value="{{ $product->productName }}" required autofocus>
-                </div>
-            </div>
-
-            <div class="form-group">
-                Quantity
+                Package Name
                 <div class="input-group input-group-alternative mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Quantity" type="number" name="quantity" value="{{ $product->quantity }}" required autofocus>
+                    <input class="form-control" placeholder="Package Name" type="text" name="packageName"
+                           value="{{ $petCare->packageName }}" required autofocus>
                 </div>
             </div>
 
             <div class="form-group">
-                Price/Unit
+                Price
                 <div class="input-group input-group-alternative mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-money-coins"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Price/Unit" type="number" name="price" value="{{ $product->price }}" required autofocus>
-                </div>
-            </div>
-
-            <div class="form-group">
-                Detail Product
-                <div class="input-group input-group-alternative mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
-                    </div>
-                    <textarea class="form-control" placeholder="Detail Product" type="text" name="detail" required autofocus>{{ $product->detail }}</textarea>
+                    <input class="form-control" placeholder="Price" type="number" name="price" value="{{ $petCare->price }}" required autofocus>
                 </div>
             </div>
 
             <div class="form-group">
                 @csrf
                 <label for="image">Product Picture</label>
-                <input type="file" id="image" name="image" class="form-control @error('image') value="{{ $product->image }}" is-invalid @enderror">
+                <input type="file" id="image" name="image" class="form-control @error('image') value="{{ $petCare->image }}" is-invalid @enderror">
 
                 @error('image')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
 
+            <div class="form-group">
+                Package Detail
+                <div class="input-group input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
+                    </div>
+                    <textarea class="form-control" placeholder="Package Detail" type="text" name="packageDetail" required autofocus>{{ $petCare->packageDetail }}</textarea>
+                </div>
+            </div>
+
             <div class="form-group text-center">
-                <button type="submit" class="btn btn-primary mt-4" id="submit_button">Edit Product</button>
+                <button type="submit" class="btn btn-primary mt-4" id="submit_button">Edit Service</button>
             </div>
             @if (session('success'))
                 <div class="alert alert-success" role="alert">

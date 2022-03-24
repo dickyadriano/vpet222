@@ -38,7 +38,6 @@ Route::get('/veterinary/{id}/profile', [App\Http\Controllers\VeterinaryControlle
 //ManageProductPetShop
 Route::get('/petShop/product', [App\Http\Controllers\PetShopController::class, 'showProduct'])->name('petShop-product');
 Route::get('/productData/{id}', [App\Http\Controllers\PetShopController::class, 'productData'])->name('productData');
-//Route::get('/productDelete/{id}', [App\Http\Controllers\PetShopController::class, 'productDelete'])->name('productDelete');
 Route::get('/productEdit/{id}', [App\Http\Controllers\PetShopController::class, 'showEditProduct'])->name('editProduct');
 Route::post('/petShop/product', [App\Http\Controllers\PetShopController::class, 'store'])->name('petShop-product');
 
@@ -50,11 +49,10 @@ Route::get('/vetClinic/medicine', [App\Http\Controllers\VetClinicController::cla
 Route::get('/customer/vetService', [App\Http\Controllers\CustomerController::class, 'showService'])->name('customer-service');
 Route::get('/customer/location', [App\Http\Controllers\CustomerController::class, 'showLocation'])->name('customer-location');
 Route::get('/customer/diagnosis', [App\Http\Controllers\CustomerController::class, 'showDiagnosis'])->name('customer-diagnosis');
-Route::get('/customer/order', [App\Http\Controllers\CustomerController::class, 'showOrder'])->name('customer-order');
-Route::get('/customer/reminder', [App\Http\Controllers\CustomerController::class, 'showReminder'])->name('customer-reminder');
 
-
-Route::get('/customer/medicine', [App\Http\Controllers\CustomerController::class, 'showMedicine'])->name('customer-medicine');
+Route::get('/admin/manageUser', [App\Http\Controllers\AdminController::class, 'showUser'])->name('admin-user');
+Route::post('/admin/manageInformation', [App\Http\Controllers\AdminController::class, 'updateInformation'])->name('admin-update-information');
+Route::post('/admin/delete', [App\Http\Controllers\AdminController::class, 'destroy'])->name('information-destroy');
 
 //update profile
 Route::put('admin/profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\AdminController@update']);
@@ -80,3 +78,8 @@ Route::post('veterinary/profilepicture','App\Http\Controllers\VeterinaryControll
 Route::resource('users', \App\Http\Controllers\UserController::class);
 Route::resource('product', \App\Http\Controllers\ProductController::class);
 Route::resource('medicine', \App\Http\Controllers\MedicineController::class);
+Route::resource('admin', \App\Http\Controllers\AdminController::class);
+Route::resource('information', \App\Http\Controllers\InformationController::class);
+Route::resource('petCare', \App\Http\Controllers\PetCareController::class);
+Route::resource('grooming', \App\Http\Controllers\GroomingController::class);
+Route::resource('order', \App\Http\Controllers\OrderController::class);

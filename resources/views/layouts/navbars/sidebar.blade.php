@@ -45,25 +45,25 @@
                     <ul class="navbar-nav mb-md-3">
                         @if(auth()->user()->type == 'customer')
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('product') ? 'active' : '' }}" href="{{ route('product.index') }}">
+                                <a class="nav-link {{ ($title === 'Customer Dashboard') ? 'active' : '' }}" href="{{ route('dashboard-customer') }}">
                                     <i class="fa fa-store text-primary"></i>
                                     <span class="nav-link-text">Marketplace</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{--{{ ($title === 'Veterinary Service') ? 'active' : '' }}--}}" href="{{ route('customer-service') }}">
+                                <a class="nav-link {{ ($title === 'Veterinary Service') ? 'active' : '' }}" href="{{ route('customer-service') }}">
                                     <i class="fa fa-heartbeat text-primary"></i>
                                     <span class="nav-link-text">Veterinary Service</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{--{{ ($title === 'Location') ? 'active' : '' }}--}}" href="{{ route('customer-location') }}">
+                                <a class="nav-link {{ ($title === 'Location') ? 'active' : '' }}" href="{{ route('customer-location') }}">
                                     <i class="ni ni-square-pin text-primary"></i>
                                     <span class="nav-link-text">Location</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{--{{ ($title === 'Diagnosis of Diseases') ? 'active' : '' }}--}}" href="{{ route('customer-diagnosis') }}">
+                                <a class="nav-link {{ ($title === 'Diagnosis of Diseases') ? 'active' : '' }}" href="{{ route('customer-diagnosis') }}">
                                     <i class="fa fa-heartbeat text-primary"></i>
                                     <span class="nav-link-text">Diagnosis of Diseases</span>
                                 </a>
@@ -75,13 +75,13 @@
 {{--                                </a>--}}
 {{--                            </li>--}}
                             <li class="nav-item">
-                                <a class="nav-link {{--{{ ($title === 'Order Customer') ? 'active' : '' }}--}}" href="{{ route('customer-order') }}">
+                                <a class="nav-link {{ ($title === 'Order') ? 'active' : '' }}" href="#">
                                     <i class="ni ni-bag-17 text-primary"></i>
                                     <span class="nav-link-text">Order</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{--{{ ($title === 'Reminder') ? 'active' : '' }}--}}" href="{{ route('customer-reminder') }}">
+                                <a class="nav-link {{ ($title === 'Reminder') ? 'active' : '' }}" href="#">
                                     <i class="ni ni-time-alarm text-primary"></i>
                                     <span class="nav-link-text">Reminder</span>
                                 </a>
@@ -113,13 +113,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{--{{ Request::is('medicine') ? 'active' : '' }}--}}" href="#">
+                                <a class="nav-link {{ Request::is('medicine') ? 'active' : '' }}" href="#">
                                     <i class="fas fa-syringe text-primary"></i>
                                     <span class="nav-link-text">Manage Vaccine</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{--{{ Request::is('medicine') ? 'active' : '' }}--}}" href="#">
+                                <a class="nav-link {{ Request::is('medicine') ? 'active' : '' }}" href="#">
                                     <i class="ni ni-bag-17 text-primary"></i>
                                     <span class="nav-link-text">Order</span>
                                 </a>
@@ -151,7 +151,7 @@
                             </li>
                         @elseif(auth()->user()->type == 'admin')
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('users') ? 'active' : '' }}" href="#">
+                                <a class="nav-link {{--{{ ($title === 'Manage Information') ? 'active' : '' }}--}}" href="#">
                                     <i class="ni ni-books text-primary"></i>
                                     <span class="nav-link-text">Manage Information</span>
                                 </a>
@@ -163,7 +163,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('users') ? 'active' : '' }}" href="#">
+                                <a class="nav-link {{--{{ ($title === 'Payment') ? 'active' : '' }}--}}" href="#">
                                     <i class="ni ni-money-coins text-primary"></i>
                                     <span class="nav-link-text">Payment</span>
                                 </a>

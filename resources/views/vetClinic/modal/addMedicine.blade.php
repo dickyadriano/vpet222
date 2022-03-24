@@ -41,7 +41,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-money-coins"></i></span>
                                 </div>
-                                <input class="form-control" placeholder="Medicine Price" type="text" name="medicinePrice" value="{{ old('medicinePrice') }}" required autofocus>
+                                <input class="form-control" placeholder="Medicine Price" type="number" name="medicinePrice" value="{{ old('medicinePrice') }}" required autofocus>
                             </div>
                         </div>
 

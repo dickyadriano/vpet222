@@ -180,7 +180,6 @@
                                         <option value="vetClinic">Vet Clinic</option>
                                         <option value="petShop">Pet Shop</option>
                                         <option value="veterinary">Veterinarian</option>
-                                        <option value="admin">Admin</option>
                                     </select>
                                     @error('type')
                                     <span class="invalid-feedback text-md-center" role="alert">
