@@ -48,7 +48,7 @@
                     <td>{{$row->medicineAmount}}</td>
                     <td>@currency($row->medicinePrice),00-</td>
                     <td>
-                        <img src="{{asset('img/medicineImage/'.$row->image)}}" alt="" style="width: 50px">
+                        <img src="{{asset('img/medicineImage/'.$row->image)}}" class="userImg rounded">
                     </td>
                     <td class="align-middle">
                         <div class="row">

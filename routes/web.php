@@ -82,3 +82,4 @@ Route::resource('admin', \App\Http\Controllers\AdminController::class);
 Route::resource('information', \App\Http\Controllers\InformationController::class);
 Route::resource('petCare', \App\Http\Controllers\PetCareController::class);
 Route::resource('grooming', \App\Http\Controllers\GroomingController::class);
+Route::resource('order', \App\Http\Controllers\OrderController::class);

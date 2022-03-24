@@ -31,7 +31,7 @@
                         <div class="card-body">
                             <div class="row ">
                                 <div class="col-3 align-middle">
-                                    <img src="{{asset('img/informationImages/'.$row->image)}}" style="width: 200px; height: 200px;">
+                                    <img src="{{asset('img/informationImages/'.$row->image)}}" class="userImg rounded">
                                 </div>
                                 <div class="col-9">
                                     <h4 class="text-uppercase text-success mb-3">{{$row->title}}</h4>
@@ -42,6 +42,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>x
     @endforeach
 @endsection

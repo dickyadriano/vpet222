@@ -144,9 +144,9 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Shop Order') ? 'active' : '' }}" href="#">
+                                <a class="nav-link {{ ($title === 'Shop Order') ? 'active' : '' }}" href="{{route('order.index')}}">
                                     <i class="ni ni-bag-17 text-primary"></i>
-                                    <span class="nav-link-text">Order</span>
+                                    <span class="nav-link-text">Orders</span>
                                 </a>
                             </li>
                         @elseif(auth()->user()->type == 'admin')

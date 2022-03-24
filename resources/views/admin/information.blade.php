@@ -81,7 +81,7 @@
                     <td>{{$row->id}}</td>
                     <td>{{$row->title}}</td>
                     <td>
-                        <img src="{{asset('img/informationImages/'.$row->image)}}" alt="" style="width: 50px">
+                        <img src="{{asset('img/informationImages/'.$row->image)}}" class="userImg rounded">
                     </td>
                     <td class="align-middle">
                         <div class="row">
