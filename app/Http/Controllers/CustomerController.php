@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Medicine;
 use Auth;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
@@ -97,6 +98,18 @@ class CustomerController extends Controller
         return view('customer.reminder', [
             "title" => "Reminder",
         ]);
+    }
+
+    public function showMedicine()
+    {
+        $data_medicine = Medicine::all();
+        return view('customer.marketplace.medicine', compact('data_medicine'));
+//        if(Auth::user()->type == 'customer'){
+//            return view('customer.marketplace.medicine', compact('product_medicine'));
+//        }else{
+//            return redirect()->route('customer.dashboard')
+//                ->with('error','Sorry, you cant access this data!');
+//        }
     }
 
     /**

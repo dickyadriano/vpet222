@@ -53,7 +53,8 @@ Route::get('/customer/diagnosis', [App\Http\Controllers\CustomerController::clas
 Route::get('/customer/order', [App\Http\Controllers\CustomerController::class, 'showOrder'])->name('customer-order');
 Route::get('/customer/reminder', [App\Http\Controllers\CustomerController::class, 'showReminder'])->name('customer-reminder');
 
-Route::get('/admin/manageUser', [App\Http\Controllers\AdminController::class, 'showUser'])->name('admin-user');
+
+Route::get('/customer/medicine', [App\Http\Controllers\CustomerController::class, 'showMedicine'])->name('customer-medicine');
 
 //update profile
 Route::put('admin/profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\AdminController@update']);
