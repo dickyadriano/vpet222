@@ -5,17 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PetCare extends Model
+class Order extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'userID',
-        'packageName',
-        'packageDetail',
-        'price',
-        'image',
+        'productID',
+        'medicineID',
+        'groomingID',
+        'petCareID',
+        'orderType',
+        'orderAmount',
+        'orderDetail',
+        'orderStatus',
     ];
-    protected $table = 'pet_cares';
+    protected $table = 'orders';
     public $timestamps = false;
 }

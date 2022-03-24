@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PetCare;
+use App\Models\Grooming;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class PetCareController extends Controller
+class GroomingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class PetCareController extends Controller
      */
     public function index()
     {
-        $show = PetCare::where('userID', '=', Auth::user()->id)->get();
-        return view('petShop.petCares', compact('show'),[
-            "title" => "Animal Care"
+        $show = Grooming::where('userID', '=', Auth::user()->id)->get();
+        return view('petShop.grooming', compact('show'),[
+            "title" => "Grooming"
         ]);
     }
 
@@ -39,23 +39,23 @@ class PetCareController extends Controller
      */
     public function store(Request $request)
     {
-        $petcare = PetCare::create($request->all());
+        $grooming = Grooming::create($request->all());
 
         if ($request->hasFile('image')){
-            $request->file('image')->move('img/careImages/', $request->file('image')->getClientOriginalName());
-            $petcare->image = $request->file('image')->getClientOriginalName();
-            $petcare->save();
+            $request->file('image')->move('img/groomingImages/', $request->file('image')->getClientOriginalName());
+            $grooming->image = $request->file('image')->getClientOriginalName();
+            $grooming->save();
         }
-        return redirect()->route('petCare.index');
+        return redirect()->route('grooming.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\PetCare  $petCare
+     * @param  \App\Models\Grooming  $grooming
      * @return \Illuminate\Http\Response
      */
-    public function show(PetCare $petCare)
+    public function show(Grooming $grooming)
     {
         //
     }
@@ -63,13 +63,13 @@ class PetCareController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\PetCare  $petCare
+     * @param  \App\Models\Grooming  $grooming
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function edit(PetCare $petCare)
+    public function edit(Grooming $grooming)
     {
-        return view('petShop.modal.editCare', compact('petCare'),[
-            "title" => "Edit Care"
+        return view('petShop.modal.editGrooming', compact('grooming'),[
+            "title" => "Grooming"
         ]);
     }
 
@@ -77,30 +77,30 @@ class PetCareController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PetCare  $petCare
+     * @param  \App\Models\Grooming  $grooming
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, PetCare $petCare)
+    public function update(Request $request, Grooming $grooming)
     {
-        $petCare->update($request->all());
+        $grooming->update($request->all());
 
         if ($request->hasFile('image')){
-            $request->file('image')->move('img/careImages/', $request->file('image')->getClientOriginalName());
-            $petCare->image = $request->file('image')->getClientOriginalName();
-            $petCare->save();
+            $request->file('image')->move('img/groomingImages/', $request->file('image')->getClientOriginalName());
+            $grooming->image = $request->file('image')->getClientOriginalName();
+            $grooming->save();
         }
-        return redirect()->route('petCare.index');
+        return redirect()->route('grooming.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\PetCare  $petCare
+     * @param  \App\Models\Grooming  $grooming
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(PetCare $petCare)
+    public function destroy(Grooming $grooming)
     {
-        PetCare::destroy($petCare->id);
-        return redirect()->route('petCare.index');
+        Grooming::destroy($grooming->id);
+        return redirect()->route('grooming.index');
     }
 }

@@ -132,26 +132,26 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Animal Care') ? 'active' : '' }}" href="{{route('petShop-petCare')}}">
+                                <a class="nav-link {{ ($title === 'Animal Care') ? 'active' : '' }}" href="{{route('petCare.index')}}">
                                     <i class="fas fa-calendar-day text-primary"></i>
                                     <span class="nav-link-text">Animal Care</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Grooming') ? 'active' : '' }}" href="#">
+                                <a class="nav-link {{ ($title === 'Grooming') ? 'active' : '' }}" href="{{route('grooming.index')}}">
                                     <i class="fas fa-paw text-primary"></i>
                                     <span class="nav-link-text">Grooming</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Shop Order') ? 'active' : '' }}" href="#">
+                                <a class="nav-link {{ ($title === 'Shop Order') ? 'active' : '' }}" href="{{route('order.index')}}">
                                     <i class="ni ni-bag-17 text-primary"></i>
-                                    <span class="nav-link-text">Order</span>
+                                    <span class="nav-link-text">Orders</span>
                                 </a>
                             </li>
                         @elseif(auth()->user()->type == 'admin')
                             <li class="nav-item">
-                                <a class="nav-link {{--{{ ($title === 'Manage Information') ? 'active' : '' }}--}}" href="#">
+                                <a class="nav-link {{ Request::is('users') ? 'active' : '' }}" href="{{route('admin.index')}}">
                                     <i class="ni ni-books text-primary"></i>
                                     <span class="nav-link-text">Manage Information</span>
                                 </a>

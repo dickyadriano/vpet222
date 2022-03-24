@@ -15,8 +15,9 @@ class CreatePetCaresTable extends Migration
     {
         Schema::create('pet_cares', function (Blueprint $table) {
             $table->id();
+            $table->integer('userID');
             $table->string("packageName");
-            $table->string("packageDetail");
+            $table->longText("packageDetail");
             $table->string('price');
             $table->string('image');
         });

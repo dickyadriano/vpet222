@@ -8,12 +8,12 @@
             <div class="header-body">
                 <div class="row align-items-center py-4">
                     <div class="col-lg-6 col-7">
-                        <h6 class="h2 text-white d-inline-block mb-0">Animal Care</h6>
+                        <h6 class="h2 text-white d-inline-block mb-0">Grooming</h6>
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/welcome"><i class="fas fa-home"></i></a></li>
                                 <li class="breadcrumb-item"><a href="{{ route('dashboard-petShop') }}">Dashboard</a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('petCare.index') }}">Animal Care</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('grooming.index') }}">Grooming</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -26,19 +26,19 @@
             <div class="col-xl-12 mb-5 mb-xl-0">
                 <div class="card bg-gradient-default shadow">
                     <div class="card-body">
-                        <form action="{{ route('petCare.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('grooming.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input class="form-control" placeholder="User ID" type="number" name="userID" value="{{ Auth::user()->id }}" required hidden readonly>
 
                             <div class="row align-items-center mb-3">
                                 <div class="col">
-                                    <h4 class="text-uppercase text-success ls-1 mb-1">Add Animal Care Package</h4>
+                                    <h4 class="text-uppercase text-success ls-1 mb-1">Add Grooming Package</h4>
                                 </div>
                             </div>
                             <div class="row align-items-center mb-3">
                                 <div class="col">
-                                    <h6 class="text-uppercase text-light ls-1 mb-1">Package Name</h6>
-                                    <input class="form-control" placeholder="Package Name" type="text" name="packageName" required autofocus>                            </div>
+                                    <h6 class="text-uppercase text-light ls-1 mb-1">Grooming Name</h6>
+                                    <input class="form-control" placeholder="Grooming Name" type="text" name="groomingName" required autofocus>                            </div>
                                 <div class="col">
                                     <h6 class="text-uppercase text-light ls-1 mb-1">Price</h6>
                                     <input class="form-control" placeholder="Price" type="number" name="price" required autofocus>
@@ -54,9 +54,9 @@
                             </div>
                             <div class="row align-items-center mb-3">
                                 <div class="col">
-                                    <h6 class="text-uppercase text-light ls-1 mb-1">Package Detail</h6>
+                                    <h6 class="text-uppercase text-light ls-1 mb-1">Grooming Detail</h6>
                                     <div class="input-group">
-                                        <textarea class="form-control" rows="3" aria-label="With textarea" name="packageDetail"></textarea>
+                                        <textarea class="form-control" rows="3" aria-label="With textarea" name="groomingDetail"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -73,9 +73,9 @@
         <table class="table align-items-center">
             <thead class="thead-light">
             <tr>
-                <th scope="col" class="sort" data-sort="id">Package Id</th>
-                <th scope="col" class="sort" data-sort="name">Package Name</th>
-                <th scope="col" class="sort" data-sort="image">Package Price</th>
+                <th scope="col" class="sort" data-sort="id">Grooming Id</th>
+                <th scope="col" class="sort" data-sort="name">Grooming Name</th>
+                <th scope="col" class="sort" data-sort="price">Grooming Price</th>
                 <th scope="col" class="sort" data-sort="image">Image</th>
                 <th scope="col">Control</th>
             </tr>
@@ -84,15 +84,15 @@
             @foreach($show as $row)
                 <tr>
                     <td>{{$row->id}}</td>
-                    <td>{{$row->packageName}}</td>
+                    <td>{{$row->groomingName}}</td>
                     <td>@currency($row->price),-</td>
                     <td>
-                        <img src="{{asset('img/careImages/'.$row->image)}}" class="userImg rounded">
+                        <img src="{{asset('img/groomingImages/'.$row->image)}}" class="userImg rounded">
                     </td>
                     <td class="align-middle">
                         <div class="row">
-                            <a href="{{ route('petCare.edit', $row->id) }}" class="btn btn-success">Edit</a>
-                            <form action="{{route('petCare.destroy', $row->id)}}" method="post" onclick="return confirm('Are you sure want to delete this Information?')">
+                            <a href="{{ route('grooming.edit', $row->id) }}" class="btn btn-success">Edit</a>
+                            <form action="{{route('grooming.destroy', $row->id)}}" method="post" onclick="return confirm('Are you sure want to delete this Grooming?')">
                                 @method('delete')
                                 @csrf
                                 <button class="btn btn-danger">Delete</button>

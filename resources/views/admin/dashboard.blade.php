@@ -3,7 +3,7 @@
 @section('main-content')
     @include('layouts.navbars.navbar')
     <!-- Header -->
-    <div class="header bg-gradient-primary pb-6">
+    <div class="header bg-gradient-primary">
         <div class="container-fluid">
             <div class="header-body">
                 <div class="row align-items-center py-4">
@@ -16,12 +16,32 @@
                             </ol>
                         </nav>
                     </div>
-{{--                    <div class="col-lg-6 col-5 text-right">--}}
-{{--                        <a href="#" class="btn btn-sm btn-neutral">New</a>--}}
-{{--                        <a href="#" class="btn btn-sm btn-neutral">Filters</a>--}}
-{{--                    </div>--}}
                 </div>
             </div>
         </div>
     </div>
+    @php
+        $showInfo = DB::table('information')->get();
+    @endphp
+    @foreach($showInfo as $row)
+        <div class="container-fluid pt-3">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card bg-gradient-indigo shadow">
+                        <div class="card-body">
+                            <div class="row ">
+                                <div class="col-3 align-middle">
+                                    <img src="{{asset('img/informationImages/'.$row->image)}}" class="userImg rounded">
+                                </div>
+                                <div class="col-9">
+                                    <h4 class="text-uppercase text-success mb-3">{{$row->title}}</h4>
+                                    <h4 class="text-white">{{$row->information}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>x
+    @endforeach
 @endsection
