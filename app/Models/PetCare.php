@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class PetCare extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'userID',
+        'packageName',
+        'packageDetail',
+        'price',
+        'image',
+    ];
+    protected $table = 'pet_cares';
+    public $timestamps = false;
 }

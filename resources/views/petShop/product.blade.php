@@ -46,7 +46,7 @@
                     <td>{{$row->id}}</td>
                     <td>{{$row->productName}}</td>
                     <td>{{$row->quantity}}</td>
-                    <td>@currency($row->price),00-</td>
+                    <td>@currency($row->price),-</td>
                     <td>
                         <img src="{{asset('img/productImage/'.$row->image)}}" alt="" style="width: 50px">
                     </td>

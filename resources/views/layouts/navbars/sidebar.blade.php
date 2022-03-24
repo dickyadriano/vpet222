@@ -132,7 +132,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Animal Care') ? 'active' : '' }}" href="{{route('petShop-petCare')}}">
+                                <a class="nav-link {{ ($title === 'Animal Care') ? 'active' : '' }}" href="{{route('petCare.index')}}">
                                     <i class="fas fa-calendar-day text-primary"></i>
                                     <span class="nav-link-text">Animal Care</span>
                                 </a>
