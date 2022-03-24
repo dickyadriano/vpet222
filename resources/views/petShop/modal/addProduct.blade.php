@@ -41,7 +41,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-money-coins"></i></span>
                                 </div>
-                                <input class="form-control" placeholder="Price/Unit" type="text" name="price" value="{{ old('Price') }}" required autofocus>
+                                <input class="form-control" placeholder="Price/Unit" type="number" name="price" value="{{ old('Price') }}" required autofocus>
                             </div>
                         </div>
 
@@ -51,7 +51,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                                 </div>
-                                <textarea class="form-control" rows="5" placeholder="Product Detail" type="text" name="detail" required autofocus></textarea>
+                                <textarea class="form-control" rows="5" type="text" name="detail" required autofocus></textarea>
                             </div>
                         </div>
 

@@ -41,7 +41,7 @@
                                     <input class="form-control" placeholder="Package Name" type="text" name="packageName" required autofocus>                            </div>
                                 <div class="col">
                                     <h6 class="text-uppercase text-light ls-1 mb-1">Price</h6>
-                                    <input class="form-control" placeholder="Price" type="text" name="price" required autofocus>
+                                    <input class="form-control" placeholder="Price" type="number" name="price" required autofocus>
                                 </div>
                                 <div class="col">
                                     <h6 class="text-uppercase text-light ls-1 mb-1">Image</h6>
