@@ -29,37 +29,37 @@
     @yield('main-content')
 
 </div>
-<div class="action {{--{{ ($title === 'Customer Dashboard') || ($title === 'Veterinary Service') ? '' : 'hidden' }}--}}" data-toggle="modal" data-target="#cart">
-    <span>
-        <i class="fas fa-cart-plus"></i>
-    </span>
+{{--<div class="action --}}{{--{{ ($title === 'Customer Dashboard') || ($title === 'Veterinary Service') ? '' : 'hidden' }}--}}{{--" data-toggle="modal" data-target="#cart">--}}
+{{--    <span>--}}
+{{--        <i class="fas fa-cart-plus"></i>--}}
+{{--    </span>--}}
 {{--    <ul>--}}
 {{--        <li>a</li>--}}
 {{--        <li>a</li>--}}
 {{--        <li>a</li>--}}
 {{--    </ul>--}}
-</div>
+{{--</div>--}}
 
-<!-- Modal -->
-<div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Your's Cart</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
+{{--<!-- Modal -->--}}
+{{--<div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-hidden="true">--}}
+{{--    <div class="modal-dialog" role="document">--}}
+{{--        <div class="modal-content">--}}
+{{--            <div class="modal-header">--}}
+{{--                <h5 class="modal-title" id="exampleModalLongTitle">Your's Cart</h5>--}}
+{{--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+{{--                    <span aria-hidden="true">&times;</span>--}}
+{{--                </button>--}}
+{{--            </div>--}}
+{{--            <div class="modal-body">--}}
+{{--                ...--}}
+{{--            </div>--}}
+{{--            <div class="modal-footer">--}}
+{{--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--}}
+{{--                <button type="button" class="btn btn-primary">Save changes</button>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
 
 
 

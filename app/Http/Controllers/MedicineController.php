@@ -68,7 +68,9 @@ class MedicineController extends Controller
      */
     public function edit(Medicine $medicine)
     {
-        return view('vetClinic.modal.editMedicine', compact('medicine'));
+        return view('vetClinic.modal.editMedicine', compact('medicine'),[
+            "title" => "Manage Medicine"
+        ]);
     }
 
     /**

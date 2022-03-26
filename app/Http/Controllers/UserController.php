@@ -11,12 +11,14 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
         $data_user = User::all();
-        return view('admin.user', compact('data_user'));
+        return view('admin.user', compact('data_user'),[
+            "title" => "Manage User"
+        ]);
 
     }
 

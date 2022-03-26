@@ -30,8 +30,8 @@
                     <div class="card bg-gradient-indigo shadow">
                         <div class="card-body">
                             <div class="row ">
-                                <div class="col-3 align-middle">
-                                    <img src="{{asset('img/informationImages/'.$row->image)}}" class="userImg rounded">
+                                <div class="col-2">
+                                    <img src="{{asset('img/informationImages/'.$row->image)}}" class="rounded" style="width: 150px">
                                 </div>
                                 <div class="col-9">
                                     <h4 class="text-uppercase text-success mb-3">{{$row->title}}</h4>
@@ -42,6 +42,6 @@
                     </div>
                 </div>
             </div>
-        </div>x
+        </div>
     @endforeach
 @endsection
