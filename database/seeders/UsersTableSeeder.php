@@ -29,10 +29,10 @@ class UsersTableSeeder extends Seeder
         ]);
         DB::table('users')->insert([
             [
-                'name' => 'customer',
-                'username' => 'customer',
-                'email' => 'customer@gmail.com',
-                'password' => Hash::make('customer'),
+                'name' => 'custom',
+                'username' => 'custom',
+                'email' => 'custom@gmail.com',
+                'password' => Hash::make('custom'),
                 'avatar' => 'default.png',
                 'phoneNo' => '08217777777',
                 'address' => 'Jalan Stasiun',
@@ -45,7 +45,7 @@ class UsersTableSeeder extends Seeder
                 'username' => 'clinic',
                 'email' => 'clinic@gmail.com',
                 'password' => Hash::make('clinic'),
-                'avatar' => 'default.png',
+                'avatar' => '1645600197.jpg',
                 'phoneNo' => '12312312312',
                 'address' => 'clinic',
                 'type' => 'vetClinic'
@@ -56,7 +56,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'shop',
                 'username' => 'shop',
                 'email' => 'shop@gmail.com',
-                'password' => Hash::make('petShop'),
+                'password' => Hash::make('shop12'),
                 'avatar' => 'default.png',
                 'phoneNo' => '12121212121',
                 'address' => 'shop',
@@ -65,10 +65,10 @@ class UsersTableSeeder extends Seeder
         ]);
         DB::table('users')->insert([
             [
-                'name' => 'veterinary',
-                'username' => 'veterinary',
+                'name' => 'veteri',
+                'username' => 'veteri',
                 'email' => 'veteri@gmail.com',
-                'password' => Hash::make('veterinary'),
+                'password' => Hash::make('veteri'),
                 'avatar' => 'default.png',
                 'phoneNo' => '12121212122',
                 'address' => '12312123121',

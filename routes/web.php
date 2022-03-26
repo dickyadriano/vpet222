@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\MapLocation;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,9 @@ Route::get('/vetClinic/medicine', [App\Http\Controllers\VetClinicController::cla
 Route::get('/customer/vetService', [App\Http\Controllers\CustomerController::class, 'showService'])->name('customer-service');
 Route::get('/customer/location', [App\Http\Controllers\CustomerController::class, 'showLocation'])->name('customer-location');
 Route::get('/customer/diagnosis', [App\Http\Controllers\CustomerController::class, 'showDiagnosis'])->name('customer-diagnosis');
+Route::get('/customer/order', [App\Http\Controllers\CustomerController::class, 'showOrder'])->name('customer-order');
+Route::get('/customer/reminder', [App\Http\Controllers\CustomerController::class, 'showReminder'])->name('customer-reminder');
+Route::get('/customer/medicine', [App\Http\Controllers\CustomerController::class, 'showMedicine'])->name('customer-medicine');
 
 Route::get('/admin/manageUser', [App\Http\Controllers\AdminController::class, 'showUser'])->name('admin-user');
 Route::post('/admin/manageInformation', [App\Http\Controllers\AdminController::class, 'updateInformation'])->name('admin-update-information');
@@ -76,11 +80,16 @@ Route::post('petShop/profilepicture','App\Http\Controllers\PetShopController@pro
 Route::post('vetClinic/profilepicture','App\Http\Controllers\VetClinicController@profilePicUpdate')->name('vetClinic-profilePic');
 Route::post('veterinary/profilepicture','App\Http\Controllers\VeterinaryController@profilePicUpdate')->name('veterinary-profilePic');
 
+//Route::post('customer/market', [\App\Http\Controllers\ProductController::class, 'addToCart'])->name('market-customer');
+Route::get('/location', MapLocation::class);
+
 Route::resource('users', \App\Http\Controllers\UserController::class);
 Route::resource('product', \App\Http\Controllers\ProductController::class);
 Route::resource('medicine', \App\Http\Controllers\MedicineController::class);
 Route::resource('admin', \App\Http\Controllers\AdminController::class);
+Route::resource('customer', \App\Http\Controllers\CustomerController::class);
 Route::resource('information', \App\Http\Controllers\InformationController::class);
 Route::resource('petCare', \App\Http\Controllers\PetCareController::class);
 Route::resource('grooming', \App\Http\Controllers\GroomingController::class);
 Route::resource('order', \App\Http\Controllers\OrderController::class);
+Route::resource('cart', \App\Http\Controllers\cartController::class);

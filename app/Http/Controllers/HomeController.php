@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Medicine;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -35,9 +37,8 @@ class HomeController extends Controller
     }
 
     public function handleCustomer(){
-        return view('customer.dashboard', [
-            "title" => "Customer Dashboard"
-        ]);
+        $data_product = Product::all();
+        return view('customer.dashboard', compact('data_product'));
     }
 
     public function handlePetShop(){

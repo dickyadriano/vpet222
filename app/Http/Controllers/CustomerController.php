@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
+use App\Models\Cart;
+use App\Models\Medicine;
+use App\Models\Product;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
 use App\Models\Customer;
 use App\Models\User;
 use Cassandra\Custom;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Image;
 
@@ -21,7 +25,15 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $data_product = Product::all();
+        $data_cart = Cart::all();
+        $userId = Auth::user()->id;
+        $products_data = DB::table('carts')
+            ->join('products', 'carts.productID', '=', 'products.id')
+            ->where('carts.userID', '=', $userId)
+            ->select('products.*', 'carts.*')->get();
+
+        return view('customer.dashboard', compact('data_product', 'data_cart', 'products_data'));
     }
 //
 //    public function index()
@@ -96,6 +108,32 @@ class CustomerController extends Controller
         ]);
     }
 
+    public function showOrder()
+    {
+        return view('customer.order', [
+            "title" => "Order Customer",
+        ]);
+    }
+
+    public function showReminder()
+    {
+        return view('customer.reminder', [
+            "title" => "Reminder",
+        ]);
+    }
+
+    public function showMedicine()
+    {
+        $data_medicine = Medicine::all();
+        return view('customer.marketplace.medicine', compact('data_medicine'));
+//        if(Auth::user()->type == 'customer'){
+//            return view('customer.marketplace.medicine', compact('product_medicine'));
+//        }else{
+//            return redirect()->route('customer.dashboard')
+//                ->with('error','Sorry, you cant access this data!');
+//        }
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -141,7 +179,6 @@ class CustomerController extends Controller
     public function password(PasswordRequest $request)
     {
         auth()->user()->update(['password' => Hash::make($request->get('password'))]);
-
         return back()->withPasswordStatus(__('Password successfully updated.'));
     }
 

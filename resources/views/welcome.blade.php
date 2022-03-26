@@ -79,7 +79,7 @@
                             </li>
                         @elseif(auth()->user()->type == 'customer')
                             <li class="nav-item">
-                                <a class="nav-link nav-link-icon" href="{{ route('dashboard-customer') }}">
+                                <a class="nav-link nav-link-icon" href="{{ route('product.index') }}">
                                     <i class="fa fa-store"></i>
                                     <span class="nav-link-inner--text">Marketplace</span>
                                 </a>

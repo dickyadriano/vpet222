@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Medicine;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -47,7 +48,10 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = Order::create($request->all());
+        $data->save();
+
+        return redirect()->route('dashboard-customer');
     }
 
     /**

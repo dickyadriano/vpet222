@@ -67,4 +67,51 @@
             </div>
         </div>
     </div>
+    <div class="container-fluid pt-3">
+        <div class="row">
+            <div class="col-xl-12 mb-5 mb-xl-0">
+                <div class="card bg-gradient-default shadow">
+                    <div class="card-body">
+                        <div class="row align-items-center mb-3">
+                            <div class="col">
+                                <h4 class="text-uppercase text-success ls-1 mb-1">Assign for Animal Care and Grooming</h4>
+                            </div>
+                        </div>
+                        <div class="row align-items-center mb-3">
+                            <div class="col">
+                                <h6 class="text-uppercase text-light ls-1 mb-1">Name</h6>
+                                <h2 class="text-white mb-0">{{ auth()->user()->name }}</h2>
+                            </div>
+                            <div class="col">
+                                <h6 class="text-uppercase text-light ls-1 mb-1">Services</h6>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" value="" id="animalCare">
+                                    <label class="form-check-label text-white-50" for="animalCare">
+                                        Animal Care
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" value="" id="grooming">
+                                    <label class="form-check-label text-white-50" for="grooming">
+                                        Grooming
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center mb-3">
+                            <div class="col">
+                                <h6 class="text-uppercase text-light ls-1 mb-1">Description</h6>
+                                <div class="input-group">
+                                    <textarea class="form-control" aria-label="With textarea"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <button class="btn btn-success">Create</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
