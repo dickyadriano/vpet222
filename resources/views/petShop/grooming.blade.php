@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="col">
                                     <h6 class="text-uppercase text-light ls-1 mb-1">Image</h6>
-                                    <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror">
+                                    <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror" required>
 
                                     @error('image')
                                     <span class="text-danger">{{ $message }}</span>

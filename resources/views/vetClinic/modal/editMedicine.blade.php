@@ -14,7 +14,7 @@
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/welcome"><i class="fas fa-home"></i></a></li>
                                 <li class="breadcrumb-item"><a href="{{ route('dashboard-vetClinic') }}">Dashboard</a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('vetClinic-medicine') }}">Manage Medicine</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('medicine.index') }}">Manage Medicine</a></li>
                             </ol>
                         </nav>
                     </div>

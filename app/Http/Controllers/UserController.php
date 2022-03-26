@@ -16,7 +16,9 @@ class UserController extends Controller
     public function index()
     {
         $data_user = User::all();
-        return view('admin.user', compact('data_user'));
+        return view('admin.user', compact('data_user'),[
+            "title" => "Manage User"
+        ]);
 
     }
 
