@@ -38,9 +38,7 @@ class HomeController extends Controller
 
     public function handleCustomer(){
         $data_product = Product::all();
-        return view('customer.dashboard', compact('data_product'), [
-            "title" => "Customer Dashboard"
-        ]);
+        return view('customer.dashboard', compact('data_product'));
     }
 
     public function handlePetShop(){

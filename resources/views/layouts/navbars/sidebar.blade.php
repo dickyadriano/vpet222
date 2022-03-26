@@ -45,25 +45,25 @@
                     <ul class="navbar-nav mb-md-3">
                         @if(auth()->user()->type == 'customer')
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Customer Dashboard') ? 'active' : '' }}" href="{{ route('dashboard-customer') }}">
+                                <a class="nav-link {{--{{ ($title === 'Customer Dashboard') ? 'active' : '' }}--}}" href="{{ route('customer.index') }}">
                                     <i class="fa fa-store text-primary"></i>
                                     <span class="nav-link-text">Marketplace</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Veterinary Service') ? 'active' : '' }}" href="{{ route('customer-service') }}">
+                                <a class="nav-link {{--{{ ($title === 'Veterinary Service') ? 'active' : '' }}--}}" href="{{ route('customer-service') }}">
                                     <i class="fa fa-heartbeat text-primary"></i>
                                     <span class="nav-link-text">Veterinary Service</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Location') ? 'active' : '' }}" href="{{ route('customer-location') }}">
+                                <a class="nav-link {{--{{ ($title === 'Location') ? 'active' : '' }}--}}" href="{{ route('customer-location') }}">
                                     <i class="ni ni-square-pin text-primary"></i>
                                     <span class="nav-link-text">Location</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Diagnosis of Diseases') ? 'active' : '' }}" href="{{ route('customer-diagnosis') }}">
+                                <a class="nav-link {{--{{ ($title === 'Diagnosis of Diseases') ? 'active' : '' }}--}}" href="{{ route('customer-diagnosis') }}">
                                     <i class="fa fa-heartbeat text-primary"></i>
                                     <span class="nav-link-text">Diagnosis of Diseases</span>
                                 </a>
@@ -75,13 +75,13 @@
 {{--                                </a>--}}
 {{--                            </li>--}}
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Order') ? 'active' : '' }}" href="#">
+                                <a class="nav-link {{--{{ ($title === 'Order') ? 'active' : '' }}--}}" href="{{ route('customer-order') }}">
                                     <i class="ni ni-bag-17 text-primary"></i>
                                     <span class="nav-link-text">Order</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Reminder') ? 'active' : '' }}" href="#">
+                                <a class="nav-link {{--{{ ($title === 'Reminder') ? 'active' : '' }}--}}" href="{{ route('customer-reminder') }}">
                                     <i class="ni ni-time-alarm text-primary"></i>
                                     <span class="nav-link-text">Reminder</span>
                                 </a>

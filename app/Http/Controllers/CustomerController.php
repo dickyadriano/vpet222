@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Medicine;
-use Auth;
+use App\Models\Product;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
 use App\Models\Customer;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Image;
 
@@ -21,7 +24,15 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $data_product = Product::all();
+        $data_cart = Cart::all();
+        $userId = Auth::user()->id;
+        $products_data = DB::table('carts')
+            ->join('products', 'carts.productID', '=', 'products.id')
+            ->where('carts.userID', '=', $userId)
+            ->select('products.*', 'carts.*')->get();
+
+        return view('customer.dashboard', compact('data_product', 'data_cart', 'products_data'));
     }
 
     /**
@@ -157,7 +168,6 @@ class CustomerController extends Controller
     public function password(PasswordRequest $request)
     {
         auth()->user()->update(['password' => Hash::make($request->get('password'))]);
-
         return back()->withPasswordStatus(__('Password successfully updated.'));
     }
 

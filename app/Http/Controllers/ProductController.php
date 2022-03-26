@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Medicine;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -17,7 +20,15 @@ class ProductController extends Controller
     {
         $data_product = Product::all();
 
-        return view('customer.dashboard', compact('data_product'));
+        $data_cart = Cart::all();
+
+        $userId = Auth::user()->id;
+        $products_data = DB::table('carts')
+            ->join('products', 'carts.productID', '=', 'products.id')
+            ->where('carts.userID', '=', $userId)
+            ->select('products.*', 'carts.*')->get();
+
+        return view('customer.dashboard', compact('data_product', 'data_cart', 'products_data'));
     }
 
     /**
@@ -50,6 +61,12 @@ class ProductController extends Controller
     public function show($id)
     {
         //
+    }
+
+    function cartItem()
+    {
+        $userId = Auth::user()->id;
+        return Cart::where('userID', $userId)->count();
     }
 
     /**
