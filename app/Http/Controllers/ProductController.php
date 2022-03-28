@@ -25,7 +25,7 @@ class ProductController extends Controller
         $userId = Auth::user()->id;
         $products_data = DB::table('carts')
             ->join('products', 'carts.productID', '=', 'products.id')
-            ->where('carts.userID', '=', $userId)
+            ->join('users', 'carts.userID', '=', $userId)
             ->select('products.*', 'carts.*')->get();
 
         return view('customer.dashboard', compact('data_product', 'data_cart', 'products_data'));
@@ -66,7 +66,10 @@ class ProductController extends Controller
     function cartItem()
     {
         $userId = Auth::user()->id;
-        return Cart::where('userID', $userId)->count();
+        return DB::table('carts')
+            ->where('carts.orderType', '=', 'product')
+            ->where('carts.userID', '=', $userId)
+            ->count();
     }
 
     /**

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\medicine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class MedicineController extends Controller
 {
@@ -16,9 +18,24 @@ class MedicineController extends Controller
     public function index()
     {
         $show = Medicine::where('userID', '=', Auth::user()->id)->get();
-        return view('vetClinic.medicine', compact('show'),[
-            "title" => "Manage Medicine"
-        ]);
+
+        $data_medicine = Medicine::all();
+
+        $medicineInCart_data = DB::table('carts')
+            ->join('medicines', 'carts.medicineID', '=', 'medicines.id')
+            ->where('carts.userID', '=', Auth::user()->id)
+            ->where('carts.orderType', '=', 'medicine')
+            ->select('medicines.*', 'carts.*')->get();
+
+        if (Auth::user()->type == 'vetClinic'){
+            return view('vetClinic.medicine', compact('show'),[
+                "title" => "Manage Medicine"
+            ]);
+        }
+        elseif (Auth::user()->type == 'customer'){
+            return view('customer.marketplace.medicine', compact('medicineInCart_data', 'data_medicine'));
+        }
+
     }
 
     /**
@@ -101,5 +118,14 @@ class MedicineController extends Controller
     {
         Medicine::destroy($medicine->id);
         return redirect()->route('medicine.index');
+    }
+
+    function cartItem()
+    {
+        $userId = Auth::user()->id;
+        return Cart::select('*')
+            ->where('userID', '=', $userId)
+            ->where('orderType', '=', 'medicine')
+            ->count();
     }
 }

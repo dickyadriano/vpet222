@@ -20,19 +20,20 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
         $data_product = Product::all();
         $data_cart = Cart::all();
         $userId = Auth::user()->id;
-        $products_data = DB::table('carts')
+        $productInCart_data = DB::table('carts')
             ->join('products', 'carts.productID', '=', 'products.id')
             ->where('carts.userID', '=', $userId)
+            ->where('carts.orderType', '=', 'product')
             ->select('products.*', 'carts.*')->get();
 
-        return view('customer.dashboard', compact('data_product', 'data_cart', 'products_data'));
+        return view('customer.dashboard', compact('data_product', 'data_cart', 'productInCart_data'));
     }
 
     /**
@@ -60,7 +61,7 @@ class CustomerController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     public function show($id)
     {
@@ -109,18 +110,6 @@ class CustomerController extends Controller
         return view('customer.reminder', [
             "title" => "Reminder",
         ]);
-    }
-
-    public function showMedicine()
-    {
-        $data_medicine = Medicine::all();
-        return view('customer.marketplace.medicine', compact('data_medicine'));
-//        if(Auth::user()->type == 'customer'){
-//            return view('customer.marketplace.medicine', compact('product_medicine'));
-//        }else{
-//            return redirect()->route('customer.dashboard')
-//                ->with('error','Sorry, you cant access this data!');
-//        }
     }
 
     /**

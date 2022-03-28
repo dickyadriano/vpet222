@@ -22,19 +22,24 @@ class OrderController extends Controller
         $service_data = DB::table('orders')
             ->join('users', 'orders.userID', '=', 'users.id')
             ->join('services', 'orders.serviceID', '=', 'services.id')
-            ->select(['orders.*', 'users.*', 'services.*'])
+            ->select(['orders.*', 'services.*'])
             ->get();
 
         $product_data = DB::table('orders')
             ->join('products', 'orders.productID', '=', 'products.id')
             ->join('users', 'orders.userID', '=', 'users.id')
-            ->select('orders.*', 'users.*', 'products.*')->get();
+            ->select('orders.*', 'products.*')->get();
+
+        $medicine_data = DB::table('orders')
+            ->join('medicines', 'orders.medicineID', '=', 'medicines.id')
+            ->join('users', 'orders.userID', '=', 'users.id')
+            ->select('orders.*', 'medicines.*')->get();
 
         if (Auth::user()->type == 'petShop'){
             return view('petShop.order', compact('show'));
         }
         elseif (Auth::user()->type == 'customer'){
-            return view('customer.order', compact('service_data', 'product_data'));
+            return view('customer.order', compact('service_data', 'product_data', 'medicine_data'));
         }
     }
 
@@ -58,13 +63,7 @@ class OrderController extends Controller
     {
         $data = Order::create($request->all());
         $data->save();
-        if ($request->is('order')){
-            return redirect()->route('order.index');
-        }
-        elseif ($request->is('customer')){
-            return redirect()->route('customer.index');
-        }
-
+        return redirect()->route('order.index');
     }
 
     /**

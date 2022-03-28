@@ -54,6 +54,8 @@ Route::get('/customer/order', [App\Http\Controllers\CustomerController::class, '
 Route::get('/customer/reminder', [App\Http\Controllers\CustomerController::class, 'showReminder'])->name('customer-reminder');
 Route::get('/customer/medicine', [App\Http\Controllers\CustomerController::class, 'showMedicine'])->name('customer-medicine');
 
+//Route::post('/file-to-execute',[App\Http\Controllers\CartController::class, 'ServerFileToExecute'])->name('file-to-execute');
+
 Route::get('/admin/manageUser', [App\Http\Controllers\AdminController::class, 'showUser'])->name('admin-user');
 Route::post('/admin/manageInformation', [App\Http\Controllers\AdminController::class, 'updateInformation'])->name('admin-update-information');
 Route::post('/admin/delete', [App\Http\Controllers\AdminController::class, 'destroy'])->name('information-destroy');
@@ -82,6 +84,9 @@ Route::post('vetClinic/profilepicture','App\Http\Controllers\VetClinicController
 Route::post('veterinary/profilepicture','App\Http\Controllers\VeterinaryController@profilePicUpdate')->name('veterinary-profilePic');
 
 //Route::post('customer/market', [\App\Http\Controllers\ProductController::class, 'addToCart'])->name('market-customer');
+Route::get('/cart/delete/{cartId}', 'App\Http\Controllers\CartController@delete')->name('cart.delete');
+
+
 Route::get('/location', MapLocation::class);
 
 Route::resource('admin', \App\Http\Controllers\AdminController::class);

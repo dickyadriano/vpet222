@@ -23,5 +23,6 @@ class Order extends Model
         'orderStatus',
     ];
     protected $table = 'orders';
+    protected $hidden = ['id'];
     public $timestamps = false;
 }

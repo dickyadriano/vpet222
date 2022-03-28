@@ -60,7 +60,6 @@
                                 <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden readonly>
                                 <input type="number" name="serviceID" value="{{ $row->id }}" hidden readonly>
                                 <input type="text" name="image" value="{{ $row->avatar }}" hidden readonly>
-                                <input type="text" name="orderDetail" value="-" hidden readonly>
                                 <input type="text" name="orderType" value="service" hidden readonly>
                                 <input type="text" name="orderStatus" value="Wait for Payment" hidden readonly>
                                 <input type="text" name="orderDetail" value="Wait for Payment" hidden readonly>
