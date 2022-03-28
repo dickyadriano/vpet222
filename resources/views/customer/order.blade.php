@@ -27,31 +27,62 @@
         <div class="header-body">
             <!-- Card stats -->
             <div class="row">
-                <div class="col-xl-12 col-lg-12">
-                    <div class="card card-stats mb-4 mb-xl-0">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-auto">
-                                    <img class="img-center userImg150" src="{{ asset('argon/argon/img/theme/harness.jpg') }}">
+                @foreach($service_data as $row)
+                    <div class="col-xl-4 col-lg-4 mb-3">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row text-uppercase mb-2">
+                                    <strong>{{ $row->orderType }}</strong>
                                 </div>
-                                <div class="col">
-                                    <h5 class="card-title text-uppercase h2 mb-0">Herness Orange</h5>
-                                    <span class="h2 font-weight-bold mb-0">350,897</span>
-                                </div>
-                                <div class="col-auto">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Status</h5>
-                                    <div class="bg-success rounded">
-                                        <span class="h2 text-white p-1">Deliverd</span>
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <img class="img-center userImg150" src="{{ asset('argon/argon/img/theme/'. $row->image) }}">
+                                    </div>
+                                    <div class="col">
+                                        <h5 class="card-title text-uppercase h2 mb-0">{{ $row->serviceName }}</h5>
+                                        <span class="h2 font-weight-bold mb-0">@currency($row->price),-</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Status</h5>
+                                        <span class="badge badge-pill {{ ($row->orderStatus === 'Delivered') ? 'badge-success' : 'badge-warning' }} badge-lg">{{ $row->orderStatus }}</span>
                                     </div>
                                 </div>
+                                <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-nowrap mr-2">From:</span>
+                                    <span class="text-nowrap"></span>
+                                </p>
                             </div>
-                            <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                                <span class="text-nowrap">Since last month</span>
-                            </p>
                         </div>
                     </div>
-                </div>
+                @endforeach
+                    @foreach($product_data as $row)
+                        <div class="col-xl-4 col-lg-4 mb-3">
+                            <div class="card card-stats mb-4 mb-xl-0">
+                                <div class="card-body">
+                                    <div class="row text-uppercase mb-2">
+                                        <strong>{{ $row->orderType }}</strong>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <img class="img-center userImg150" src="{{ asset('argon/argon/img/theme/'. $row->image) }}">
+                                        </div>
+                                        <div class="col">
+                                            <h5 class="card-title text-uppercase h2 mb-0">{{ $row->productName }}</h5>
+                                            <span class="h2 font-weight-bold mb-0">@currency($row->price),-</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Status</h5>
+                                            <span class="badge badge-pill {{ ($row->orderStatus === 'Delivered') ? 'badge-success' : 'badge-warning' }} badge-lg">{{ $row->orderStatus }}</span>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 mb-0 text-muted text-sm">
+                                        <span class="text-nowrap mr-2">From:</span>
+                                        <span class="text-nowrap"></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
             </div>
         </div>
     </div>

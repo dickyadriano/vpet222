@@ -79,13 +79,13 @@
                             </li>
                         @elseif(auth()->user()->type == 'customer')
                             <li class="nav-item">
-                                <a class="nav-link nav-link-icon" href="{{ route('product.index') }}">
+                                <a class="nav-link nav-link-icon" href="{{ route('customer.index') }}">
                                     <i class="fa fa-store"></i>
                                     <span class="nav-link-inner--text">Marketplace</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link nav-link-icon" href="{{ route('customer-profile', Auth::user()->id) }}">
+                                <a class="nav-link nav-link-icon" href="{{ route('customer.index', Auth::user()->id) }}">
                                     <i class="ni ni-single-02"></i>
                                     <span class="nav-link-inner--text">Profile</span>
                                 </a>

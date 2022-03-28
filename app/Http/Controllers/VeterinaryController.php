@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
 use Auth;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
@@ -16,11 +17,12 @@ class VeterinaryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $data_vetService = Service::all();
+        return view('veterinary.dashboard', compact('data_vetService'));
     }
 
     /**
@@ -41,7 +43,16 @@ class VeterinaryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = Service::create($request->all());
+
+        if ($request->hasFile('idCard', 'vetLicense')){
+            $request->file('idCard', )->move('img/vetImage/idCard', $request->file('idCard', )->getClientOriginalName());
+            $request->file('vetLicense')->move('img/vetImage/license', $request->file('vetLicense')->getClientOriginalName());
+            $data->idCard = $request->file('idCard')->getClientOriginalName();
+            $data->vetLicense = $request->file('vetLicense')->getClientOriginalName();
+            $data->save();
+        }
+        return redirect()->route('vet.index');
     }
 
     /**

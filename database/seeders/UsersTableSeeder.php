@@ -75,5 +75,29 @@ class UsersTableSeeder extends Seeder
                 'type' => 'veterinary'
             ]
         ]);
+        DB::table('users')->insert([
+            [
+                'name' => 'veteri1',
+                'username' => 'veteri1',
+                'email' => 'veteri1@gmail.com',
+                'password' => Hash::make('veteri1'),
+                'avatar' => 'default.png',
+                'phoneNo' => '234234234234',
+                'address' => 'veteri1',
+                'type' => 'veterinary'
+            ]
+        ]);
+        DB::table('users')->insert([
+            [
+                'name' => 'veteri2',
+                'username' => 'veteri2',
+                'email' => 'veteri2@gmail.com',
+                'password' => Hash::make('veteri2'),
+                'avatar' => 'default.png',
+                'phoneNo' => '345345345345',
+                'address' => 'veteri2',
+                'type' => 'veterinary'
+            ]
+        ]);
     }
 }

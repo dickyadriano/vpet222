@@ -15,14 +15,15 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('petShopID')->nullable();
-            $table->integer('customerID')->nullable();
-            $table->integer('productID')->nullable();
-            $table->integer('medicineID')->nullable();
-            $table->integer('groomingID')->nullable();
-            $table->integer('petCareID')->nullable();
+            $table->integer('userID');
+            $table->integer('productID')->default('0');
+            $table->integer('medicineID')->default('0');
+            $table->integer('serviceID')->default('0');
+            $table->integer('groomingID')->default('0');
+            $table->integer('petCareID')->default('0');
             $table->string("orderType");
             $table->string("orderAmount");
+            $table->integer("totalPrice");
             $table->longText("orderDetail");
             $table->string('orderStatus');
         });

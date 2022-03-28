@@ -78,6 +78,11 @@ class AdminController extends Controller
         return view('admin.user');
     }
 
+    public function showVet()
+    {
+        return view('admin.verifyVet');
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
