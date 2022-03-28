@@ -58,7 +58,7 @@
                         <div class="form-group">
                             @csrf
                             <label for="image">Product Picture</label>
-                            <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror">
+                            <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror" required>
 
                             @error('image')
                                 <span class="text-danger">{{ $message }}</span>

@@ -9,6 +9,7 @@ use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
 use App\Models\Customer;
 use App\Models\User;
+use Cassandra\Custom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -35,6 +36,16 @@ class CustomerController extends Controller
 
         return view('customer.dashboard', compact('data_product', 'data_cart', 'productInCart_data'));
     }
+//
+//    public function index()
+//    {
+//        $project = Customer::query();
+//        if (request('term')) {
+//            $project->where('name', 'Like', '%' . request('term') . '%');
+//        }
+//
+//        return $project->orderBy('id', 'DESC')->paginate(10);
+//    }
 
     /**
      * Show the form for creating a new resource.
