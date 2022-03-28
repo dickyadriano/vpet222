@@ -40,7 +40,7 @@ class OrderController extends Controller
 
     public function orderHistory()
     {
-        $show = Order::where('petShopID', '=', Auth::user()->id)->get();
+        $show = Order::where('userID', '=', Auth::user()->id)->get();
         return view('petShop.modal.history', compact('show'),[
             "title" => "Shop Order"
         ]);

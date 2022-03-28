@@ -16,9 +16,7 @@ class PetCareController extends Controller
     public function index()
     {
         $show = PetCare::where('userID', '=', Auth::user()->id)->get();
-        return view('petShop.petCares', compact('show'),[
-            "title" => "Animal Care"
-        ]);
+        return view('petShop.petCares', compact('show'));
     }
 
     /**

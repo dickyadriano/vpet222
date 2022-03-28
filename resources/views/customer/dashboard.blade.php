@@ -28,7 +28,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
-                                            <img class="img-thumbnail userImg150" src="{{ asset('argon/argon/img/theme/'. $row->image) }}">
+                                            <img class="img-thumbnail userImg150" src="{{ asset('img/productImage/'. $row->image) }}">
                                         </div>
                                         <div class="col">
                                             <h4 class="text-black">{{ $row->productName }}</h4>
@@ -90,7 +90,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <img class="img-center img-thumbnail" src="{{ asset('argon/argon/img/theme/'. $row['image']) }}">
+                                    <img class="img-center img-thumbnail" src="{{ asset('img/productImage/'. $row['image']) }}">
                                     <h5 class="card-title text-uppercase text-muted mb-0 mt-1">{{ $row['productName'] }}</h5>
 
                                     <span class="h2 font-weight-bold mb-0">@currency($row->price),-</span>
@@ -125,7 +125,7 @@
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="col">
-                                            <img class="img-center img-thumbnail" src="{{ asset('argon/argon/img/theme/'. $row['image']) }}">
+                                            <img class="img-center img-thumbnail" src="{{ asset('img/productImage/'. $row['image']) }}">
                                         </div>
                                         <div class="col">
                                             <h5 class="modal-title">{{ $row['productName'] }}</h5>
