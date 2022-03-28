@@ -19,6 +19,7 @@ class CreateMedicinesTable extends Migration
             $table->string("medicineName");
             $table->integer("medicineAmount");
             $table->string("medicinePrice");
+            $table->longText('medicineDetail');
             $table->string('image');
         });
     }
