@@ -10,16 +10,14 @@ class Cart extends Model
     use HasFactory;
 
     protected $fillable = [
+        'cartId',
         'userID',
         'productID',
         'medicineID',
-        'serviceID',
-        'groomingID',
-        'petCareID',
         'orderType',
-        'orderAmount',
-        'orderDetail'
+        'orderAmount'
     ];
     protected $table = 'carts';
+    protected $primaryKey = 'cartId';
     public $timestamps = false;
 }

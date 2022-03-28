@@ -86,6 +86,9 @@ Route::post('vetClinic/profilepicture','App\Http\Controllers\VetClinicController
 Route::post('veterinary/profilepicture','App\Http\Controllers\VeterinaryController@profilePicUpdate')->name('veterinary-profilePic');
 
 //Route::post('customer/market', [\App\Http\Controllers\ProductController::class, 'addToCart'])->name('market-customer');
+Route::get('/cart/delete/{cartId}', 'App\Http\Controllers\CartController@delete')->name('cart.delete');
+
+
 Route::get('/location', MapLocation::class);
 
 Route::resource('admin', \App\Http\Controllers\AdminController::class);

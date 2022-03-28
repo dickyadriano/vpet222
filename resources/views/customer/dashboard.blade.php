@@ -6,7 +6,7 @@
     use App\Http\Controllers\ProductController;
     $total = ProductController::cartItem();
     ?>
-    <div id="ex4" class="action {{--{{ ($title === 'Customer Dashboard') || ($title === 'Veterinary Service') ? '' : 'hidden' }}--}}" data-toggle="modal" data-target="#cart">
+    <div id="ex4" class="action" data-toggle="modal" data-target="#cart">
         <span class="p1 fa-stack fa-2x has-badge" data-count="{{$total}}">
             <i class="p3 fa fa-cart-plus fa-stack-1x xfa-inverse" data-count="4"></i>
         </span>
@@ -21,9 +21,20 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="" method="POST" enctype="multipart/form-data">
+
+                <form action="{{ route('order.store')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="modal-body">
-                        @foreach($products_data as $row)
+                        @foreach($productInCart_data as $row)
+                            <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden readonly>
+                            <input type="number" name="productID" value="{{ $row->id }}" hidden readonly>
+                            <input type="number" name="medicineID" value="0" hidden readonly>
+                            <input type="text" name="image" value="{{ $row->image }}" hidden readonly>
+                            <input type="text" name="orderDetail" value="-" hidden readonly>
+                            <input type="text" name="orderType" value="product" hidden readonly>
+                            <input type="text" name="orderStatus" value="Wait for Payment" hidden readonly>
+                            <input type="number" name="orderAmount" value="{{ $row->orderAmount }}" hidden readonly>
+                            <input type="number" name="totalPrice" value="{{ ($row->orderAmount * $row->price) }}" hidden readonly>
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row">
@@ -41,11 +52,9 @@
                                             <h3 class="text-gray pt-0">Total Price</h3>
                                             <h3 class="text-gray">@currency($row->orderAmount * $row->price),-</h3>
                                         </div>
-                                        <form action="" method="POST" enctype="multipart/form-data">
-                                            <div class="col centerCol">
-                                                <button type="button" class="btn btn-danger">Delete</button>
-                                            </div>
-                                        </form>
+                                        <div class="col centerCol">
+                                            <a href="{{ route('cart.delete', ['cartId' => $row->cartId]) }}" type="submit" name="delete" class="btn btn-danger">Delete</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +62,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Cash Out</button>
+                        <button type="submit" name="cashOut" class="btn btn-primary">Cash Out</button>
                     </div>
                 </form>
             </div>
@@ -65,7 +74,6 @@
             <div class="header-body">
                 <div class="row align-items-center py-4">
                     <div class="col-lg-6 col-7">
-{{--                        <h6 class="h2 text-white d-inline-block mb-0">Customer</h6>--}}
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/welcome"><i class="fas fa-home"></i></a></li>
@@ -75,7 +83,7 @@
                     </div>
                     <div class="col-lg-6 col-5 text-right">
                         <a href="{{ route('customer.index') }}" class="btn btn-sm btn-neutral">Pet Needs</a>
-                        <a href="{{ route('customer-medicine') }}" class="btn btn-sm btn-neutral">Medicine</a>
+                        <a href="{{ route('medicine.index') }}" class="btn btn-sm btn-neutral">Medicine</a>
                     </div>
                 </div>
             </div>
@@ -117,10 +125,8 @@
                             <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden readonly>
-                                <input type="number" name="productID" value="{{ $row['id'] }}" hidden readonly>
-                                <input type="text" name="orderDetail" value="-" hidden readonly>
+                                <input type="number" name="productID" value="{{ $row->id }}" hidden readonly>
                                 <input type="text" name="orderType" value="product" hidden readonly>
-                                <input type="text" name="orderDetail" value="Wait for Payment" hidden readonly>
 
                                 <div class="modal-body">
                                     <div class="row">
@@ -146,7 +152,6 @@
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Add To Cart</button>
-                                    <button type="" class="btn btn-primary">Buy</button>
                                 </div>
                             </form>
                         </div>
@@ -155,6 +160,4 @@
             @endforeach
         </div>
     </div>
-
-
 @endsection

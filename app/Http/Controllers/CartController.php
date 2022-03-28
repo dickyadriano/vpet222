@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Medicine;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\DocBlock\Tags\Method;
 
 class CartController extends Controller
 {
@@ -39,16 +41,15 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        $data_product = Product::all();
+        $cart = Cart::create($request->all());
+        $cart->save();
 
-        if(Auth::user()->type == 'customer'){
-            $cart = Cart::create($request->all());
-            $cart->save();
-            return redirect()->route('customer.index', compact('data_product'));
+
+        if($request['orderType'] === 'product'){
+            return redirect()->route('customer.index');
         }
-        else{
-            return redirect()->route('customer.index')
-                ->with('error', 'Sorry, you cant access this page!');
+        elseif($request['orderType'] === 'medicine'){
+            return redirect()->route('medicine.index');
         }
     }
 
@@ -90,10 +91,32 @@ class CartController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Cart  $cart
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Cart $cart)
     {
         //
     }
+
+    public function delete(Request $request, $cartId)
+    {
+        $cart=Cart::find($cartId);
+        $cart->delete();
+        return redirect()->back();
+//        if($request->is('customer')){
+//            return redirect()->route('customer.index');
+//        }
+//        elseif($request->is('medicine')){
+//            return redirect()->route('medicine.index');
+//        }
+    }
+
+//    public function ServerFileToExecute(Request $request){
+//
+//        if(isset($_POST['cashOut']))
+//            return redirect()->route('order.store');
+//        else if(isset($_POST['delete']))
+//            return redirect()->route('cart.destroy');
+//    }
+
 }
