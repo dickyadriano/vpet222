@@ -32,12 +32,6 @@
                                 </a>
                             </li>
                         @endif
-                        <li class="nav-item">
-                            <a class="nav-link" href="http://127.0.0.1:8000/welcome">
-                                <i class="fas fa-home text-primary"></i>
-                                <span class="nav-link-text">{{ __('Home') }}</span>
-                            </a>
-                        </li>
                     </ul>
                     <!-- Divider -->
                     <hr class="my-3">
@@ -45,13 +39,19 @@
                     <ul class="navbar-nav mb-md-3">
                         @if(auth()->user()->type == 'customer')
                             <li class="nav-item">
-                                <a class="nav-link {{--{{ ($title === 'Customer Dashboard') ? 'active' : '' }}--}}" href="{{ route('customer.index') }}">
+                                <a class="nav-link" href="http://127.0.0.1:8000/welcome">
+                                    <i class="fas fa-home text-primary"></i>
+                                    <span class="nav-link-text">{{ __('Home') }}</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Request::is('customer') ? 'active' : '' }}" href="{{ route('customer.index') }}">
                                     <i class="fa fa-store text-primary"></i>
                                     <span class="nav-link-text">Marketplace</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{--{{ ($title === 'Veterinary Service') ? 'active' : '' }}--}}" href="{{ route('customer-service') }}">
+                                <a class="nav-link {{ Request::is('service') ? 'active' : '' }}" href="{{ route('service.index') }}">
                                     <i class="fa fa-heartbeat text-primary"></i>
                                     <span class="nav-link-text">Veterinary Service</span>
                                 </a>
@@ -68,14 +68,8 @@
                                     <span class="nav-link-text">Diagnosis of Diseases</span>
                                 </a>
                             </li>
-{{--                            <li class="nav-item">--}}
-{{--                                <a class="nav-link {{ ($title === 'View Cart') ? 'active' : '' }}" href="#">--}}
-{{--                                    <i class="ni ni-basket text-primary"></i>--}}
-{{--                                    <span class="nav-link-text">View Cart</span>--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
                             <li class="nav-item">
-                                <a class="nav-link {{--{{ ($title === 'Order') ? 'active' : '' }}--}}" href="{{ route('customer-order') }}">
+                                <a class="nav-link {{ Request::is('order') ? 'active' : '' }}" href="{{ route('order.index') }}">
                                     <i class="ni ni-bag-17 text-primary"></i>
                                     <span class="nav-link-text">Order</span>
                                 </a>
@@ -88,19 +82,19 @@
                             </li>
                         @elseif(auth()->user()->type == 'veterinary')
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Vet Order') ? 'active' : '' }}" href="#">
+                                <a class="nav-link {{--{{ Request::is('service') ? 'active' : '' }}--}}" href="#">
                                     <i class="ni ni-bag-17 text-primary"></i>
                                     <span class="nav-link-text">Order</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Reminder') ? 'active' : '' }}" href="#">
+                                <a class="nav-link {{--{{ ($title === 'Reminder') ? 'active' : '' }}--}}" href="#">
                                     <i class="ni ni-time-alarm text-primary"></i>
                                     <span class="nav-link-text">Reminder</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Medicine Recipe') ? 'active' : '' }}" href="#">
+                                <a class="nav-link {{--{{ ($title === 'Medicine Recipe') ? 'active' : '' }}--}}" href="#">
                                     <i class="fas fa-mortar-pestle text-primary"></i>
                                     <span class="nav-link-text">Create Medicine Recipe</span>
                                 </a>
@@ -166,6 +160,12 @@
                                 <a class="nav-link {{--{{ ($title === 'Payment') ? 'active' : '' }}--}}" href="#">
                                     <i class="ni ni-money-coins text-primary"></i>
                                     <span class="nav-link-text">Payment</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{--{{ ($title === 'Payment') ? 'active' : '' }}--}}" href="{{ route('service.index') }}">
+                                    <i class="ni ni-single-copy-04 text-primary"></i>
+                                    <span class="nav-link-text">Vet Verification</span>
                                 </a>
                             </li>
                         @endif
