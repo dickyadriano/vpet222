@@ -24,9 +24,30 @@
                 <div class="collapse navbar-collapse" id="sidenav-collapse-main">
                     <!-- Nav items -->
                     <ul class="navbar-nav">
-                        @if(auth()->user()->type != 'customer')
+                        @if(auth()->user()->type == 'petShop')
                             <li class="nav-item">
-                                <a class="nav-link" href="http://127.0.0.1:8000/template">
+                                <a class="nav-link" href="{{ route('dashboard-petShop') }}">
+                                    <i class="ni ni-tv-2 text-primary"></i>
+                                    <span class="nav-link-text">{{ __('Dashboard') }}</span>
+                                </a>
+                            </li>
+                        @elseif(auth()->user()->type == 'veterinary')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('dashboard-veterinary') }}">
+                                    <i class="ni ni-tv-2 text-primary"></i>
+                                    <span class="nav-link-text">{{ __('Dashboard') }}</span>
+                                </a>
+                            </li>
+                        @elseif(auth()->user()->type == 'vetClinic')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('dashboard-vetClinic') }}">
+                                    <i class="ni ni-tv-2 text-primary"></i>
+                                    <span class="nav-link-text">{{ __('Dashboard') }}</span>
+                                </a>
+                            </li>
+                        @elseif(auth()->user()->type == 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('dashboard-admin') }}">
                                     <i class="ni ni-tv-2 text-primary"></i>
                                     <span class="nav-link-text">{{ __('Dashboard') }}</span>
                                 </a>
@@ -126,19 +147,19 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('petShop-petCare')}}">
+                                <a class="nav-link" href="{{route('petCare.index')}}">
                                     <i class="fas fa-calendar-day text-primary"></i>
                                     <span class="nav-link-text">Animal Care</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('grooming.index') }}">
                                     <i class="fas fa-paw text-primary"></i>
                                     <span class="nav-link-text">Grooming</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('order.index') }}">
                                     <i class="ni ni-bag-17 text-primary"></i>
                                     <span class="nav-link-text">Order</span>
                                 </a>

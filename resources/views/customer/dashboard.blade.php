@@ -39,7 +39,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
-                                            <img class="img-thumbnail userImg150" src="{{ asset('argon/argon/img/theme/'. $row->image) }}">
+                                            <img class="img-thumbnail userImg150" src="{{ asset('img/productImage/'. $row->image) }}">
                                         </div>
                                         <div class="col">
                                             <h4 class="text-black">{{ $row->productName }}</h4>
