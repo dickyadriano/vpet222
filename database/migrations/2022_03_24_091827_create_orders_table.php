@@ -16,12 +16,14 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->integer('userID');
-            $table->integer('productID');
-            $table->integer('medicineID');
-            $table->integer('groomingID');
-            $table->integer('petCareID');
+            $table->integer('productID')->default('0');
+            $table->integer('medicineID')->default('0');
+            $table->integer('serviceID')->default('0');
+            $table->integer('groomingID')->default('0');
+            $table->integer('petCareID')->default('0');
             $table->string("orderType");
             $table->string("orderAmount");
+            $table->integer("totalPrice");
             $table->longText("orderDetail");
             $table->string('orderStatus');
         });

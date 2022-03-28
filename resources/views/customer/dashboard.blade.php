@@ -21,37 +21,41 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    @foreach($products_data as $row)
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <img class="img-thumbnail userImg150" src="{{ asset('argon/argon/img/theme/'. $row->image) }}">
-                                    </div>
-                                    <div class="col">
-                                        <h4 class="text-black">{{ $row->productName }}</h4>
-                                        <span class="h4 font-weight-bold">@currency($row->price),-</span>
-                                        <span class="container">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        @foreach($products_data as $row)
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <img class="img-thumbnail userImg150" src="{{ asset('argon/argon/img/theme/'. $row->image) }}">
+                                        </div>
+                                        <div class="col">
+                                            <h4 class="text-black">{{ $row->productName }}</h4>
+                                            <span class="h4 font-weight-bold">@currency($row->price),-</span>
+                                            <span class="container">
                                             <h3 class="text-gray pt-1">x{{ $row->orderAmount }}</h3>
                                         </span>
-                                    </div>
-                                    <div class="col">
-                                        <h3 class="text-gray pt-0">Total Price</h3>
-                                        <h3 class="text-gray">@currency($row->orderAmount * $row->price),-</h3>
-                                    </div>
-                                    <div class="col centerCol">
-                                        <button class="btn btn-danger">Delete</button>
+                                        </div>
+                                        <div class="col">
+                                            <h3 class="text-gray pt-0">Total Price</h3>
+                                            <h3 class="text-gray">@currency($row->orderAmount * $row->price),-</h3>
+                                        </div>
+                                        <form action="" method="POST" enctype="multipart/form-data">
+                                            <div class="col centerCol">
+                                                <button type="button" class="btn btn-danger">Delete</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Cash Out</button>
-                </div>
+                        @endforeach
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Cash Out</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -65,14 +69,13 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/welcome"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('dashboard-customer') }}">Marketplace</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('customer.index') }}">Marketplace</a></li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
+                        <a href="{{ route('customer.index') }}" class="btn btn-sm btn-neutral">Pet Needs</a>
                         <a href="{{ route('customer-medicine') }}" class="btn btn-sm btn-neutral">Medicine</a>
-                        <a href="#" class="btn btn-sm btn-neutral">Animal Care</a>
-                        <a href="#" class="btn btn-sm btn-neutral">Grooming</a>
                     </div>
                 </div>
             </div>
@@ -83,7 +86,7 @@
             @foreach($data_product as $row)
                 <?php $count = $row->id; ?>
                 <div class="col-xl-2 col-lg-4 pb-3">
-                    <div class="card card-stats mb-4 mb-xl-0">
+                    <div class="card card-stats mb-4 mb-xl-0 modal24">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
@@ -97,7 +100,7 @@
                                 <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 100</span>
                                 <span class="text-nowrap">Sold</span>
                             </p>
-                            <a href="#" data-target="#detailProduct<?php echo $count; ?>" data-toggle="modal" class="stretched-link">More Detail</a>
+                            <a href="#" data-target="#detailProduct<?php echo $count; ?>" data-toggle="modal" class="stretched-link"></a>
                         </div>
                     </div>
                 </div>
@@ -113,15 +116,11 @@
                             </div>
                             <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <input class="form-control" type="number" name="userID" value="{{ Auth::user()->id }}" required hidden readonly>
-                                <input class="form-control" type="number" name="productID" value="{{ $row['id'] }}" required hidden readonly>
-                                <input class="form-control" type="number" name="medicineID" value="0" required hidden readonly>
-                                <input class="form-control" type="number" name="groomingID" value="0" required hidden readonly>
-                                <input class="form-control" type="number" name="petCareID" value="0" required hidden readonly>
-                                <input class="form-control" type="text" name="note" value="-" required hidden readonly>
-                                <input class="form-control" type="text" name="orderType" value="product" required hidden readonly>
-                                <input class="form-control" type="text" name="orderStatus" value="Wait for Payment" required hidden readonly>
-                                <input class="form-control" type="text" name="orderDetail" value="Wait for Payment" required hidden readonly>
+                                <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden readonly>
+                                <input type="number" name="productID" value="{{ $row['id'] }}" hidden readonly>
+                                <input type="text" name="orderDetail" value="-" hidden readonly>
+                                <input type="text" name="orderType" value="product" hidden readonly>
+                                <input type="text" name="orderDetail" value="Wait for Payment" hidden readonly>
 
                                 <div class="modal-body">
                                     <div class="row">

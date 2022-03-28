@@ -13,10 +13,12 @@ class Order extends Model
         'userID',
         'productID',
         'medicineID',
+        'serviceID',
         'groomingID',
         'petCareID',
         'orderType',
         'orderAmount',
+        'totalPrice',
         'orderDetail',
         'orderStatus',
     ];

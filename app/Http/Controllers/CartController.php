@@ -42,16 +42,7 @@ class CartController extends Controller
         $data_product = Product::all();
 
         if(Auth::user()->type == 'customer'){
-            $cart = new Cart;
-            $cart->userID = $request->userID;
-            $cart->productID = $request->productID;
-            $cart->medicineID = 0;
-            $cart->groomingID = 0;
-            $cart->petCareID = 0;
-            $cart->orderType = "product";
-            $cart->orderAmount = $request->orderAmount;
-            $cart->note = "-";
-            $cart->orderStatus = "Pending";
+            $cart = Cart::create($request->all());
             $cart->save();
             return redirect()->route('customer.index', compact('data_product'));
         }

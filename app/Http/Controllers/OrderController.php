@@ -6,6 +6,7 @@ use App\Models\Medicine;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -17,9 +18,24 @@ class OrderController extends Controller
     public function index()
     {
         $show = Order::where('userID', '=', Auth::user()->id)->get();
-        return view('petShop.order', compact('show'),[
-            "title" => "Shop Order"
-        ]);
+
+        $service_data = DB::table('orders')
+            ->join('users', 'orders.userID', '=', 'users.id')
+            ->join('services', 'orders.serviceID', '=', 'services.id')
+            ->select(['orders.*', 'users.*', 'services.*'])
+            ->get();
+
+        $product_data = DB::table('orders')
+            ->join('products', 'orders.productID', '=', 'products.id')
+            ->join('users', 'orders.userID', '=', 'users.id')
+            ->select('orders.*', 'users.*', 'products.*')->get();
+
+        if (Auth::user()->type == 'petShop'){
+            return view('petShop.order', compact('show'));
+        }
+        elseif (Auth::user()->type == 'customer'){
+            return view('customer.order', compact('service_data', 'product_data'));
+        }
     }
 
     /**
@@ -36,14 +52,19 @@ class OrderController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
         $data = Order::create($request->all());
         $data->save();
+        if ($request->is('order')){
+            return redirect()->route('order.index');
+        }
+        elseif ($request->is('customer')){
+            return redirect()->route('customer.index');
+        }
 
-        return redirect()->route('dashboard-customer');
     }
 
     /**

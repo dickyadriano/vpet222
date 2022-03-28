@@ -13,12 +13,12 @@ class Cart extends Model
         'userID',
         'productID',
         'medicineID',
+        'serviceID',
         'groomingID',
         'petCareID',
         'orderType',
         'orderAmount',
-        'note',
-        'orderStatus',
+        'orderDetail'
     ];
     protected $table = 'carts';
     public $timestamps = false;

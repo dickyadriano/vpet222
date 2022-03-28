@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Medicine;
 use App\Models\Product;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -54,7 +55,8 @@ class HomeController extends Controller
     }
 
     public function handleVeterinary(){
-        return view('veterinary.dashboard', [
+        $data_vetService = Service::all();
+        return view('veterinary.dashboard', compact('data_vetService'), [
             "title" => "Veterinary Dashboard"
         ]);
     }

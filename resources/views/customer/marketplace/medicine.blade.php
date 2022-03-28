@@ -16,9 +16,8 @@
                         </nav>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
+                        <a href="{{ route('customer.index') }}" class="btn btn-sm btn-neutral">Pet Needs</a>
                         <a href="{{ route('customer-medicine') }}" class="btn btn-sm btn-neutral">Medicine</a>
-                        <a href="#" class="btn btn-sm btn-neutral">Animal Care</a>
-                        <a href="#" class="btn btn-sm btn-neutral">Grooming</a>
                     </div>
                 </div>
             </div>
@@ -29,11 +28,11 @@
             <?php $count = 0; ?>
             @foreach($data_medicine as $row)
                 <div class="col-xl-2 col-lg-4 pb-3">
-                    <div class="card card-stats mb-4 mb-xl-0">
+                    <div class="card card-stats mb-4 mb-xl-0 modal24">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <img class="img-center img-thumbnail" src="{{ asset('argon/argon/img/theme/'. $row['image']) }}">
+                                    <img class="img-center img-thumbnail" src="{{ asset('img/medicineImage/'. $row['image']) }}">
                                     <h5 class="card-title text-uppercase text-muted mb-0 mt-1">{{ $row['medicineName'] }}</h5>
 
                                     <span class="h2 font-weight-bold mb-0">@currency($row->medicinePrice),-</span>
@@ -60,7 +59,7 @@
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col">
-                                        <img class="img-center img-thumbnail" src="{{ asset('argon/argon/img/theme/'. $row['image']) }}">
+                                        <img class="img-center img-thumbnail" src="{{ asset('img/medicineImage/'. $row['image']) }}">
                                     </div>
                                     <div class="col">
                                         <h5 class="modal-title">{{ $row['medicineName'] }}</h5>

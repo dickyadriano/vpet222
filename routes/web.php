@@ -27,7 +27,7 @@ Route::get('admin/dashboard', [App\Http\Controllers\HomeController::class, 'hand
 Route::get('customer/dashboard', [App\Http\Controllers\HomeController::class, 'handleCustomer'])->name('dashboard-customer')->middleware('customer');
 Route::get('petShop/dashboard', [App\Http\Controllers\HomeController::class, 'handlePetShop'])->name('dashboard-petShop')->middleware('petShop');
 Route::get('vetClinic/dashboard', [App\Http\Controllers\HomeController::class, 'handleVetClinic'])->name('dashboard-vetClinic')->middleware('vetClinic');
-Route::get('veterinary/dashboard', [App\Http\Controllers\HomeController::class, 'handleVeterinary'])->name('dashboard-veterinary')->middleware('veterinary');
+Route::get('veterinary/dashboard', [App\Http\Controllers\HomeController::class, 'handleVeterinary'])->name('dashboard-veterinary');
 
 //profile
 Route::get('/admin/{id}/profile', [App\Http\Controllers\AdminController::class, 'show'])->name('admin-profile');
@@ -57,6 +57,8 @@ Route::get('/customer/medicine', [App\Http\Controllers\CustomerController::class
 Route::get('/admin/manageUser', [App\Http\Controllers\AdminController::class, 'showUser'])->name('admin-user');
 Route::post('/admin/manageInformation', [App\Http\Controllers\AdminController::class, 'updateInformation'])->name('admin-update-information');
 Route::post('/admin/delete', [App\Http\Controllers\AdminController::class, 'destroy'])->name('information-destroy');
+Route::post('/admin/statusUpdate', [App\Http\Controllers\ServiceController::class, 'updateStatus'])->name('update-statusVet');
+Route::get('/admin/verifyVet', [App\Http\Controllers\AdminController::class, 'showVet'])->name('verify-vet');
 
 //update profile
 Route::put('admin/profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\AdminController@update']);
@@ -82,13 +84,15 @@ Route::post('veterinary/profilepicture','App\Http\Controllers\VeterinaryControll
 //Route::post('customer/market', [\App\Http\Controllers\ProductController::class, 'addToCart'])->name('market-customer');
 Route::get('/location', MapLocation::class);
 
-Route::resource('users', \App\Http\Controllers\UserController::class);
-Route::resource('product', \App\Http\Controllers\ProductController::class);
-Route::resource('medicine', \App\Http\Controllers\MedicineController::class);
 Route::resource('admin', \App\Http\Controllers\AdminController::class);
-Route::resource('customer', \App\Http\Controllers\CustomerController::class);
-Route::resource('information', \App\Http\Controllers\InformationController::class);
-Route::resource('petCare', \App\Http\Controllers\PetCareController::class);
-Route::resource('grooming', \App\Http\Controllers\GroomingController::class);
-Route::resource('order', \App\Http\Controllers\OrderController::class);
 Route::resource('cart', \App\Http\Controllers\cartController::class);
+Route::resource('customer', \App\Http\Controllers\CustomerController::class);
+Route::resource('grooming', \App\Http\Controllers\GroomingController::class);
+Route::resource('information', \App\Http\Controllers\InformationController::class);
+Route::resource('medicine', \App\Http\Controllers\MedicineController::class);
+Route::resource('order', \App\Http\Controllers\OrderController::class);
+Route::resource('petCare', \App\Http\Controllers\PetCareController::class);
+Route::resource('product', \App\Http\Controllers\ProductController::class);
+Route::resource('service', \App\Http\Controllers\ServiceController::class);
+Route::resource('users', \App\Http\Controllers\UserController::class);
+Route::resource('vet', \App\Http\Controllers\VeterinaryController::class)->middleware('veterinary');

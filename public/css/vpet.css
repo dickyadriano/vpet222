@@ -33,9 +33,24 @@
     width: 50px;
 }
 
+.userImg100 {
+    height: 100px;
+    width: auto;
+}
+
 .userImg150 {
     height: 150px;
     width: 150px;
+}
+
+.userImg200 {
+    height: 200px;
+    width: 200px;
+}
+
+.userImg500 {
+    height: 500px;
+    width: auto;
 }
 
 .pic10 {
@@ -44,6 +59,10 @@
 
 .modal22 {
     height: 22rem;
+}
+
+.modal24 {
+    height: 24rem;
 }
 
 #ex4 .p1[data-count]:after{
@@ -64,4 +83,12 @@
 
 .centerCol{
     margin: auto
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.max-image{
+    max-width: 750px;
 }
