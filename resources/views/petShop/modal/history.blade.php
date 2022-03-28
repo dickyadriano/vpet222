@@ -40,10 +40,10 @@
             </thead>
             <tbody class="list">
             @foreach($show as $row)
-                @if($row->orderStatus != 'pending')
+                @if($row->orderStatus != 'Wait for Payment')
                     <tr>
                         <td>{{$row->id}}</td>
-                        <td>{{$row->customerID}}</td>
+                        <td>{{$row->userID}}</td>
                         <td>{{$row->productID}}</td>
                         <td>{{$row->orderAmount}}</td>
                         <td>{{$row->orderStatus}}</td>

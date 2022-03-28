@@ -17,7 +17,13 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $show = Order::where('userID', '=', Auth::user()->id)->get();
+//        $show = Order::where('userID', '=', Auth::user()->id)->get();
+
+        $show = DB::table('orders')
+            ->join('products', 'orders.productID', '=', 'products.id')
+            ->join('users', 'products.userID', '=', 'users.id')
+            ->select('orders.*')
+            ->get();
 
         $service_data = DB::table('orders')
             ->join('users', 'orders.userID', '=', 'users.id')
@@ -45,7 +51,13 @@ class OrderController extends Controller
 
     public function orderHistory()
     {
-        $show = Order::where('userID', '=', Auth::user()->id)->get();
+//        $show = Order::where('userID', '=', Auth::user()->id)->get();
+        $show = DB::table('orders')
+            ->join('products', 'orders.productID', '=', 'products.id')
+            ->join('users', 'products.userID', '=', 'users.id')
+            ->select('orders.*')
+            ->get();
+
         return view('petShop.modal.history', compact('show'),[
             "title" => "Shop Order"
         ]);
@@ -109,8 +121,22 @@ class OrderController extends Controller
     {
         $request->validate(['orderStatus'=>'required']);
         $order->update($request->all());
-        return redirect()->route('order.index');
+        return redirect()->back();
+
+//        $verificationStatus = $request->verificationStatus;
+//        $id = $request->id;
+//
+//        $update = [
+//            'id' => $id,
+//            'verificationStatus' => $verificationStatus
+//        ];
+//
+//        Order::where('id', $request->id)->update($update);
+//
+//        return redirect()->route('service.index');
     }
+
+
 
     /**
      * Remove the specified resource from storage.
