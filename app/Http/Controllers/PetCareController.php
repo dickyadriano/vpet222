@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PetCare;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PetCareController extends Controller
 {
@@ -16,7 +17,18 @@ class PetCareController extends Controller
     public function index()
     {
         $show = PetCare::where('userID', '=', Auth::user()->id)->get();
-        return view('petShop.petCares', compact('show'));
+
+        $petCare_data = DB::table('pet_cares')
+            ->join('users', 'pet_cares.userID', '=', 'users.id')
+            ->select('users.*', 'pet_cares.*')->get();
+
+        if (Auth::user()->type == 'petShop'){
+            return view('petShop.petCares', compact('show'));
+        }
+        elseif (Auth::user()->type == 'customer'){
+            return view('customer.marketplace.petCare', compact('petCare_data'));
+        }
+
     }
 
     /**
@@ -100,5 +112,14 @@ class PetCareController extends Controller
     {
         PetCare::destroy($petCare->id);
         return redirect()->route('petCare.index');
+    }
+
+    public function search(){
+        $search_text = $_GET['query'];
+        $petCare_data = PetCare::where('packageName','LIKE', '%'.$search_text.'%')
+            ->join('users', 'pet_cares.userID', '=', 'users.id')
+            ->select('users.*', 'pet_cares.*')->get();
+
+        return view('customer.marketplace.petCare', compact('petCare_data', 'search_text'));
     }
 }

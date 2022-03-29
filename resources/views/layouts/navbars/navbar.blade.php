@@ -40,6 +40,17 @@
                             </div>
                         </div>
                     </form>
+                @elseif(Request::is('petCare')||$route == 'searchPetCare')
+                    <form class="navbar-search navbar-search-light form-inline mr-sm-3" type="get" action="{{url('/searchPetCare')}}" id="navbar-search-main">
+                        <div class="form-group mb-0">
+                            <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                </div>
+                                <input class="form-control" name="query" placeholder="Search" value="{{ $route == 'searchPetCare' ? $search_text : '' }}" type="text">
+                            </div>
+                        </div>
+                    </form>
                 @endif
             @elseif(auth()->user()->type == 'vetClinic')
                 <h1 class="text-white mx-1">Welcome to the Dashboard of </h1>
