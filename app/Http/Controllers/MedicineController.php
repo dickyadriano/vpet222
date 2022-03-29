@@ -130,4 +130,19 @@ class MedicineController extends Controller
             ->where('orderType', '=', 'medicine')
             ->count();
     }
+
+    public function search(){
+        $search_text = $_GET['query'];
+        $data_medicine = Medicine::where('medicineName','LIKE', '%'.$search_text.'%')->get();
+
+        $data_cart = Cart::all();
+        $medicineInCart_data = DB::table('carts')
+            ->join('medicines', 'carts.medicineID', '=', 'medicines.id')
+            ->where('carts.userID', '=', Auth::user()->id)
+            ->where('carts.orderType', '=', 'medicine')
+            ->select('medicines.*', 'carts.*')->get();
+
+//        return redirect()->route('customer.index', compact('data_product', 'productInCart_data', 'data_cart'));
+        return view('customer.marketplace.medicine', compact('data_medicine', 'medicineInCart_data', 'data_cart','search_text'));
+    }
 }

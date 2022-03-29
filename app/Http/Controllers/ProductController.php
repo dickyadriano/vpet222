@@ -127,6 +127,7 @@ class ProductController extends Controller
             ->where('carts.userID', '=', $userId)
             ->select('products.*', 'carts.*')->get();
 
-        return view('customer.dashboard', compact('data_product', 'productInCart_data', 'data_cart'));
+//        return redirect()->route('customer.index', compact('data_product', 'productInCart_data', 'data_cart'));
+        return view('customer.dashboard', compact('data_product', 'productInCart_data', 'data_cart','search_text'));
     }
 }

@@ -117,4 +117,18 @@ class ServiceController extends Controller
     {
         //
     }
+
+    public function search(){
+        $search_text = $_GET['query'];
+        $vetService_data = Service::where('serviceName','LIKE', '%'.$search_text.'%')
+            ->join('users', 'services.userID', '=', 'users.id')
+            ->where('services.verificationStatus', '=', 'Verified')
+            ->select('users.*', 'services.*')->get();
+
+        $vet_data = DB::table('services')
+            ->join('users', 'services.userID', '=', 'users.id')
+            ->select('users.*', 'services.*')->get();
+
+        return view('customer.service', compact('vetService_data','vet_data', 'search_text'));
+    }
 }

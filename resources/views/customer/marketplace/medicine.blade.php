@@ -79,6 +79,7 @@
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/welcome"><i class="fas fa-home"></i></a></li>
                                 <li class="breadcrumb-item"><a href="{{ route('customer.index') }}">Marketplace</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('medicine.index') }}">Medicines</a></li>
                             </ol>
                         </nav>
                     </div>
