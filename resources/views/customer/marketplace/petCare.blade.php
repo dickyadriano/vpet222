@@ -11,13 +11,13 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/welcome"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('service.index') }}">Veterinary Service</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('petCare.index') }}">Animal Care</a></li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
-                        <a href="{{route('petCare.index')}}" class="btn btn-sm btn-neutral">Animal Care</a>
-                        <a href="{{route('grooming.index')}}" class="btn btn-sm btn-neutral">Grooming</a>
+                        <a href="{{ route('service.index') }}" class="btn btn-sm btn-neutral">Veterinary</a>
+                        <a href="{{ route('grooming.index') }}" class="btn btn-sm btn-neutral">Grooming</a>
                     </div>
                 </div>
             </div>
@@ -25,32 +25,33 @@
     </div>
     <div class="container-fluid pt-3">
         <div class="row">
-            @foreach($vetService_data as $row)
+            @foreach($petCare_data as $row)
                 <?php $count = $row->id; ?>
                 <div class="col-xl-2 col-lg-4 pb-3">
                     <div class="card card-stats mb-4 mb-xl-0 modal24">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <img class="img-center img-thumbnail" src="{{ asset('argon/argon/img/theme/'. $row->avatar) }}">
-                                    <h5 class="card-title text-uppercase text-muted mb-0 mt-1">{{ $row->name }}</h5>
-                                    <span class="h2 font-weight-bold mb-0">@currency($row->price)</span>
+                                    <img class="img-center img-thumbnail" src="{{ asset('img/careImages/'. $row->image) }}">
+                                    <h5 class="card-title text-uppercase text-muted mb-0 mt-1">{{ $row->packageName }}</h5>
+
+                                    <span class="h2 font-weight-bold mb-0">@currency($row->price),-</span>
                                 </div>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm">
-                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 99+</span>
-                                <span class="text-nowrap">Order</span>
+                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 100</span>
+                                <span class="text-nowrap">Sold</span>
                             </p>
-                            <a href="#" data-target="#detailService<?php echo $count; ?>" data-toggle="modal" class="stretched-link"></a>
+                            <a href="#" data-target="#detailPetCare<?php echo $count; ?>" data-toggle="modal" class="stretched-link"></a>
                         </div>
                     </div>
                 </div>
                 <!-- Modal -->
-                <div class="modal fade" id="detailService<?php echo $count; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal fade" id="detailPetCare<?php echo $count; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Service Detail</h5>
+                                <h5 class="modal-title">Pet Care Detail</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -58,25 +59,25 @@
                             <form action="{{ route('order.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden readonly>
-                                <input type="number" name="serviceID" value="{{ $row->id }}" hidden readonly>
-                                <input type="text" name="image" value="{{ $row->avatar }}" hidden readonly>
+                                <input type="number" name="petCareID" value="{{ $row->id }}" hidden readonly>
+                                <input type="text" name="image" value="{{ $row->image }}" hidden readonly>
                                 <input type="text" name="orderType" value="service" hidden readonly>
                                 <input type="text" name="orderStatus" value="Wait for Payment" hidden readonly>
-                                <input type="text" name="orderDetail" value="Wait for Payment" hidden readonly>
+                                <input type="text" name="orderDetail" value="-" hidden readonly>
                                 <input type="number" name="orderAmount" value="1" hidden readonly>
                                 <input type="number" name="totalPrice" value="{{ $row->price }}" hidden readonly>
 
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="col">
-                                            <img class="img-center img-thumbnail" src="{{ asset('argon/argon/img/theme/'. $row->avatar) }}">
+                                            <img class="img-center img-thumbnail" src="{{ asset('img/careImages/'. $row->image) }}">
                                         </div>
                                         <div class="col">
-                                            <h5 class="modal-title">{{ $row->name }}</h5>
+                                            <h5 class="modal-title">{{ $row->packageName }}</h5>
                                             <span class="h2 font-weight-bold mb-0">@currency($row->price),-</span>
                                             <span class="container">
-                                            <h4 class="text-gray pt-4">{{ $row->detail }}</h4>
-                                        </span>
+                                        <h4 class="text-gray pt-4">{{ $row->packageDetail }}</h4>
+                                    </span>
                                         </div>
                                     </div>
                                 </div>
@@ -90,6 +91,4 @@
             @endforeach
         </div>
     </div>
-
-
 @endsection

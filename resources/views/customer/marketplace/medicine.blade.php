@@ -17,7 +17,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Your's Cart</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Your Cart</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" name="cashOut" class="btn btn-primary">Cash Out</button>
+                        <button type="submit" name="cashOut" class="btn btn-primary">Checkout</button>
                     </div>
                 </form>
             </div>
@@ -79,12 +79,12 @@
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/welcome"><i class="fas fa-home"></i></a></li>
                                 <li class="breadcrumb-item"><a href="{{ route('customer.index') }}">Marketplace</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('medicine.index') }}">Medicines</a></li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
                         <a href="{{ route('customer.index') }}" class="btn btn-sm btn-neutral">Pet Needs</a>
-                        <a href="{{ route('medicine.index') }}" class="btn btn-sm btn-neutral">Medicine</a>
                     </div>
                 </div>
             </div>

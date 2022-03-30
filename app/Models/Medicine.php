@@ -14,6 +14,7 @@ class Medicine extends Model
         'medicineName',
         'medicineAmount',
         'medicinePrice',
+        'medicineDetail',
         'image',
     ];
     protected $table = 'medicines';

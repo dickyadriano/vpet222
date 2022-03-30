@@ -17,10 +17,12 @@ class OrderController extends Controller
      */
     public function index()
     {
+//        $show = Order::where('userID', '=', Auth::user()->id)->get();
+
         $show = DB::table('orders')
             ->join('products', 'orders.productID', '=', 'products.id')
             ->join('users', 'products.userID', '=', 'users.id')
-            ->select('orders.*', 'products.productName')
+            ->select('orders.*')
             ->get();
 
         $service_data = DB::table('orders')
@@ -39,17 +41,33 @@ class OrderController extends Controller
             ->join('users', 'orders.userID', '=', 'users.id')
             ->select('orders.*', 'medicines.*')->get();
 
+        $petCare_data = DB::table('orders')
+            ->join('pet_cares', 'orders.petCareID', '=', 'pet_cares.id')
+            ->join('users', 'orders.userID', '=', 'users.id')
+            ->select('orders.*', 'pet_cares.*')->get();
+
+        $grooming_data = DB::table('orders')
+            ->join('groomings', 'orders.groomingID', '=', 'groomings.id')
+            ->join('users', 'orders.userID', '=', 'users.id')
+            ->select('orders.*', 'groomings.*')->get();
+
         if (Auth::user()->type == 'petShop'){
             return view('petShop.order', compact('show'));
         }
         elseif (Auth::user()->type == 'customer'){
-            return view('customer.order', compact('service_data', 'product_data', 'medicine_data'));
+            return view('customer.order', compact('service_data','grooming_data','petCare_data','product_data', 'medicine_data'));
         }
     }
 
     public function orderHistory()
     {
-        $show = Order::where('petShopID', '=', Auth::user()->id)->get();
+//        $show = Order::where('userID', '=', Auth::user()->id)->get();
+        $show = DB::table('orders')
+            ->join('products', 'orders.productID', '=', 'products.id')
+            ->join('users', 'products.userID', '=', 'users.id')
+            ->select('orders.*')
+            ->get();
+
         return view('petShop.modal.history', compact('show'),[
             "title" => "Shop Order"
         ]);
@@ -113,8 +131,22 @@ class OrderController extends Controller
     {
         $request->validate(['orderStatus'=>'required']);
         $order->update($request->all());
-        return redirect()->route('order.index');
+        return redirect()->back();
+
+//        $verificationStatus = $request->verificationStatus;
+//        $id = $request->id;
+//
+//        $update = [
+//            'id' => $id,
+//            'verificationStatus' => $verificationStatus
+//        ];
+//
+//        Order::where('id', $request->id)->update($update);
+//
+//        return redirect()->route('service.index');
     }
+
+
 
     /**
      * Remove the specified resource from storage.

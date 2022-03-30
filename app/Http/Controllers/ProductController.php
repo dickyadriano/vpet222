@@ -115,4 +115,19 @@ class ProductController extends Controller
         Product::destroy($product->id);
         return redirect()->route('petShop-product');
     }
+
+    public function search(){
+        $search_text = $_GET['query'];
+        $data_product = Product::where('productName','LIKE', '%'.$search_text.'%')->get();
+
+        $data_cart = Cart::all();
+        $userId = Auth::user()->id;
+        $productInCart_data = DB::table('carts')
+            ->join('products', 'carts.productID', '=', 'products.id')
+            ->where('carts.userID', '=', $userId)
+            ->select('products.*', 'carts.*')->get();
+
+//        return redirect()->route('customer.index', compact('data_product', 'productInCart_data', 'data_cart'));
+        return view('customer.dashboard', compact('data_product', 'productInCart_data', 'data_cart','search_text'));
+    }
 }

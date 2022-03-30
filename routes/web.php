@@ -55,7 +55,12 @@ Route::get('/customer/order', [App\Http\Controllers\CustomerController::class, '
 Route::get('/customer/reminder', [App\Http\Controllers\CustomerController::class, 'showReminder'])->name('customer-reminder');
 Route::get('/customer/medicine', [App\Http\Controllers\CustomerController::class, 'showMedicine'])->name('customer-medicine');
 
-//Route::post('/file-to-execute',[App\Http\Controllers\CartController::class, 'ServerFileToExecute'])->name('file-to-execute');
+//Search
+Route::get('/searchProduct', [App\Http\Controllers\ProductController::class, 'search'])->name('search');
+Route::get('/searchMedicine', [App\Http\Controllers\MedicineController::class, 'search'])->name('searchMedicine');
+Route::get('/searchService', [App\Http\Controllers\ServiceController::class, 'search'])->name('searchService');
+Route::get('/searchPetCare', [App\Http\Controllers\PetCareController::class, 'search'])->name('searchPetCare');
+Route::get('/searchGrooming', [App\Http\Controllers\GroomingController::class, 'search'])->name('searchGrooming');
 
 Route::get('/admin/manageUser', [App\Http\Controllers\AdminController::class, 'showUser'])->name('admin-user');
 Route::post('/admin/manageInformation', [App\Http\Controllers\AdminController::class, 'updateInformation'])->name('admin-update-information');

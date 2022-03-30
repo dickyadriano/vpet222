@@ -43,7 +43,7 @@
                 @if($row->orderStatus == 'Wait for Payment')
                 <tr>
                     <td>{{$row->id}}</td>
-                    <td>{{$row->productName}}</td>
+                    <td>{{$row->userID}}</td>
                     <td>{{$row->productID}}</td>
                     <td>{{$row->orderAmount}}</td>
                     <td>{{$row->orderStatus}}</td>
@@ -52,13 +52,13 @@
                             <form action="{{ route('order.update', $row->id) }}" method="post" class="mx-1">
                                 @csrf
                                 @method('put')
-                                <input name="orderStatus" value="{{'accepted'}}" type="text" hidden readonly required>
-                                <button class="btn btn-success">Accept</button>
+                                <input name="orderStatus" value="{{'Completed'}}" type="text" hidden readonly required>
+                                <button class="btn btn-success">Complete</button>
                             </form>
                             <form action="{{ route('order.update', $row->id) }}" method="post" class="mx-1">
                                 @csrf
                                 @method('put')
-                                <input name="orderStatus" value="{{'canceled'}}" type="text" hidden readonly required>
+                                <input name="orderStatus" value="{{'Canceled'}}" type="text" hidden readonly required>
                                 <button class="btn btn-danger">Cancel</button>
                             </form>
                             <a href="{{ route('order.show', $row->id) }}" class="btn btn-primary mx-1">Info</a>
