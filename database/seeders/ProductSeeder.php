@@ -41,6 +41,7 @@ class ProductSeeder extends Seeder
                 'medicineName' => "Dog's Vitamin - PetHonesty",
                 'medicineAmount' => '5',
                 'medicinePrice' => '150000',
+                'medicineDetail' => "PetHonesty is good for your animal's health",
                 'image' => 'Pethonesty.jpg'
             ],
         ]);
@@ -50,6 +51,7 @@ class ProductSeeder extends Seeder
                 'medicineName' => "Revolution Selamectin Adult Cat",
                 'medicineAmount' => '5',
                 'medicinePrice' => '120000',
+                'medicineDetail' => "Selamectin is for Adult Cat only",
                 'image' => 'Revolution_Selamectin_Adult_Cat.jpg'
             ],
         ]);

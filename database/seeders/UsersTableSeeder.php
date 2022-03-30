@@ -45,7 +45,7 @@ class UsersTableSeeder extends Seeder
                 'username' => 'clinic',
                 'email' => 'clinic@gmail.com',
                 'password' => Hash::make('clinic'),
-                'avatar' => '1645600197.jpg',
+                'avatar' => 'default.png',
                 'phoneNo' => '12312312312',
                 'address' => 'clinic',
                 'type' => 'vetClinic'

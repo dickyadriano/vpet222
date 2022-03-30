@@ -122,11 +122,12 @@ class ProductController extends Controller
 
         $data_cart = Cart::all();
         $userId = Auth::user()->id;
-        $products_data = DB::table('carts')
+        $productInCart_data = DB::table('carts')
             ->join('products', 'carts.productID', '=', 'products.id')
             ->where('carts.userID', '=', $userId)
             ->select('products.*', 'carts.*')->get();
 
-        return view('customer.dashboard', compact('data_product', 'products_data', 'data_cart'));
+//        return redirect()->route('customer.index', compact('data_product', 'productInCart_data', 'data_cart'));
+        return view('customer.dashboard', compact('data_product', 'productInCart_data', 'data_cart','search_text'));
     }
 }

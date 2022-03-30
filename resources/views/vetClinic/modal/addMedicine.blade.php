@@ -46,6 +46,16 @@
                         </div>
 
                         <div class="form-group">
+                            Medicine Detail
+                            <div class="input-group input-group-alternative mb-3 border">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
+                                </div>
+                                <textarea class="form-control" rows="5" type="text" name="medicineDetail" required autofocus></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="image">Medicine Picture</label>
                             <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror" required>
 

@@ -3,19 +3,79 @@
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Search form -->
-            <form class="navbar-search navbar-search-light form-inline mr-sm-3" type="get" action="{{url('/search')}}" id="navbar-search-main">
-                <div class="form-group mb-0">
-                    <div class="input-group input-group-alternative">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+            @if(auth()->user()->type == 'customer')
+                @php
+                    $route = Route::currentRouteName();
+                @endphp
+                @if(Request::is('customer')||$route == 'search')
+                    <form class="navbar-search navbar-search-light form-inline mr-sm-3" type="get" action="{{url('/searchProduct')}}" id="navbar-search-main">
+                        <div class="form-group mb-0">
+                            <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                </div>
+                                <input class="form-control" name="query" placeholder="Search" value="{{ $route == 'search' ? $search_text : '' }}" type="text">
+                            </div>
                         </div>
-                        <input class="form-control" name="query" placeholder="Search" type="text">
-                    </div>
-                </div>
-                <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </form>
+                    </form>
+                @elseif(Request::is('medicine')||$route == 'searchMedicine')
+                    <form class="navbar-search navbar-search-light form-inline mr-sm-3" type="get" action="{{url('/searchMedicine')}}" id="navbar-search-main">
+                        <div class="form-group mb-0">
+                            <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                </div>
+                                <input class="form-control" name="query" placeholder="Search" value="{{ $route == 'searchMedicine' ? $search_text : '' }}" type="text">
+                            </div>
+                        </div>
+                    </form>
+                @elseif(Request::is('service')||$route == 'searchService')
+                    <form class="navbar-search navbar-search-light form-inline mr-sm-3" type="get" action="{{url('/searchService')}}" id="navbar-search-main">
+                        <div class="form-group mb-0">
+                            <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                </div>
+                                <input class="form-control" name="query" placeholder="Search" value="{{ $route == 'searchService' ? $search_text : '' }}" type="text">
+                            </div>
+                        </div>
+                    </form>
+                @elseif(Request::is('petCare')||$route == 'searchPetCare')
+                    <form class="navbar-search navbar-search-light form-inline mr-sm-3" type="get" action="{{url('/searchPetCare')}}" id="navbar-search-main">
+                        <div class="form-group mb-0">
+                            <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                </div>
+                                <input class="form-control" name="query" placeholder="Search" value="{{ $route == 'searchPetCare' ? $search_text : '' }}" type="text">
+                            </div>
+                        </div>
+                    </form>
+                @elseif(Request::is('grooming')||$route == 'searchGrooming')
+                    <form class="navbar-search navbar-search-light form-inline mr-sm-3" type="get" action="{{url('/searchGrooming')}}" id="navbar-search-main">
+                        <div class="form-group mb-0">
+                            <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                </div>
+                                <input class="form-control" name="query" placeholder="Search" value="{{ $route == 'searchGrooming' ? $search_text : '' }}" type="text">
+                            </div>
+                        </div>
+                    </form>
+                @endif
+            @elseif(auth()->user()->type == 'vetClinic')
+                <h1 class="text-white mx-1">Welcome to the Dashboard of </h1>
+                <h1 class="text-yellow mx-1">Vet Clinic</h1>
+            @elseif(auth()->user()->type == 'petShop')
+                <h1 class="text-white mx-1">Welcome to the Dashboard of </h1>
+                <h1 class="text-yellow mx-1">Pet Shop</h1>
+            @elseif(auth()->user()->type == 'admin')
+                <h1 class="text-white mx-1">Welcome to the Dashboard of </h1>
+                <h1 class="text-yellow mx-1">Admin</h1>
+            @elseif(auth()->user()->type == 'veterinary')
+                <h1 class="text-white mx-1">Welcome to the Dashboard of </h1>
+                <h1 class="text-yellow mx-1">Veterinary</h1>
+            @endif
             <!-- Navbar links -->
             <ul class="navbar-nav align-items-center  ml-md-auto ">
                 <li class="nav-item d-xl-none">
