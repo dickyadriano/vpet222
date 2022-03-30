@@ -21,11 +21,29 @@
     <link rel="stylesheet" href="{{asset('css/assets/css/argon.css?v=1.2.0')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/argonv2.css?v=1.2.1')}}" type="text/css">
     <!-- MapBox -->
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
     @livewireStyles
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
 </head>
 
 <body>
+<style>
+    #marker {
+        background-size: cover;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .mapboxgl-popup {
+        max-width: 200px;
+    }
+</style>
+<!-- Load the `mapbox-gl-geocoder` plugin. -->
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
 @include('layouts.navbars.sidebar')
 <!-- Main content -->
 <div class="main-content" id="panel">
@@ -44,8 +62,10 @@
 <!-- Argon JS -->
 <script src="{{asset('argon/assets/js/argon.js?v=1.2.0')}}"></script>
 <!-- MapBox -->
-@livewireScripts
+{{--<script src='{{asset('js/vpet.js')}}'></script>--}}
+
 <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+@livewireScripts
 @stack('scripts')
 </body>
 

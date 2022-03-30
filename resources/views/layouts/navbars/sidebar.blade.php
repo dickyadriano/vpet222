@@ -138,20 +138,20 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{route('order.index')}}">
                                     <i class="ni ni-bag-17 text-primary"></i>
                                     <span class="nav-link-text">Order</span>
                                 </a>
                             </li>
                         @elseif(auth()->user()->type == 'admin')
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Manage Information') ? 'active' : '' }}" href="{{route('admin.index')}}">
+                                <a class="nav-link " href="{{route('admin.index')}}">
                                     <i class="ni ni-books text-primary"></i>
                                     <span class="nav-link-text">Manage Information</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ ($title === 'Manage User') ? 'active' : '' }}" href="{{ route('users.index') }}">
+                                <a class="nav-link " href="{{ route('users.index') }}">
                                     <i class="ni ni-badge text-primary"></i>
                                     <span class="nav-link-text">Manage User</span>
                                 </a>

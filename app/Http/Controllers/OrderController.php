@@ -17,7 +17,11 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $show = Order::where('userID', '=', Auth::user()->id)->get();
+        $show = DB::table('orders')
+            ->join('products', 'orders.productID', '=', 'products.id')
+            ->join('users', 'products.userID', '=', 'users.id')
+            ->select('orders.*', 'products.productName')
+            ->get();
 
         $service_data = DB::table('orders')
             ->join('users', 'orders.userID', '=', 'users.id')
