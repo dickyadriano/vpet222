@@ -11,7 +11,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/welcome"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('service.index') }}">Veterinary Service</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('petCare.index') }}">Animal Care</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -42,25 +42,30 @@
                                 <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 100</span>
                                 <span class="text-nowrap">Sold</span>
                             </p>
-                            <a href="#" data-target="#detailMedicine<?php echo $count; ?>" data-toggle="modal" class="stretched-link"></a>
+                            <a href="#" data-target="#detailPetCare<?php echo $count; ?>" data-toggle="modal" class="stretched-link"></a>
                         </div>
                     </div>
                 </div>
-                <!-- DETAIL MODAL -->
-                <div class="modal fade" id="detailMedicine<?php echo $count; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                <!-- Modal -->
+                <div class="modal fade" id="detailPetCare<?php echo $count; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Detail Product</h5>
+                                <h5 class="modal-title">Pet Care Detail</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('order.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden readonly>
-                                <input type="number" name="medicineID" value="{{ $row->id }}" hidden readonly>
-                                <input type="text" name="orderType" value="medicine" hidden readonly>
+                                <input type="number" name="petCareID" value="{{ $row->id }}" hidden readonly>
+                                <input type="text" name="image" value="{{ $row->image }}" hidden readonly>
+                                <input type="text" name="orderType" value="service" hidden readonly>
+                                <input type="text" name="orderStatus" value="Wait for Payment" hidden readonly>
+                                <input type="text" name="orderDetail" value="-" hidden readonly>
+                                <input type="number" name="orderAmount" value="1" hidden readonly>
+                                <input type="number" name="totalPrice" value="{{ $row->price }}" hidden readonly>
 
                                 <div class="modal-body">
                                     <div class="row">
@@ -71,21 +76,13 @@
                                             <h5 class="modal-title">{{ $row->packageName }}</h5>
                                             <span class="h2 font-weight-bold mb-0">@currency($row->price),-</span>
                                             <span class="container">
-                                                <h4 class="text-gray pt-4">detail{{--{{ $row['detail'] }}--}}</h4>
-                                            </span>
+                                        <h4 class="text-gray pt-4">{{ $row->packageDetail }}</h4>
+                                    </span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <div class="form-group">
-                                        <div class="input-group input-group-alternative mb-0">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
-                                            </div>
-                                            <input class="form-control" placeholder="QTY" type="number" name="orderAmount" required autofocus>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Add To Cart</button>
+                                    <button type="submit" class="btn btn-primary">Order</button>
                                 </div>
                             </form>
                         </div>
