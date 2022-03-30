@@ -17,7 +17,7 @@
                     </div>
                     <div class="col-lg-6 col-5 text-right">
                         <a href="{{ route('service.index') }}" class="btn btn-sm btn-neutral">Veterinary</a>
-                        <a href="#" class="btn btn-sm btn-neutral">Grooming</a>
+                        <a href="{{ route('grooming.index') }}" class="btn btn-sm btn-neutral">Grooming</a>
                     </div>
                 </div>
             </div>

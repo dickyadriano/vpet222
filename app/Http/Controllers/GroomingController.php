@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Grooming;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class GroomingController extends Controller
 {
@@ -16,9 +17,17 @@ class GroomingController extends Controller
     public function index()
     {
         $show = Grooming::where('userID', '=', Auth::user()->id)->get();
-        return view('petShop.grooming', compact('show'),[
-            "title" => "Grooming"
-        ]);
+
+        $grooming_data = DB::table('groomings')
+            ->join('users', 'groomings.userID', '=', 'users.id')
+            ->select('users.*', 'groomings.*')->get();
+
+        if (Auth::user()->type == 'petShop'){
+            return view('petShop.grooming', compact('show'));
+        }
+        elseif (Auth::user()->type == 'customer'){
+            return view('customer.marketplace.grooming', compact('grooming_data'));
+        }
     }
 
     /**
@@ -102,5 +111,14 @@ class GroomingController extends Controller
     {
         Grooming::destroy($grooming->id);
         return redirect()->route('grooming.index');
+    }
+
+    public function search(){
+        $search_text = $_GET['query'];
+        $grooming_data = Grooming::where('groomingName','LIKE', '%'.$search_text.'%')
+            ->join('users', 'groomings.userID', '=', 'users.id')
+            ->select('users.*', 'groomings.*')->get();
+
+        return view('customer.marketplace.grooming', compact('grooming_data', 'search_text'));
     }
 }

@@ -46,11 +46,16 @@ class OrderController extends Controller
             ->join('users', 'orders.userID', '=', 'users.id')
             ->select('orders.*', 'pet_cares.*')->get();
 
+        $grooming_data = DB::table('orders')
+            ->join('groomings', 'orders.groomingID', '=', 'groomings.id')
+            ->join('users', 'orders.userID', '=', 'users.id')
+            ->select('orders.*', 'groomings.*')->get();
+
         if (Auth::user()->type == 'petShop'){
             return view('petShop.order', compact('show'));
         }
         elseif (Auth::user()->type == 'customer'){
-            return view('customer.order', compact('service_data', 'petCare_data','product_data', 'medicine_data'));
+            return view('customer.order', compact('service_data','grooming_data','petCare_data','product_data', 'medicine_data'));
         }
     }
 
