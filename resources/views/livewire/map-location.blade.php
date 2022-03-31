@@ -46,13 +46,13 @@
 @push('scripts')
     <script>
         document.addEventListener('livewire:load', () => {
-            const defaultLocation = [115.22680528081725, -8.672911449382596]
+            const defaultLocation = [115.2188697915526, -8.696465069393781]
 
             mapboxgl.accessToken = '{{ env("MAPBOX_KEY") }}';
             const map = new mapboxgl.Map({
                 container: 'map',
                 center: defaultLocation,
-                zoom: 12,
+                zoom: 15,
                 style: 'mapbox://styles/mapbox/light-v10'
             });
             //light-v10, outdoor-v11, satellite-v9, streets-v11, dark-v10
@@ -97,16 +97,6 @@
                                         'type': 'Feature',
                                         'geometry': {
                                             'type': 'Point',
-                                            'coordinates': [115.226805, -8.672911]
-                                        },
-                                        'properties': {
-                                            'title': 'ITB STIKOM Bali'
-                                        }
-                                    },
-                                    {
-                                        'type': 'Feature',
-                                        'geometry': {
-                                            'type': 'Point',
                                             'coordinates': [115.22113567360952, -8.70026609475363]
                                         },
                                         'properties': {
@@ -121,6 +111,56 @@
                                         },
                                         'properties': {
                                             'title': 'Happy Pet'
+                                        }
+                                    },
+                                    {
+                                        'type': 'Feature',
+                                        'geometry': {
+                                            'type': 'Point',
+                                            'coordinates': [115.22106714470938, -8.694949120412717]
+                                        },
+                                        'properties': {
+                                            'title': 'Griya Pet Shop'
+                                        }
+                                    },
+                                    {
+                                        'type': 'Feature',
+                                        'geometry': {
+                                            'type': 'Point',
+                                            'coordinates': [115.2279625783365, -8.694032527569135]
+                                        },
+                                        'properties': {
+                                            'title': 'Onawa Cat Shop'
+                                        }
+                                    },
+                                    {
+                                        'type': 'Feature',
+                                        'geometry': {
+                                            'type': 'Point',
+                                            'coordinates': [115.22626716251327, -8.688996418963088]
+                                        },
+                                        'properties': {
+                                            'title': 'SUN GLORY PETSHOP PAKERISAN'
+                                        }
+                                    },
+                                    {
+                                        'type': 'Feature',
+                                        'geometry': {
+                                            'type': 'Point',
+                                            'coordinates': [115.21609052761053, -8.685964186329578]
+                                        },
+                                        'properties': {
+                                            'title': 'Bali Pet Shop Sesetan'
+                                        }
+                                    },
+                                    {
+                                        'type': 'Feature',
+                                        'geometry': {
+                                            'type': 'Point',
+                                            'coordinates': [115.2061991134295, -8.704083728770055]
+                                        },
+                                        'properties': {
+                                            'title': 'Puppys Inn Bali'
                                         }
                                     },
                                 ]
@@ -181,8 +221,8 @@
 
                     @this.long = longtitude
                     @this.lat = lattitude
-                    //
-                    // console.log(longtitude, lattitude)
+
+                    console.log(longtitude, lattitude)
                 })
 
         })
