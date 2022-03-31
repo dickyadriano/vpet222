@@ -29,6 +29,17 @@
             <div class="row">
                 {{-- SERVICES --}}
                 @foreach($service_data as $row)
+                    @php
+                        $tableOrder = DB::table('orders')
+                            ->join('services', 'orders.serviceID', '=', 'services.id')
+                            ->join('users', 'services.userID', '=', 'users.id')
+                            ->where('orders.serviceID', '=', $row->serviceID)->get();
+
+                        $order = new \App\Models\Order();
+                        foreach ($tableOrder as $data){
+                            $order = $data;
+                        }
+                    @endphp
                     <div class="col-xl-4 col-lg-4 mb-3">
                         <div class="card card-stats mb-4 mb-xl-0">
                             <div class="card-body">
@@ -49,7 +60,7 @@
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap mr-2">From:</span>
+                                    <span class="text-nowrap mr-2">From: <strong class="text-primary">{{ $order->name }}</strong></span>
                                     <span class="text-nowrap"></span>
                                 </p>
                             </div>
@@ -58,6 +69,17 @@
                 @endforeach
                 {{-- PRODUCTS --}}
                 @foreach($product_data as $row)
+                    @php
+                        $tableSeller = DB::table('orders')
+                            ->join('products', 'orders.productID', '=', 'products.id')
+                            ->join('users', 'products.userID', '=', 'users.id')
+                            ->where('orders.productID', '=', $row->productID)->get();
+
+                        $seller = new \App\Models\Order();
+                        foreach ($tableSeller as $data){
+                            $seller = $data;
+                        }
+                    @endphp
                     <div class="col-xl-4 col-lg-4 mb-3">
                         <div class="card card-stats mb-4 mb-xl-0">
                             <div class="card-body">
@@ -78,7 +100,7 @@
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap mr-2">From:</span>
+                                    <span class="text-nowrap mr-2">From: <strong class="text-primary">{{ $seller->name }}</strong> </span>
                                     <span class="text-nowrap"></span>
                                 </p>
                             </div>
@@ -87,6 +109,17 @@
                 @endforeach
                 {{-- MEDICINE --}}
                 @foreach($medicine_data as $row)
+                    @php
+                        $tableSeller = DB::table('orders')
+                            ->join('medicines', 'orders.medicineID', '=', 'medicines.id')
+                            ->join('users', 'medicines.userID', '=', 'users.id')
+                            ->where('orders.medicineID', '=', $row->medicineID)->get();
+
+                        $seller = new \App\Models\Order();
+                        foreach ($tableSeller as $data){
+                            $seller = $data;
+                        }
+                    @endphp
                     <div class="col-xl-4 col-lg-4 mb-3">
                         <div class="card card-stats mb-4 mb-xl-0">
                             <div class="card-body">
@@ -107,7 +140,7 @@
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap mr-2">From:</span>
+                                    <span class="text-nowrap mr-2">From: <strong class="text-primary">{{ $seller->name }}</strong></span>
                                     <span class="text-nowrap"></span>
                                 </p>
                             </div>
@@ -116,6 +149,17 @@
                 @endforeach
                 {{-- Pet Care --}}
                 @foreach($petCare_data as $row)
+                    @php
+                        $tableSeller = DB::table('orders')
+                            ->join('pet_cares', 'orders.petCareID', '=', 'pet_cares.id')
+                            ->join('users', 'pet_cares.userID', '=', 'users.id')
+                            ->where('orders.petCareID', '=', $row->petCareID)->get();
+
+                        $seller = new \App\Models\Order();
+                        foreach ($tableSeller as $data){
+                            $seller = $data;
+                        }
+                    @endphp
                     <div class="col-xl-4 col-lg-4 mb-3">
                         <div class="card card-stats mb-4 mb-xl-0">
                             <div class="card-body">
@@ -136,7 +180,7 @@
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap mr-2">From:</span>
+                                    <span class="text-nowrap mr-2">From: <strong class="text-primary">{{ $seller->name }}</strong></span>
                                     <span class="text-nowrap"></span>
                                 </p>
                             </div>
@@ -144,6 +188,17 @@
                     </div>
                 @endforeach
                 @foreach($grooming_data as $row)
+                    @php
+                        $tableSeller = DB::table('orders')
+                            ->join('groomings', 'orders.groomingID', '=', 'groomings.id')
+                            ->join('users', 'groomings.userID', '=', 'users.id')
+                            ->where('orders.groomingID', '=', $row->groomingID)->get();
+
+                        $seller = new \App\Models\Order();
+                        foreach ($tableSeller as $data){
+                            $seller = $data;
+                        }
+                    @endphp
                     <div class="col-xl-4 col-lg-4 mb-3">
                         <div class="card card-stats mb-4 mb-xl-0">
                             <div class="card-body">
@@ -164,7 +219,7 @@
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap mr-2">From:</span>
+                                    <span class="text-nowrap mr-2">From: <strong class="text-primary">{{ $seller->name }}</strong></span>
                                     <span class="text-nowrap"></span>
                                 </p>
                             </div>

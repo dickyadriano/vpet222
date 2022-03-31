@@ -29,10 +29,10 @@ class UsersTableSeeder extends Seeder
         ]);
         DB::table('users')->insert([
             [
-                'name' => 'custom',
-                'username' => 'custom',
-                'email' => 'custom@gmail.com',
-                'password' => Hash::make('custom'),
+                'name' => 'Bagus Jatem',
+                'username' => 'bagus_jatem',
+                'email' => 'bagusJtm@gmail.com',
+                'password' => Hash::make('bagusJ'),
                 'avatar' => 'default.png',
                 'phoneNo' => '08217777777',
                 'address' => 'Jalan Stasiun',
@@ -41,61 +41,61 @@ class UsersTableSeeder extends Seeder
         ]);
         DB::table('users')->insert([
             [
-                'name' => 'clinic',
-                'username' => 'clinic',
-                'email' => 'clinic@gmail.com',
-                'password' => Hash::make('clinic'),
+                'name' => 'Clinic Sahari',
+                'username' => 'cSahari',
+                'email' => 'cSahari@gmail.com',
+                'password' => Hash::make('cSahari'),
                 'avatar' => 'default.png',
                 'phoneNo' => '12312312312',
-                'address' => 'clinic',
+                'address' => 'Jl.Raya Sesetan No.132',
                 'type' => 'vetClinic'
             ],
         ]);
         DB::table('users')->insert([
             [
-                'name' => 'shop',
-                'username' => 'shop',
-                'email' => 'shop@gmail.com',
-                'password' => Hash::make('shop12'),
+                'name' => 'Happy Pet Shop',
+                'username' => 'happyPS',
+                'email' => 'happypetshop@gmail.com',
+                'password' => Hash::make('happyPS'),
                 'avatar' => 'default.png',
                 'phoneNo' => '12121212121',
-                'address' => 'shop',
+                'address' => 'Sea Road no.23',
                 'type' => 'petShop'
             ],
         ]);
         DB::table('users')->insert([
             [
-                'name' => 'veteri',
-                'username' => 'veteri',
-                'email' => 'veteri@gmail.com',
-                'password' => Hash::make('veteri'),
+                'name' => 'drh. Aidil Calvianto',
+                'username' => 'aidilClv',
+                'email' => 'aidilClv@gmail.com',
+                'password' => Hash::make('aidilClv'),
                 'avatar' => 'default.png',
                 'phoneNo' => '12121212122',
-                'address' => '12312123121',
+                'address' => 'Jl. Alianyang No.5',
                 'type' => 'veterinary'
             ]
         ]);
         DB::table('users')->insert([
             [
-                'name' => 'veteri1',
-                'username' => 'veteri1',
-                'email' => 'veteri1@gmail.com',
-                'password' => Hash::make('veteri1'),
+                'name' => 'drh. M.Adam',
+                'username' => 'mAdam',
+                'email' => 'mAdam@gmail.com',
+                'password' => Hash::make('mAdam1'),
                 'avatar' => 'default.png',
                 'phoneNo' => '234234234234',
-                'address' => 'veteri1',
+                'address' => 'Jl. Pasar Baru no.9',
                 'type' => 'veterinary'
             ]
         ]);
         DB::table('users')->insert([
             [
-                'name' => 'veteri2',
-                'username' => 'veteri2',
-                'email' => 'veteri2@gmail.com',
-                'password' => Hash::make('veteri2'),
+                'name' => 'drh. Chole Smite',
+                'username' => 'choleSmite',
+                'email' => 'choleSmite@gmail.com',
+                'password' => Hash::make('choleSmite'),
                 'avatar' => 'default.png',
                 'phoneNo' => '345345345345',
-                'address' => 'veteri2',
+                'address' => 'Jl. Gunung Api No.5',
                 'type' => 'veterinary'
             ]
         ]);

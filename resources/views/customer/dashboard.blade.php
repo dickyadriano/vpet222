@@ -94,17 +94,20 @@
             @foreach($data_product as $row)
                 <?php $count = $row->id; ?>
                 <div class="col-xl-2 col-lg-4 pb-3">
-                    <div class="card card-stats mb-4 mb-xl-0 modal24">
+                    <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
                                     <img class="img-center img-thumbnail" src="{{ asset('img/productImage/'. $row['image']) }}">
-                                    <h5 class="card-title text-uppercase text-muted mb-0 mt-1">{{ $row['productName'] }}</h5>
-
-                                    <span class="h2 font-weight-bold mb-0">@currency($row->price),-</span>
                                 </div>
                             </div>
-                            <p class="mt-3 mb-0 text-muted text-sm">
+                            <div class="row">
+                                <h5 class="card-title text-uppercase text-muted mb-0 mt-1">{{ $row['productName'] }}</h5>
+                            </div>
+                            <div class="row">
+                                <span class="h2 font-weight-bold mb-0">@currency($row->price),-</span>
+                            </div>
+                            <p class="row mt-3 mb-0 text-muted text-sm">
                                 <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 100</span>
                                 <span class="text-nowrap">Sold</span>
                             </p>
@@ -148,7 +151,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                                             </div>
-                                            <input class="form-control" placeholder="QTY" type="number" name="orderAmount" required autofocus>
+                                            <input class="form-control" min="1" placeholder="QTY" type="number" name="orderAmount" value="1" required autofocus>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Add To Cart</button>
