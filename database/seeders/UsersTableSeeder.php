@@ -111,7 +111,7 @@ class UsersTableSeeder extends Seeder
         DB::table('information')->insert([
             [
                 'title' => 'Valley couple mourns loss after dog dies during vet visit',
-                'information' => '“The radiologist noted Harley was suffering from an enlarged heart that had developed between the previous visit and this one, a condition which was unknown to both the owners and to us prior to this time,” a statement read. “This is a serious medical condition that likely caused Harley’s sudden and tragic passing. “Although we can’t say for certain without the benefit of an autopsy that Harley’s death was caused by his heart condition, we can say for sure that Harley did not die from choking or a broken neck.”',
+                'information' => '“The  radiologist noted Harley was suffering from an enlarged heart that had developed between the previous visit and this one, a condition which was unknown to both the owners and to us prior to this time,” a statement read. “This is a serious medical condition that likely caused Harley’s sudden and tragic passing. “Although we can’t say for certain without the benefit of an autopsy that Harley’s death was caused by his heart condition, we can say for sure that Harley did not die from choking or a broken neck.”',
                 'image' => 'Vitol.jpg',
             ]
         ]);
