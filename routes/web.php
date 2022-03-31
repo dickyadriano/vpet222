@@ -93,7 +93,7 @@ Route::post('veterinary/profilepicture','App\Http\Controllers\VeterinaryControll
 Route::get('/cart/delete/{cartId}', 'App\Http\Controllers\CartController@delete')->name('cart.delete');
 
 
-Route::get('/location', [MapLocation::class]);
+Route::get('/location', MapLocation::class);
 
 Route::resource('admin', \App\Http\Controllers\AdminController::class);
 Route::resource('cart', \App\Http\Controllers\cartController::class);

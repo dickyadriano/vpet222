@@ -7,6 +7,7 @@ use App\Models\Medicine;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use phpDocumentor\Reflection\DocBlock\Tags\Method;
 
 class CartController extends Controller
@@ -18,7 +19,12 @@ class CartController extends Controller
      */
     public function index()
     {
-        $data_cart = Cart::all();
+
+        $data_cart = DB::table('carts')
+            ->join('users', 'carts.userID', '=', 'users.id')
+            ->where('carts.userID', '=', Auth::user()->id)
+            ->select('carts.*')
+            ->get();
         $data_product = Product::all();
         return view('customer.dashboard', compact('data_cart', 'data_product'));
     }

@@ -151,7 +151,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                                             </div>
-                                            <input class="form-control" placeholder="QTY" type="number" name="orderAmount" required autofocus>
+                                            <input class="form-control" min="1" placeholder="QTY" type="number" name="orderAmount" value="1" required autofocus>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Add To Cart</button>

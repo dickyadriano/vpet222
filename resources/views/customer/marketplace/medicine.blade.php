@@ -95,15 +95,18 @@
             @foreach($data_medicine as $row)
             <?php $count = $row->id; ?>
                 <div class="col-xl-2 col-lg-4 pb-3">
-                    <div class="card card-stats mb-4 mb-xl-0 modal24">
-                        <div class="card-body">
+                    <div class="card card-stats">
+                        <div class="card-body m-lg-0 m-sm-2 m-md-8">
                             <div class="row">
                                 <div class="col">
                                     <img class="img-center img-thumbnail" src="{{ asset('img/medicineImage/'. $row['image']) }}">
-                                    <h5 class="card-title text-uppercase text-muted mb-0 mt-1">{{ $row['medicineName'] }}</h5>
-
-                                    <span class="h2 font-weight-bold mb-0">@currency($row->medicinePrice),-</span>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <h5 class="card-title text-uppercase text-muted mb-0 mt-1">{{ $row['medicineName'] }}</h5>
+                            </div>
+                            <div class="row">
+                                <span class="h2 font-weight-bold mb-0">@currency($row->medicinePrice),-</span>
                             </div>
                             <p class="mt-3 mb-0 text-muted text-sm">
                                 <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 100</span>
@@ -138,7 +141,7 @@
                                             <h5 class="modal-title">{{ $row['medicineName'] }}</h5>
                                             <span class="h2 font-weight-bold mb-0">@currency($row->medicinePrice),-</span>
                                             <span class="container">
-                                                <h4 class="text-gray pt-4">detail{{--{{ $row['detail'] }}--}}</h4>
+                                                <h4 class="text-gray pt-4">{{ $row['medicineDetail'] }}</h4>
                                             </span>
                                         </div>
                                     </div>
