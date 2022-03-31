@@ -44,7 +44,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Quantity" type="number" name="quantity" value="{{ $product->quantity }}" required autofocus>
+                    <input class="form-control" placeholder="Quantity" min="1" type="number" name="quantity" value="{{ $product->quantity }}" required autofocus>
                 </div>
             </div>
 
@@ -54,7 +54,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-money-coins"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Price/Unit" type="number" name="price" value="{{ $product->price }}" required autofocus>
+                    <input class="form-control" placeholder="Price/Unit" min="1" type="number" name="price" value="{{ $product->price }}" required autofocus>
                 </div>
             </div>
 

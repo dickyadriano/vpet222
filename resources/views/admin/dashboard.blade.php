@@ -29,8 +29,8 @@
                 <div class="col-xl-12">
                     <div class="card bg-gradient-indigo shadow">
                         <div class="card-body">
-                            <div class="row ">
-                                <div class="col-2">
+                            <div class="row">
+                                <div class="col-2" style="margin-bottom: auto;margin-top: auto">
                                     <img src="{{asset('img/informationImages/'.$row->image)}}" class="rounded" style="width: 150px">
                                 </div>
                                 <div class="col-9">

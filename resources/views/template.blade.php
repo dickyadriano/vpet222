@@ -66,8 +66,18 @@
 {{--<script src='{{asset('js/vpet.js')}}'></script>--}}
 
 <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+
+@if(Session::has('errors'))
+<script>
+    $('#ModalAddMedicine').modal('show');
+    $('#ModalAdd').modal('show');
+</script>
+@endif
+
 @livewireScripts
+
 @stack('scripts')
 </body>
 
 </html>
+

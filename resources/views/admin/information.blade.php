@@ -44,14 +44,14 @@
                             <div class="form-group row align-items-center mb-3">
                                 <div class="col">
                                     <h6 class="text-uppercase text-light ls-1 mb-1">Title</h6>
-                                    <input class="form-control" placeholder="Title" type="text" name="title" required autofocus>
+                                    <input class="form-control" placeholder="Title" type="text" name="title" value="{{ old('title') }}" required autofocus>
                                 </div>
                             </div>
                             <div class="form-group row align-items-center mb-3">
                                 <div class="col">
                                     <h6 class="text-uppercase text-light ls-1 mb-1">Information</h6>
                                     <div class="input-group">
-                                        <textarea class="form-control" aria-label="With textarea" name="information"></textarea>
+                                        <textarea class="form-control" aria-label="With textarea" name="information">{{ old('information') }}</textarea>
                                     </div>
                                 </div>
                             </div>

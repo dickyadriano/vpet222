@@ -42,6 +42,8 @@ class PetShopController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, ['image' => 'required|mimes:jpeg,png,jpg,gif,svg']);
+
         $data = Product::create($request->all());
 
         if ($request->hasFile('image')){

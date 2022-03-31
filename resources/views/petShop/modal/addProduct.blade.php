@@ -21,7 +21,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-basket"></i></span>
                                 </div>
-                                <input class="form-control" placeholder="Product Name" type="text" name="productName" value="{{ old('ProductName') }}" required autofocus>
+                                <input class="form-control" placeholder="Product Name" type="text" name="productName" value="{{ old('productName') }}" required autofocus>
                             </div>
                         </div>
 
@@ -31,7 +31,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                                 </div>
-                                <input class="form-control" placeholder="Quantity" type="number" name="quantity" value="{{ old('Quantity') }}" required autofocus>
+                                <input class="form-control" placeholder="Quantity" min="1" type="number" name="quantity" value="{{ old('quantity') }}" required autofocus>
                             </div>
                         </div>
 
@@ -41,7 +41,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-money-coins"></i></span>
                                 </div>
-                                <input class="form-control" placeholder="Price/Unit" type="number" name="price" value="{{ old('Price') }}" required autofocus>
+                                <input class="form-control" placeholder="Price/Unit" min="1" type="number" name="price" value="{{ old('price') }}" required autofocus>
                             </div>
                         </div>
 
@@ -51,7 +51,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                                 </div>
-                                <textarea class="form-control" rows="5" type="text" name="detail" required autofocus></textarea>
+                                <textarea class="form-control" rows="5" type="text" name="detail" required autofocus>{{ old('detail') }}</textarea>
                             </div>
                         </div>
 

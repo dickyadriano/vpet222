@@ -38,10 +38,10 @@
                             <div class="row align-items-center mb-3">
                                 <div class="col">
                                     <h6 class="text-uppercase text-light ls-1 mb-1">Package Name</h6>
-                                    <input class="form-control" placeholder="Package Name" type="text" name="packageName" required autofocus>                            </div>
+                                    <input class="form-control" placeholder="Package Name" type="text" name="packageName" value="{{ old('packageName') }}" required autofocus>                            </div>
                                 <div class="col">
                                     <h6 class="text-uppercase text-light ls-1 mb-1">Price</h6>
-                                    <input class="form-control" placeholder="Price" type="number" name="price" required autofocus>
+                                    <input class="form-control" placeholder="Price" type="number" min="1" name="price" value="{{ old('price') }}" required autofocus>
                                 </div>
                                 <div class="col">
                                     <h6 class="text-uppercase text-light ls-1 mb-1">Image</h6>
@@ -56,7 +56,7 @@
                                 <div class="col">
                                     <h6 class="text-uppercase text-light ls-1 mb-1">Package Detail</h6>
                                     <div class="input-group">
-                                        <textarea class="form-control" rows="3" aria-label="With textarea" name="packageDetail"></textarea>
+                                        <textarea class="form-control" rows="3" aria-label="With textarea" name="packageDetail">{{ old('price') }}</textarea>
                                     </div>
                                 </div>
                             </div>

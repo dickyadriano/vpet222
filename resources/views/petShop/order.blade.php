@@ -31,8 +31,8 @@
             <thead class="thead-light">
             <tr>
                 <th scope="col" class="sort" data-sort="id">Order ID</th>
-                <th scope="col" class="sort" data-sort="customer">Customer ID</th>
-                <th scope="col" class="sort" data-sort="customer">Product ID</th>
+                <th scope="col" class="sort" data-sort="customer">Customer Username</th>
+                <th scope="col" class="sort" data-sort="customer">Product Name</th>
                 <th scope="col" class="sort" data-sort="amount">Order Amount</th>
                 <th scope="col" class="sort" data-sort="status">Status</th>
                 <th scope="col">Control</th>
@@ -40,13 +40,21 @@
             </thead>
             <tbody class="list">
             @foreach($show as $row)
+                @php
+                    $tableUser = DB::table('users')->where('id', '=', $row->userID)->get();
+
+                    $user = new \App\Models\User();
+                    foreach ($tableUser as $data){
+                        $user = $data;
+                    }
+                @endphp
                 @if($row->orderStatus == 'Wait for Payment')
                 <tr>
                     <td>{{$row->id}}</td>
-                    <td>{{$row->userID}}</td>
-                    <td>{{$row->productID}}</td>
+                    <td>{{$user->username}}</td>
+                    <td>{{$row->productName}}</td>
                     <td>{{$row->orderAmount}}</td>
-                    <td>{{$row->orderStatus}}</td>
+                    <td><span class="badge badge-pill badge-warning">{{$row->orderStatus}}</span></td>
                     <td class="align-middle">
                         <div class="row">
                             <form action="{{ route('order.update', $row->id) }}" method="post" class="mx-1">
@@ -58,7 +66,7 @@
                             <form action="{{ route('order.update', $row->id) }}" method="post" class="mx-1">
                                 @csrf
                                 @method('put')
-                                <input name="orderStatus" value="{{'Canceled'}}" type="text" hidden readonly required>
+                                <input name="orderStatus" value="{{'Cancelled'}}" type="text" hidden readonly required>
                                 <button class="btn btn-danger">Cancel</button>
                             </form>
                             <a href="{{ route('order.show', $row->id) }}" class="btn btn-primary mx-1">Info</a>

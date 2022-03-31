@@ -38,10 +38,10 @@
                             <div class="row align-items-center mb-3">
                                 <div class="col">
                                     <h6 class="text-uppercase text-light ls-1 mb-1">Grooming Name</h6>
-                                    <input class="form-control" placeholder="Grooming Name" type="text" name="groomingName" required autofocus>                            </div>
+                                    <input class="form-control" placeholder="Grooming Name" type="text" name="groomingName" value="{{ old('groomingName') }}" required autofocus>                            </div>
                                 <div class="col">
                                     <h6 class="text-uppercase text-light ls-1 mb-1">Price</h6>
-                                    <input class="form-control" placeholder="Price" type="number" name="price" required autofocus>
+                                    <input class="form-control" placeholder="Price" type="number" min="1" name="price" value="{{ old('price') }}" required autofocus>
                                 </div>
                                 <div class="col">
                                     <h6 class="text-uppercase text-light ls-1 mb-1">Image</h6>
@@ -56,7 +56,7 @@
                                 <div class="col">
                                     <h6 class="text-uppercase text-light ls-1 mb-1">Grooming Detail</h6>
                                     <div class="input-group">
-                                        <textarea class="form-control" rows="3" aria-label="With textarea" name="groomingDetail"></textarea>
+                                        <textarea class="form-control" rows="3" aria-label="With textarea" name="groomingDetail">{{ old('groomingDetail') }}</textarea>
                                     </div>
                                 </div>
                             </div>

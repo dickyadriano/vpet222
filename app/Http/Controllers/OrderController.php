@@ -22,7 +22,7 @@ class OrderController extends Controller
         $show = DB::table('orders')
             ->join('products', 'orders.productID', '=', 'products.id')
             ->join('users', 'products.userID', '=', 'users.id')
-            ->select('orders.*')
+            ->select('orders.*', 'products.productName')
             ->get();
 
         $service_data = DB::table('orders')
@@ -66,12 +66,10 @@ class OrderController extends Controller
         $show = DB::table('orders')
             ->join('products', 'orders.productID', '=', 'products.id')
             ->join('users', 'products.userID', '=', 'users.id')
-            ->select('orders.*')
+            ->select('orders.*', 'products.productName')
             ->get();
 
-        return view('petShop.modal.history', compact('show'),[
-            "title" => "Shop Order"
-        ]);
+        return view('petShop.modal.history', compact('show'));
     }
 
     /**

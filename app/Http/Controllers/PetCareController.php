@@ -49,6 +49,8 @@ class PetCareController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, ['image' => 'required|mimes:jpeg,png,jpg,gif,svg']);
+
         $petcare = PetCare::create($request->all());
 
         if ($request->hasFile('image')){
@@ -92,6 +94,8 @@ class PetCareController extends Controller
      */
     public function update(Request $request, PetCare $petCare)
     {
+        $this->validate($request, ['image' => 'mimes:jpeg,png,jpg,gif,svg']);
+
         $petCare->update($request->all());
 
         if ($request->hasFile('image')){

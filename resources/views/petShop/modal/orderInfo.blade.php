@@ -29,7 +29,7 @@
 
             @php
                 $tableProduct = DB::table('products')->where('id', '=', $order->productID)->get();
-                $tableUser = DB::table('users')->where('id', '=', $order->customerID)->get();
+                $tableUser = DB::table('users')->where('id', '=', $order->userID)->get();
 
                 $product = new \App\Models\Product();
                 foreach ($tableProduct as $data){
