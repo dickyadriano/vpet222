@@ -34,6 +34,7 @@ class OrderController extends Controller
         $product_data = DB::table('orders')
             ->join('products', 'orders.productID', '=', 'products.id')
             ->join('users', 'orders.userID', '=', 'users.id')
+            ->where('orders.userID','=',Auth::user()->id)
             ->select('orders.*', 'products.*')->get();
 
         $medicine_data = DB::table('orders')

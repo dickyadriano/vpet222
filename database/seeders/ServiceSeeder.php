@@ -17,7 +17,7 @@ class ServiceSeeder extends Seeder
         DB::table('services')->insert([
             [
                 'userID' => '5',
-                'serviceName' => 'veteri',
+                'serviceName' => 'aidilClv',
                 'price' => '150000',
                 'detail' => 'Pengalaman selama 9 tahun bekerja dengan rumah sakit hewan jakarta',
                 'idCard' => '977913.jpg',
@@ -29,25 +29,25 @@ class ServiceSeeder extends Seeder
         DB::table('services')->insert([
             [
                 'userID' => '6',
-                'serviceName' => 'veteri1',
+                'serviceName' => 'mAdam',
                 'price' => '50000',
                 'detail' => 'PENGALAMAN 3 TAHUN',
                 'idCard' => 'Screenshot (34).png',
                 'vetLicense' => '977913.jpg',
                 'image' => 'default.png',
-                'verificationStatus' => 'Verified'
+                'verificationStatus' => 'Pending'
             ],
         ]);
         DB::table('services')->insert([
             [
                 'userID' => '7',
-                'serviceName' => 'veteri2',
+                'serviceName' => 'choleSmite',
                 'price' => '120000',
                 'detail' => 'Pengalaman 5 tahun praktek di rumah sakit hewan denpasar dan Dokter hewan terproduktif tahun 2018',
                 'idCard' => 'Screenshot (39).png',
                 'vetLicense' => 'Screenshot 2022-02-03 151138.png',
                 'image' => 'default.png',
-                'verificationStatus' => 'Verified'
+                'verificationStatus' => 'Pending'
             ],
         ]);
     }
