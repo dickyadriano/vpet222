@@ -56,6 +56,8 @@ class MedicineController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, ['image' => 'required|mimes:jpeg,png,jpg,gif,svg']);
+
         $data = Medicine::create($request->all());
 
         if ($request->hasFile('image')){
@@ -100,6 +102,8 @@ class MedicineController extends Controller
      */
     public function update(Request $request, Medicine $medicine)
     {
+        $this->validate($request, ['image' => 'mimes:jpeg,png,jpg,gif,svg']);
+
         $medicine->update($request->all());
 
         if ($request->hasFile('image')){

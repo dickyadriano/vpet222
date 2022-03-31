@@ -48,6 +48,8 @@ class GroomingController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, ['image' => 'required|mimes:jpeg,png,jpg,gif,svg']);
+
         $grooming = Grooming::create($request->all());
 
         if ($request->hasFile('image')){
@@ -91,6 +93,8 @@ class GroomingController extends Controller
      */
     public function update(Request $request, Grooming $grooming)
     {
+        $this->validate($request, ['image' => 'mimes:jpeg,png,jpg,gif,svg']);
+
         $grooming->update($request->all());
 
         if ($request->hasFile('image')){

@@ -71,6 +71,8 @@ class InformationController extends Controller
      */
     public function update(Request $request, Information $information)
     {
+        $this->validate($request, ['image' => 'mimes:jpeg,png,jpg,gif,svg']);
+
         $information->update($request->all());
 
         if ($request->hasFile('image')){

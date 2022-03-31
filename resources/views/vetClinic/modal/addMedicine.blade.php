@@ -21,7 +21,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-basket"></i></span>
                                 </div>
-                                <input class="form-control" placeholder="Medicine Name" type="text" name="medicineName" value="{{ old('MedicineName') }}" required autofocus>
+                                <input class="form-control" placeholder="Medicine Name" type="text" name="medicineName" value="{{ old('medicineName') }}" required autofocus>
                             </div>
                         </div>
 
@@ -31,7 +31,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                                 </div>
-                                <input class="form-control" placeholder="Medicine Amount" type="number" name="medicineAmount" value="{{ old('MedicineAmount') }}" required autofocus>
+                                <input class="form-control" placeholder="Medicine Amount" min="1" type="number" name="medicineAmount" value="{{ old('medicineAmount') }}" required autofocus>
                             </div>
                         </div>
 
@@ -41,7 +41,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-money-coins"></i></span>
                                 </div>
-                                <input class="form-control" placeholder="Medicine Price" type="number" name="medicinePrice" value="{{ old('medicinePrice') }}" required autofocus>
+                                <input class="form-control" placeholder="Medicine Price" min="1" type="number" name="medicinePrice" value="{{ old('medicinePrice') }}" required autofocus>
                             </div>
                         </div>
 
@@ -51,7 +51,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                                 </div>
-                                <textarea class="form-control" rows="5" type="text" name="medicineDetail" required autofocus></textarea>
+                                <textarea class="form-control" rows="5" type="text" name="medicineDetail" required autofocus>{{ old('medicineDetail') }}</textarea>
                             </div>
                         </div>
 
@@ -62,6 +62,7 @@
                             @error('image')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
+
                         </div>
 
                         <div class="form-group text-center">
@@ -77,4 +78,5 @@
             </div>
         </div>
     </div>
+
 </form>

@@ -45,6 +45,8 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, ['image' => 'required|mimes:jpeg,png,jpg,gif,svg']);
+
         $information = Information::create($request->all());
 
         if ($request->hasFile('image')){
