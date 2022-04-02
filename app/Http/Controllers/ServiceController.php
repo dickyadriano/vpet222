@@ -9,10 +9,14 @@ use Illuminate\Support\Facades\DB;
 
 class ServiceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('customer');
+    }
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
     public function index()
     {
@@ -33,6 +37,9 @@ class ServiceController extends Controller
         }
         elseif (Auth::user()->type == 'customer'){
             return view('customer.service', compact('vetService_data'));
+        }
+        else{
+            return redirect()->back();
         }
 
     }

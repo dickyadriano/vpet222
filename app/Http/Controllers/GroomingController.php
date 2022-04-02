@@ -9,10 +9,15 @@ use Illuminate\Support\Facades\DB;
 
 class GroomingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('petShop')->only('edit');
+        $this->middleware('customer')->only('search');
+    }
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
     public function index()
     {
@@ -27,6 +32,9 @@ class GroomingController extends Controller
         }
         elseif (Auth::user()->type == 'customer'){
             return view('customer.marketplace.grooming', compact('grooming_data'));
+        }
+        else{
+            return redirect()->back();
         }
     }
 
