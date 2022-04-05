@@ -10,10 +10,15 @@ use Illuminate\Support\Facades\DB;
 
 class MedicineController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('vetClinic')->only('edit');
+        $this->middleware('customer')->only('search');
+    }
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
     public function index()
     {
@@ -34,6 +39,9 @@ class MedicineController extends Controller
         }
         elseif (Auth::user()->type == 'customer'){
             return view('customer.marketplace.medicine', compact('medicineInCart_data', 'data_medicine'));
+        }
+        else{
+            return redirect()->back();
         }
 
     }

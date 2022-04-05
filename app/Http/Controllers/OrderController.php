@@ -10,10 +10,14 @@ use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('petShop')->only('orderHistory', 'show');
+    }
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
     public function index()
     {
@@ -61,6 +65,9 @@ class OrderController extends Controller
         }
         elseif (Auth::user()->type == 'customer'){
             return view('customer.order', compact('service_data','grooming_data','petCare_data','product_data', 'medicine_data'));
+        }
+        else{
+            return redirect()->back();
         }
     }
 
