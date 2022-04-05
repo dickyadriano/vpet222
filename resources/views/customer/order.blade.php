@@ -51,8 +51,8 @@
                                         <img class="img-center userImg150" src="{{ asset('argon/argon/img/theme/'. $row->image) }}">
                                     </div>
                                     <div class="col">
-                                        <h5 class="card-title text-uppercase h2 mb-0">{{ $row->serviceName }}</h5>
-                                        <span class="h2 font-weight-bold mb-0">@currency($row->price),-</span>
+                                        <h5 class="card-title h2 mb-0">{{ $order->name }}</h5>
+                                        <span class="h2 font-weight-bold mb-0">@currency($row->totalPrice),-</span>
                                     </div>
                                     <div class="col-auto">
                                         <h5 class="card-title text-uppercase text-muted mb-0">Status</h5>
@@ -60,7 +60,7 @@
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap mr-2">From: <strong class="text-primary">{{ $order->name }}</strong></span>
+                                    <span class="text-nowrap mr-2"></span>
                                     <span class="text-nowrap"></span>
                                 </p>
                             </div>
@@ -92,7 +92,7 @@
                                     </div>
                                     <div class="col">
                                         <h5 class="card-title text-uppercase h2 mb-0">{{ $row->productName }}</h5>
-                                        <span class="h2 font-weight-bold mb-0">@currency($row->price),-</span>
+                                        <span class="h2 font-weight-bold mb-0">@currency($row->totalPrice),-</span>
                                     </div>
                                     <div class="col-auto">
                                         <h5 class="card-title text-uppercase text-muted mb-0">Status</h5>
@@ -132,7 +132,7 @@
                                     </div>
                                     <div class="col">
                                         <h5 class="card-title text-uppercase h2 mb-0">{{ $row->medicineName }}</h5>
-                                        <span class="h2 font-weight-bold mb-0">@currency($row->medicinePrice),-</span>
+                                        <span class="h2 font-weight-bold mb-0">@currency($row->totalPrice),-</span>
                                     </div>
                                     <div class="col-auto">
                                         <h5 class="card-title text-uppercase text-muted mb-0">Status</h5>
@@ -172,7 +172,7 @@
                                     </div>
                                     <div class="col">
                                         <h5 class="card-title text-uppercase h2 mb-0">{{ $row->packageName }}</h5>
-                                        <span class="h2 font-weight-bold mb-0">@currency($row->price),-</span>
+                                        <span class="h2 font-weight-bold mb-0">@currency($row->totalPrice),-</span>
                                     </div>
                                     <div class="col-auto">
                                         <h5 class="card-title text-uppercase text-muted mb-0">Status</h5>
@@ -211,7 +211,7 @@
                                     </div>
                                     <div class="col">
                                         <h5 class="card-title text-uppercase h2 mb-0">{{ $row->groomingName }}</h5>
-                                        <span class="h2 font-weight-bold mb-0">@currency($row->price),-</span>
+                                        <span class="h2 font-weight-bold mb-0">@currency($row->totalPrice),-</span>
                                     </div>
                                     <div class="col-auto">
                                         <h5 class="card-title text-uppercase text-muted mb-0">Status</h5>

@@ -28,7 +28,6 @@
                         @foreach($productInCart_data as $row)
                             <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden readonly>
                             <input type="number" name="productID" value="{{ $row->id }}" hidden readonly>
-                            <input type="number" name="medicineID" value="0" hidden readonly>
                             <input type="text" name="image" value="{{ $row->image }}" hidden readonly>
                             <input type="text" name="orderDetail" value="-" hidden readonly>
                             <input type="text" name="orderType" value="product" hidden readonly>

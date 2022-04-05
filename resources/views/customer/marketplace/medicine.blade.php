@@ -29,7 +29,6 @@
                         @foreach($medicineInCart_data as $row)
                             <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden readonly>
                             <input type="number" name="medicineID" value="{{ $row->id }}" hidden readonly>
-                            <input type="number" name="productID" value="0" hidden readonly>
                             <input type="text" name="image" value="{{ $row->image }}" hidden readonly>
                             <input type="text" name="orderDetail" value="-" hidden readonly>
                             <input type="text" name="orderType" value="medicine" hidden readonly>
@@ -152,7 +151,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                                             </div>
-                                            <input class="form-control" placeholder="QTY" type="number" name="orderAmount" required autofocus>
+                                            <input class="form-control" placeholder="QTY" value="1" type="number" name="orderAmount" required autofocus>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Add To Cart</button>

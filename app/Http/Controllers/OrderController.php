@@ -28,6 +28,7 @@ class OrderController extends Controller
         $service_data = DB::table('orders')
             ->join('users', 'orders.userID', '=', 'users.id')
             ->join('services', 'orders.serviceID', '=', 'services.id')
+            ->where('orders.userID','=',Auth::user()->id)
             ->select(['orders.*', 'services.*'])
             ->get();
 
@@ -40,16 +41,19 @@ class OrderController extends Controller
         $medicine_data = DB::table('orders')
             ->join('medicines', 'orders.medicineID', '=', 'medicines.id')
             ->join('users', 'orders.userID', '=', 'users.id')
+            ->where('orders.userID','=',Auth::user()->id)
             ->select('orders.*', 'medicines.*')->get();
 
         $petCare_data = DB::table('orders')
             ->join('pet_cares', 'orders.petCareID', '=', 'pet_cares.id')
             ->join('users', 'orders.userID', '=', 'users.id')
+            ->where('orders.userID','=',Auth::user()->id)
             ->select('orders.*', 'pet_cares.*')->get();
 
         $grooming_data = DB::table('orders')
             ->join('groomings', 'orders.groomingID', '=', 'groomings.id')
             ->join('users', 'orders.userID', '=', 'users.id')
+            ->where('orders.userID','=',Auth::user()->id)
             ->select('orders.*', 'groomings.*')->get();
 
         if (Auth::user()->type == 'petShop'){
@@ -90,8 +94,44 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $data = Order::create($request->all());
-        $data->save();
+        $cart = $request['userID'];
+        $productInCart_data = DB::table('carts')
+            ->join('products', 'carts.productID', '=', 'products.id')
+            ->where('carts.userID', '=', $cart)
+            ->where('carts.orderType', '=', 'product')
+            ->select('products.*', 'carts.*')->get();
+
+        $medicineInCart_data = DB::table('carts')
+            ->join('medicines', 'carts.medicineID', '=', 'medicines.id')
+            ->where('carts.userID', '=', $cart)
+            ->where('carts.orderType', '=', 'medicine')
+            ->select('medicines.*', 'carts.*')->get();
+
+        if ($request['orderType'] === 'product'){
+            foreach ($productInCart_data as $data){
+                $data = Order::create(['userID' => $data->userID,
+                    'productID' => $data->productID,
+                    'orderStatus' => $request->orderStatus,
+                    'orderType' => $data->orderType,
+                    'orderAmount' => $data->orderAmount,
+                    'totalPrice' => $request->totalPrice,
+                    'orderDetail' => $request->orderDetail]);
+                $data->save();
+            }
+        }
+        elseif ($request['orderType'] === 'medicine'){
+            foreach ($medicineInCart_data as $data){
+                $data = Order::create(['userID' => $data->userID,
+                    'medicineID' => $data->medicineID,
+                    'orderStatus' => $request->orderStatus,
+                    'orderType' => $data->orderType,
+                    'orderAmount' => $data->orderAmount,
+                    'totalPrice' => $request->totalPrice,
+                    'orderDetail' => $request->orderDetail]);
+                $data->save();
+            }
+        }
+
         return redirect()->route('order.index');
     }
 
