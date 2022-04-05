@@ -96,7 +96,7 @@ Route::get('/cart/delete/{cartId}', 'App\Http\Controllers\CartController@delete'
 Route::get('/location', MapLocation::class);
 
 Route::resource('admin', \App\Http\Controllers\AdminController::class);
-Route::resource('cart', \App\Http\Controllers\cartController::class);
+Route::resource('cart', \App\Http\Controllers\CartController::class);
 Route::resource('customer', \App\Http\Controllers\CustomerController::class);
 Route::resource('grooming', \App\Http\Controllers\GroomingController::class);
 Route::resource('information', \App\Http\Controllers\InformationController::class);
