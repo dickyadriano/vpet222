@@ -102,7 +102,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <h5 class="card-title text-uppercase text-muted mb-0 mt-1">{{ $row['medicineName'] }}</h5>
+                                <h5 class="card-title text-uppercase text-black mb-0 mt-1">{{ $row['medicineName'] }}</h5>
                             </div>
                             <div class="row">
                                 <span class="h2 font-weight-bold mb-0">@currency($row->medicinePrice),-</span>
@@ -140,7 +140,7 @@
                                             <h5 class="modal-title">{{ $row['medicineName'] }}</h5>
                                             <span class="h2 font-weight-bold mb-0">@currency($row->medicinePrice),-</span>
                                             <span class="container">
-                                                <h4 class="text-gray pt-4">{{ $row['medicineDetail'] }}</h4>
+                                                <h4 class="text-black pt-4">{{ $row['medicineDetail'] }}</h4>
                                             </span>
                                         </div>
                                     </div>
