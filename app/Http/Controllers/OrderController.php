@@ -29,6 +29,12 @@ class OrderController extends Controller
             ->select('orders.*', 'products.productName')
             ->get();
 
+        $showClinic = DB::table('orders')
+            ->join('medicines', 'orders.medicineID', '=', 'medicines.id')
+            ->join('users', 'medicines.userID', '=', 'users.id')
+            ->select('orders.*', 'medicines.medicineName')
+            ->get();
+
         $service_data = DB::table('orders')
             ->join('users', 'orders.userID', '=', 'users.id')
             ->join('services', 'orders.serviceID', '=', 'services.id')
@@ -66,6 +72,11 @@ class OrderController extends Controller
         elseif (Auth::user()->type == 'customer'){
             return view('customer.order', compact('service_data','grooming_data','petCare_data','product_data', 'medicine_data'));
         }
+        elseif (Auth::user()->type == 'vetClinic'){
+            return view('vetClinic.order', compact('showClinic'),[
+                "title" => "Order"
+            ]);
+        }
         else{
             return redirect()->back();
         }
@@ -80,7 +91,18 @@ class OrderController extends Controller
             ->select('orders.*', 'products.productName')
             ->get();
 
-        return view('petShop.modal.history', compact('show'));
+        $showClinic = DB::table('orders')
+            ->join('medicines', 'orders.medicineID', '=', 'medicines.id')
+            ->join('users', 'medicines.userID', '=', 'users.id')
+            ->select('orders.*', 'medicines.medicineName')
+            ->get();
+
+        if (Auth::user()->type == 'petShop') {
+            return view('petShop.modal.history', compact('show'));
+        }
+        elseif (Auth::user()->type == 'vetClinic') {
+            return view('vetClinic.modal.history', compact('showClinic'));
+        }
     }
 
     /**
@@ -150,9 +172,16 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        return view('petShop.modal.orderInfo', compact('order'),[
-            "title" => "Shop Order"
-        ]);
+        if (Auth::user()->type == 'petShop') {
+            return view('petShop.modal.orderInfo', compact('order'),[
+                "title" => "Shop Order"
+            ]);
+        }
+        elseif (Auth::user()->type == 'vetClinic') {
+            return view('vetClinic.modal.orderInfo', compact('order'),[
+                "title" => "Order"
+            ]);
+        }
     }
 
     /**
