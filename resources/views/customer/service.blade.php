@@ -27,13 +27,13 @@
         <div class="row">
             @foreach($vetService_data as $row)
                 <?php $count = $row->id; ?>
-                <div class="col-xl-2 col-lg-4 pb-3">
-                    <div class="card card-stats mb-4 mb-xl-0 modal24">
+                <div class="col-xl-3 col-lg-4 pb-3">
+                    <div class="card card-stats mb-4 mb-xl-0">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
                                     <img class="img-center img-thumbnail" src="{{ asset('argon/argon/img/theme/'. $row->avatar) }}">
-                                    <h5 class="card-title text-uppercase text-muted mb-0 mt-1">{{ $row->name }}</h5>
+                                    <h5 class="card-title text-black mb-0 mt-1">{{ $row->name }}</h5>
                                     <span class="h2 font-weight-bold mb-0">@currency($row->price)</span>
                                 </div>
                             </div>
@@ -75,7 +75,7 @@
                                             <h5 class="modal-title">{{ $row->name }}</h5>
                                             <span class="h2 font-weight-bold mb-0">@currency($row->price),-</span>
                                             <span class="container">
-                                            <h4 class="text-gray pt-4">{{ $row->detail }}</h4>
+                                            <h4 class="text-black pt-4">{{ $row->detail }}</h4>
                                         </span>
                                         </div>
                                     </div>

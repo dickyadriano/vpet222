@@ -28,7 +28,6 @@
                         @foreach($productInCart_data as $row)
                             <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden readonly>
                             <input type="number" name="productID" value="{{ $row->id }}" hidden readonly>
-                            <input type="number" name="medicineID" value="0" hidden readonly>
                             <input type="text" name="image" value="{{ $row->image }}" hidden readonly>
                             <input type="text" name="orderDetail" value="-" hidden readonly>
                             <input type="text" name="orderType" value="product" hidden readonly>
@@ -102,7 +101,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <h5 class="card-title text-uppercase text-muted mb-0 mt-1">{{ $row['productName'] }}</h5>
+                                <h5 class="card-title text-uppercase text-black mb-0 mt-1">{{ $row['productName'] }}</h5>
                             </div>
                             <div class="row">
                                 <span class="h2 font-weight-bold mb-0">@currency($row->price),-</span>
@@ -140,7 +139,7 @@
                                             <h5 class="modal-title">{{ $row['productName'] }}</h5>
                                             <span class="h2 font-weight-bold mb-0">@currency($row->price),-</span>
                                             <span class="container">
-                                                <h4 class="text-gray pt-4">{{ $row['detail'] }}</h4>
+                                                <h4 class="text-black pt-4">{{ $row['detail'] }}</h4>
                                             </span>
                                         </div>
                                     </div>

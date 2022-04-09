@@ -29,7 +29,6 @@
                         @foreach($medicineInCart_data as $row)
                             <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden readonly>
                             <input type="number" name="medicineID" value="{{ $row->id }}" hidden readonly>
-                            <input type="number" name="productID" value="0" hidden readonly>
                             <input type="text" name="image" value="{{ $row->image }}" hidden readonly>
                             <input type="text" name="orderDetail" value="-" hidden readonly>
                             <input type="text" name="orderType" value="medicine" hidden readonly>
@@ -103,7 +102,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <h5 class="card-title text-uppercase text-muted mb-0 mt-1">{{ $row['medicineName'] }}</h5>
+                                <h5 class="card-title text-uppercase text-black mb-0 mt-1">{{ $row['medicineName'] }}</h5>
                             </div>
                             <div class="row">
                                 <span class="h2 font-weight-bold mb-0">@currency($row->medicinePrice),-</span>
@@ -141,7 +140,7 @@
                                             <h5 class="modal-title">{{ $row['medicineName'] }}</h5>
                                             <span class="h2 font-weight-bold mb-0">@currency($row->medicinePrice),-</span>
                                             <span class="container">
-                                                <h4 class="text-gray pt-4">{{ $row['medicineDetail'] }}</h4>
+                                                <h4 class="text-black pt-4">{{ $row['medicineDetail'] }}</h4>
                                             </span>
                                         </div>
                                     </div>
@@ -152,7 +151,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                                             </div>
-                                            <input class="form-control" min="1" value="1" placeholder="QTY" type="number" name="orderAmount" required autofocus>
+                                            <input class="form-control" placeholder="QTY" value="1" type="number" name="orderAmount" required autofocus>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Add To Cart</button>
