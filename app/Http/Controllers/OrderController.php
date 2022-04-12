@@ -12,7 +12,8 @@ class OrderController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('petShop')->only('orderHistory', 'show');
+//        $this->middleware('petShop')->only('show');
+//        $this->middleware('vetClinic')->only('orderHistory');
     }
     /**
      * Display a listing of the resource.
@@ -101,7 +102,9 @@ class OrderController extends Controller
             return view('petShop.modal.history', compact('show'));
         }
         elseif (Auth::user()->type == 'vetClinic') {
-            return view('vetClinic.modal.history', compact('showClinic'));
+            return view('vetClinic.modal.history', compact('showClinic'),[
+                "title" => "Order"
+            ]);
         }
     }
 
