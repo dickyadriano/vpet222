@@ -66,15 +66,15 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('customer') ? 'active' : '' }}" href="{{ route('customer.index') }}">
+                                <a class="nav-link {{ Request::is('customer', 'medicine') ? 'active' : '' }}" href="{{ route('customer.index') }}">
                                     <i class="fa fa-store text-primary"></i>
                                     <span class="nav-link-text">Marketplace</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('service') ? 'active' : '' }}" href="{{ route('service.index') }}">
+                                <a class="nav-link {{ Request::is('service', 'petCare', 'grooming') ? 'active' : '' }}" href="{{ route('service.index') }}">
                                     <i class="fa fa-heartbeat text-primary"></i>
-                                    <span class="nav-link-text">Veterinary Service</span>
+                                    <span class="nav-link-text">Services</span>
                                 </a>
                             </li>
                             <li class="nav-item">
