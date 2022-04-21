@@ -83,7 +83,8 @@
                         </nav>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
-                        <a href="{{ route('customer.index') }}" class="btn btn-sm btn-neutral">Pet Needs</a>
+                        <a href="{{ route('customer.index') }}" class="btn btn-sm btn-neutral" >Pet Needs</a>
+                        <a href="{{ route('medicine.index') }}" class="btn btn-sm btn-neutral {{ Request::is('medicine') ? 'active' : '' }}">Medicine</a>
                     </div>
                 </div>
             </div>

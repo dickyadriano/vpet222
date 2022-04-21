@@ -66,15 +66,15 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('customer') ? 'active' : '' }}" href="{{ route('customer.index') }}">
+                                <a class="nav-link {{ Request::is('customer', 'medicine') ? 'active' : '' }}" href="{{ route('customer.index') }}">
                                     <i class="fa fa-store text-primary"></i>
                                     <span class="nav-link-text">Marketplace</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('service') ? 'active' : '' }}" href="{{ route('service.index') }}">
+                                <a class="nav-link {{ Request::is('service', 'petCare', 'grooming') ? 'active' : '' }}" href="{{ route('service.index') }}">
                                     <i class="fa fa-heartbeat text-primary"></i>
-                                    <span class="nav-link-text">Veterinary Service</span>
+                                    <span class="nav-link-text">Services</span>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -122,13 +122,13 @@
                             </li>
                         @elseif(auth()->user()->type == 'vetClinic')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('medicine.index') }}">
+                                <a class="nav-link {{ ($title === 'Manage Medicine') ? 'active' : '' }}" href="{{ route('medicine.index') }}">
                                     <i class="fas fa-capsules text-primary"></i>
                                     <span class="nav-link-text">Manage Medicine</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link {{ ($title === 'Manage Vaccine') ? 'active' : '' }}" href="{{ route('vaccine.index') }}">
                                     <i class="fas fa-syringe text-primary"></i>
                                     <span class="nav-link-text">Manage Vaccine</span>
                                 </a>

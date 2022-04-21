@@ -11,13 +11,15 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/welcome"><i class="fas fa-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('service.index') }}">Services</a></li>
                                 <li class="breadcrumb-item"><a href="{{ route('petCare.index') }}">Animal Care</a></li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
-                        <a href="{{ route('service.index') }}" class="btn btn-sm btn-neutral">Veterinary</a>
-                        <a href="{{ route('grooming.index') }}" class="btn btn-sm btn-neutral">Grooming</a>
+                        <a href="{{ route('service.index') }}" class="btn btn-sm btn-neutral {{ Request::is('service') ? 'active' : '' }}">Veterinary</a>
+                        <a href="{{route('petCare.index')}}" class="btn btn-sm btn-neutral {{ Request::is('petCare') ? 'active' : '' }}">Animal Care</a>
+                        <a href="{{route('grooming.index')}}" class="btn btn-sm btn-neutral {{ Request::is('grooming') ? 'active' : '' }}">Grooming</a>
                     </div>
                 </div>
             </div>

@@ -13,7 +13,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/welcome"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('dashboard-petShop') }}">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('dashboard-vetClinic') }}">Dashboard</a></li>
                                 <li class="breadcrumb-item"><a href="{{ route('order.index') }}">Order Detail</a></li>
                             </ol>
                         </nav>
@@ -28,12 +28,12 @@
             @method('PUT')
 
             @php
-                $tableProduct = DB::table('products')->where('id', '=', $order->productID)->get();
+                $tableMedicine = DB::table('medicines')->where('id', '=', $order->medicineID)->get();
                 $tableUser = DB::table('users')->where('id', '=', $order->userID)->get();
 
-                $product = new \App\Models\Product();
-                foreach ($tableProduct as $data){
-                    $product = $data;
+                $medicine = new \App\Models\Product();
+                foreach ($tableMedicine as $data){
+                    $medicine = $data;
                 }
 
                 $user = new \App\Models\User();
@@ -43,14 +43,14 @@
             @endphp
             <div class="form-group row" >
                 <div class="col text-center">
-                    <img src="{{asset('img/productImage/'.$product->image)}}" class="rounded" style="width: 200px">
+                    <img src="{{asset('img/medicineImage/'.$medicine->image)}}" class="rounded" style="width: 200px">
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col">
-                    Product Name
+                    Medicine Name
                     <div class="input-group input-group-alternative">
-                        <input class="form-control text-blue" value="{{ $product->productName }}" required autofocus disabled>
+                        <input class="form-control text-blue" value="{{ $medicine->medicineName }}" required autofocus disabled>
                     </div>
                 </div>
                 <div class="col">

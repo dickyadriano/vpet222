@@ -12,7 +12,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/welcome"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('dashboard-petShop') }}">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('dashboard-vetClinic') }}">Dashboard</a></li>
                                 <li class="breadcrumb-item"><a href="{{ route('order.index') }}">Orders</a></li>
                             </ol>
                         </nav>
@@ -32,14 +32,14 @@
             <tr>
                 <th scope="col" class="sort" data-sort="id">Order ID</th>
                 <th scope="col" class="sort" data-sort="customer">Customer Username</th>
-                <th scope="col" class="sort" data-sort="customer">Product Name</th>
+                <th scope="col" class="sort" data-sort="customer">Medicine Name</th>
                 <th scope="col" class="sort" data-sort="amount">Order Amount</th>
                 <th scope="col" class="sort" data-sort="status">Status</th>
                 <th scope="col">Control</th>
             </tr>
             </thead>
             <tbody class="list">
-            @foreach($show as $row)
+            @foreach($showClinic as $row)
                 @php
                     $tableUser = DB::table('users')->where('id', '=', $row->userID)->get();
 
@@ -52,7 +52,7 @@
                     <tr>
                         <td>{{$row->id}}</td>
                         <td>{{$user->username}}</td>
-                        <td>{{$row->productName}}</td>
+                        <td>{{$row->medicineName}}</td>
                         <td>{{$row->orderAmount}}</td>
                         <td>
                             <span class="badge badge-pill {{ ($row->orderStatus === 'Completed') ? 'badge-success' : 'badge-warning' }}">{{ $row->orderStatus }}</span>
