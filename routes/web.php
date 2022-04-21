@@ -106,4 +106,5 @@ Route::resource('petCare', \App\Http\Controllers\PetCareController::class);
 Route::resource('product', \App\Http\Controllers\ProductController::class);
 Route::resource('service', \App\Http\Controllers\ServiceController::class);
 Route::resource('users', \App\Http\Controllers\UserController::class);
+Route::resource('vaccine', \App\Http\Controllers\VaccineController::class);
 Route::resource('vet', \App\Http\Controllers\VeterinaryController::class)->middleware('veterinary');
