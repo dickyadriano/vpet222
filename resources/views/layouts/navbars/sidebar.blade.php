@@ -78,13 +78,19 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{--{{ ($title === 'Location') ? 'active' : '' }}--}}" href="{{ route('customer-location') }}">
+                                <a class="nav-link {{ Request::is('vaccine') ? 'active' : '' }}" href="{{ route('vaccine.index') }}">
+                                    <i class="fa fa-syringe text-primary"></i>
+                                    <span class="nav-link-text">Vaccine</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('customer-location') }}">
                                     <i class="ni ni-square-pin text-primary"></i>
                                     <span class="nav-link-text">Location</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{--{{ ($title === 'Diagnosis of Diseases') ? 'active' : '' }}--}}" href="{{ route('customer-diagnosis') }}">
+                                <a class="nav-link" href="{{ route('customer-diagnosis') }}">
                                     <i class="fa fa-heartbeat text-primary"></i>
                                     <span class="nav-link-text">Diagnosis of Diseases</span>
                                 </a>

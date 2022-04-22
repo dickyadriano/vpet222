@@ -20,7 +20,7 @@ class CustomerController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('customer');
+//        $this->middleware('customer');
     }
 
     /**

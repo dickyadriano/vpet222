@@ -69,7 +69,7 @@ class UsersTableSeeder extends Seeder
                 'username' => 'aidilClv',
                 'email' => 'aidilClv@gmail.com',
                 'password' => Hash::make('aidilClv'),
-                'avatar' => 'default.png',
+                'avatar' => 'doctor.jpg',
                 'phoneNo' => '12121212122',
                 'address' => 'Jl. Alianyang No.5',
                 'type' => 'veterinary'
