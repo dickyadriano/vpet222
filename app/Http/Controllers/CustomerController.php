@@ -88,7 +88,7 @@ class CustomerController extends Controller
                 "title" => "customer-profile",
             ]);
         }else {
-            return redirect()->route('customer.dashboard')
+            return redirect()->route('customer.index')
                 ->with('error', 'Sorry, you cant access this page!');
         }
     }
