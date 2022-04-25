@@ -54,9 +54,9 @@
                             <form action="{{ route('order.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden readonly>
-                                <input type="number" name="serviceID" value="{{ $row->id }}" hidden readonly>
+                                <input type="number" name="vaccineID" value="{{ $row->id }}" hidden readonly>
                                 <input type="text" name="image" value="{{ $row->image }}" hidden readonly>
-                                <input type="text" name="orderType" value="service" hidden readonly>
+                                <input type="text" name="orderType" value="vaccine" hidden readonly>
                                 <input type="text" name="orderStatus" value="Wait for Payment" hidden readonly>
                                 <input type="text" name="orderDetail" value="Wait for Payment" hidden readonly>
                                 <input type="number" name="orderAmount" value="1" hidden readonly>

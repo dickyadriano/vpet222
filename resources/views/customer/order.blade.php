@@ -67,6 +67,46 @@
                         </div>
                     </div>
                 @endforeach
+                {{--VACCINE--}}
+                @foreach($vaccine_data as $row)
+                    @php
+                        $tableOrder = DB::table('orders')
+                            ->join('vaccines', 'orders.vaccineID', '=', 'vaccines.id')
+                            ->join('users', 'vaccines.userID', '=', 'users.id')
+                            ->where('orders.vaccineID', '=', $row->vaccineID)->get();
+
+                        $order = new \App\Models\Order();
+                        foreach ($tableOrder as $data){
+                            $order = $data;
+                        }
+                    @endphp
+                    <div class="col-xl-4 col-lg-4 mb-3">
+                        <div class="card card-stats mb-4 mb-xl-0">
+                            <div class="card-body">
+                                <div class="row text-uppercase mb-2">
+                                    <strong>{{ $row->orderType }}</strong>
+                                </div>
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <img class="img-center userImg150" src="{{ asset('img/vaccineImages/'. $row->image) }}">
+                                    </div>
+                                    <div class="col">
+                                        <h5 class="card-title h2 mb-0">{{ $order->vaccineName }}</h5>
+                                        <span class="h2 font-weight-bold mb-0">@currency($row->totalPrice),-</span>
+                                    </div>
+                                    <div class="col-auto">
+                                        <h5 class="card-title text-uppercase text-muted mb-0">Status</h5>
+                                        <span class="badge badge-pill {{ ($row->orderStatus === 'Delivered') ? 'badge-success' : 'badge-warning' }} badge-lg">{{ $row->orderStatus }}</span>
+                                    </div>
+                                </div>
+                                <p class="mt-3 mb-0 text-muted text-sm">
+                                    <span class="text-nowrap mr-2">From: <strong class="text-primary">{{ $order->name }}</strong> </span>
+                                    <span class="text-nowrap"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
                 {{-- PRODUCTS --}}
                 @foreach($product_data as $row)
                     @php

@@ -52,6 +52,13 @@
                                     <span class="nav-link-text">{{ __('Dashboard') }}</span>
                                 </a>
                             </li>
+                        @elseif(auth()->user()->type == 'customer')
+                            <li class="nav-item">
+                                <a class="nav-link" href="http://127.0.0.1:8000/welcome">
+                                    <i class="fas fa-home text-primary"></i>
+                                    <span class="nav-link-text">{{ __('Home') }}</span>
+                                </a>
+                            </li>
                         @endif
                     </ul>
                     <!-- Divider -->
@@ -59,12 +66,6 @@
                     <!-- Navigation -->
                     <ul class="navbar-nav mb-md-3">
                         @if(auth()->user()->type == 'customer')
-                            <li class="nav-item">
-                                <a class="nav-link" href="http://127.0.0.1:8000/welcome">
-                                    <i class="fas fa-home text-primary"></i>
-                                    <span class="nav-link-text">{{ __('Home') }}</span>
-                                </a>
-                            </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ Request::is('customer', 'medicine') ? 'active' : '' }}" href="{{ route('customer.index') }}">
                                     <i class="fa fa-store text-primary"></i>

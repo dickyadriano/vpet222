@@ -67,11 +67,17 @@ class OrderController extends Controller
             ->where('orders.userID','=',Auth::user()->id)
             ->select('orders.*', 'groomings.*')->get();
 
+        $vaccine_data = DB::table('orders')
+            ->join('vaccines', 'orders.vaccineID', '=', 'vaccines.id')
+            ->join('users', 'orders.userID', '=', 'users.id')
+            ->where('orders.userID','=',Auth::user()->id)
+            ->select('orders.*', 'vaccines.*')->get();
+
         if (Auth::user()->type == 'petShop'){
             return view('petShop.order', compact('show'));
         }
         elseif (Auth::user()->type == 'customer'){
-            return view('customer.order', compact('service_data','grooming_data','petCare_data','product_data', 'medicine_data'));
+            return view('customer.order', compact('vaccine_data','service_data','grooming_data','petCare_data','product_data', 'medicine_data'));
         }
         elseif (Auth::user()->type == 'vetClinic'){
             return view('vetClinic.order', compact('showClinic'),[
@@ -162,6 +168,12 @@ class OrderController extends Controller
                     'orderDetail' => $request->orderDetail]);
                 $data->save();
             }
+        }
+        elseif ($request['orderType'] === 'vaccine'){
+            Order::create($request->all());
+        }
+        elseif ($request['orderType'] === 'service'){
+            Order::create($request->all());
         }
 
         return redirect()->route('order.index');

@@ -16,6 +16,7 @@ class Order extends Model
         'serviceID',
         'groomingID',
         'petCareID',
+        'vaccineID',
         'orderType',
         'orderAmount',
         'totalPrice',

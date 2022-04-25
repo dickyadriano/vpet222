@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
             $table->integer('serviceID')->default('0');
             $table->integer('groomingID')->default('0');
             $table->integer('petCareID')->default('0');
+            $table->integer('vaccineID')->default('0');
             $table->string("orderType");
             $table->string("orderAmount");
             $table->integer("totalPrice");
