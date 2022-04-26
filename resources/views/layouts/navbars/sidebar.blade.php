@@ -173,25 +173,25 @@
                             </li>
                         @elseif(auth()->user()->type == 'admin')
                             <li class="nav-item">
-                                <a class="nav-link " href="{{route('admin.index')}}">
+                                <a class="nav-link {{ Request::is('admin') ? 'active' : '' }}" href="{{route('admin.index')}}">
                                     <i class="ni ni-books text-primary"></i>
                                     <span class="nav-link-text">Manage Information</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="{{ route('users.index') }}">
+                                <a class="nav-link {{ Request::is('users') ? 'active' : '' }}" href="{{ route('users.index') }}">
                                     <i class="ni ni-badge text-primary"></i>
                                     <span class="nav-link-text">Manage User</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="#">
+                                <a class="nav-link {{ Request::is('order') ? 'active' : '' }}" href="{{ route('order.index') }}">
                                     <i class="ni ni-money-coins text-primary"></i>
                                     <span class="nav-link-text">Payment</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="{{ route('service.index') }}">
+                                <a class="nav-link {{ Request::is('service') ? 'active' : '' }}" href="{{ route('service.index') }}">
                                     <i class="ni ni-single-copy-04 text-primary"></i>
                                     <span class="nav-link-text">Vet Verification</span>
                                 </a>

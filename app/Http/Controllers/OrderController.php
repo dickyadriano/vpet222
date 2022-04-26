@@ -74,6 +74,10 @@ class OrderController extends Controller
             ->where('orders.userID','=',Auth::user()->id)
             ->select('orders.*', 'vaccines.*')->get();
 
+        $payment_data = DB::table('orders')
+            ->join('users', 'orders.userID', '=', 'users.id')
+            ->select('users.*', 'orders.*')->get();
+
         if (Auth::user()->type == 'petShop'){
             return view('petShop.order', compact('show'));
         }
@@ -83,6 +87,11 @@ class OrderController extends Controller
         elseif (Auth::user()->type == 'vetClinic'){
             return view('vetClinic.order', compact('showClinic'),[
                 "title" => "Order"
+            ]);
+        }
+        elseif (Auth::user()->type == 'admin'){
+            return view('admin.payment', compact('payment_data'),[
+                "title" => "Payment"
             ]);
         }
         else{
@@ -245,7 +254,20 @@ class OrderController extends Controller
 //        return redirect()->route('service.index');
     }
 
+    public function updateStatus(Request $request)
+    {
+        $orderStatus = $request->orderStatus;
+        $id = $request->id;
 
+        $update = [
+            'id' => $id,
+            'orderStatus' => $orderStatus
+        ];
+
+        Order::where('id', $request->id)->update($update);
+
+        return redirect()->route('order.index');
+    }
 
     /**
      * Remove the specified resource from storage.
