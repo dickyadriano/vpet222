@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Medicine;
 use App\Models\Order;
+use App\Models\Vaccine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -170,7 +171,15 @@ class OrderController extends Controller
             }
         }
         elseif ($request['orderType'] === 'vaccine'){
-            Order::create($request->all());
+            $this->validate($request, ['receiptImage' => 'required|mimes:jpeg,png,jpg,gif,svg']);
+
+            $order = Order::create($request->all());
+
+            if ($request->hasFile('receiptImage')){
+                $request->file('receiptImage')->move('img/orderImages/', $request->file('receiptImage')->getClientOriginalName());
+                $order->receiptImage = $request->file('receiptImage')->getClientOriginalName();
+                $order->save();
+            }
         }
         elseif ($request['orderType'] === 'service'){
             Order::create($request->all());

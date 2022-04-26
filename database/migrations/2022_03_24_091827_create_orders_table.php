@@ -27,6 +27,7 @@ class CreateOrdersTable extends Migration
             $table->integer("totalPrice");
             $table->longText("orderDetail");
             $table->string('orderStatus');
+            $table->string('receiptImage');
         });
     }
 

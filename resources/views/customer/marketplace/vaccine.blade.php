@@ -55,28 +55,25 @@
                                 @csrf
                                 <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden readonly>
                                 <input type="number" name="vaccineID" value="{{ $row->id }}" hidden readonly>
-                                <input type="text" name="image" value="{{ $row->image }}" hidden readonly>
                                 <input type="text" name="orderType" value="vaccine" hidden readonly>
-                                <input type="text" name="orderStatus" value="Wait for Payment" hidden readonly>
-                                <input type="text" name="orderDetail" value="Wait for Payment" hidden readonly>
+                                <input type="text" name="orderStatus" value="Pending" hidden readonly>
                                 <input type="number" name="orderAmount" value="1" hidden readonly>
                                 <input type="number" name="totalPrice" value="{{ $row->vaccinePrice }}" hidden readonly>
 
                                 <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col">
-                                            <img class="img-center img-thumbnail" src="{{ asset('img/vaccineImages/'. $row->image) }}" style="width: 200px; height: 200px">
-                                        </div>
-                                        <div class="col">
-                                            <h5 class="modal-title">{{ $row->vaccineName }}</h5>
-                                            <span class="h2 font-weight-bold mb-0">@currency($row->vaccinePrice),-</span>
-                                            <span class="container">
-                                            <h4 class="text-black pt-4">{{ $row->vaccineDetail }}</h4>
-                                        </span>
-                                        </div>
-                                    </div>
+                                    <img class="img-center img-thumbnail" src="{{ asset('img/vaccineImages/'. $row->image) }}" style="width: auto; height: auto">
+                                    <h1 class="mb-0 bold">{{ $row->vaccineName }}</h1>
+                                    <h2 class="text-green">@currency($row->vaccinePrice),-</h2>
+                                    <h4 class="text-black text-justify mt-3" style="text-indent: 30px">{{ $row->vaccineDetail }}</h4>
+                                    <hr class="my-3" style="border-top: dotted 1px;" />
+                                    <h2 class="mb-0 mt-0 bold">Pay First to Order</h2>
+                                    <h3 class="mb-0 mt-2 bold text-primary">Attach payment receipt here</h3>
+                                    <input type="file" id="receiptImage" name="receiptImage" class="form-control @error('receiptImage') is-invalid @enderror" required>
+                                    <h3 class="mb-0 mt-2 bold text-primary">Order Detail</h3>
+                                    <textarea class="form-control" rows="5" type="text" name="orderDetail" required autofocus>{{ old('orderDetail') }}</textarea>
+
                                 </div>
-                                <div class="modal-footer">
+                                <div class="modal-footer" style="justify-content: center">
                                     <button type="submit" class="btn btn-primary">Order</button>
                                 </div>
                             </form>

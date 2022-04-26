@@ -22,6 +22,7 @@ class Order extends Model
         'totalPrice',
         'orderDetail',
         'orderStatus',
+        'receiptImage',
     ];
     protected $table = 'orders';
     protected $hidden = ['id'];
