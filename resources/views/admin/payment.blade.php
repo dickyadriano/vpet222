@@ -32,17 +32,54 @@
             ?>
             <tr>
                 <th scope="col" class="sort" data-sort="<?php $data_sort; ?>">Customer Name</th>
+                <th scope="col" class="sort" data-sort="<?php $data_sort; ?>">Seller</th>
                 <th scope="col" class="sort" data-sort="name">Total Price</th>
                 <th scope="col">Payment Receipt</th>
                 <th scope="col" class="sort" data-sort="name">Verification Status</th>
                 <th scope="col">Control</th>
+
             </tr>
             </thead>
             <tbody class="list">
             @foreach($payment_data as $row)
-                <?php $count = $row->id; ?>
+                <?php
+                    $count = $row->id;
+
+                    if ($row->productID != 0){
+                        $payment = DB::table('products')
+                            ->join('users', 'products.userID', '=', 'users.id')
+                            ->where('products.id', '=', $row->productID)->first();
+                    }
+                    if ($row->medicineID != 0){
+                        $payment = DB::table('medicines')
+                            ->join('users', 'medicines.userID', '=', 'users.id')
+                            ->where('medicines.id', '=', $row->medicineID)->first();
+                    }
+                    if ($row->serviceID != 0){
+                        $payment = DB::table('services')
+                            ->join('users', 'services.userID', '=', 'users.id')
+                            ->where('services.id', '=', $row->serviceID)->first();
+                    }
+                    if ($row->groomingID != 0){
+                        $payment = DB::table('groomings')
+                            ->join('users', 'groomings.userID', '=', 'users.id')
+                            ->where('groomings.id', '=', $row->groomingID)->first();
+                    }
+                    if ($row->petCareID != 0){
+                        $payment = DB::table('pet_cares')
+                            ->join('users', 'pet_cares.userID', '=', 'users.id')
+                            ->where('pet_cares.id', '=', $row->petCareID)->first();
+                    }
+                    if ($row->vaccineID != 0){
+                        $payment = DB::table('vaccines')
+                            ->join('users', 'vaccines.userID', '=', 'users.id')
+                            ->where('vaccines.id', '=', $row->vaccineID)->first();
+                    }
+
+                ?>
                 <tr>
                     <td>{{ $row->name }}</td>
+                    <td>{{ $payment->name }}</td>
                     <td>@currency($row->totalPrice),-</td>
                     <td>
                         <a class="cursor-pointer" data-toggle="modal" data-target="#modalPaymentReceipt<?php echo $count; ?>">
@@ -67,6 +104,7 @@
                             </form>
                         </div>
                     </td>
+
                 </tr>
                 <!-- Modal -->
                 <div class="modal fade bd-example-modal-lg" id="modalPaymentReceipt<?php echo $count; ?>" tabindex="-1" role="dialog" aria-labelledby="modalPaymentReceipt" aria-hidden="true">
