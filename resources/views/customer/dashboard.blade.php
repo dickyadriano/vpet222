@@ -77,7 +77,7 @@
                     <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden readonly>
                     <input type="number" name="productID" value="{{ $cart->id }}" hidden readonly>
                     <input type="text" name="orderType" value="product" hidden readonly>
-                    <input type="text" name="orderStatus" value="Wait for Payment" hidden readonly>
+                    <input type="text" name="orderStatus" value="Pending" hidden readonly>
                     <input type="number" name="orderAmount" value="{{ $cart->orderAmount }}" hidden readonly>
                     <input type="number" name="totalPrice" value="{{ ($cart->orderAmount * $cart->price) }}" hidden readonly>
 
