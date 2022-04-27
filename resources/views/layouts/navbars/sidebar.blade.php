@@ -91,7 +91,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('customer-diagnosis') }}">
+                                <a class="nav-link {{ Request::is('diagnosis') ? 'active' : '' }}" href="{{ route('diagnosis.index') }}">
                                     <i class="fa fa-heartbeat text-primary"></i>
                                     <span class="nav-link-text">Diagnosis of Diseases</span>
                                 </a>

@@ -12,7 +12,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/welcome"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('customer-order') }}">Order</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('order.index') }}">Order</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -59,10 +59,11 @@
                                         <span class="badge badge-pill {{ ($row->orderStatus === 'Delivered') ? 'badge-success' : 'badge-warning' }} badge-lg">{{ $row->orderStatus }}</span>
                                     </div>
                                 </div>
-                                <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap mr-2"></span>
-                                    <span class="text-nowrap"></span>
-                                </p>
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <button type="submit" class="btn btn-twitter ">Consultation</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -93,3 +93,8 @@
 .max-image{
     max-width: 750px;
 }
+
+td {
+    white-space: normal !important;
+    word-wrap: break-word;
+}

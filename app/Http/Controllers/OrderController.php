@@ -155,6 +155,12 @@ class OrderController extends Controller
             ->where('carts.orderType', '=', 'medicine')
             ->select('medicines.*', 'carts.*')->get();
 
+        $service_data = DB::table('orders')
+            ->join('users', 'orders.userID', '=', 'users.id')
+            ->join('services', 'orders.serviceID', '=', 'services.id')
+            ->select(['orders.*', 'services.*'])
+            ->get();
+
         if ($request['orderType'] === 'product'){
             foreach ($productInCart_data as $data){
                 $data = Order::create(['userID' => $data->userID,

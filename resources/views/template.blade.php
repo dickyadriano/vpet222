@@ -55,15 +55,17 @@
 <script src="{{asset('argon/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
 <script src="{{asset('argon/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('argon/assets/vendor/js-cookie/js.cookie.js')}}"></script>
+<script src="{{asset('argon/assets/vendor/moment/min/moment.min.js')}}"></script>
+<script src="{{asset('argon/assets/vendor/sweetalert2/dist/sweetalert2.min.js')}}"></script>
+<script src="{{asset('argon/assets/vendor/fullcalendar/dist/fullcalendar.min.js')}}"></script>
 <script src="{{asset('argon/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js')}}"></script>
 <script src="{{asset('argon/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js')}}"></script>
 <!-- Optional JS -->
-{{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDc8AhtzX7FckbDu9H9-ot1pBgPR3tq_L0"></script>--}}
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDc8AhtzX7FckbDu9H9-ot1pBgPR3tq_L0&callback=initMap&libraries=&v=weekly" defer></script>
 <!-- Argon JS -->
 <script src="{{asset('argon/assets/js/argon.js?v=1.2.0')}}"></script>
 <!-- MapBox -->
-{{--<script src='{{asset('js/vpet.js')}}'></script>--}}
+<script type="text/javascript" src='{{asset('js/vpet.js')}}'></script>
 
 <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
 
