@@ -59,11 +59,13 @@ Route::get('/searchMedicine', [App\Http\Controllers\MedicineController::class, '
 Route::get('/searchService', [App\Http\Controllers\ServiceController::class, 'search'])->name('searchService');
 Route::get('/searchPetCare', [App\Http\Controllers\PetCareController::class, 'search'])->name('searchPetCare');
 Route::get('/searchGrooming', [App\Http\Controllers\GroomingController::class, 'search'])->name('searchGrooming');
+Route::get('/searchVaccine', [App\Http\Controllers\VaccineController::class, 'search'])->name('searchVaccine');
 
 Route::get('/admin/manageUser', [App\Http\Controllers\AdminController::class, 'showUser'])->name('admin-user');
 Route::post('/admin/manageInformation', [App\Http\Controllers\AdminController::class, 'updateInformation'])->name('admin-update-information');
 Route::post('/admin/delete', [App\Http\Controllers\AdminController::class, 'destroy'])->name('information-destroy');
 Route::post('/admin/statusUpdate', [App\Http\Controllers\ServiceController::class, 'updateStatus'])->name('update-statusVet');
+Route::post('/admin/orderStatusUpdate', [App\Http\Controllers\OrderController::class, 'updateStatus'])->name('update-statusOrder');
 Route::get('/admin/verifyVet', [App\Http\Controllers\AdminController::class, 'showVet'])->name('verify-vet');
 
 //update profile

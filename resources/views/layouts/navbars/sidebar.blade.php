@@ -52,6 +52,13 @@
                                     <span class="nav-link-text">{{ __('Dashboard') }}</span>
                                 </a>
                             </li>
+                        @elseif(auth()->user()->type == 'customer')
+                            <li class="nav-item">
+                                <a class="nav-link" href="http://127.0.0.1:8000/welcome">
+                                    <i class="fas fa-home text-primary"></i>
+                                    <span class="nav-link-text">{{ __('Home') }}</span>
+                                </a>
+                            </li>
                         @endif
                     </ul>
                     <!-- Divider -->
@@ -59,12 +66,6 @@
                     <!-- Navigation -->
                     <ul class="navbar-nav mb-md-3">
                         @if(auth()->user()->type == 'customer')
-                            <li class="nav-item">
-                                <a class="nav-link" href="http://127.0.0.1:8000/welcome">
-                                    <i class="fas fa-home text-primary"></i>
-                                    <span class="nav-link-text">{{ __('Home') }}</span>
-                                </a>
-                            </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ Request::is('customer', 'medicine') ? 'active' : '' }}" href="{{ route('customer.index') }}">
                                     <i class="fa fa-store text-primary"></i>
@@ -78,7 +79,13 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{--{{ ($title === 'Location') ? 'active' : '' }}--}}" href="{{ route('customer-location') }}">
+                                <a class="nav-link {{ Request::is('vaccine') ? 'active' : '' }}" href="{{ route('vaccine.index') }}">
+                                    <i class="fa fa-syringe text-primary"></i>
+                                    <span class="nav-link-text">Vaccine</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('customer-location') }}">
                                     <i class="ni ni-square-pin text-primary"></i>
                                     <span class="nav-link-text">Location</span>
                                 </a>
@@ -166,25 +173,25 @@
                             </li>
                         @elseif(auth()->user()->type == 'admin')
                             <li class="nav-item">
-                                <a class="nav-link " href="{{route('admin.index')}}">
+                                <a class="nav-link {{ Request::is('admin') ? 'active' : '' }}" href="{{route('admin.index')}}">
                                     <i class="ni ni-books text-primary"></i>
                                     <span class="nav-link-text">Manage Information</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="{{ route('users.index') }}">
+                                <a class="nav-link {{ Request::is('users') ? 'active' : '' }}" href="{{ route('users.index') }}">
                                     <i class="ni ni-badge text-primary"></i>
                                     <span class="nav-link-text">Manage User</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="#">
+                                <a class="nav-link {{ Request::is('order') ? 'active' : '' }}" href="{{ route('order.index') }}">
                                     <i class="ni ni-money-coins text-primary"></i>
                                     <span class="nav-link-text">Payment</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="{{ route('service.index') }}">
+                                <a class="nav-link {{ Request::is('service') ? 'active' : '' }}" href="{{ route('service.index') }}">
                                     <i class="ni ni-single-copy-04 text-primary"></i>
                                     <span class="nav-link-text">Vet Verification</span>
                                 </a>

@@ -16,11 +16,13 @@ class Order extends Model
         'serviceID',
         'groomingID',
         'petCareID',
+        'vaccineID',
         'orderType',
         'orderAmount',
         'totalPrice',
         'orderDetail',
         'orderStatus',
+        'receiptImage',
     ];
     protected $table = 'orders';
     protected $hidden = ['id'];
