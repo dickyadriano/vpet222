@@ -114,6 +114,10 @@ class OrderController extends Controller
             ->select('orders.*', 'medicines.medicineName')
             ->get();
 
+        $payment_data = DB::table('orders')
+            ->join('users', 'orders.userID', '=', 'users.id')
+            ->select('users.*', 'orders.*')->get();
+
         if (Auth::user()->type == 'petShop') {
             return view('petShop.modal.history', compact('show'));
         }
@@ -121,6 +125,9 @@ class OrderController extends Controller
             return view('vetClinic.modal.history', compact('showClinic'),[
                 "title" => "Order"
             ]);
+        }
+        elseif (Auth::user()->type == 'admin') {
+            return view('admin.modal.history', compact('payment_data'));
         }
     }
 

@@ -12,15 +12,15 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="{{ route('dashboard-admin') }}">Dashboard</a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('order.index') }}">Payment Verification</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('orderHistory') }}">Payment History</a></li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
-                        <a href="{{ route('order.index') }}" class="btn btn-sm btn-neutral active">
+                        <a href="{{ route('order.index') }}" class="btn btn-sm btn-neutral">
                             Payment Verification
                         </a>
-                        <a href="{{ route('orderHistory') }}" class="btn btn-sm btn-neutral">
+                        <a href="{{ route('orderHistory') }}" class="btn btn-sm btn-neutral active">
                             Payment History
                         </a>
                     </div>
@@ -32,11 +32,11 @@
         <table class="table align-items-center">
             <thead class="thead-light">
             <?php
-                $data_sort = null;
+            $data_sort = null;
 
-                foreach ($payment_data as $data){
-                    $data_sort = $data;
-                }
+            foreach ($payment_data as $data){
+                $data_sort = $data;
+            }
             ?>
             <tr>
                 <th scope="col" class="sort" data-sort="<?php $data_sort; ?>">Customer Name</th>
@@ -52,40 +52,41 @@
             <tbody class="list">
             @foreach($payment_data as $row)
                 <?php
-                    $count = $row->id;
+                $count = $row->id;
 
-                    if ($row->productID != 0){
-                        $payment = DB::table('products')
-                            ->join('users', 'products.userID', '=', 'users.id')
-                            ->where('products.id', '=', $row->productID)->first();
-                    }
-                    if ($row->medicineID != 0){
-                        $payment = DB::table('medicines')
-                            ->join('users', 'medicines.userID', '=', 'users.id')
-                            ->where('medicines.id', '=', $row->medicineID)->first();
-                    }
-                    if ($row->serviceID != 0){
-                        $payment = DB::table('services')
-                            ->join('users', 'services.userID', '=', 'users.id')
-                            ->where('services.id', '=', $row->serviceID)->first();
-                    }
-                    if ($row->groomingID != 0){
-                        $payment = DB::table('groomings')
-                            ->join('users', 'groomings.userID', '=', 'users.id')
-                            ->where('groomings.id', '=', $row->groomingID)->first();
-                    }
-                    if ($row->petCareID != 0){
-                        $payment = DB::table('pet_cares')
-                            ->join('users', 'pet_cares.userID', '=', 'users.id')
-                            ->where('pet_cares.id', '=', $row->petCareID)->first();
-                    }
-                    if ($row->vaccineID != 0){
-                        $payment = DB::table('vaccines')
-                            ->join('users', 'vaccines.userID', '=', 'users.id')
-                            ->where('vaccines.id', '=', $row->vaccineID)->first();
-                    }
+                if ($row->productID != 0){
+                    $payment = DB::table('products')
+                        ->join('users', 'products.userID', '=', 'users.id')
+                        ->where('products.id', '=', $row->productID)->first();
+                }
+                if ($row->medicineID != 0){
+                    $payment = DB::table('medicines')
+                        ->join('users', 'medicines.userID', '=', 'users.id')
+                        ->where('medicines.id', '=', $row->medicineID)->first();
+                }
+                if ($row->serviceID != 0){
+                    $payment = DB::table('services')
+                        ->join('users', 'services.userID', '=', 'users.id')
+                        ->where('services.id', '=', $row->serviceID)->first();
+                }
+                if ($row->groomingID != 0){
+                    $payment = DB::table('groomings')
+                        ->join('users', 'groomings.userID', '=', 'users.id')
+                        ->where('groomings.id', '=', $row->groomingID)->first();
+                }
+                if ($row->petCareID != 0){
+                    $payment = DB::table('pet_cares')
+                        ->join('users', 'pet_cares.userID', '=', 'users.id')
+                        ->where('pet_cares.id', '=', $row->petCareID)->first();
+                }
+                if ($row->vaccineID != 0){
+                    $payment = DB::table('vaccines')
+                        ->join('users', 'vaccines.userID', '=', 'users.id')
+                        ->where('vaccines.id', '=', $row->vaccineID)->first();
+                }
+
                 ?>
-                @if($row->orderStatus == 'Pending')
+                @if($row->orderStatus != 'Pending')
                     <tr>
                         <td>{{ $row->name }}</td>
                         <td>{{ $payment->name }}</td>
@@ -114,6 +115,7 @@
                                 </form>
                             </div>
                         </td>
+
                     </tr>
                 @endif
                 <!-- Modal -->
