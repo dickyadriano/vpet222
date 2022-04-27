@@ -22,8 +22,6 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
-
                 <div class="modal-body">
                     @foreach($medicineInCart_data as $row)
                         <div class="card">

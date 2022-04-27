@@ -169,6 +169,13 @@ class OrderController extends Controller
             ->get();
 
         if ($request['orderType'] === 'product'){
+            $this->validate($request, ['receiptImage' => 'required|mimes:jpeg,png,jpg,gif,svg']);
+
+            $order = '';
+            if ($request->hasFile('receiptImage')){
+                $request->file('receiptImage')->move('img/orderImages/', $request->file('receiptImage')->getClientOriginalName());
+                $order = $request->file('receiptImage')->getClientOriginalName();
+            }
             foreach ($productInCart_data as $data){
                 $data = Order::create(['userID' => $data->userID,
                     'productID' => $data->productID,
@@ -176,8 +183,8 @@ class OrderController extends Controller
                     'orderType' => $data->orderType,
                     'orderAmount' => $data->orderAmount,
                     'totalPrice' => $request->totalPrice,
+                    'receiptImage' => $order,
                     'orderDetail' => $request->orderDetail]);
-                $data->save();
             }
         }
         elseif ($request['orderType'] === 'medicine'){
