@@ -12,8 +12,7 @@ class OrderController extends Controller
 {
     public function __construct()
     {
-//        $this->middleware('petShop')->only('show');
-//        $this->middleware('vetClinic')->only('orderHistory');
+        $this->middleware('petShop')->only('orderHistory', 'show');
     }
     /**
      * Display a listing of the resource.
@@ -28,12 +27,6 @@ class OrderController extends Controller
             ->join('products', 'orders.productID', '=', 'products.id')
             ->join('users', 'products.userID', '=', 'users.id')
             ->select('orders.*', 'products.productName')
-            ->get();
-
-        $showClinic = DB::table('orders')
-            ->join('medicines', 'orders.medicineID', '=', 'medicines.id')
-            ->join('users', 'medicines.userID', '=', 'users.id')
-            ->select('orders.*', 'medicines.medicineName')
             ->get();
 
         $service_data = DB::table('orders')
@@ -73,11 +66,6 @@ class OrderController extends Controller
         elseif (Auth::user()->type == 'customer'){
             return view('customer.order', compact('service_data','grooming_data','petCare_data','product_data', 'medicine_data'));
         }
-        elseif (Auth::user()->type == 'vetClinic'){
-            return view('vetClinic.order', compact('showClinic'),[
-                "title" => "Order"
-            ]);
-        }
         else{
             return redirect()->back();
         }
@@ -92,20 +80,7 @@ class OrderController extends Controller
             ->select('orders.*', 'products.productName')
             ->get();
 
-        $showClinic = DB::table('orders')
-            ->join('medicines', 'orders.medicineID', '=', 'medicines.id')
-            ->join('users', 'medicines.userID', '=', 'users.id')
-            ->select('orders.*', 'medicines.medicineName')
-            ->get();
-
-        if (Auth::user()->type == 'petShop') {
-            return view('petShop.modal.history', compact('show'));
-        }
-        elseif (Auth::user()->type == 'vetClinic') {
-            return view('vetClinic.modal.history', compact('showClinic'),[
-                "title" => "Order"
-            ]);
-        }
+        return view('petShop.modal.history', compact('show'));
     }
 
     /**
@@ -185,16 +160,9 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        if (Auth::user()->type == 'petShop') {
-            return view('petShop.modal.orderInfo', compact('order'),[
-                "title" => "Shop Order"
-            ]);
-        }
-        elseif (Auth::user()->type == 'vetClinic') {
-            return view('vetClinic.modal.orderInfo', compact('order'),[
-                "title" => "Order"
-            ]);
-        }
+        return view('petShop.modal.orderInfo', compact('order'),[
+            "title" => "Shop Order"
+        ]);
     }
 
     /**

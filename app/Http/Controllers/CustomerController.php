@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Message;
 use App\Models\Cart;
 use App\Models\Medicine;
 use App\Models\Product;
@@ -30,6 +31,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
+//        Message::dispatch('lorem ipsum dolor sit amet');
         $data_product = Product::all();
         $data_cart = Cart::all();
         $userId = Auth::user()->id;

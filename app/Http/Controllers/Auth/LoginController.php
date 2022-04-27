@@ -64,7 +64,7 @@ class LoginController extends Controller
                 return redirect()->route('dashboard-admin');
             }
             elseif(auth()->user()->type == 'customer'){
-                return redirect()->route('welcome');
+                return redirect()->route('home.index');
             }
             elseif(auth()->user()->type == 'petShop'){
                 return redirect()->route('dashboard-petShop');

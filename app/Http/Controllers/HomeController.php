@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Message;
 use App\Models\Medicine;
 use App\Models\Product;
 use App\Models\Service;
@@ -26,6 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+//        Message::dispatch('lorem ipsum dolor sit amet');
         return view('welcome', [
             "title" => "Welcome "
         ]);

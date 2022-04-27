@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{asset('css/vpet.css')}}" type="text/css">
     <!-- Page plugins -->
     <!-- Argon CSS -->
-    <link rel="stylesheet" href="{{asset('css/assets/css/argon.css?v=1.2.0')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('argon/assets/css/argon.css?v=1.2.0')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/argonv2.css?v=1.2.1')}}" type="text/css">
     <!-- MapBox -->
     @livewireStyles
@@ -60,8 +60,6 @@
 <script src="{{asset('argon/assets/vendor/fullcalendar/dist/fullcalendar.min.js')}}"></script>
 <script src="{{asset('argon/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js')}}"></script>
 <script src="{{asset('argon/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js')}}"></script>
-<!-- Optional JS -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDc8AhtzX7FckbDu9H9-ot1pBgPR3tq_L0&callback=initMap&libraries=&v=weekly" defer></script>
 <!-- Argon JS -->
 <script src="{{asset('argon/assets/js/argon.js?v=1.2.0')}}"></script>
 <!-- MapBox -->
@@ -77,8 +75,37 @@
 @endif
 
 @livewireScripts
-
 @stack('scripts')
+<script src="/js/app.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    var receiver_id = '';
+    var my_id = "{{ \Illuminate\Support\Facades\Auth::id() }}";
+    $(document).ready(function () {
+        $('.user_info').click(function (){
+            $('.user_info').removeClass('active');
+            $(this).addClass('active');
+
+            receiver_id = $(this).attr('id');
+            {{--var url = "{{ route('message', ":id") }}";--}}
+            {{--url = url.replace(':id', 'receiver_id');--}}
+            $.ajax({
+                type: "get",
+                url: 'message/' + receiver_id,
+                data: "",
+                cache: false,
+                success: function (data) {
+                    alert(data);
+                },
+                error: function(data){
+                    console.log(data)
+                    alert(data);
+                }
+            })
+        })
+    })
+</script>
 </body>
 
 </html>
