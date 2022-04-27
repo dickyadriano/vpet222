@@ -1,25 +1,5 @@
 <?php
 
-use App\Events\Message;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\ChatController;
-use App\Http\Controllers\ConsultationController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\DiagnosisController;
-use App\Http\Controllers\GroomingController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\InformationController;
-use App\Http\Controllers\MedicineController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PetCareController;
-use App\Http\Controllers\PetShopController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\VetClinicController;
-use App\Http\Controllers\VeterinaryController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\MapLocation;
 
@@ -48,49 +28,51 @@ Route::get('customer/consultation', [ConsultationController::class, 'index'])->n
 
 Route::get('message/{id}', [ConsultationController::class, 'getMessage'])->name('message');
 
+//Route::get('/welcome', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
+
 //login
-Route::get('admin/dashboard', [HomeController::class, 'handleAdmin'])->name('dashboard-admin')->middleware('admin');
-Route::get('customer/dashboard', [HomeController::class, 'handleCustomer'])->name('dashboard-customer')->middleware('customer');
-Route::get('petShop/dashboard', [HomeController::class, 'handlePetShop'])->name('dashboard-petShop')->middleware('petShop');
-Route::get('vetClinic/dashboard', [HomeController::class, 'handleVetClinic'])->name('dashboard-vetClinic')->middleware('vetClinic');
-Route::get('veterinary/dashboard', [HomeController::class, 'handleVeterinary'])->name('dashboard-veterinary');
+Route::get('admin/dashboard', [App\Http\Controllers\HomeController::class, 'handleAdmin'])->name('dashboard-admin')->middleware('admin');
+Route::get('customer/dashboard', [App\Http\Controllers\HomeController::class, 'handleCustomer'])->name('dashboard-customer')->middleware('customer');
+Route::get('petShop/dashboard', [App\Http\Controllers\HomeController::class, 'handlePetShop'])->name('dashboard-petShop')->middleware('petShop');
+Route::get('vetClinic/dashboard', [App\Http\Controllers\HomeController::class, 'handleVetClinic'])->name('dashboard-vetClinic')->middleware('vetClinic');
+Route::get('veterinary/dashboard', [App\Http\Controllers\HomeController::class, 'handleVeterinary'])->name('dashboard-veterinary');
 
 //profile
-Route::get('/admin/{id}/profile', [AdminController::class, 'show'])->name('admin-profile');
-Route::get('/customer/{id}/profile', [CustomerController::class, 'show'])->name('customer-profile');
-Route::get('/petShop/{id}/profile', [PetShopController::class, 'show'])->name('petShop-profile');
-Route::get('/vetClinic/{id}/profile', [VetClinicController::class, 'show'])->name('vetClinic-profile');
-Route::get('/veterinary/{id}/profile', [VeterinaryController::class, 'show'])->name('veterinary-profile');
+Route::get('/admin/{id}/profile', [App\Http\Controllers\AdminController::class, 'show'])->name('admin-profile');
+Route::get('/customer/{id}/profile', [App\Http\Controllers\CustomerController::class, 'show'])->name('customer-profile');
+Route::get('/petShop/{id}/profile', [App\Http\Controllers\PetShopController::class, 'show'])->name('petShop-profile');
+Route::get('/vetClinic/{id}/profile', [App\Http\Controllers\VetClinicController::class, 'show'])->name('vetClinic-profile');
+Route::get('/veterinary/{id}/profile', [App\Http\Controllers\VeterinaryController::class, 'show'])->name('veterinary-profile');
 
 //ManageProductPetShop
-Route::get('/petShop/product', [PetShopController::class, 'showProduct'])->name('petShop-product');
-Route::get('/productData/{id}', [PetShopController::class, 'productData'])->name('productData');
-Route::get('/productEdit/{id}', [PetShopController::class, 'showEditProduct'])->name('editProduct');
-Route::post('/petShop/product', [PetShopController::class, 'store'])->name('petShop-product');
+Route::get('/petShop/product', [App\Http\Controllers\PetShopController::class, 'showProduct'])->name('petShop-product');
+Route::get('/productData/{id}', [App\Http\Controllers\PetShopController::class, 'productData'])->name('productData');
+Route::get('/productEdit/{id}', [App\Http\Controllers\PetShopController::class, 'showEditProduct'])->name('editProduct');
+Route::post('/petShop/product', [App\Http\Controllers\PetShopController::class, 'store'])->name('petShop-product');
 
 //AnimalCarePetShop
-Route::get('/petShop/petCare', [PetShopController::class, 'showPetCare'])->name('petShop-petCare');
-Route::get('/petShop/orderHistory', [OrderController::class, 'orderHistory'])->name('orderHistory');
+Route::get('/petShop/petCare', [App\Http\Controllers\PetShopController::class, 'showPetCare'])->name('petShop-petCare');
+Route::get('/petShop/orderHistory', [App\Http\Controllers\OrderController::class, 'orderHistory'])->name('orderHistory');
 
-Route::get('/vetClinic/medicine', [VetClinicController::class, 'showMedicine'])->name('vetClinic-medicine');
+Route::get('/vetClinic/medicine', [App\Http\Controllers\VetClinicController::class, 'showMedicine'])->name('vetClinic-medicine');
 
-Route::get('/customer/vetService', [CustomerController::class, 'showService'])->name('customer-service');
-Route::get('/customer/location', [CustomerController::class, 'showLocation'])->name('customer-location');
-Route::get('/customer/reminder', [CustomerController::class, 'showReminder'])->name('customer-reminder');
-Route::get('/customer/medicine', [CustomerController::class, 'showMedicine'])->name('customer-medicine');
+Route::get('/customer/vetService', [App\Http\Controllers\CustomerController::class, 'showService'])->name('customer-service');
+Route::get('/customer/location', [App\Http\Controllers\CustomerController::class, 'showLocation'])->name('customer-location');
+Route::get('/customer/reminder', [App\Http\Controllers\CustomerController::class, 'showReminder'])->name('customer-reminder');
+Route::get('/customer/medicine', [App\Http\Controllers\CustomerController::class, 'showMedicine'])->name('customer-medicine');
 
 //Search
-Route::get('/searchProduct', [ProductController::class, 'search'])->name('search');
-Route::get('/searchMedicine', [MedicineController::class, 'search'])->name('searchMedicine');
-Route::get('/searchService', [ServiceController::class, 'search'])->name('searchService');
-Route::get('/searchPetCare', [PetCareController::class, 'search'])->name('searchPetCare');
-Route::get('/searchGrooming', [GroomingController::class, 'search'])->name('searchGrooming');
+Route::get('/searchProduct', [App\Http\Controllers\ProductController::class, 'search'])->name('search');
+Route::get('/searchMedicine', [App\Http\Controllers\MedicineController::class, 'search'])->name('searchMedicine');
+Route::get('/searchService', [App\Http\Controllers\ServiceController::class, 'search'])->name('searchService');
+Route::get('/searchPetCare', [App\Http\Controllers\PetCareController::class, 'search'])->name('searchPetCare');
+Route::get('/searchGrooming', [App\Http\Controllers\GroomingController::class, 'search'])->name('searchGrooming');
 
-Route::get('/admin/manageUser', [AdminController::class, 'showUser'])->name('admin-user');
-Route::post('/admin/manageInformation', [AdminController::class, 'updateInformation'])->name('admin-update-information');
-Route::post('/admin/delete', [AdminController::class, 'destroy'])->name('information-destroy');
-Route::post('/admin/statusUpdate', [ServiceController::class, 'updateStatus'])->name('update-statusVet');
-Route::get('/admin/verifyVet', [AdminController::class, 'showVet'])->name('verify-vet');
+Route::get('/admin/manageUser', [App\Http\Controllers\AdminController::class, 'showUser'])->name('admin-user');
+Route::post('/admin/manageInformation', [App\Http\Controllers\AdminController::class, 'updateInformation'])->name('admin-update-information');
+Route::post('/admin/delete', [App\Http\Controllers\AdminController::class, 'destroy'])->name('information-destroy');
+Route::post('/admin/statusUpdate', [App\Http\Controllers\ServiceController::class, 'updateStatus'])->name('update-statusVet');
+Route::get('/admin/verifyVet', [App\Http\Controllers\AdminController::class, 'showVet'])->name('verify-vet');
 
 //update profile
 Route::put('admin/profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\AdminController@update']);
@@ -115,6 +97,7 @@ Route::post('veterinary/profilepicture','App\Http\Controllers\VeterinaryControll
 
 //Route::post('customer/market', [\App\Http\Controllers\ProductController::class, 'addToCart'])->name('market-customer');
 Route::get('/cart/delete/{cartId}', 'App\Http\Controllers\CartController@delete')->name('cart.delete');
+
 
 Route::get('/location', MapLocation::class);
 

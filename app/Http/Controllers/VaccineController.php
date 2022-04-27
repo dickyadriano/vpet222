@@ -28,7 +28,7 @@ class VaccineController extends Controller
             ]);
         }
         elseif (Auth::user()->type == 'customer'){
-            return view('customer.marketplace.petCare', compact('vaccine_data'));
+            return view('customer.marketplace.vaccine', compact('vaccine_data'));
         }
         else{
             return redirect()->back();
@@ -120,5 +120,14 @@ class VaccineController extends Controller
     {
         Vaccine::destroy($vaccine->id);
         return redirect()->route('vaccine.index');
+    }
+
+    public function search(){
+        $search_text = $_GET['query'];
+        $vaccine_data = Vaccine::where('vaccineName','LIKE', '%'.$search_text.'%')
+            ->join('users', 'vaccines.userID', '=', 'users.id')
+            ->select('users.*', 'vaccines.*')->get();
+
+        return view('customer.marketplace.vaccine', compact('vaccine_data', 'search_text'));
     }
 }

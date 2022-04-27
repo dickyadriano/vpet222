@@ -22,7 +22,7 @@ class ServiceSeeder extends Seeder
                 'detail' => 'Pengalaman selama 9 tahun bekerja dengan rumah sakit hewan jakarta',
                 'idCard' => '977913.jpg',
                 'vetLicense' => 'pexels-maxime-francis-2246476.jpg',
-                'image' => 'default.png',
+                'image' => 'doctor.jpg',
                 'verificationStatus' => 'Verified'
             ],
         ]);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Medicine;
 use App\Models\Order;
+use App\Models\Vaccine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -12,7 +13,8 @@ class OrderController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('petShop')->only('orderHistory', 'show');
+//        $this->middleware('petShop')->only('show');
+//        $this->middleware('vetClinic')->only('orderHistory');
     }
     /**
      * Display a listing of the resource.
@@ -27,6 +29,12 @@ class OrderController extends Controller
             ->join('products', 'orders.productID', '=', 'products.id')
             ->join('users', 'products.userID', '=', 'users.id')
             ->select('orders.*', 'products.productName')
+            ->get();
+
+        $showClinic = DB::table('orders')
+            ->join('medicines', 'orders.medicineID', '=', 'medicines.id')
+            ->join('users', 'medicines.userID', '=', 'users.id')
+            ->select('orders.*', 'medicines.medicineName')
             ->get();
 
         $service_data = DB::table('orders')
@@ -60,11 +68,31 @@ class OrderController extends Controller
             ->where('orders.userID','=',Auth::user()->id)
             ->select('orders.*', 'groomings.*')->get();
 
+        $vaccine_data = DB::table('orders')
+            ->join('vaccines', 'orders.vaccineID', '=', 'vaccines.id')
+            ->join('users', 'orders.userID', '=', 'users.id')
+            ->where('orders.userID','=',Auth::user()->id)
+            ->select('orders.*', 'vaccines.*')->get();
+
+        $payment_data = DB::table('orders')
+            ->join('users', 'orders.userID', '=', 'users.id')
+            ->select('users.*', 'orders.*')->get();
+
         if (Auth::user()->type == 'petShop'){
             return view('petShop.order', compact('show'));
         }
         elseif (Auth::user()->type == 'customer'){
-            return view('customer.order', compact('service_data','grooming_data','petCare_data','product_data', 'medicine_data'));
+            return view('customer.order', compact('vaccine_data','service_data','grooming_data','petCare_data','product_data', 'medicine_data'));
+        }
+        elseif (Auth::user()->type == 'vetClinic'){
+            return view('vetClinic.order', compact('showClinic'),[
+                "title" => "Order"
+            ]);
+        }
+        elseif (Auth::user()->type == 'admin'){
+            return view('admin.payment', compact('payment_data'),[
+                "title" => "Payment"
+            ]);
         }
         else{
             return redirect()->back();
@@ -80,7 +108,20 @@ class OrderController extends Controller
             ->select('orders.*', 'products.productName')
             ->get();
 
-        return view('petShop.modal.history', compact('show'));
+        $showClinic = DB::table('orders')
+            ->join('medicines', 'orders.medicineID', '=', 'medicines.id')
+            ->join('users', 'medicines.userID', '=', 'users.id')
+            ->select('orders.*', 'medicines.medicineName')
+            ->get();
+
+        if (Auth::user()->type == 'petShop') {
+            return view('petShop.modal.history', compact('show'));
+        }
+        elseif (Auth::user()->type == 'vetClinic') {
+            return view('vetClinic.modal.history', compact('showClinic'),[
+                "title" => "Order"
+            ]);
+        }
     }
 
     /**
@@ -144,9 +185,19 @@ class OrderController extends Controller
                 $data->save();
             }
         }
+        elseif ($request['orderType'] === 'vaccine'){
+            $this->validate($request, ['receiptImage' => 'required|mimes:jpeg,png,jpg,gif,svg']);
+
+            $order = Order::create($request->all());
+
+            if ($request->hasFile('receiptImage')){
+                $request->file('receiptImage')->move('img/orderImages/', $request->file('receiptImage')->getClientOriginalName());
+                $order->receiptImage = $request->file('receiptImage')->getClientOriginalName();
+                $order->save();
+            }
+        }
         elseif ($request['orderType'] === 'service'){
-            $data = Order::create($request->all());
-            $data->save();
+            Order::create($request->all());
         }
 
         return redirect()->route('order.index');
@@ -160,9 +211,16 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        return view('petShop.modal.orderInfo', compact('order'),[
-            "title" => "Shop Order"
-        ]);
+        if (Auth::user()->type == 'petShop') {
+            return view('petShop.modal.orderInfo', compact('order'),[
+                "title" => "Shop Order"
+            ]);
+        }
+        elseif (Auth::user()->type == 'vetClinic') {
+            return view('vetClinic.modal.orderInfo', compact('order'),[
+                "title" => "Order"
+            ]);
+        }
     }
 
     /**
@@ -202,7 +260,20 @@ class OrderController extends Controller
 //        return redirect()->route('service.index');
     }
 
+    public function updateStatus(Request $request)
+    {
+        $orderStatus = $request->orderStatus;
+        $id = $request->id;
 
+        $update = [
+            'id' => $id,
+            'orderStatus' => $orderStatus
+        ];
+
+        Order::where('id', $request->id)->update($update);
+
+        return redirect()->route('order.index');
+    }
 
     /**
      * Remove the specified resource from storage.
