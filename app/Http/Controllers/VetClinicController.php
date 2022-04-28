@@ -64,13 +64,6 @@ class VetClinicController extends Controller
         }
     }
 
-    public function showMedicine()
-    {
-        return view('vetClinic.medicine', [
-            "title" => "Manage Medicine"
-        ]);
-    }
-
     /**
      * Show the form for editing the specified resource.
      *

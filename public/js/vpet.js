@@ -7,3 +7,4 @@ function showDiv(select){
         document.getElementById('dogSymptom').style.display = "none";
     }
 }
+
