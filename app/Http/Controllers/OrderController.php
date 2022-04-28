@@ -31,6 +31,12 @@ class OrderController extends Controller
             ->select('orders.*', 'products.productName')
             ->get();
 
+        $showService = DB::table('orders')
+            ->join('services', 'orders.serviceID', '=', 'services.id')
+            ->join('users', 'services.userID', '=', 'users.id')
+            ->select('orders.*', 'services.serviceName')
+            ->get();
+
         $showClinic = DB::table('orders')
             ->join('medicines', 'orders.medicineID', '=', 'medicines.id')
             ->join('users', 'medicines.userID', '=', 'users.id')
@@ -84,6 +90,9 @@ class OrderController extends Controller
         elseif (Auth::user()->type == 'customer'){
             return view('customer.order', compact('vaccine_data','service_data','grooming_data','petCare_data','product_data', 'medicine_data'));
         }
+        elseif (Auth::user()->type == 'veterinary'){
+            return view('veterinary.order', compact('showService'));
+        }
         elseif (Auth::user()->type == 'vetClinic'){
             return view('vetClinic.order', compact('showClinic'),[
                 "title" => "Order"
@@ -108,6 +117,12 @@ class OrderController extends Controller
             ->select('orders.*', 'products.productName')
             ->get();
 
+        $showService = DB::table('orders')
+            ->join('services', 'orders.serviceID', '=', 'services.id')
+            ->join('users', 'services.userID', '=', 'users.id')
+            ->select('orders.*', 'services.serviceName')
+            ->get();
+
         $showClinic = DB::table('orders')
             ->join('medicines', 'orders.medicineID', '=', 'medicines.id')
             ->join('users', 'medicines.userID', '=', 'users.id')
@@ -120,6 +135,9 @@ class OrderController extends Controller
 
         if (Auth::user()->type == 'petShop') {
             return view('petShop.modal.history', compact('show'));
+        }
+        elseif (Auth::user()->type == 'veterinary') {
+            return view('veterinary.modal.history', compact('showService'));
         }
         elseif (Auth::user()->type == 'vetClinic') {
             return view('vetClinic.modal.history', compact('showClinic'),[
