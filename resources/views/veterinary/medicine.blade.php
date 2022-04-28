@@ -22,100 +22,68 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    @foreach($medicineInCart_data as $row)
-                        <div class="card border">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <img class="img-thumbnail userImg150" src="{{ asset('img/medicineImage/'. $row->image) }}">
-                                    </div>
-                                    <div class="col">
-                                        <h4 class="text-black">{{ $row->medicineName }}</h4>
-                                        <span class="h4 font-weight-bold">@currency($row->medicinePrice),-</span>
-                                        <span class="container">
-                                        <h3 class="text-gray pt-1">x{{ $row->orderAmount }}</h3>
-                                    </span>
-                                    </div>
-                                    <div class="col">
-                                        <h3 class="text-gray pt-0">Total Price</h3>
-                                        <h3 class="text-gray">@currency($row->orderAmount * $row->medicinePrice),-</h3>
-                                    </div>
-                                    <div class="col centerCol">
-                                        <a href="{{ route('cart.delete', ['cartId' => $row->cartId]) }}" type="submit" name="delete" class="btn btn-danger">Delete</a>
+                @php
+                /*$dataId = array();*/
+                @endphp
+                    <div class="modal-body">
+                        @foreach($medicineInCart_data as $row)
+
+
+                            <div class="card border">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <img class="img-thumbnail userImg150" src="{{ asset('img/medicineImage/'. $row->image) }}">
+                                        </div>
+                                        <div class="col">
+                                            <h4 class="text-black">{{ $row->medicineName }}</h4>
+                                            <span class="h4 font-weight-bold">@currency($row->medicinePrice),-</span>
+                                            <span class="container">
+                                            <h3 class="text-gray pt-1">x{{ $row->orderAmount }}</h3>
+                                        </span>
+                                        </div>
+                                        <div class="col">
+                                            <h3 class="text-gray pt-0">Total Price</h3>
+                                            <h3 class="text-gray">@currency($row->orderAmount * $row->medicinePrice),-</h3>
+                                        </div>
+                                        <div class="col centerCol">
+                                            <a href="{{ route('cart.delete', ['cartId' => $row->cartId]) }}" type="submit" name="delete" class="btn btn-danger">Delete</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" name="cashOut" data-dismiss="modal" data-target="#detailPayment" data-toggle="modal" class="btn btn-primary">Pay to Order</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{--Modal Payment--}}
-    <div class="modal fade" id="detailPayment" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Payment Detail</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#detailService">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="{{ route('order.store')}}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    @php
-                        $cart = new \App\Models\Cart();
-                        foreach ($medicineInCart_data as $row){
-                            $cart = $row;
-                        }
-                    @endphp
-                    <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden readonly>
-                    <input type="number" name="medicineID" value="{{ $cart->id }}" hidden readonly>
-                    <input type="text" name="orderType" value="medicine" hidden readonly>
-                    <input type="text" name="orderStatus" value="Pending" hidden readonly>
-                    <input type="number" name="orderAmount" value="{{ $cart->orderAmount }}" hidden readonly>
-                    <input type="number" name="totalPrice" value="{{ ($cart->orderAmount * $cart->medicinePrice) }}" hidden readonly>
-
-                    <div class="modal-body">
-                        <h2 class="mb-0 mt-0 bold">Transfer Options:</h2>
-                        <div class="row mt-3">
-                            <div class="col-1">
-                                <h3 class="text-left">1. </h3>
-                            </div>
-                            <div class="col-5">
-                                <h3 class="text-left">BNI: <i class="text-green">0808028910</i></h3>
-                            </div>
-                            <div class="col-6">
-                                <h3 class="text-left">A.Name: <i class="text-green">Ida Bagus Jatem</i></h3>
-                            </div>
-                        </div>
-                        <hr class="my-1" style="border-top: dotted 1px;" />
-                        <div class="row mt-3">
-                            <div class="col-1">
-                                <h3 class="text-left">2. </h3>
-                            </div>
-                            <div class="col-5">
-                                <h3 class="text-left">BCA: <i class="text-green">0808028910</i></h3>
-                            </div>
-                            <div class="col-6">
-                                <h3 class="text-left">A.Name: <i class="text-green">Dicky Adrianto</i></h3>
-                            </div>
-                        </div>
-                        <hr class="my-1" style="border-top: dotted 1px;" />
-                        <h3 class="mb-0 mt-5 bold text-primary">Attach payment receipt here</h3>
-                        <input type="file" id="receiptImage" name="receiptImage" class="form-control @error('receiptImage') is-invalid @enderror" required>
-                        <h3 class="mb-0 mt-2 bold text-primary">Order Detail</h3>
-                        <textarea class="form-control" rows="5" type="text" name="orderDetail" required autofocus>{{ old('orderDetail') }}</textarea>
-
+                        @endforeach
                     </div>
-                    <div class="modal-footer" style="justify-content: center">
-                        <button type="submit" class="btn btn-primary">Order</button>
+
+                <form action="{{route('cart_update', Auth::user()->id)}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-footer row">
+                        <div class="col pt-3">
+                            <div class="form-group">
+                                <div class="input-group input-group-alternative mb-3">
+                                    <select name='userID' class="form-control">
+                                        <option value="" hidden selected>Share to Customers</option>
+                                        @foreach($data_users as $row)
+                                            @if($row->type == 'customer')
+                                                <option value="{{$row->id}}">{{$row->name}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+{{--                            <div class="dropdown">--}}
+{{--                                <a onclick="myFunction()" class="btn btn-success">Dropdown</a>--}}
+{{--                                <div id="myDropdown" class="dropdown-content">--}}
+{{--                                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">--}}
+
+{{--                                </div>--}}
+{{--                            </div>--}}
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" name="cashOut" class="btn btn-primary">Share to Customer Cart</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -131,14 +99,9 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/welcome"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('customer.index') }}">Marketplace</a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('medicine.index') }}">Medicines</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('medicine.index') }}">Create Medicine Recipe</a></li>
                             </ol>
                         </nav>
-                    </div>
-                    <div class="col-lg-6 col-5 text-right">
-                        <a href="{{ route('customer.index') }}" class="btn btn-sm btn-neutral" >Pet Needs</a>
-                        <a href="{{ route('medicine.index') }}" class="btn btn-sm btn-neutral {{ Request::is('medicine') ? 'active' : '' }}">Medicine</a>
                     </div>
                 </div>
             </div>
@@ -147,7 +110,7 @@
     <div class="container-fluid pt-3">
         <div class="row">
             @foreach($data_medicine as $row)
-            <?php $count = $row->id; ?>
+                <?php $count = $row->id; ?>
                 <div class="col-xl-2 col-lg-4 pb-3">
                     <div class="card card-stats">
                         <div class="card-body m-lg-0 m-sm-2 m-md-8">
@@ -218,4 +181,82 @@
             @endforeach
         </div>
     </div>
+
+{{--    <style>--}}
+{{--        .dropbtn {--}}
+{{--            background-color: #04AA6D;--}}
+{{--            color: white;--}}
+{{--            padding: 16px;--}}
+{{--            font-size: 16px;--}}
+{{--            border: none;--}}
+{{--            cursor: pointer;--}}
+{{--        }--}}
+
+{{--        .dropbtn:hover, .dropbtn:focus {--}}
+{{--            background-color: #3e8e41;--}}
+{{--        }--}}
+
+{{--        #myInput {--}}
+{{--            box-sizing: border-box;--}}
+{{--            background-image: url('../../../public/img/search.png');--}}
+{{--            background-position: 14px 12px;--}}
+{{--            background-repeat: no-repeat;--}}
+{{--            font-size: 16px;--}}
+{{--            padding: 14px 20px 12px 45px;--}}
+{{--            border: none;--}}
+{{--            border-bottom: 1px solid #ddd;--}}
+{{--        }--}}
+
+{{--        #myInput:focus {outline: 3px solid #ddd;}--}}
+
+{{--        .dropdown {--}}
+{{--            position: relative;--}}
+{{--            display: inline-block;--}}
+{{--        }--}}
+
+{{--        .dropdown-content {--}}
+{{--            display: none;--}}
+{{--            position: absolute;--}}
+{{--            background-color: #f6f6f6;--}}
+{{--            min-width: 230px;--}}
+{{--            overflow: auto;--}}
+{{--            border: 1px solid #ddd;--}}
+{{--            z-index: 1;--}}
+{{--        }--}}
+
+{{--        .dropdown-content option {--}}
+{{--            color: black;--}}
+{{--            padding: 12px 16px;--}}
+{{--            text-decoration: none;--}}
+{{--            display: block;--}}
+{{--        }--}}
+
+{{--        .dropdown option:hover {background-color: #ddd;}--}}
+
+{{--        .show {display: block;}--}}
+{{--    </style>--}}
+
+{{--    <script>--}}
+{{--        /* When the user clicks on the button,--}}
+{{--        toggle between hiding and showing the dropdown content */--}}
+{{--        function myFunction() {--}}
+{{--            document.getElementById("myDropdown").classList.toggle("show");--}}
+{{--        }--}}
+
+{{--        function filterFunction() {--}}
+{{--            var input, filter, ul, li, a, i;--}}
+{{--            input = document.getElementById("myInput");--}}
+{{--            filter = input.value.toUpperCase();--}}
+{{--            div = document.getElementById("myDropdown");--}}
+{{--            a = div.getElementsByTagName("a");--}}
+{{--            for (i = 0; i < a.length; i++) {--}}
+{{--                txtValue = a[i].textContent || a[i].innerText;--}}
+{{--                if (txtValue.toUpperCase().indexOf(filter) > -1) {--}}
+{{--                    a[i].style.display = "";--}}
+{{--                } else {--}}
+{{--                    a[i].style.display = "none";--}}
+{{--                }--}}
+{{--            }--}}
+{{--        }--}}
+{{--    </script>--}}
 @endsection

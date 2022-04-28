@@ -91,6 +91,7 @@ Route::post('veterinary/profilepicture','App\Http\Controllers\VeterinaryControll
 
 //Route::post('customer/market', [\App\Http\Controllers\ProductController::class, 'addToCart'])->name('market-customer');
 Route::get('/cart/delete/{cartId}', 'App\Http\Controllers\CartController@delete')->name('cart.delete');
+Route::put('/cart/update/{cartId}', 'App\Http\Controllers\CartController@update')->name('cart_update');
 
 
 Route::get('/location', MapLocation::class);

@@ -122,7 +122,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{--{{ ($title === 'Medicine Recipe') ? 'active' : '' }}--}}" href="#">
+                                <a class="nav-link {{ Request::is('medicine') ? 'active' : '' }}" href="{{ route('medicine.index') }}">
                                     <i class="fas fa-mortar-pestle text-primary"></i>
                                     <span class="nav-link-text">Create Medicine Recipe</span>
                                 </a>

@@ -12,6 +12,9 @@ use phpDocumentor\Reflection\DocBlock\Tags\Method;
 
 class CartController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth')->only('update');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -86,11 +89,18 @@ class CartController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Cart  $cart
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Cart $cart)
+    public function update(Request $request, $cartId)
     {
-        //
+//        echo $cartId;
+        Cart::where('userID', '=', $cartId)->update(['userId' => $request['userID']]);
+//        $cart->userID = $request->get('userID');
+//        $cart->save();
+//        $cart->update(['userID' => 2,
+//            'orderType' => 'medicine']);
+
+        return redirect()->route('medicine.index');
     }
 
     /**
