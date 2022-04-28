@@ -169,6 +169,7 @@ td {
     border-radius: 25px;
     background-color: #82ccdd;
     padding: 10px;
+    min-width: 50px;
     position: relative;
 }
 .msg_cotainer_send{
@@ -178,6 +179,7 @@ td {
     border-radius: 25px;
     background-color: #78e08f;
     padding: 10px;
+    min-width: 50px;
     position: relative;
 }
 .msg_time{
@@ -196,6 +198,9 @@ td {
 }
 .msg_head{
     position: relative;
+}
+.msg_card_body{
+    overflow-y: auto; !important;
 }
 .username{
     position: absolute;

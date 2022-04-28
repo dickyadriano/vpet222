@@ -103,26 +103,26 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{--{{ ($title === 'Reminder') ? 'active' : '' }}--}}" href="{{ route('customer-reminder') }}">
+                                <a class="nav-link" href="{{ route('reminder.index') }}">
                                     <i class="ni ni-time-alarm text-primary"></i>
                                     <span class="nav-link-text">Reminder</span>
                                 </a>
                             </li>
                         @elseif(auth()->user()->type == 'veterinary')
                             <li class="nav-item">
-                                <a class="nav-link {{--{{ Request::is('service') ? 'active' : '' }}--}}" href="#">
+                                <a class="nav-link" href="#">
                                     <i class="ni ni-bag-17 text-primary"></i>
                                     <span class="nav-link-text">Order</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{--{{ ($title === 'Reminder') ? 'active' : '' }}--}}" href="#">
+                                <a class="nav-link" href="{{ route('reminder.index') }}">
                                     <i class="ni ni-time-alarm text-primary"></i>
                                     <span class="nav-link-text">Reminder</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{--{{ ($title === 'Medicine Recipe') ? 'active' : '' }}--}}" href="#">
+                                <a class="nav-link" href="">
                                     <i class="fas fa-mortar-pestle text-primary"></i>
                                     <span class="nav-link-text">Create Medicine Recipe</span>
                                 </a>

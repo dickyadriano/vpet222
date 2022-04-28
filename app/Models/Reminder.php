@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Message extends Model
+class Reminder extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'from',
-        'to',
-        'message',
-        'is_read'
+        'userId',
+        'title',
+        'timeReminder',
+        'createdBy',
+        'description'
     ];
-
-    protected $table = 'messages';
+    protected $table = 'reminders';
     public $timestamps = true;
 }

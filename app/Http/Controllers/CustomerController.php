@@ -95,38 +95,10 @@ class CustomerController extends Controller
         }
     }
 
-    public function showService()
-    {
-        return view('customer.service', [
-            "title" => "Veterinary Service",
-        ]);
-    }
-
     public function showLocation()
     {
         return view('customer.location', [
             "title" => "Location",
-        ]);
-    }
-
-    public function showDiagnosis()
-    {
-        return view('customer.diagnosis', [
-            "title" => "Diagnosis of Diseases",
-        ]);
-    }
-
-    public function showOrder()
-    {
-        return view('customer.order', [
-            "title" => "Order Customer",
-        ]);
-    }
-
-    public function showReminder()
-    {
-        return view('customer.reminder', [
-            "title" => "Reminder",
         ]);
     }
 

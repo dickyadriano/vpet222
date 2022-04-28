@@ -38,7 +38,7 @@ require('./bootstrap');
 // });
 //
 // window.Echo.channel('chat').listen('.message', (e) => {
-//     // console.log(e);
+//     console.log(e);
 //     let uname = e.username;
 //     if (uname != e.username) {
 //         console.log('uname')
