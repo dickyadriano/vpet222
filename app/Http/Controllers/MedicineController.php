@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\medicine;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -25,6 +26,7 @@ class MedicineController extends Controller
         $show = Medicine::where('userID', '=', Auth::user()->id)->get();
 
         $data_medicine = Medicine::all();
+        $data_users = User::all();
 
         $medicineInCart_data = DB::table('carts')
             ->join('medicines', 'carts.medicineID', '=', 'medicines.id')
@@ -39,6 +41,9 @@ class MedicineController extends Controller
         }
         elseif (Auth::user()->type == 'customer'){
             return view('customer.marketplace.medicine', compact('medicineInCart_data', 'data_medicine'));
+        }
+        elseif (Auth::user()->type == 'veterinary'){
+            return view('veterinary.medicine', compact('medicineInCart_data','data_medicine', 'data_users'));
         }
         else{
             return redirect()->back();

@@ -114,6 +114,10 @@ class OrderController extends Controller
             ->select('orders.*', 'medicines.medicineName')
             ->get();
 
+        $payment_data = DB::table('orders')
+            ->join('users', 'orders.userID', '=', 'users.id')
+            ->select('users.*', 'orders.*')->get();
+
         if (Auth::user()->type == 'petShop') {
             return view('petShop.modal.history', compact('show'));
         }
@@ -121,6 +125,9 @@ class OrderController extends Controller
             return view('vetClinic.modal.history', compact('showClinic'),[
                 "title" => "Order"
             ]);
+        }
+        elseif (Auth::user()->type == 'admin') {
+            return view('admin.modal.history', compact('payment_data'));
         }
     }
 
@@ -162,6 +169,13 @@ class OrderController extends Controller
             ->get();
 
         if ($request['orderType'] === 'product'){
+            $this->validate($request, ['receiptImage' => 'required|mimes:jpeg,png,jpg,gif,svg']);
+
+            $order = '';
+            if ($request->hasFile('receiptImage')){
+                $request->file('receiptImage')->move('img/orderImages/', $request->file('receiptImage')->getClientOriginalName());
+                $order = $request->file('receiptImage')->getClientOriginalName();
+            }
             foreach ($productInCart_data as $data){
                 $data = Order::create(['userID' => $data->userID,
                     'productID' => $data->productID,
@@ -169,20 +183,28 @@ class OrderController extends Controller
                     'orderType' => $data->orderType,
                     'orderAmount' => $data->orderAmount,
                     'totalPrice' => $request->totalPrice,
+                    'receiptImage' => $order,
                     'orderDetail' => $request->orderDetail]);
-                $data->save();
             }
         }
         elseif ($request['orderType'] === 'medicine'){
+            $this->validate($request, ['receiptImage' => 'required|mimes:jpeg,png,jpg,gif,svg']);
+
+            $order = '';
+            if ($request->hasFile('receiptImage')){
+                $request->file('receiptImage')->move('img/orderImages/', $request->file('receiptImage')->getClientOriginalName());
+                $order = $request->file('receiptImage')->getClientOriginalName();
+            }
             foreach ($medicineInCart_data as $data){
+
                 $data = Order::create(['userID' => $data->userID,
                     'medicineID' => $data->medicineID,
                     'orderStatus' => $request->orderStatus,
                     'orderType' => $data->orderType,
                     'orderAmount' => $data->orderAmount,
                     'totalPrice' => $request->totalPrice,
+                    'receiptImage' => $order,
                     'orderDetail' => $request->orderDetail]);
-                $data->save();
             }
         }
         elseif ($request['orderType'] === 'vaccine'){
@@ -197,7 +219,37 @@ class OrderController extends Controller
             }
         }
         elseif ($request['orderType'] === 'service'){
-            Order::create($request->all());
+            $this->validate($request, ['receiptImage' => 'required|mimes:jpeg,png,jpg,gif,svg']);
+
+            $order = Order::create($request->all());
+
+            if ($request->hasFile('receiptImage')){
+                $request->file('receiptImage')->move('img/orderImages/', $request->file('receiptImage')->getClientOriginalName());
+                $order->receiptImage = $request->file('receiptImage')->getClientOriginalName();
+                $order->save();
+            }
+        }
+        elseif ($request['orderType'] === 'petCare'){
+            $this->validate($request, ['receiptImage' => 'required|mimes:jpeg,png,jpg,gif,svg']);
+
+            $order = Order::create($request->all());
+
+            if ($request->hasFile('receiptImage')){
+                $request->file('receiptImage')->move('img/orderImages/', $request->file('receiptImage')->getClientOriginalName());
+                $order->receiptImage = $request->file('receiptImage')->getClientOriginalName();
+                $order->save();
+            }
+        }
+        elseif ($request['orderType'] === 'grooming'){
+            $this->validate($request, ['receiptImage' => 'required|mimes:jpeg,png,jpg,gif,svg']);
+
+            $order = Order::create($request->all());
+
+            if ($request->hasFile('receiptImage')){
+                $request->file('receiptImage')->move('img/orderImages/', $request->file('receiptImage')->getClientOriginalName());
+                $order->receiptImage = $request->file('receiptImage')->getClientOriginalName();
+                $order->save();
+            }
         }
 
         return redirect()->route('order.index');

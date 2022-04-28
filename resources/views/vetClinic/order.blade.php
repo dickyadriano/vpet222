@@ -32,7 +32,7 @@
             <tr>
                 <th scope="col" class="sort" data-sort="id">Order ID</th>
                 <th scope="col" class="sort" data-sort="customer">Customer Username</th>
-                <th scope="col" class="sort" data-sort="customer">Medicine Name</th>
+                <th scope="col" class="sort" data-sort="customer">Medicine/Vaccine Name</th>
                 <th scope="col" class="sort" data-sort="amount">Order Amount</th>
                 <th scope="col" class="sort" data-sort="status">Status</th>
                 <th scope="col">Control</th>
@@ -78,4 +78,5 @@
             </tbody>
         </table>
     </div>
+
 @endsection

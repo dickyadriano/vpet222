@@ -21,52 +21,106 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
-                <form action="{{ route('order.store')}}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-body">
-                        @foreach($productInCart_data as $row)
-                            <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden readonly>
-                            <input type="number" name="productID" value="{{ $row->id }}" hidden readonly>
-                            <input type="text" name="image" value="{{ $row->image }}" hidden readonly>
-                            <input type="text" name="orderDetail" value="-" hidden readonly>
-                            <input type="text" name="orderType" value="product" hidden readonly>
-                            <input type="text" name="orderStatus" value="Wait for Payment" hidden readonly>
-                            <input type="number" name="orderAmount" value="{{ $row->orderAmount }}" hidden readonly>
-                            <input type="number" name="totalPrice" value="{{ ($row->orderAmount * $row->price) }}" hidden readonly>
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col">
-                                            <img class="img-thumbnail userImg150" src="{{ asset('img/productImage/'. $row->image) }}">
-                                        </div>
-                                        <div class="col">
-                                            <h4 class="text-black">{{ $row->productName }}</h4>
-                                            <span class="h4 font-weight-bold">@currency($row->price),-</span>
-                                            <span class="container">
-                                            <h3 class="text-gray pt-1">x{{ $row->orderAmount }}</h3>
-                                        </span>
-                                        </div>
-                                        <div class="col">
-                                            <h3 class="text-gray pt-0">Total Price</h3>
-                                            <h3 class="text-gray">@currency($row->orderAmount * $row->price),-</h3>
-                                        </div>
-                                        <div class="col centerCol">
-                                            <a href="{{ route('cart.delete', ['cartId' => $row->cartId]) }}" type="submit" name="delete" class="btn btn-danger">Delete</a>
-                                        </div>
+                <div class="modal-body">
+                    @foreach($productInCart_data as $row)
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <img class="img-thumbnail userImg150" src="{{ asset('img/productImage/'. $row->image) }}">
+                                    </div>
+                                    <div class="col">
+                                        <h4 class="text-black">{{ $row->productName }}</h4>
+                                        <span class="h4 font-weight-bold">@currency($row->price),-</span>
+                                        <span class="container">
+                                        <h3 class="text-gray pt-1">x{{ $row->orderAmount }}</h3>
+                                    </span>
+                                    </div>
+                                    <div class="col">
+                                        <h3 class="text-gray pt-0">Total Price</h3>
+                                        <h3 class="text-gray">@currency($row->orderAmount * $row->price),-</h3>
+                                    </div>
+                                    <div class="col centerCol">
+                                        <a href="{{ route('cart.delete', ['cartId' => $row->cartId]) }}" type="submit" name="delete" class="btn btn-danger">Delete</a>
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+                        </div>
+                    @endforeach
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="cashOut" data-dismiss="modal" data-target="#detailPayment" data-toggle="modal" class="btn btn-primary">Pay to Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{--Modal Payment--}}
+    <div class="modal fade" id="detailPayment" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Payment Detail</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target="#cart">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route('order.store')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @php
+                        $cart = new \App\Models\Cart();
+                        foreach ($productInCart_data as $row){
+                            $cart = $row;
+                        }
+                    @endphp
+                    <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden readonly>
+                    <input type="number" name="productID" value="{{ $cart->id }}" hidden readonly>
+                    <input type="text" name="orderType" value="product" hidden readonly>
+                    <input type="text" name="orderStatus" value="Pending" hidden readonly>
+                    <input type="number" name="orderAmount" value="{{ $cart->orderAmount }}" hidden readonly>
+                    <input type="number" name="totalPrice" value="{{ ($cart->orderAmount * $cart->price) }}" hidden readonly>
+
+                    <div class="modal-body">
+                        <h2 class="mb-0 mt-0 bold">Transfer Options:</h2>
+                        <div class="row mt-3">
+                            <div class="col-1">
+                                <h3 class="text-left">1. </h3>
+                            </div>
+                            <div class="col-5">
+                                <h3 class="text-left">BNI: <i class="text-green">0808028910</i></h3>
+                            </div>
+                            <div class="col-6">
+                                <h3 class="text-left">A.Name: <i class="text-green">Ida Bagus Jatem</i></h3>
+                            </div>
+                        </div>
+                        <hr class="my-1" style="border-top: dotted 1px;" />
+                        <div class="row mt-3">
+                            <div class="col-1">
+                                <h3 class="text-left">2. </h3>
+                            </div>
+                            <div class="col-5">
+                                <h3 class="text-left">BCA: <i class="text-green">0808028910</i></h3>
+                            </div>
+                            <div class="col-6">
+                                <h3 class="text-left">A.Name: <i class="text-green">Dicky Adrianto</i></h3>
+                            </div>
+                        </div>
+                        <hr class="my-1" style="border-top: dotted 1px;" />
+                        <h3 class="mb-0 mt-5 bold text-primary">Attach payment receipt here</h3>
+                        <input type="file" id="receiptImage" name="receiptImage" class="form-control @error('receiptImage') is-invalid @enderror" required>
+                        <h3 class="mb-0 mt-2 bold text-primary">Order Detail</h3>
+                        <textarea class="form-control" rows="5" type="text" name="orderDetail" required autofocus>{{ old('orderDetail') }}</textarea>
+
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" name="cashOut" class="btn btn-primary">Checkout</button>
+                    <div class="modal-footer" style="justify-content: center">
+                        <button type="submit" class="btn btn-primary">Order</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
     <!-- Header -->
     <div class="header bg-gradient-primary">
         <div class="container-fluid">
