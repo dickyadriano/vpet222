@@ -59,10 +59,10 @@
                                         <span class="badge badge-pill {{ ($row->orderStatus === 'Delivered') ? 'badge-success' : 'badge-warning' }} badge-lg">{{ $row->orderStatus }}</span>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-auto">
-                                        <button type="submit" class="btn btn-twitter ">Consultation</button>
-                                    </div>
+                                <div class="row" style="justify-content: right">
+                                    @if($row->orderStatus == 'Accepted')
+                                        <button type="submit" class="btn btn-twitter" >Do Consultation with Doctor</button>
+                                    @endif
                                 </div>
                             </div>
                         </div>
