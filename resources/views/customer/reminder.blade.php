@@ -11,7 +11,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/welcome"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('customer-diagnosis') }}">Diagnosis of Diseases</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('reminder.index') }}">Reminder</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -21,29 +21,37 @@
     </div>
     <div class="container-fluid pt-3">
         <div class="row">
-            <div class="col-xl-12 mb-5 mb-xl-0">
-                <div class="card bg-gradient-default shadow">
-                    <div class="card-header bg-transparent">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h6 class="text-uppercase text-light ls-1 mb-1">Diagnosis of</h6>
-                                <h2 class="text-white mb-0">Diseases</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Pets
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Dog</a>
-                                <a class="dropdown-item" href="#">Cat</a>
+            @foreach($data_reminder as $data)
+                <div class="col-xl-3 col-md-4 col-sm-6 mb-5 mb-xl-0">
+                    <div class="card bg-gradient-purple shadow">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h4 class="text-uppercase text-white ls-1 mb-3">{{ $data->title }}</h4>
+                                    <h1 class="text-warning ls-1 mb-3">
+                                        @php
+                                            $date = strtotime($data->timeReminder);
+                                            $remaining = $date - time();
+                                            $days_remaining = floor($remaining / 86400);
+                                            if ($days_remaining >= 0){
+                                                echo "$days_remaining Days Left";
+                                            }
+                                            else{
+                                                echo "Overdue";
+                                            }
+                                        @endphp
+                                    </h1>
+                                    <h2 class="text-uppercase text-success ls-1 mb-0">{{ date("Y-m-d",strtotime($data->timeReminder)) }}</h2>
+                                    <h6 class="text-white ls-1 mb-1">by: drh. Aidil Calvianto</h6>
+                                </div>
+                                <div class="col-6 centerCol">
+                                    <h5 class="text-info ls-1 mb-1">{{ str_replace('~', "|", $data->description) }}</h5>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 

@@ -38,5 +38,6 @@
 
 <!-- Argon JS -->
 <script src="{{asset('argon/assets/js/argon.js?v=1.2.0')}}"></script>
+<script src="/js/app.js"></script>
 </body>
 </html>

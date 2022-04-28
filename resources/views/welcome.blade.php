@@ -220,9 +220,9 @@
 </footer>
 <script src="{{asset('argon/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
 <script src="{{asset('argon/assets/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
-
-
 <!-- Argon JS -->
 <script src="{{asset('argon/assets/js/argon.js?v=1.0.0')}}"></script>
+<script src="/js/app.js"></script>
+
 </body>
 </html>

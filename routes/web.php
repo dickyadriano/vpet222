@@ -1,5 +1,22 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ConsultationController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DiagnosisController;
+use App\Http\Controllers\GroomingController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InformationController;
+use App\Http\Controllers\MedicineController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PetCareController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReminderController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\VaccineController;
+use App\Http\Controllers\VeterinaryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\MapLocation;
 
@@ -20,6 +37,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('customer/consultation', [ConsultationController::class, 'index'])->name('consultation');
+
+Route::get('message/{id}', [ConsultationController::class, 'getMessage'])->name('message');
+Route::post('send_message', 'App\Http\Controllers\ConsultationController@sendMessage')->name('send.message');
+
 Route::get('/welcome', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
 
 //login
@@ -39,19 +61,12 @@ Route::get('/veterinary/{id}/profile', [App\Http\Controllers\VeterinaryControlle
 //ManageProductPetShop
 Route::get('/petShop/product', [App\Http\Controllers\PetShopController::class, 'showProduct'])->name('petShop-product');
 Route::get('/productData/{id}', [App\Http\Controllers\PetShopController::class, 'productData'])->name('productData');
-Route::get('/productEdit/{id}', [App\Http\Controllers\PetShopController::class, 'showEditProduct'])->name('editProduct');
 Route::post('/petShop/product', [App\Http\Controllers\PetShopController::class, 'store'])->name('petShop-product');
 
 //AnimalCarePetShop
-Route::get('/petShop/petCare', [App\Http\Controllers\PetShopController::class, 'showPetCare'])->name('petShop-petCare');
 Route::get('/petShop/orderHistory', [App\Http\Controllers\OrderController::class, 'orderHistory'])->name('orderHistory');
 
-Route::get('/vetClinic/medicine', [App\Http\Controllers\VetClinicController::class, 'showMedicine'])->name('vetClinic-medicine');
-
-Route::get('/customer/vetService', [App\Http\Controllers\CustomerController::class, 'showService'])->name('customer-service');
 Route::get('/customer/location', [App\Http\Controllers\CustomerController::class, 'showLocation'])->name('customer-location');
-Route::get('/customer/reminder', [App\Http\Controllers\CustomerController::class, 'showReminder'])->name('customer-reminder');
-Route::get('/customer/medicine', [App\Http\Controllers\CustomerController::class, 'showMedicine'])->name('customer-medicine');
 
 //Search
 Route::get('/searchProduct', [App\Http\Controllers\ProductController::class, 'search'])->name('search');
@@ -59,13 +74,11 @@ Route::get('/searchMedicine', [App\Http\Controllers\MedicineController::class, '
 Route::get('/searchService', [App\Http\Controllers\ServiceController::class, 'search'])->name('searchService');
 Route::get('/searchPetCare', [App\Http\Controllers\PetCareController::class, 'search'])->name('searchPetCare');
 Route::get('/searchGrooming', [App\Http\Controllers\GroomingController::class, 'search'])->name('searchGrooming');
-Route::get('/searchVaccine', [App\Http\Controllers\VaccineController::class, 'search'])->name('searchVaccine');
 
 Route::get('/admin/manageUser', [App\Http\Controllers\AdminController::class, 'showUser'])->name('admin-user');
 Route::post('/admin/manageInformation', [App\Http\Controllers\AdminController::class, 'updateInformation'])->name('admin-update-information');
 Route::post('/admin/delete', [App\Http\Controllers\AdminController::class, 'destroy'])->name('information-destroy');
 Route::post('/admin/statusUpdate', [App\Http\Controllers\ServiceController::class, 'updateStatus'])->name('update-statusVet');
-Route::post('/admin/orderStatusUpdate', [App\Http\Controllers\OrderController::class, 'updateStatus'])->name('update-statusOrder');
 Route::get('/admin/verifyVet', [App\Http\Controllers\AdminController::class, 'showVet'])->name('verify-vet');
 
 //update profile
@@ -96,17 +109,19 @@ Route::put('/cart/update/{cartId}', 'App\Http\Controllers\CartController@update'
 
 Route::get('/location', MapLocation::class);
 
-Route::resource('admin', \App\Http\Controllers\AdminController::class);
-Route::resource('cart', \App\Http\Controllers\CartController::class);
-Route::resource('customer', \App\Http\Controllers\CustomerController::class);
-Route::resource('grooming', \App\Http\Controllers\GroomingController::class);
-Route::resource('information', \App\Http\Controllers\InformationController::class);
-Route::resource('medicine', \App\Http\Controllers\MedicineController::class);
-Route::resource('order', \App\Http\Controllers\OrderController::class);
-Route::resource('petCare', \App\Http\Controllers\PetCareController::class);
-Route::resource('product', \App\Http\Controllers\ProductController::class);
-Route::resource('service', \App\Http\Controllers\ServiceController::class);
-Route::resource('users', \App\Http\Controllers\UserController::class);
-Route::resource('vaccine', \App\Http\Controllers\VaccineController::class);
-Route::resource('vet', \App\Http\Controllers\VeterinaryController::class)->middleware('veterinary');
-Route::resource('diagnosis', \App\Http\Controllers\DiagnosisController::class);
+Route::resource('admin', AdminController::class);
+Route::resource('cart', CartController::class);
+Route::resource('customer', CustomerController::class);
+Route::resource('consultation', ConsultationController::class);
+Route::resource('diagnosis', DiagnosisController::class);
+Route::resource('grooming', GroomingController::class);
+Route::resource('information', InformationController::class);
+Route::resource('medicine', MedicineController::class);
+Route::resource('order', OrderController::class);
+Route::resource('petCare', PetCareController::class);
+Route::resource('product', ProductController::class);
+Route::resource('reminder', ReminderController::class);
+Route::resource('service', ServiceController::class);
+Route::resource('users', UserController::class);
+Route::resource('vaccine', VaccineController::class);
+Route::resource('vet', VeterinaryController::class)->middleware('veterinary');
