@@ -8,7 +8,7 @@
             </a>
             <div class=" ml-auto ">
                 <!-- Sidenav toggler -->
-                <div class="sidenav-toggler d-none d-xl-block" data-action="sidenav-unpin" data-target="#sidenav-main">
+                <div class="sidenav-toggler d-none d-xl-block" style="background-color: #FFFFFF !important;" data-action="sidenav-unpin" data-target="#sidenav-main">
                     <div class="sidenav-toggler-inner">
                         <i class="sidenav-toggler-line"></i>
                         <i class="sidenav-toggler-line"></i>
@@ -110,13 +110,13 @@
                             </li>
                         @elseif(auth()->user()->type == 'veterinary')
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link {{ Request::is('order') ? 'active' : '' }}" href="{{ route('order.index') }}">
                                     <i class="ni ni-bag-17 text-primary"></i>
                                     <span class="nav-link-text">Order</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('reminder.index') }}">
+                                <a class="nav-link {{ Request::is('reminder') ? 'active' : '' }}" href="{{ route('reminder.index') }}">
                                     <i class="ni ni-time-alarm text-primary"></i>
                                     <span class="nav-link-text">Reminder</span>
                                 </a>
