@@ -185,7 +185,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('order') ? 'active' : '' }}" href="{{ route('order.index') }}">
+                                <a class="nav-link {{ Request::is('order', 'petShop/orderHistory') ? 'active' : '' }}" href="{{ route('order.index') }}">
                                     <i class="ni ni-money-coins text-primary"></i>
                                     <span class="nav-link-text">Payment</span>
                                 </a>
