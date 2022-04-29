@@ -28,7 +28,6 @@
                     <div class="modal-body">
                         @foreach($medicineInCart_data as $row)
 
-
                             <div class="card border">
                                 <div class="card-body">
                                     <div class="row">
@@ -65,9 +64,7 @@
                                     <select name='userID' class="form-control">
                                         <option value="" hidden selected>Share to Customers</option>
                                         @foreach($data_users as $row)
-                                            @if($row->type == 'customer')
-                                                <option value="{{$row->id}}">{{$row->name}}</option>
-                                            @endif
+                                            <option value="{{$row->id}}">{{$row->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>

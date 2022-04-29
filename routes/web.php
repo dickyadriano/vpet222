@@ -13,6 +13,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PetCareController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReminderController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VaccineController;
@@ -36,8 +37,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
-Route::get('customer/consultation', [ConsultationController::class, 'index'])->name('consultation');
 
 Route::get('message/{id}', [ConsultationController::class, 'getMessage'])->name('message');
 Route::post('send_message', 'App\Http\Controllers\ConsultationController@sendMessage')->name('send.message');
@@ -79,6 +78,7 @@ Route::get('/admin/manageUser', [App\Http\Controllers\AdminController::class, 's
 Route::post('/admin/manageInformation', [App\Http\Controllers\AdminController::class, 'updateInformation'])->name('admin-update-information');
 Route::post('/admin/delete', [App\Http\Controllers\AdminController::class, 'destroy'])->name('information-destroy');
 Route::post('/admin/statusUpdate', [App\Http\Controllers\ServiceController::class, 'updateStatus'])->name('update-statusVet');
+Route::post('/admin/orderStatusUpdate', [App\Http\Controllers\OrderController::class, 'updateStatus'])->name('update-statusOrder');
 Route::get('/admin/verifyVet', [App\Http\Controllers\AdminController::class, 'showVet'])->name('verify-vet');
 
 //update profile
@@ -121,6 +121,7 @@ Route::resource('order', OrderController::class);
 Route::resource('petCare', PetCareController::class);
 Route::resource('product', ProductController::class);
 Route::resource('reminder', ReminderController::class);
+Route::resource('review', ReviewController::class);
 Route::resource('service', ServiceController::class);
 Route::resource('users', UserController::class);
 Route::resource('vaccine', VaccineController::class);

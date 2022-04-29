@@ -61,13 +61,72 @@
                                 </div>
                                 <div class="row" style="justify-content: right">
                                     @if($row->orderStatus == 'Accepted')
-                                        <button type="submit" class="btn btn-twitter" >Do Consultation with Doctor</button>
+                                        <button class="user_info btn btn-twitter" id="{{ $order->id }}" data-toggle="modal" data-target="#consultation_chat">Do Consultation with Doctor</button>
+                                    @elseif($row->orderStatus == 'Completed')
+                                        <button type="button" class="btn btn-facebook mr-3" data-toggle="modal" data-target="#reviewService">Review Service</button>
                                     @endif
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    {{-- Modal Consultation --}}
+                    <div class="modal fade bd-example-modal-lg" id="consultation_chat" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Consultation</h4>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-md-11 col-xl-11">
+                                        <div class="card" id="messages">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Modal Review Service --}}
+                    <div class="modal fade" id="reviewService" tabindex="-1" role="dialog" aria-labelledby="reviewServiceTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Review</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="{{ route('review.store') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="modal-body">
+                                        <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden>
+                                        <input type="number" name="serviceID" value="{{ $row->serviceID }}" hidden>
+                                        <div class="form-group">
+                                            <label for="rate">Rate</label>
+                                            <select name="rate" class="form-control" id="rate">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description">Description</label>
+                                            <textarea id="description" name="description" class="form-control form-control-alternative" rows="3" placeholder="Write a review here ..."></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 @endforeach
+
                 {{--VACCINE--}}
                 @foreach($vaccine_data as $row)
                     @php
@@ -140,14 +199,63 @@
                                         <span class="badge badge-pill {{ ($row->orderStatus === 'Delivered') ? 'badge-success' : 'badge-warning' }} badge-lg">{{ $row->orderStatus }}</span>
                                     </div>
                                 </div>
-                                <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap mr-2">From: <strong class="text-primary">{{ $seller->name }}</strong> </span>
-                                    <span class="text-nowrap"></span>
-                                </p>
+                                <div class="row" style="justify-content: right">
+                                    <div class="col">
+                                        <p class="mt-3 mb-0 text-muted text-sm">
+                                            <span class="text-nowrap mr-2">From: <strong class="text-primary">{{ $seller->name }}</strong> </span>
+                                            <span class="text-nowrap"></span>
+                                        </p>
+                                    </div>
+                                    <div class="col-auto">
+                                        @if($row->orderStatus == 'Completed')
+                                            <button type="button" class="btn btn-facebook mr-3" data-toggle="modal" data-target="#reviewProduct">Review Service</button>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Modal Review Product --}}
+                    <div class="modal fade" id="reviewProduct" tabindex="-1" role="dialog" aria-labelledby="reviewProductTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Review</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="{{ route('review.store') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="modal-body">
+                                        <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden>
+                                        <input type="number" name="productID" value="{{ $row->productID }}" hidden>
+                                        <input type="text" name="orderType" value="{{ $row->orderType }}" hidden>
+                                        <div class="form-group">
+                                            <label for="rate">Rate</label>
+                                            <select name="rate" class="form-control" id="rate">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description">Description</label>
+                                            <textarea id="description" name="description" class="form-control form-control-alternative" rows="3" placeholder="Write a review here ..."></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 @endforeach
+
                 {{-- MEDICINE --}}
                 @foreach($medicine_data as $row)
                     @php
@@ -180,10 +288,58 @@
                                         <span class="badge badge-pill {{ ($row->orderStatus === 'Delivered') ? 'badge-success' : 'badge-warning' }} badge-lg">{{ $row->orderStatus }}</span>
                                     </div>
                                 </div>
-                                <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap mr-2">From: <strong class="text-primary">{{ $seller->name }}</strong></span>
-                                    <span class="text-nowrap"></span>
-                                </p>
+                                <div class="row" style="justify-content: right">
+                                    <div class="col">
+                                        <p class="mt-3 mb-0 text-muted text-sm">
+                                            <span class="text-nowrap mr-2">From: <strong class="text-primary">{{ $seller->name }}</strong> </span>
+                                            <span class="text-nowrap"></span>
+                                        </p>
+                                    </div>
+                                    <div class="col-auto">
+                                        @if($row->orderStatus == 'Completed')
+                                            <button type="button" class="btn btn-facebook mr-3" data-toggle="modal" data-target="#reviewMedicine">Review Service</button>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Modal Review Medicine --}}
+                    <div class="modal fade" id="reviewMedicine" tabindex="-1" role="dialog" aria-labelledby="reviewMedicineTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Review</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="{{ route('review.store') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="modal-body">
+                                        <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden>
+                                        <input type="number" name="medicineID" value="{{ $row->medicineID }}" hidden>
+                                        <input type="text" name="orderType" value="{{ $row->orderType }}" hidden>
+                                        <div class="form-group">
+                                            <label for="rate">Rate</label>
+                                            <select name="rate" class="form-control" id="rate">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description">Description</label>
+                                            <textarea id="description" name="description" class="form-control form-control-alternative" rows="3" placeholder="Write a review here ..."></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -220,10 +376,58 @@
                                         <span class="badge badge-pill {{ ($row->orderStatus === 'Delivered') ? 'badge-success' : 'badge-warning' }} badge-lg">{{ $row->orderStatus }}</span>
                                     </div>
                                 </div>
-                                <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap mr-2">From: <strong class="text-primary">{{ $seller->name }}</strong></span>
-                                    <span class="text-nowrap"></span>
-                                </p>
+                                <div class="row" style="justify-content: right">
+                                    <div class="col">
+                                        <p class="mt-3 mb-0 text-muted text-sm">
+                                            <span class="text-nowrap mr-2">From: <strong class="text-primary">{{ $seller->name }}</strong> </span>
+                                            <span class="text-nowrap"></span>
+                                        </p>
+                                    </div>
+                                    <div class="col-auto">
+                                        @if($row->orderStatus == 'Completed')
+                                            <button type="button" class="btn btn-facebook mr-3" data-toggle="modal" data-target="#reviewPetCare">Review Service</button>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Modal Review Pet Care --}}
+                    <div class="modal fade" id="reviewPetCare" tabindex="-1" role="dialog" aria-labelledby="reviewPetCareTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Review</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="{{ route('review.store') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="modal-body">
+                                        <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden>
+                                        <input type="number" name="petCareID" value="{{ $row->petCareID }}" hidden>
+                                        <input type="text" name="orderType" value="{{ $row->orderType }}" hidden>
+                                        <div class="form-group">
+                                            <label for="rate">Rate</label>
+                                            <select name="rate" class="form-control" id="rate">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description">Description</label>
+                                            <textarea id="description" name="description" class="form-control form-control-alternative" rows="3" placeholder="Write a review here ..."></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -259,10 +463,58 @@
                                         <span class="badge badge-pill {{ ($row->orderStatus === 'Delivered') ? 'badge-success' : 'badge-warning' }} badge-lg">{{ $row->orderStatus }}</span>
                                     </div>
                                 </div>
-                                <p class="mt-3 mb-0 text-muted text-sm">
-                                    <span class="text-nowrap mr-2">From: <strong class="text-primary">{{ $seller->name }}</strong></span>
-                                    <span class="text-nowrap"></span>
-                                </p>
+                                <div class="row" style="justify-content: right">
+                                    <div class="col">
+                                        <p class="mt-3 mb-0 text-muted text-sm">
+                                            <span class="text-nowrap mr-2">From: <strong class="text-primary">{{ $seller->name }}</strong> </span>
+                                            <span class="text-nowrap"></span>
+                                        </p>
+                                    </div>
+                                    <div class="col-auto">
+                                        @if($row->orderStatus == 'Completed')
+                                            <button type="button" class="btn btn-facebook mr-3" data-toggle="modal" data-target="#reviewGrooming">Review Service</button>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Modal Review Grooming --}}
+                    <div class="modal fade" id="reviewGrooming" tabindex="-1" role="dialog" aria-labelledby="reviewGroomingTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Review</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="{{ route('review.store') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="modal-body">
+                                        <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden>
+                                        <input type="number" name="groomingID" value="{{ $row->groomingID }}" hidden>
+                                        <input type="text" name="orderType" value="{{ $row->orderType }}" hidden>
+                                        <div class="form-group">
+                                            <label for="rate">Rate</label>
+                                            <select name="rate" class="form-control" id="rate">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description">Description</label>
+                                            <textarea id="description" name="description" class="form-control form-control-alternative" rows="3" placeholder="Write a review here ..."></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
