@@ -69,7 +69,7 @@
 
             <div class="form-group">
                 <label for="image">Vaccine Picture</label>
-                <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror" required>
+                <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror">
 
                 @error('image')
                 <span class="text-danger">{{ $message }}</span>

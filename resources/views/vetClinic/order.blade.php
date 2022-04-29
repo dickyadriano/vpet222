@@ -18,6 +18,9 @@
                         </nav>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
+                        <a href="{{ route('order.index') }}" class="btn btn-sm btn-neutral active">
+                            Order List
+                        </a>
                         <a href="{{ route('orderHistory') }}" class="btn btn-sm btn-neutral">
                             Medicine Order History
                         </a>

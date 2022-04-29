@@ -16,8 +16,9 @@
                         </nav>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
-                        <a href="{{ route('service.index') }}" class="btn btn-sm btn-neutral">Veterinary</a>
-                        <a href="{{ route('petCare.index') }}" class="btn btn-sm btn-neutral">Animal Care</a>
+                        <a href="{{route('service.index')}}" class="btn btn-sm btn-neutral">Veterinary</a>
+                        <a href="{{route('petCare.index')}}" class="btn btn-sm btn-neutral">Animal Care</a>
+                        <a href="{{route('grooming.index')}}" class="btn btn-sm btn-neutral active">Grooming</a>
                     </div>
                 </div>
             </div>

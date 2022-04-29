@@ -20,7 +20,7 @@
                         <a href="{{ route('order.index') }}" class="btn btn-sm btn-neutral">
                             Payment Verification
                         </a>
-                        <a href="{{ route('orderHistory') }}" class="btn btn-sm btn-neutral active">
+                        <a href="{{ route('orderHistory') }}" class="btn btn-sm btn-neutral {{ Request::is('petShop/orderHistory') ? 'active' : '' }}">
                             Payment History
                         </a>
                     </div>
@@ -45,7 +45,7 @@
                 <th scope="col" class="sort" data-sort="name">Order Type</th>
                 <th scope="col">Payment Receipt</th>
                 <th scope="col" class="sort" data-sort="name">Verification Status</th>
-                <th scope="col">Control</th>
+{{--                <th scope="col">Control</th>--}}
 
             </tr>
             </thead>
@@ -98,23 +98,23 @@
                             </a>
                         </td>
                         <td><span class="badge badge-pill {{ ($row->orderStatus === 'Accepted') ? 'badge-success' : 'badge-warning' }} badge-lg">{{ $row->orderStatus }}</span></td>
-                        <td class="align-middle">
-                            <div class="row">
-                                <form action="{{route('update-statusOrder', $row->id)}}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <input type="text" name="orderStatus" value="Accepted" required hidden readonly>
-                                    <input type="text" name="id" value="{{ $row->id }}" required hidden readonly>
-                                    <button type="submit" class="btn btn-success m-1" >Accept</button>
-                                </form>
+{{--                        <td class="align-middle">--}}
+{{--                            <div class="row">--}}
+{{--                                <form action="{{route('update-statusOrder', $row->id)}}" method="POST" enctype="multipart/form-data">--}}
+{{--                                    @csrf--}}
+{{--                                    <input type="text" name="orderStatus" value="Accepted" required hidden readonly>--}}
+{{--                                    <input type="text" name="id" value="{{ $row->id }}" required hidden readonly>--}}
+{{--                                    <button type="submit" class="btn btn-success m-1" >Accept</button>--}}
+{{--                                </form>--}}
 
-                                <form action="{{route('update-statusOrder', $row->id)}}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <input type="text" name="orderStatus" value="Rejected" required hidden readonly>
-                                    <input type="text" name="id" value="{{ $row->id }}" required hidden readonly>
-                                    <button type="submit" class="btn btn-danger m-1" >Reject</button>
-                                </form>
-                            </div>
-                        </td>
+{{--                                <form action="{{route('update-statusOrder', $row->id)}}" method="POST" enctype="multipart/form-data">--}}
+{{--                                    @csrf--}}
+{{--                                    <input type="text" name="orderStatus" value="Rejected" required hidden readonly>--}}
+{{--                                    <input type="text" name="id" value="{{ $row->id }}" required hidden readonly>--}}
+{{--                                    <button type="submit" class="btn btn-danger m-1" >Reject</button>--}}
+{{--                                </form>--}}
+{{--                            </div>--}}
+{{--                        </td>--}}
 
                     </tr>
                 @endif

@@ -18,11 +18,15 @@ class ReminderController extends Controller
     {
         $data_reminder = DB::table('reminders')
             ->where('userId', '=', Auth::user()->id)->get();
+
+        $data_reminderVet = DB::table('reminders')
+            ->join('users', 'reminders.createdBy', '=' , 'users.name')->get();
+
         if (Auth::user()->type == 'customer'){
             return view('customer.reminder', compact('data_reminder'));
         }
         elseif (Auth::user()->type == 'veterinary'){
-            return view('veterinary.reminder');
+            return view('veterinary.reminder', compact('data_reminderVet'));
         }
     }
 

@@ -78,7 +78,7 @@ Route::get('/admin/manageUser', [App\Http\Controllers\AdminController::class, 's
 Route::post('/admin/manageInformation', [App\Http\Controllers\AdminController::class, 'updateInformation'])->name('admin-update-information');
 Route::post('/admin/delete', [App\Http\Controllers\AdminController::class, 'destroy'])->name('information-destroy');
 Route::post('/admin/statusUpdate', [App\Http\Controllers\ServiceController::class, 'updateStatus'])->name('update-statusVet');
-Route::post('/admin/orderStatusUpdate', [App\Http\Controllers\OrderController::class, 'updateStatus'])->name('update-statusOrder');
+Route::post('/admin/statusUpdate', [App\Http\Controllers\OrderController::class, 'updateStatus'])->name('update-statusOrder');
 Route::get('/admin/verifyVet', [App\Http\Controllers\AdminController::class, 'showVet'])->name('verify-vet');
 
 //update profile
