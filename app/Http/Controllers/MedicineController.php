@@ -25,7 +25,14 @@ class MedicineController extends Controller
         $show = Medicine::where('userID', '=', Auth::user()->id)->get();
 
         $data_medicine = Medicine::all();
-        $data_users = User::all();
+
+        $data_users = DB::table('users')
+            ->join('orders', 'users.id', '=', 'orders.userID')
+            ->join('services', 'orders.serviceID', '=', 'services.id')
+            ->where('services.userID', '=', Auth::user()->id)
+            ->where('orders.orderStatus', '!=', 'Completed')
+            ->select('users.id', 'users.name')
+            ->get();
 
         $medicineInCart_data = DB::table('carts')
             ->join('medicines', 'carts.medicineID', '=', 'medicines.id')

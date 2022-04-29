@@ -64,10 +64,71 @@
                                     <input name="orderStatus" value="{{'Completed'}}" type="text" hidden readonly required>
                                     <button class="btn btn-success">Complete</button>
                                 </form>
-                                <a href="#" class="btn btn-primary mx-1">Chat Customer</a>
+                                <button class="user_info btn btn-twitter" id="{{ $user->id }}" data-toggle="modal" data-target="#consultation_chat">Chat Customer</button>
                             </div>
                         </td>
                     </tr>
+                    {{-- Modal Consultation --}}
+                    <div class="modal fade bd-example-modal-lg" id="consultation_chat" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Consultation</h4>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-md-11 col-xl-11">
+                                        <div class="card" id="messages">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt--5 p-3 ">
+                                    <div class="col-auto">
+                                        <button type="button" class="btn btn-google-plus" data-toggle="modal" data-target="#reminder">Set Reminder</button>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button class="btn btn-facebook">Creat Medicine Recipe</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Modal Reminder --}}
+                    <div class="modal fade" id="reminder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <form action="{{ route('reminder.store') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="number" class="form-control" name="userId" value="{{ $user->id }}" hidden>
+                                    <input type="text" class="form-control" name="createdBy" value="{{ Auth::user()->name }}" hidden>
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Set Reminder</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="title">Title</label>
+                                            <input type="text" class="form-control" name="title" id="title" placeholder="Title of Reminder">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="timeReminder">Date</label>
+                                            <input type="datetime-local" class="form-control" name="timeReminder" id="timeReminder">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description">Description</label>
+                                            <textarea class="form-control" name="description" id="description" placeholder="Break Text With '~'. Example: Name: A ~ Type: Pet"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Save Reminder</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 @endif
             @endforeach
             </tbody>

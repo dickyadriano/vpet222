@@ -149,7 +149,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: /*'/send_message'*/ "{{ route('send.message') }}", // need to create this post route
+                    url: "{{ route('send.message') }}", // need to create this post route
                     data: dataStr,
                     cache: false,
                     success: function (data) {

@@ -100,7 +100,9 @@ class ConsultationController extends Controller
             $query->where('from', $my_id)->where('to', $user_id);
         })->get();
 
-        return view('customer.messages.index', ['messages' => $messages]);
+        $user = DB::table('users')->where('id', '!=', $user_id)->first();
+
+        return view('customer.messages.index', ['messages' => $messages, 'user' => $user]);
     }
 
     public function sendMessage(Request $request){

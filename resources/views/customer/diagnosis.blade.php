@@ -293,12 +293,16 @@
                                             <span class="text-success mr-2">³›20%</span>of Enteritis <br>
                                         </td>
                                     @endif
-                                    <td>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Aenean elementum dolor et erat consectetur interdum.
-                                        Integer fermentum, enim tempus accumsan faucibus,
-                                        odio tellus porta mauris, id gravida sem arcu et ligula.
-                                    </td>
+                                    @if($row->symptom == 'fever, diarrhea, vomit, limp, noAppetite')
+                                        <td>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            Aenean elementum dolor et erat consectetur interdum.
+                                            Integer fermentum, enim tempus accumsan faucibus,
+                                            odio tellus porta mauris, id gravida sem arcu et ligula.
+                                        </td>
+                                    @else
+
+                                    @endif
                                 @elseif($row->symptom == 'diarrhea' || $row->symptom == 'diarrhea, limp' ||
                                         $row->symptom == 'diarrhea, noAppetite' || $row->symptom == 'limp' ||
                                         $row->symptom == 'limp, noAppetite' || $row->symptom == 'noAppetite' ||

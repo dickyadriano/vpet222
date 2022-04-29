@@ -48,7 +48,7 @@
                         $user = $data;
                     }
                 @endphp
-                @if($row->orderStatus == 'Wait for Payment')
+                @if($row->orderStatus == 'Accepted')
                 <tr>
                     <td>{{$row->id}}</td>
                     <td>{{$user->username}}</td>
