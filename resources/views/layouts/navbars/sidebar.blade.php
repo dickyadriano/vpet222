@@ -116,7 +116,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('reminder') ? 'active' : '' }}" href="{{ route('reminder.index') }}">
+                                <a class="nav-link {{ Request::is('reminder ') ? 'active' : '' }}" href="{{ route('reminder.index') }}">
                                     <i class="ni ni-time-alarm text-primary"></i>
                                     <span class="nav-link-text">Reminder</span>
                                 </a>

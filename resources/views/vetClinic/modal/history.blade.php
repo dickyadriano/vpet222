@@ -21,6 +21,9 @@
                         <a href="{{ route('order.index') }}" class="btn btn-sm btn-neutral">
                             Order List
                         </a>
+                        <a href="{{ route('orderHistory') }}" class="btn btn-sm btn-neutral active">
+                            Medicine Order History
+                        </a>
                     </div>
                 </div>
             </div>
@@ -48,7 +51,7 @@
                         $user = $data;
                     }
                 @endphp
-                @if($row->orderStatus != 'Wait for Payment')
+                @if($row->orderStatus != 'Accepted' && $row->orderStatus != 'Pending')
                     <tr>
                         <td>{{$row->id}}</td>
                         <td>{{$user->username}}</td>
