@@ -14,7 +14,6 @@ class MedicineController extends Controller
     public function __construct()
     {
         $this->middleware('vetClinic')->only('edit');
-        $this->middleware('customer')->only('search');
     }
     /**
      * Display a listing of the resource.
@@ -153,13 +152,19 @@ class MedicineController extends Controller
         $data_medicine = Medicine::where('medicineName','LIKE', '%'.$search_text.'%')->get();
 
         $data_cart = Cart::all();
+        $data_users = User::all();
         $medicineInCart_data = DB::table('carts')
             ->join('medicines', 'carts.medicineID', '=', 'medicines.id')
             ->where('carts.userID', '=', Auth::user()->id)
             ->where('carts.orderType', '=', 'medicine')
             ->select('medicines.*', 'carts.*')->get();
 
-//        return redirect()->route('customer.index', compact('data_product', 'productInCart_data', 'data_cart'));
-        return view('customer.marketplace.medicine', compact('data_medicine', 'medicineInCart_data', 'data_cart','search_text'));
+        if (Auth::user()->type == 'customer'){
+            return view('customer.marketplace.medicine', compact('data_medicine', 'medicineInCart_data', 'data_cart','search_text'));
+        }
+        elseif (Auth::user()->type == 'veterinary'){
+            return view('veterinary.medicine', compact('data_medicine', 'data_users', 'medicineInCart_data', 'data_cart','search_text'));
+        }
+
     }
 }

@@ -84,8 +84,24 @@
                 <h1 class="text-white mx-1">Welcome to the Dashboard of </h1>
                 <h1 class="text-yellow mx-1">Admin</h1>
             @elseif(auth()->user()->type == 'veterinary')
-                <h1 class="text-white mx-1">Welcome to the Dashboard of </h1>
-                <h1 class="text-yellow mx-1">Veterinary</h1>
+                @php
+                    $route = Route::currentRouteName();
+                @endphp
+                @if(Request::is('medicine')||$route == 'searchMedicine')
+                    <form class="navbar-search navbar-search-light form-inline mr-sm-3" type="get" action="{{url('/searchMedicine')}}" id="navbar-search-main">
+                        <div class="form-group mb-0">
+                            <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                </div>
+                                <input class="form-control" name="query" placeholder="Search" value="{{ $route == 'searchMedicine' ? $search_text : '' }}" type="text">
+                            </div>
+                        </div>
+                    </form>
+                @else
+                    <h1 class="text-white mx-1">Welcome to the Dashboard of </h1>
+                    <h1 class="text-yellow mx-1">Veterinary</h1>
+                @endif
             @endif
             <!-- Navbar links -->
             <ul class="navbar-nav align-items-center  ml-md-auto ">
