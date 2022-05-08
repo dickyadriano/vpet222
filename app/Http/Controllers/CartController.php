@@ -93,12 +93,7 @@ class CartController extends Controller
      */
     public function update(Request $request, $cartId)
     {
-//        echo $cartId;
         Cart::where('userID', '=', $cartId)->update(['userId' => $request['userID']]);
-//        $cart->userID = $request->get('userID');
-//        $cart->save();
-//        $cart->update(['userID' => 2,
-//            'orderType' => 'medicine']);
 
         return redirect()->route('medicine.index');
     }

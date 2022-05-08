@@ -49,7 +49,7 @@
                                         @endphp
                                     </h1>
                                     <h2 class="text-uppercase text-success ls-1 mb-0">{{ date("Y-m-d",strtotime($data->timeReminder)) }}</h2>
-                                    <h6 class="text-white ls-1 mb-1">by: drh. Aidil Calvianto</h6>
+{{--                                    <h6 class="text-white ls-1 mb-1"></h6>--}}
                                 </div>
                                 <div class="col-6 centerCol">
                                     <h5 class="text-info ls-1 mb-1">{{ str_replace('~', "|", $data->description) }}</h5>

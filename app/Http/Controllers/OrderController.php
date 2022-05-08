@@ -316,18 +316,6 @@ class OrderController extends Controller
         $request->validate(['orderStatus'=>'required']);
         $order->update($request->all());
         return redirect()->back();
-
-//        $verificationStatus = $request->verificationStatus;
-//        $id = $request->id;
-//
-//        $update = [
-//            'id' => $id,
-//            'verificationStatus' => $verificationStatus
-//        ];
-//
-//        Order::where('id', $request->id)->update($update);
-//
-//        return redirect()->route('service.index');
     }
 
     public function updateStatus(Request $request)

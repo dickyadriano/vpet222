@@ -87,7 +87,7 @@
                                         <button type="button" class="btn btn-google-plus" data-toggle="modal" data-target="#reminder">Set Reminder</button>
                                     </div>
                                     <div class="col-auto">
-                                        <button class="btn btn-facebook">Creat Medicine Recipe</button>
+                                        <a class="btn btn-facebook" href="{{route('medicine.index')}}">Create Medicine Recipe</a>
                                     </div>
                                 </div>
                             </div>
@@ -111,15 +111,15 @@
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <label for="title">Title</label>
-                                            <input type="text" class="form-control" name="title" id="title" placeholder="Title of Reminder">
+                                            <input type="text" class="form-control" name="title" id="title" placeholder="Title of Reminder" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="timeReminder">Date</label>
-                                            <input type="datetime-local" class="form-control" name="timeReminder" id="timeReminder">
+                                            <input type="datetime-local" class="form-control" name="timeReminder" id="timeReminder" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Description</label>
-                                            <textarea class="form-control" name="description" id="description" placeholder="Break Text With '~'. Example: Name: A ~ Type: Pet"></textarea>
+                                            <textarea class="form-control" name="description" id="description" placeholder="Break Text With '~'. Example: Name: A ~ Type: Pet" required></textarea>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
