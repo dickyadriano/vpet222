@@ -47,6 +47,7 @@ class OrderController extends Controller
             ->join('users', 'orders.userID', '=', 'users.id')
             ->join('services', 'orders.serviceID', '=', 'services.id')
             ->where('orders.userID','=',Auth::user()->id)
+            ->where('orders.orderStatus','=', 'Accepted')
             ->select(['orders.*', 'services.*'])
             ->get();
 
@@ -54,30 +55,35 @@ class OrderController extends Controller
             ->join('products', 'orders.productID', '=', 'products.id')
             ->join('users', 'orders.userID', '=', 'users.id')
             ->where('orders.userID','=',Auth::user()->id)
+            ->where('orders.orderStatus','=', 'Accepted')
             ->select('orders.*', 'products.*')->get();
 
         $medicine_data = DB::table('orders')
             ->join('medicines', 'orders.medicineID', '=', 'medicines.id')
             ->join('users', 'orders.userID', '=', 'users.id')
             ->where('orders.userID','=',Auth::user()->id)
+            ->where('orders.orderStatus','=', 'Accepted')
             ->select('orders.*', 'medicines.*')->get();
 
         $petCare_data = DB::table('orders')
             ->join('pet_cares', 'orders.petCareID', '=', 'pet_cares.id')
             ->join('users', 'orders.userID', '=', 'users.id')
             ->where('orders.userID','=',Auth::user()->id)
+            ->where('orders.orderStatus','=', 'Accepted')
             ->select('orders.*', 'pet_cares.*')->get();
 
         $grooming_data = DB::table('orders')
             ->join('groomings', 'orders.groomingID', '=', 'groomings.id')
             ->join('users', 'orders.userID', '=', 'users.id')
             ->where('orders.userID','=',Auth::user()->id)
+            ->where('orders.orderStatus','=', 'Accepted')
             ->select('orders.*', 'groomings.*')->get();
 
         $vaccine_data = DB::table('orders')
             ->join('vaccines', 'orders.vaccineID', '=', 'vaccines.id')
             ->join('users', 'orders.userID', '=', 'users.id')
             ->where('orders.userID','=',Auth::user()->id)
+            ->where('orders.orderStatus','=', 'Accepted')
             ->select('orders.*', 'vaccines.*')->get();
 
         $payment_data = DB::table('orders')
@@ -129,9 +135,63 @@ class OrderController extends Controller
             ->select('orders.*', 'medicines.medicineName')
             ->get();
 
+        $showOrder = DB::table('orders')
+            ->join('users', 'orders.userID', '=', 'users.id')
+            ->where('orders.orderStatus', '=', 'Reviewed')
+            ->get();
+
         $payment_data = DB::table('orders')
             ->join('users', 'orders.userID', '=', 'users.id')
             ->select('users.*', 'orders.*')->get();
+
+        $service_data = DB::table('orders')
+            ->join('users', 'orders.userID', '=', 'users.id')
+            ->join('services', 'orders.serviceID', '=', 'services.id')
+            ->where('orders.userID','=',Auth::user()->id)
+            ->where('orders.orderStatus','=', 'Completed')
+            ->orWhere('orders.orderStatus','=', 'Reviewed')
+            ->select(['orders.*', 'services.*'])
+            ->get();
+
+        $vaccine_data = DB::table('orders')
+            ->join('vaccines', 'orders.vaccineID', '=', 'vaccines.id')
+            ->join('users', 'orders.userID', '=', 'users.id')
+            ->where('orders.userID','=',Auth::user()->id)
+            ->where('orders.orderStatus','=', 'Completed')
+            ->orWhere('orders.orderStatus','=', 'Reviewed')
+            ->select('orders.*', 'vaccines.*')->get();
+
+        $product_data = DB::table('orders')
+            ->join('products', 'orders.productID', '=', 'products.id')
+            ->join('users', 'orders.userID', '=', 'users.id')
+            ->where('orders.userID','=',Auth::user()->id)
+            ->where('orders.orderStatus','=', 'Completed')
+            ->orWhere('orders.orderStatus','=', 'Reviewed')
+            ->select('orders.*', 'products.*')->get();
+
+        $medicine_data = DB::table('orders')
+            ->join('medicines', 'orders.medicineID', '=', 'medicines.id')
+            ->join('users', 'orders.userID', '=', 'users.id')
+            ->where('orders.userID','=',Auth::user()->id)
+            ->where('orders.orderStatus','=', 'Completed')
+            ->orWhere('orders.orderStatus','=', 'Reviewed')
+            ->select('orders.*', 'medicines.*')->get();
+
+        $petCare_data = DB::table('orders')
+            ->join('pet_cares', 'orders.petCareID', '=', 'pet_cares.id')
+            ->join('users', 'orders.userID', '=', 'users.id')
+            ->where('orders.userID','=',Auth::user()->id)
+            ->where('orders.orderStatus','=', 'Completed')
+            ->orWhere('orders.orderStatus','=', 'Reviewed')
+            ->select('orders.*', 'pet_cares.*')->get();
+
+        $grooming_data = DB::table('orders')
+            ->join('groomings', 'orders.groomingID', '=', 'groomings.id')
+            ->join('users', 'orders.userID', '=', 'users.id')
+            ->where('orders.userID','=',Auth::user()->id)
+            ->where('orders.orderStatus','=', 'Completed')
+            ->orWhere('orders.orderStatus','=', 'Reviewed')
+            ->select('orders.*', 'groomings.*')->get();
 
         if (Auth::user()->type == 'petShop') {
             return view('petShop.modal.history', compact('show'));
@@ -140,12 +200,15 @@ class OrderController extends Controller
             return view('veterinary.modal.history', compact('showService'));
         }
         elseif (Auth::user()->type == 'vetClinic') {
-            return view('vetClinic.modal.history', compact('showClinic'),[
-                "title" => "Order"
-            ]);
+            return view('vetClinic.modal.history', compact('showClinic'));
         }
         elseif (Auth::user()->type == 'admin') {
             return view('admin.modal.history', compact('payment_data'));
+        }
+        elseif (Auth::user()->type == 'customer') {
+            return view('customer.orderHistory', compact('showOrder', 'service_data',
+                            'vaccine_data', 'product_data', 'medicine_data', 'petCare_data',
+                            'grooming_data'));
         }
     }
 
