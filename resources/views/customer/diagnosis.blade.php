@@ -293,16 +293,21 @@
                                             <span class="text-success mr-2">³›20%</span>of Enteritis <br>
                                         </td>
                                     @endif
-                                    @if($row->symptom == 'fever, diarrhea, vomit, limp, noAppetite')
-                                        <td>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Aenean elementum dolor et erat consectetur interdum.
-                                            Integer fermentum, enim tempus accumsan faucibus,
-                                            odio tellus porta mauris, id gravida sem arcu et ligula.
-                                        </td>
-                                    @else
-
-                                    @endif
+                                    <td>
+                                        <span class="text-success mr-2">¹› Canine Parvo Virus</span>is a contagious virus
+                                        mainly affecting dogs. CPV is highly contagious and is spread from dog to dog by
+                                        direct or indirect contact with their feces. Vaccines can prevent this infection,
+                                        but mortality can reach 91% in untreated cases. Treatment often involves veterinary
+                                        hospitalization. <br>
+                                        <span class="text-success mr-2">²› Canine Corona Virus</span>is an enveloped,
+                                        positive-sense, single-stranded RNA virus which is a member of the species
+                                        Alphacoronavirus 1. It causes a highly contagious intestinal disease worldwide
+                                        in dogs. The infecting virus enters its host cell by binding to the APN receptor. <br>
+                                        <span class="text-success mr-2">³› Enteritis</span>is an inflammation of the small
+                                        intestine and is caused by a wide range of potential problems. Parasites, bacteria,
+                                        viruses, or allergies can all inflame the small intestines of your dog, causing
+                                        diarrhea. <br>
+                                    </td>
                                 @elseif($row->symptom == 'diarrhea' || $row->symptom == 'diarrhea, limp' ||
                                         $row->symptom == 'diarrhea, noAppetite' || $row->symptom == 'limp' ||
                                         $row->symptom == 'limp, noAppetite' || $row->symptom == 'noAppetite' ||
@@ -333,42 +338,64 @@
                                         </td>
                                     @endif
                                     <td>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Aenean elementum dolor et erat consectetur interdum.
-                                        Integer fermentum, enim tempus accumsan faucibus,
-                                        odio tellus porta mauris, id gravida sem arcu et ligula.
+                                        <span class="text-success mr-2">¹› Giardiasis</span>is a single-celled parasite that
+                                        lives in your dog's intestine. It infects older dogs but more frequently infects
+                                        puppies. Dogs become infected when they swallow Giardia that may be present in
+                                        water or other substances that have been soiled with feces. <br>
+                                        <span class="text-warning mr-2">²› Canine Parvo Virus</span>is a contagious virus
+                                        mainly affecting dogs. CPV is highly contagious and is spread from dog to dog by
+                                        direct or indirect contact with their feces. Vaccines can prevent this infection,
+                                        but mortality can reach 91% in untreated cases. Treatment often involves veterinary
+                                        hospitalization. <br>
+                                        <span class="text-warning mr-2">³› Canine Corona Virus</span>is an enveloped,
+                                        positive-sense, single-stranded RNA virus which is a member of the species
+                                        Alphacoronavirus 1. It causes a highly contagious intestinal disease worldwide
+                                        in dogs. The infecting virus enters its host cell by binding to the APN receptor. <br>
+                                        <span class="text-warning mr-2">⁴› Enteritis</span>is an inflammation of the small
+                                        intestine and is caused by a wide range of potential problems. Parasites, bacteria,
+                                        viruses, or allergies can all inflame the small intestines of your dog, causing
+                                        diarrhea. <br>
                                     </td>
                                 @elseif($row->symptom == 'itchy' || $row->symptom == 'itchy, hairLoss' ||
                                         $row->symptom == 'hairLoss')
                                     @if($row->symptom == 'itchy, hairLoss')
                                         <td>
                                             <span class="text-warning mr-2">Possibly one or more of:</span><br>
-                                            <span class="text-success mr-2">¹›100%</span>of Dermatophitosis <br>
+                                            <span class="text-success mr-2">¹›100%</span>of Dermatophytosis <br>
                                             <span class="text-success mr-2">²›100%</span>of Scabies <br>
-                                            <span class="text-success mr-2">³›100%</span>of Demodex <br>
+                                            <span class="text-success mr-2">³›100%</span>of Demodectic <br>
                                         </td>
                                     @else
                                         <td>
-                                            <span class="text-success mr-2">¹›50%</span>of Dermatophitosis <br>
+                                            <span class="text-success mr-2">¹›50%</span>of Dermatophytosis <br>
                                             <span class="text-success mr-2">²›50%</span>of Scabies <br>
-                                            <span class="text-success mr-2">³›50%</span>of Demodex <br>
+                                            <span class="text-success mr-2">³›50%</span>of Demodectic <br>
                                         </td>
                                     @endif
                                     <td>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Aenean elementum dolor et erat consectetur interdum.
-                                        Integer fermentum, enim tempus accumsan faucibus,
-                                        odio tellus porta mauris, id gravida sem arcu et ligula.
+                                        <span class="text-success mr-2">¹› Dermatophytosis</span>is a superficial fungal
+                                        skin disease of cats and dogs. The most common pathogens of small animals belong
+                                        to the genera Microsporum and Trichophyton. It is an important skin disease because
+                                        it is contagious, infectious and can be transmitted to people. <br>
+                                        <span class="text-success mr-2">²› Sarcoptic mange, also called scabies</span>
+                                        in dogs is caused by the Sarcoptes scabiei mite, a highly contagious skin parasite.
+                                        The mites burrow into the skin and cause severe itching, which can result in the
+                                        formation of scabs and hair loss. It is a nonseasonal parasite that can be found
+                                        in dogs of all ages and breeds. <br>
+                                        <span class="text-success mr-2">³› Demodectic</span>mange is caused by Demodectic canis,
+                                        a parasitic mite that lives in the hair follicles of dogs. Under the microscope,
+                                        this mite is shaped like a cigar with eight legs. Demodectic mange, sometimes just
+                                        called 'Demodectic' or 'red mange', is the most common form of mange in dogs. <br>
                                     </td>
                                 @elseif($row->symptom == 'wateryEyes')
                                     <td>
-                                        <span class="text-success mr-2">¹›100%</span>of Konjungtivitis <br>
+                                        <span class="text-success mr-2">¹›100%</span>of Conjunctivitis <br>
                                     </td>
                                     <td>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Aenean elementum dolor et erat consectetur interdum.
-                                        Integer fermentum, enim tempus accumsan faucibus,
-                                        odio tellus porta mauris, id gravida sem arcu et ligula.
+                                        <span class="text-success mr-2">¹› Conjunctivitis,</span>also known as pinkeye or
+                                        red eye, is as common in dogs as it is in humans. It's an itchy inflammation of
+                                        the tissue that coats the eye and the lining of the eyelids, called the conjunctiva.
+                                        Conjunctivitis can happen at any age, by itself or because of another eye problem. <br>
                                     </td>
                                 @endif
 
@@ -412,6 +439,28 @@
                                                 <span class="text-success mr-2">³›40%</span>of Calicivirus <br>
                                                 <span class="text-success mr-2">⁴›40%</span>of Chlamydia <br>
                                             @endif
+                                        </td>
+                                        <td>
+                                            <span class="text-success mr-2">¹› Feline parvovirus</span>is a virus that
+                                            can cause severe disease in cats, particularly kittens. It can be fatal. The
+                                            disease is also known as feline infectious enteritis (FIE) and feline panleukopenia.
+                                            The virus is extremely resilient and can survive in the environment for long
+                                            periods of time. <br>
+                                            <span class="text-success mr-2">²› Canine Corona Virus</span>is an enveloped,
+                                            positive-sense, single-stranded RNA virus which is a member of the species
+                                            Alphacoronavirus 1. It causes a highly contagious intestinal disease worldwide
+                                            in dogs. The infecting virus enters its host cell by binding to the APN receptor. <br>
+                                            <span class="text-success mr-2">³› Calici Virus</span>is a highly
+                                            contagious virus that causes a mild to severe respiratory infection and oral
+                                            disease in cats. It is especially common in shelters and breeding colonies,
+                                            and often infects young cats. Most cats recover completely after a calicivirus
+                                            infection, but rare strains can be especially deadly. The virus poses no threat
+                                            to humans. <br>
+                                            <span class="text-success mr-2">⁴› Chlamydia</span>in cats is a bacterial
+                                            infection that typically affects the eyes. It can cause conjunctivitis, or
+                                            infection of the inner eyelids and sclera, or whites of the eyes. Here's what
+                                            you should know about the symptoms, diagnosis and treatment of this common eye
+                                            infection in cats. <br>
                                         </td>
                                     @else
                                         <td>
@@ -484,13 +533,37 @@
                                                 <span class="text-success mr-2">⁴›20%</span>of Chlamydia <br>
                                             @endif
                                         </td>
+                                        <td>
+                                            @if($row->symptom == 'fever, flu, limp, noAppetite, thrush')
+                                                <span class="text-success mr-2">¹› Calici Virus</span>is a highly
+                                                contagious virus that causes a mild to severe respiratory infection and oral
+                                                disease in cats. It is especially common in shelters and breeding colonies,
+                                                and often infects young cats. Most cats recover completely after a calicivirus
+                                                infection, but rare strains can be especially deadly. The virus poses no threat
+                                                to humans. <br>
+                                            @elseif($row->symptom == 'fever, flu, limp, noAppetite, wateryEyes')
+                                                <span class="text-success mr-2">¹› Chlamydia</span>in cats is a bacterial
+                                                infection that typically affects the eyes. It can cause conjunctivitis, or
+                                                infection of the inner eyelids and sclera, or whites of the eyes. Here's what
+                                                you should know about the symptoms, diagnosis and treatment of this common eye
+                                                infection in cats. <br>
+                                            @else
+                                                <span class="text-success mr-2">³› Calici Virus</span>is a highly
+                                                contagious virus that causes a mild to severe respiratory infection and oral
+                                                disease in cats. It is especially common in shelters and breeding colonies,
+                                                and often infects young cats. Most cats recover completely after a calicivirus
+                                                infection, but rare strains can be especially deadly. The virus poses no threat
+                                                to humans. <br>
+                                                <span class="text-success mr-2">⁴› Chlamydia</span>in cats is a bacterial
+                                                infection that typically affects the eyes. It can cause conjunctivitis, or
+                                                infection of the inner eyelids and sclera, or whites of the eyes. Here's what
+                                                you should know about the symptoms, diagnosis and treatment of this common eye
+                                                infection in cats. <br>
+                                            @endif
+                                        </td>
                                     @endif
-                                    <td>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Aenean elementum dolor et erat consectetur interdum.
-                                        Integer fermentum, enim tempus accumsan faucibus,
-                                        odio tellus porta mauris, id gravida sem arcu et ligula.
-                                    </td>
+
+
                                 @elseif($row->symptom == 'diarrhea' || $row->symptom == 'vomit' ||
                                         $row->symptom == 'fever, diarrhea' || $row->symptom == 'fever, vomit' ||
                                         $row->symptom == 'diarrhea, vomit' || $row->symptom == 'diarrhea, limp' ||
@@ -541,10 +614,28 @@
                                         </td>
                                     @endif
                                     <td>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Aenean elementum dolor et erat consectetur interdum.
-                                        Integer fermentum, enim tempus accumsan faucibus,
-                                        odio tellus porta mauris, id gravida sem arcu et ligula.
+                                        @if($row->symptom == 'diarrhea, limp' || $row->symptom == 'diarrhea, noAppetite' ||
+                                            $row->symptom == 'diarrhea, vomit, limp' || $row->symptom == 'diarrhea, vomit, noAppetite' ||
+                                            $row->symptom == 'diarrhea, limp, noAppetite' || $row->symptom == 'fever, diarrhea, vomit, limp' ||
+                                            $row->symptom == 'fever, diarrhea, vomit, noAppetite' || $row->symptom == 'fever, vomit, limp, noAppetite' ||
+                                            $row->symptom == 'diarrhea, limp, noAppetite, wateryEyes' || $row->symptom == 'diarrhea')
+                                            <span class="text-success mr-2">¹› Feline parvovirus</span>is a virus that
+                                            can cause severe disease in cats, particularly kittens. It can be fatal. The
+                                            disease is also known as feline infectious enteritis (FIE) and feline panleukopenia.
+                                            The virus is extremely resilient and can survive in the environment for long
+                                            periods of time. <br>
+                                            <span class="text-success mr-2">²› Canine Corona Virus</span>is an enveloped,
+                                            positive-sense, single-stranded RNA virus which is a member of the species
+                                            Alphacoronavirus 1. It causes a highly contagious intestinal disease worldwide
+                                            in dogs. The infecting virus enters its host cell by binding to the APN receptor. <br>
+                                        @endif
+                                        @if($row->symptom == 'diarrhea' || $row->symptom == 'diarrhea, limp, noAppetite, wateryEyes' ||
+                                            $row->symptom == 'diarrhea, limp' || $row->symptom == 'diarrhea, noAppetite')
+                                            <span class="text-success mr-2">³› Giardiasis</span>is a single-celled parasite that
+                                                lives in your dog's intestine. It infects older dogs but more frequently infects
+                                                puppies. Dogs become infected when they swallow Giardia that may be present in
+                                                water or other substances that have been soiled with feces. <br>
+                                        @endif
                                     </td>
                                 @elseif($row->symptom == 'limp' || $row->symptom == 'noAppetite' ||
                                         $row->symptom == 'limp, noAppetite' || $row->symptom == 'limp, thrush' ||
@@ -570,52 +661,86 @@
                                         </td>
                                     @endif
                                     <td>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Aenean elementum dolor et erat consectetur interdum.
-                                        Integer fermentum, enim tempus accumsan faucibus,
-                                        odio tellus porta mauris, id gravida sem arcu et ligula.
+                                        @if($row->symptom == 'limp, noAppetite')
+                                            <span class="text-success mr-2">¹› Feline parvovirus</span>is a virus that
+                                            can cause severe disease in cats, particularly kittens. It can be fatal. The
+                                            disease is also known as feline infectious enteritis (FIE) and feline panleukopenia.
+                                            The virus is extremely resilient and can survive in the environment for long
+                                            periods of time. <br>
+                                            <span class="text-success mr-2">²› Canine Corona Virus</span>is an enveloped,
+                                            positive-sense, single-stranded RNA virus which is a member of the species
+                                            Alphacoronavirus 1. It causes a highly contagious intestinal disease worldwide
+                                            in dogs. The infecting virus enters its host cell by binding to the APN receptor. <br>
+                                            <span class="text-success mr-2">³› Giardiasis</span>is a single-celled parasite that
+                                            lives in your dog's intestine. It infects older dogs but more frequently infects
+                                            puppies. Dogs become infected when they swallow Giardia that may be present in
+                                            water or other substances that have been soiled with feces. <br>
+                                        @endif
+                                        <span class="text-success mr-2">⁴› Calici Virus</span>is a highly
+                                        contagious virus that causes a mild to severe respiratory infection and oral
+                                        disease in cats. It is especially common in shelters and breeding colonies,
+                                        and often infects young cats. Most cats recover completely after a calicivirus
+                                        infection, but rare strains can be especially deadly. The virus poses no threat
+                                        to humans. <br>
+                                        <span class="text-success mr-2">⁵› Chlamydia</span>in cats is a bacterial
+                                        infection that typically affects the eyes. It can cause conjunctivitis, or
+                                        infection of the inner eyelids and sclera, or whites of the eyes. Here's what
+                                        you should know about the symptoms, diagnosis and treatment of this common eye
+                                        infection in cats. <br>
                                     </td>
                                 @elseif($row->symptom == 'itchy' || $row->symptom == 'hairLoss' ||
                                         $row->symptom == 'itchy, hairLoss')
                                     @if($row->symptom == 'hairLoss' || $row->symptom == 'itchy, hairLoss')
                                         <td>
                                             <span class="text-warning mr-2">Possibly one or more of:</span><br>
-                                            <span class="text-success mr-2">¹›100%</span>of Dermatophitosis  <br>
+                                            <span class="text-success mr-2">¹›100%</span>of Dermatophytosis  <br>
                                             <span class="text-success mr-2">²›100%</span>of Scabies <br>
-                                            <span class="text-success mr-2">³›100%</span>of Demodex <br>
+                                            <span class="text-success mr-2">³›100%</span>of Demodectic <br>
                                         </td>
                                     @else
                                         <td>
-                                            <span class="text-success mr-2">¹›50%</span>of Dermatophitosis  <br>
+                                            <span class="text-success mr-2">¹›50%</span>of Dermatophytosis  <br>
                                             <span class="text-success mr-2">²›50%</span>of Scabies <br>
-                                            <span class="text-success mr-2">³›50%</span>of Demodex <br>
+                                            <span class="text-success mr-2">³›50%</span>of Demodectic <br>
                                         </td>
                                     @endif
                                     <td>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Aenean elementum dolor et erat consectetur interdum.
-                                        Integer fermentum, enim tempus accumsan faucibus,
-                                        odio tellus porta mauris, id gravida sem arcu et ligula.
+                                        <span class="text-success mr-2">¹› Dermatophytosis</span>is a superficial fungal
+                                        skin disease of cats and dogs. The most common pathogens of small animals belong
+                                        to the genera Microsporum and Trichophyton. It is an important skin disease because
+                                        it is contagious, infectious and can be transmitted to people. <br>
+                                        <span class="text-success mr-2">²› Sarcoptic mange, also called scabies</span>
+                                        in dogs is caused by the Sarcoptes scabiei mite, a highly contagious skin parasite.
+                                        The mites burrow into the skin and cause severe itching, which can result in the
+                                        formation of scabs and hair loss. It is a nonseasonal parasite that can be found
+                                        in dogs of all ages and breeds. <br>
+                                        <span class="text-success mr-2">³› Demodectic</span>mange is caused by Demodectic canis,
+                                        a parasitic mite that lives in the hair follicles of dogs. Under the microscope,
+                                        this mite is shaped like a cigar with eight legs. Demodectic mange, sometimes just
+                                        called 'Demodectic' or 'red mange', is the most common form of mange in dogs. <br>
                                     </td>
                                 @elseif($row->symptom == 'thrush')
                                     <td>
                                         <span class="text-success mr-2">¹›20%</span>of Calicivirus  <br>
                                     </td>
                                     <td>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Aenean elementum dolor et erat consectetur interdum.
-                                        Integer fermentum, enim tempus accumsan faucibus,
-                                        odio tellus porta mauris, id gravida sem arcu et ligula.
+                                        <span class="text-success mr-2">¹› Calici Virus</span>is a highly
+                                        contagious virus that causes a mild to severe respiratory infection and oral
+                                        disease in cats. It is especially common in shelters and breeding colonies,
+                                        and often infects young cats. Most cats recover completely after a calicivirus
+                                        infection, but rare strains can be especially deadly. The virus poses no threat
+                                        to humans. <br>
                                     </td>
                                 @elseif($row->symptom == 'wateryEyes')
                                     <td>
                                         <span class="text-success mr-2">¹›20%</span>of Chlamydia  <br>
                                     </td>
                                     <td>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Aenean elementum dolor et erat consectetur interdum.
-                                        Integer fermentum, enim tempus accumsan faucibus,
-                                        odio tellus porta mauris, id gravida sem arcu et ligula.
+                                        <span class="text-success mr-2">¹› Chlamydia</span>in cats is a bacterial
+                                        infection that typically affects the eyes. It can cause conjunctivitis, or
+                                        infection of the inner eyelids and sclera, or whites of the eyes. Here's what
+                                        you should know about the symptoms, diagnosis and treatment of this common eye
+                                        infection in cats. <br>
                                     </td>
                                 @endif
                             @endif
