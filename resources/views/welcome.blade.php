@@ -64,72 +64,18 @@
                             </a>
                         </li>
                     @elseif (Auth::check() != null)
-                        @if(auth()->user()->type == 'admin')
-                            <li class="nav-item">
-                                <a class="nav-link nav-link-icon" href="{{ route('dashboard-admin') }}">
-                                    <i class="ni ni-planet"></i>
-                                    <span class="nav-link-inner--text">Dashboard</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link nav-link-icon" href="{{ route('admin-profile', Auth::user()->id) }}">
-                                    <i class="ni ni-single-02"></i>
-                                    <span class="nav-link-inner--text">Profile</span>
-                                </a>
-                            </li>
-                        @elseif(auth()->user()->type == 'customer')
-                            <li class="nav-item">
-                                <a class="nav-link nav-link-icon" href="{{ route('customer.index') }}">
-                                    <i class="fa fa-store"></i>
-                                    <span class="nav-link-inner--text">Marketplace</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link nav-link-icon" href="{{ route('customer.index', Auth::user()->id) }}">
-                                    <i class="ni ni-single-02"></i>
-                                    <span class="nav-link-inner--text">Profile</span>
-                                </a>
-                            </li>
-                        @elseif(auth()->user()->type == 'vetClinic')
-                            <li class="nav-item">
-                                <a class="nav-link nav-link-icon" href="{{ route('dashboard-vetClinic') }}">
-                                    <i class="ni ni-planet"></i>
-                                    <span class="nav-link-inner--text">Dashboard</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link nav-link-icon" href="{{ route('vetClinic-profile', Auth::user()->id) }}">
-                                    <i class="ni ni-single-02"></i>
-                                    <span class="nav-link-inner--text">Profile</span>
-                                </a>
-                            </li>
-                        @elseif(auth()->user()->type == 'petShop')
-                            <li class="nav-item">
-                                <a class="nav-link nav-link-icon" href="{{ route('dashboard-petShop') }}">
-                                    <i class="ni ni-planet"></i>
-                                    <span class="nav-link-inner--text">Dashboard</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link nav-link-icon" href="{{ route('petShop-profile', Auth::user()->id) }}">
-                                    <i class="ni ni-single-02"></i>
-                                    <span class="nav-link-inner--text">Profile</span>
-                                </a>
-                            </li>
-                        @elseif(auth()->user()->type == 'veterinary')
-                            <li class="nav-item">
-                                <a class="nav-link nav-link-icon" href="{{ route('dashboard-veterinary') }}">
-                                    <i class="ni ni-planet"></i>
-                                    <span class="nav-link-inner--text">Dashboard</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link nav-link-icon" href="{{ route('veterinary-profile', Auth::user()->id) }}">
-                                    <i class="ni ni-single-02"></i>
-                                    <span class="nav-link-inner--text">Profile</span>
-                                </a>
-                            </li>
-                        @endif
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-icon" href="{{ route('customer.index') }}">
+                                <i class="fa fa-store"></i>
+                                <span class="nav-link-inner--text">Marketplace</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-icon" href="{{ route('customer.index', Auth::user()->id) }}">
+                                <i class="ni ni-single-02"></i>
+                                <span class="nav-link-inner--text">Profile</span>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link nav-link-icon" href="{{ route('logout') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
@@ -165,36 +111,32 @@
     </div>
 
     <div class="container mt--10 pb-5"></div>
-    @if (Auth::check() != null)
-        @if(auth()->user()->type == 'customer')
-        <div class="section section-components pb-0" id="section-components">
-            <h1 class="mx-4 bold text-indigo">Information, Tips and Tricks</h1>
+    <div class="section section-components pb-0" id="section-components">
+        <h1 class="mx-4 bold text-indigo">Information, Tips and Tricks</h1>
 
-            @php
-                $showInfo = DB::table('information')->get();
-            @endphp
-            @foreach($showInfo as $row)
-                <div class="container-fluid pt-3">
-                    <div class="row border-top border-bottom">
-                        <div class="col-xl-12">
-                            <div class="row">
-                                <div class="col-2" style="margin-left: auto; margin-right: auto;margin-bottom: auto;margin-top: auto">
-                                    <img src="{{asset('img/informationImages/'.$row->image)}}" class="rounded" style="width: 150px">
-                                </div>
-                                <div class="card bg-gradient-indigo shadow col-10">
-                                    <div class="card-body">
-                                        <h4 class="text-uppercase text-success mb-3">{{$row->title}}</h4>
-                                        <h4 class="text-white">{{$row->information}}</h4>
-                                    </div>
+        @php
+            $showInfo = DB::table('information')->get();
+        @endphp
+        @foreach($showInfo as $row)
+            <div class="container-fluid pt-3">
+                <div class="row border-top border-bottom">
+                    <div class="col-xl-12">
+                        <div class="row">
+                            <div class="col-2" style="margin-left: auto; margin-right: auto;margin-bottom: auto;margin-top: auto">
+                                <img src="{{asset('img/informationImages/'.$row->image)}}" class="rounded" style="width: 150px">
+                            </div>
+                            <div class="card bg-gradient-indigo shadow col-10">
+                                <div class="card-body">
+                                    <h4 class="text-uppercase text-success mb-3">{{$row->title}}</h4>
+                                    <h4 class="text-white">{{$row->information}}</h4>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            @endforeach
-        </div>
-        @endif
-    @endif
+            </div>
+        @endforeach
+    </div>
 </div>
 
 <footer class="py-5">

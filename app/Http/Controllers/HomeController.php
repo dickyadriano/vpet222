@@ -7,6 +7,7 @@ use App\Models\Medicine;
 use App\Models\Product;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -18,19 +19,48 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+//        $this->middleware('customer')->only('index');
     }
 
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
     public function index()
     {
 //        Message::dispatch('lorem ipsum dolor sit amet');
-        return view('welcome', [
-            "title" => "Welcome "
-        ]);
+        if (Auth::user()->type == 'customer')
+            return view('welcome');
+        else
+            return redirect()->back();
+    }
+
+    public function direction()
+    {
+//        $role = Auth::user()->type;
+//        $checkrole = explode(',', $role);
+//        if (in_array('admin', $checkrole)) {
+//            return redirect('dog/indexadmin');
+//        }
+//        else if () {
+//            return redirect('pet/index');
+//        }
+        if (Auth::user()->type == 'customer'){
+            return redirect('/welcome');
+        }
+        elseif (Auth::user()->type == 'admin'){
+            return redirect('/admin/dashboard');
+        }
+        elseif (Auth::user()->type == 'petShop'){
+            return redirect('/petShop/dashboard');
+        }
+        elseif (Auth::user()->type == 'vetClinic'){
+            return redirect('/vetClinic/dashboard');
+        }
+        elseif (Auth::user()->type == 'veterinary'){
+            return redirect('/veterinary/dashboard');
+        }
     }
 
     public function handleAdmin(){

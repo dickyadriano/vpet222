@@ -36,6 +36,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('redirects', 'App\Http\Controllers\HomeController@direction');
+
 Auth::routes();
 
 Route::get('message/{id}', [ConsultationController::class, 'getMessage'])->name('message');
