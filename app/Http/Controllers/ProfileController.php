@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['verified']);
+    }
     /**
      * Show the form for editing the profile.
      *

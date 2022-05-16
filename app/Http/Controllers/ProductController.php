@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('petShop')->only('edit');
+        $this->middleware(['petShop', 'verified'])->only('edit');
     }
 
     /**

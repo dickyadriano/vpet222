@@ -16,7 +16,7 @@ class PetShopController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('petShop');
+        $this->middleware(['petShop', 'verified']);
     }
     /**
      * Display a listing of the resource.

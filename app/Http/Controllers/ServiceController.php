@@ -12,6 +12,7 @@ class ServiceController extends Controller
     public function __construct()
     {
         $this->middleware('customer')->only('search');
+        $this->middleware('verified');
     }
     /**
      * Display a listing of the resource.
