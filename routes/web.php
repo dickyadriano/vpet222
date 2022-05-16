@@ -38,6 +38,9 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
+Route::get('redirects', 'App\Http\Controllers\HomeController@direction');
+
+
 Route::get('message/{id}', [ConsultationController::class, 'getMessage'])->name('message');
 Route::post('send_message', 'App\Http\Controllers\ConsultationController@sendMessage')->name('send.message');
 

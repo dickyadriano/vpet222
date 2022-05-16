@@ -13,27 +13,28 @@ class ProductController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['petShop', 'verified']);
+        $this->middleware(['petShop', 'verified'])->only('edit');
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function index()
     {
-        $data_product = Product::all();
-
-        $data_cart = Cart::all();
-
-        $userId = Auth::user()->id;
-        $products_data = DB::table('carts')
-            ->join('products', 'carts.productID', '=', 'products.id')
-            ->join('users', 'carts.userID', '=', $userId)
-            ->select('products.*', 'carts.*')->get();
-
-        return view('customer.dashboard', compact('data_product', 'data_cart', 'products_data'));
+//        $data_product = Product::all();
+//
+//        $data_cart = Cart::all();
+//
+//        $userId = Auth::user()->id;
+//        $products_data = DB::table('carts')
+//            ->join('products', 'carts.productID', '=', 'products.id')
+//            ->join('users', 'carts.userID', '=', $userId)
+//            ->select('products.*', 'carts.*')->get();
+//
+//        return view('customer.dashboard', compact('data_product', 'data_cart', 'products_data'));
+        return redirect()->back();
     }
 
     /**

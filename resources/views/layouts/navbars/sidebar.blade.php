@@ -116,7 +116,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('reminder ') ? 'active' : '' }}" href="{{ route('reminder.index') }}">
+                                <a class="nav-link {{ Request::is('reminder') ? 'active' : '' }}" href="{{ route('reminder.index') }}">
                                     <i class="ni ni-time-alarm text-primary"></i>
                                     <span class="nav-link-text">Reminder</span>
                                 </a>
@@ -148,25 +148,25 @@
                             </li>
                         @elseif(auth()->user()->type == 'petShop')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('petShop-product') }}">
+                                <a class="nav-link {{ Request::is('petShop/product') ? 'active' : '' }}" href="{{ route('petShop-product') }}">
                                     <i class="fas fa-box-open text-primary"></i>
                                     <span class="nav-link-text">Manage Product</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('petCare.index')}}">
+                                <a class="nav-link {{ Request::is('petCare') ? 'active' : '' }}" href="{{route('petCare.index')}}">
                                     <i class="fas fa-calendar-day text-primary"></i>
                                     <span class="nav-link-text">Animal Care</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('grooming.index') }}">
+                                <a class="nav-link {{ Request::is('grooming') ? 'active' : '' }}" href="{{ route('grooming.index') }}">
                                     <i class="fas fa-paw text-primary"></i>
                                     <span class="nav-link-text">Grooming</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('order.index') }}">
+                                <a class="nav-link {{ Request::is('order') ? 'active' : '' }}" href="{{ route('order.index') }}">
                                     <i class="ni ni-bag-17 text-primary"></i>
                                     <span class="nav-link-text">Order</span>
                                 </a>
