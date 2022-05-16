@@ -13,11 +13,12 @@
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="http://127.0.0.1:8000/welcome"><i class="fas fa-home"></i></a></li>
                                 <li class="breadcrumb-item"><a href="{{ route('order.index') }}">Order</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('orderHistory') }}">Order History</a></li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
-                        <a href="{{ route('orderHistory') }}" class="btn btn-sm btn-neutral">Order History</a>
+                        <a href="{{ route('order.index') }}" class="btn btn-sm btn-neutral">Order</a>
                     </div>
                 </div>
             </div>
@@ -296,7 +297,6 @@
                         </div>
                     </div>
                 @endforeach
-
                 {{-- MEDICINE --}}
                 @foreach($medicine_data as $row)
                     @php

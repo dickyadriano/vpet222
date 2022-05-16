@@ -1,7 +1,7 @@
 <div class="card-header msg_head bg-gradient-default">
     <div class="d-flex bd-highlight">
         <div class="user_info">
-            <span>A</span>
+            <span></span>
         </div>
     </div>
 </div>

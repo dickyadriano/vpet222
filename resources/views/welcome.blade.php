@@ -12,13 +12,12 @@
     <link href="{{asset('argon/argon/img/brand/VpetLogo.svg')}}" rel="icon" type="image/png">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-    <!-- Extra details for Live View on GitHub Pages -->
-
     <!-- Icons -->
     <link href="{{asset('argon/argon/vendor/nucleo/css/nucleo.css')}}" rel="stylesheet">
     <link href="{{asset('argon/argon/vendor/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
     <!-- Argon CSS -->
-    <link type="text/css" href="{{asset('argon/argon/css/argon.css?v=1.0.0')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('argon/assets/css/argon.css?v=1.2.0')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/argonv2.css?v=1.2.1')}}" type="text/css">
 </head>
 <body class="bg-white">
 
@@ -92,7 +91,6 @@
         </div>
     </nav>
     <div class="header bg-gradient-primary py-7 py-lg-8">
-
         <div class="container">
             <div class="header-body text-center mt-7 mb-7">
                 <div class="row justify-content-center">
@@ -105,7 +103,7 @@
         </div>
         <div class="separator separator-bottom separator-skew zindex-100">
             <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+                <polygon class="fill-white" points="4000 0 2560 100 0 100"></polygon>
             </svg>
         </div>
     </div>
@@ -158,7 +156,8 @@
                     </li>
                 </ul>
             </div>
-        </div>    </div>
+        </div>
+    </div>
 </footer>
 <script src="{{asset('argon/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
 <script src="{{asset('argon/assets/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
