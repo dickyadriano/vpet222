@@ -107,6 +107,25 @@
                             </div>
                         </div>
                         <hr class="my-1" style="border-top: dotted 1px;" />
+
+                        @php
+                            $total = DB::table('carts')
+                                ->join('products', 'products.id', '=', 'carts.productID')
+                                ->where('carts.orderType', '=', 'product')
+                                ->where('carts.userID', '=', Auth::user()->id)
+                                ->get();
+                            $count = DB::table('carts')
+                                ->join('products', 'products.id', '=', 'carts.productID')
+                                ->where('carts.orderType', '=', 'product')
+                                ->where('carts.userID', '=', Auth::user()->id)
+                                ->count();
+
+                            $tot = 0;
+                            foreach ($total as $amount){
+                                $tot += ($amount->price * $amount->orderAmount);
+                            }
+                        @endphp
+                        <h2 class="mb-0 mt-3 bold">Transfer Amount:  <b class="text-green">@currency($tot),-</b></h2>
                         <h3 class="mb-0 mt-5 bold text-primary">Attach payment receipt here</h3>
                         <input type="file" id="receiptImage" name="receiptImage" class="form-control @error('receiptImage') is-invalid @enderror" required>
                         <h3 class="mb-0 mt-2 bold text-primary">Order Detail</h3>

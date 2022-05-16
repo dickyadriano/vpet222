@@ -230,7 +230,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-auto">
-                                        <img class="img-center userImg150" src="{{ asset('argon/argon/img/theme/'. $row->image) }}">
+                                        <img class="img-center userImg150" src="{{ asset('img/productImage/'. $row->image) }}">
                                     </div>
                                     <div class="col">
                                         <h5 class="card-title text-uppercase h2 mb-0">{{ $row->productName }}</h5>
