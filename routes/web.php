@@ -33,21 +33,21 @@ use App\Http\Livewire\MapLocation;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome')->middleware(['auth', 'verified']);
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('message/{id}', [ConsultationController::class, 'getMessage'])->name('message');
 Route::post('send_message', 'App\Http\Controllers\ConsultationController@sendMessage')->name('send.message');
 
-Route::get('/welcome', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
+Route::get('/welcome', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome')->middleware(['auth', 'verified']);
 
 //login
-Route::get('admin/dashboard', [App\Http\Controllers\HomeController::class, 'handleAdmin'])->name('dashboard-admin')->middleware('admin');
-Route::get('customer/dashboard', [App\Http\Controllers\HomeController::class, 'handleCustomer'])->name('dashboard-customer')->middleware('customer');
-Route::get('petShop/dashboard', [App\Http\Controllers\HomeController::class, 'handlePetShop'])->name('dashboard-petShop')->middleware('petShop');
-Route::get('vetClinic/dashboard', [App\Http\Controllers\HomeController::class, 'handleVetClinic'])->name('dashboard-vetClinic')->middleware('vetClinic');
+Route::get('admin/dashboard', [App\Http\Controllers\HomeController::class, 'handleAdmin'])->name('dashboard-admin')->middleware(['admin', 'verified']);
+Route::get('customer/dashboard', [App\Http\Controllers\HomeController::class, 'handleCustomer'])->name('dashboard-customer')->middleware(['customer', 'verified']);
+Route::get('petShop/dashboard', [App\Http\Controllers\HomeController::class, 'handlePetShop'])->name('dashboard-petShop')->middleware(['petShop', 'verified']);
+Route::get('vetClinic/dashboard', [App\Http\Controllers\HomeController::class, 'handleVetClinic'])->name('dashboard-vetClinic')->middleware(['vetClinic', 'verified']);
 Route::get('veterinary/dashboard', [App\Http\Controllers\HomeController::class, 'handleVeterinary'])->name('dashboard-veterinary');
 
 //profile

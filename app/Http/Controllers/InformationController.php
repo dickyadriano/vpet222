@@ -9,7 +9,7 @@ class InformationController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware(['admin', 'verified']);
     }
     /**
      * Display a listing of the resource.

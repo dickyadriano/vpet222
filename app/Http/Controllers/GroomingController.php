@@ -11,8 +11,8 @@ class GroomingController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('petShop')->only('edit');
-        $this->middleware('customer')->only('search');
+        $this->middleware(['petShop', 'verified'])->only('edit');
+        $this->middleware(['customer', 'verified'])->only('search');
     }
     /**
      * Display a listing of the resource.

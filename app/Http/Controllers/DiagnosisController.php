@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\DB;
 
 class DiagnosisController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['customer', 'verified']);
+    }
     /**
      * Display a listing of the resource.
      *
