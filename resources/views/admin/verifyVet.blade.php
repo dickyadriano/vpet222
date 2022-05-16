@@ -12,7 +12,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="{{ route('dashboard-admin') }}">Dashboard</a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('verify-vet') }}">Vet Verification</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('service.index') }}">Vet Verification</a></li>
                             </ol>
                         </nav>
                     </div>
