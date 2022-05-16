@@ -24,7 +24,8 @@ class UsersTableSeeder extends Seeder
                 'avatar' => '1646565347.jpg',
                 'phoneNo' => '66666666666',
                 'address' => 'admin',
-                'type' => 'admin'
+                'type' => 'admin',
+                'email_verified_at' => '2022-05-16 07:09:11'
             ],
         ]);
         DB::table('users')->insert([
@@ -36,7 +37,8 @@ class UsersTableSeeder extends Seeder
                 'avatar' => 'default.png',
                 'phoneNo' => '08217777777',
                 'address' => 'Jalan Stasiun',
-                'type' => 'customer'
+                'type' => 'customer',
+                'email_verified_at' => '2022-05-16 07:09:11'
             ],
         ]);
         DB::table('users')->insert([
@@ -48,7 +50,8 @@ class UsersTableSeeder extends Seeder
                 'avatar' => 'default.png',
                 'phoneNo' => '12312312312',
                 'address' => 'Jl.Raya Sesetan No.132',
-                'type' => 'vetClinic'
+                'type' => 'vetClinic',
+                'email_verified_at' => '2022-05-16 07:09:11'
             ],
         ]);
         DB::table('users')->insert([
@@ -60,7 +63,8 @@ class UsersTableSeeder extends Seeder
                 'avatar' => 'default.png',
                 'phoneNo' => '12121212121',
                 'address' => 'Sea Road no.23',
-                'type' => 'petShop'
+                'type' => 'petShop',
+                'email_verified_at' => '2022-05-16 07:09:11'
             ],
         ]);
         DB::table('users')->insert([
@@ -72,7 +76,8 @@ class UsersTableSeeder extends Seeder
                 'avatar' => 'doctor.jpg',
                 'phoneNo' => '12121212122',
                 'address' => 'Jl. Alianyang No.5',
-                'type' => 'veterinary'
+                'type' => 'veterinary',
+                'email_verified_at' => '2022-05-16 07:09:11'
             ]
         ]);
         DB::table('users')->insert([
@@ -84,7 +89,8 @@ class UsersTableSeeder extends Seeder
                 'avatar' => 'default.png',
                 'phoneNo' => '234234234234',
                 'address' => 'Jl. Pasar Baru no.9',
-                'type' => 'veterinary'
+                'type' => 'veterinary',
+                'email_verified_at' => '2022-05-16 07:09:11'
             ]
         ]);
         DB::table('users')->insert([
@@ -96,7 +102,8 @@ class UsersTableSeeder extends Seeder
                 'avatar' => 'default.png',
                 'phoneNo' => '345345345345',
                 'address' => 'Jl. Gunung Api No.5',
-                'type' => 'veterinary'
+                'type' => 'veterinary',
+                'email_verified_at' => '2022-05-16 07:09:11'
             ]
         ]);
 
