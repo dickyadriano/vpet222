@@ -61,7 +61,7 @@
                         <div class="col pt-3">
                             <div class="form-group">
                                 <div class="input-group input-group-alternative mb-3">
-                                    <select name='userID' class="form-control">
+                                    <select name='userID' class="form-control" required>
                                         <option value="" hidden selected>Share to Customers</option>
                                         @foreach($data_users as $row)
                                             <option value="{{$row->id}}">{{$row->name}}</option>
@@ -69,14 +69,6 @@
                                     </select>
                                 </div>
                             </div>
-
-{{--                            <div class="dropdown">--}}
-{{--                                <a onclick="myFunction()" class="btn btn-success">Dropdown</a>--}}
-{{--                                <div id="myDropdown" class="dropdown-content">--}}
-{{--                                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">--}}
-
-{{--                                </div>--}}
-{{--                            </div>--}}
                         </div>
                         <div class="col-auto">
                             <button type="submit" name="cashOut" class="btn btn-primary">Share to Customer Cart</button>
@@ -178,82 +170,4 @@
             @endforeach
         </div>
     </div>
-
-{{--    <style>--}}
-{{--        .dropbtn {--}}
-{{--            background-color: #04AA6D;--}}
-{{--            color: white;--}}
-{{--            padding: 16px;--}}
-{{--            font-size: 16px;--}}
-{{--            border: none;--}}
-{{--            cursor: pointer;--}}
-{{--        }--}}
-
-{{--        .dropbtn:hover, .dropbtn:focus {--}}
-{{--            background-color: #3e8e41;--}}
-{{--        }--}}
-
-{{--        #myInput {--}}
-{{--            box-sizing: border-box;--}}
-{{--            background-image: url('../../../public/img/search.png');--}}
-{{--            background-position: 14px 12px;--}}
-{{--            background-repeat: no-repeat;--}}
-{{--            font-size: 16px;--}}
-{{--            padding: 14px 20px 12px 45px;--}}
-{{--            border: none;--}}
-{{--            border-bottom: 1px solid #ddd;--}}
-{{--        }--}}
-
-{{--        #myInput:focus {outline: 3px solid #ddd;}--}}
-
-{{--        .dropdown {--}}
-{{--            position: relative;--}}
-{{--            display: inline-block;--}}
-{{--        }--}}
-
-{{--        .dropdown-content {--}}
-{{--            display: none;--}}
-{{--            position: absolute;--}}
-{{--            background-color: #f6f6f6;--}}
-{{--            min-width: 230px;--}}
-{{--            overflow: auto;--}}
-{{--            border: 1px solid #ddd;--}}
-{{--            z-index: 1;--}}
-{{--        }--}}
-
-{{--        .dropdown-content option {--}}
-{{--            color: black;--}}
-{{--            padding: 12px 16px;--}}
-{{--            text-decoration: none;--}}
-{{--            display: block;--}}
-{{--        }--}}
-
-{{--        .dropdown option:hover {background-color: #ddd;}--}}
-
-{{--        .show {display: block;}--}}
-{{--    </style>--}}
-
-{{--    <script>--}}
-{{--        /* When the user clicks on the button,--}}
-{{--        toggle between hiding and showing the dropdown content */--}}
-{{--        function myFunction() {--}}
-{{--            document.getElementById("myDropdown").classList.toggle("show");--}}
-{{--        }--}}
-
-{{--        function filterFunction() {--}}
-{{--            var input, filter, ul, li, a, i;--}}
-{{--            input = document.getElementById("myInput");--}}
-{{--            filter = input.value.toUpperCase();--}}
-{{--            div = document.getElementById("myDropdown");--}}
-{{--            a = div.getElementsByTagName("a");--}}
-{{--            for (i = 0; i < a.length; i++) {--}}
-{{--                txtValue = a[i].textContent || a[i].innerText;--}}
-{{--                if (txtValue.toUpperCase().indexOf(filter) > -1) {--}}
-{{--                    a[i].style.display = "";--}}
-{{--                } else {--}}
-{{--                    a[i].style.display = "none";--}}
-{{--                }--}}
-{{--            }--}}
-{{--        }--}}
-{{--    </script>--}}
 @endsection
