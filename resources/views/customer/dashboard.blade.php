@@ -14,7 +14,7 @@
 
     <div class="modal fade bd-example-modal-lg" id="cart" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
+            <div class="modal-content" style="background-color: #f5f3f2">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Your Cart</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -23,7 +23,7 @@
                 </div>
                 <div class="modal-body">
                     @foreach($productInCart_data as $row)
-                        <div class="card">
+                        <div class="card ">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">

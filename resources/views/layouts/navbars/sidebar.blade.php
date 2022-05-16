@@ -85,7 +85,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('customer-location') }}">
+                                <a class="nav-link {{ Request::is('customer/location') ? 'active' : '' }}" href="{{ route('customer-location') }}">
                                     <i class="ni ni-square-pin text-primary"></i>
                                     <span class="nav-link-text">Location</span>
                                 </a>
@@ -103,7 +103,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('reminder.index') }}">
+                                <a class="nav-link {{ Request::is('reminder') ? 'active' : '' }}" href="{{ route('reminder.index') }}">
                                     <i class="ni ni-time-alarm text-primary"></i>
                                     <span class="nav-link-text">Reminder</span>
                                 </a>
