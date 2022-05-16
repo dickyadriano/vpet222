@@ -123,6 +123,8 @@
                                         </div>
                                     </div>
                                     <hr class="my-1" style="border-top: dotted 1px;" />
+
+                                    <h2 class="mb-0 mt-3 bold">Transfer Amount:  <b class="text-green">@currency($row->price)</b></h2>
                                     <h3 class="mb-0 mt-5 bold text-primary">Attach payment receipt here</h3>
                                     <input type="file" id="receiptImage" name="receiptImage" class="form-control @error('receiptImage') is-invalid @enderror" required>
                                     <h3 class="mb-0 mt-2 bold text-primary">Order Detail</h3>
