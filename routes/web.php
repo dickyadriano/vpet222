@@ -33,7 +33,7 @@ use App\Http\Livewire\MapLocation;
 */
 
 Route::get('/', function () {
-    return view('welcome')->middleware(['auth', 'verified']);
+    return view('welcome');
 });
 
 Auth::routes(['verify' => true]);
