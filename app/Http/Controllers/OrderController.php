@@ -48,6 +48,7 @@ class OrderController extends Controller
             ->join('services', 'orders.serviceID', '=', 'services.id')
             ->where('orders.userID','=',Auth::user()->id)
             ->where('orders.orderStatus','=', 'Accepted')
+            ->orWhere('orders.orderStatus','=', 'Pending')
             ->select(['orders.*', 'services.*'])
             ->get();
 
@@ -56,6 +57,7 @@ class OrderController extends Controller
             ->join('users', 'orders.userID', '=', 'users.id')
             ->where('orders.userID','=',Auth::user()->id)
             ->where('orders.orderStatus','=', 'Accepted')
+            ->orWhere('orders.orderStatus','=', 'Pending')
             ->select('orders.*', 'products.*')->get();
 
         $medicine_data = DB::table('orders')
@@ -63,6 +65,7 @@ class OrderController extends Controller
             ->join('users', 'orders.userID', '=', 'users.id')
             ->where('orders.userID','=',Auth::user()->id)
             ->where('orders.orderStatus','=', 'Accepted')
+            ->orWhere('orders.orderStatus','=', 'Pending')
             ->select('orders.*', 'medicines.*')->get();
 
         $petCare_data = DB::table('orders')
@@ -70,6 +73,7 @@ class OrderController extends Controller
             ->join('users', 'orders.userID', '=', 'users.id')
             ->where('orders.userID','=',Auth::user()->id)
             ->where('orders.orderStatus','=', 'Accepted')
+            ->orWhere('orders.orderStatus','=', 'Pending')
             ->select('orders.*', 'pet_cares.*')->get();
 
         $grooming_data = DB::table('orders')
@@ -77,6 +81,7 @@ class OrderController extends Controller
             ->join('users', 'orders.userID', '=', 'users.id')
             ->where('orders.userID','=',Auth::user()->id)
             ->where('orders.orderStatus','=', 'Accepted')
+            ->orWhere('orders.orderStatus','=', 'Pending')
             ->select('orders.*', 'groomings.*')->get();
 
         $vaccine_data = DB::table('orders')
@@ -84,6 +89,7 @@ class OrderController extends Controller
             ->join('users', 'orders.userID', '=', 'users.id')
             ->where('orders.userID','=',Auth::user()->id)
             ->where('orders.orderStatus','=', 'Accepted')
+            ->orWhere('orders.orderStatus','=', 'Pending')
             ->select('orders.*', 'vaccines.*')->get();
 
         $payment_data = DB::table('orders')
