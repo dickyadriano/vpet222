@@ -111,7 +111,6 @@
                         <input type="file" id="receiptImage" name="receiptImage" class="form-control @error('receiptImage') is-invalid @enderror" required>
                         <h3 class="mb-0 mt-2 bold text-primary">Order Detail</h3>
                         <textarea class="form-control" rows="5" type="text" name="orderDetail" required autofocus>{{ old('orderDetail') }}</textarea>
-
                     </div>
                     <div class="modal-footer" style="justify-content: center">
                         <button type="submit" class="btn btn-primary">Order</button>
