@@ -34,7 +34,7 @@
                                 $vet = $data;
                             }
                         @endphp
-                        @if($vet->verificationStatus == 'Verified')
+                        @if($vet->verificationStatus == 'Verified' || $vet->verificationStatus == 'Pending')
                             <div class="row align-items-center mb-2">
                                 <div class="col">
                                     <h4 class="text-uppercase text-info ls-1 mb-1">Verification of Veterinary Services</h4>
@@ -152,7 +152,7 @@
                             {{--                                    </div>--}}
                             {{--                                </div>--}}
                             {{--                            </div>--}}
-                        @elseif($vet->verificationStatus == 'Pending')
+                        @else
                             <form action="{{ route('vet.index') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden>
