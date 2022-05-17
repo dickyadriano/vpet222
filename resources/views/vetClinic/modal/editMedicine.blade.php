@@ -33,7 +33,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-basket"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Medicine Name" type="text" name="medicineName" value="{{ $medicine->medicineName }}" required autofocus>
+                    <input class="form-control" placeholder="Medicine Name" type="text" name="medicineName" value="{{ $medicine->medicineName }}" autofocus>
                 </div>
             </div>
 
@@ -43,7 +43,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-ungroup"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Medicine Amount" type="number" min="1" name="medicineAmount" value="{{ $medicine->medicineAmount }}" required autofocus>
+                    <input class="form-control" placeholder="Medicine Amount" type="number" min="1" name="medicineAmount" value="{{ $medicine->medicineAmount }}" autofocus>
                 </div>
             </div>
 
@@ -53,7 +53,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="ni ni-money-coins"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Medicine Price" type="number" min="1" name="medicinePrice" value="{{ $medicine->medicinePrice }}" required autofocus>
+                    <input class="form-control" placeholder="Medicine Price" type="number" min="1" name="medicinePrice" value="{{ $medicine->medicinePrice }}" autofocus>
                 </div>
             </div>
 
@@ -69,7 +69,7 @@
 
             <div class="form-group">
                 <label for="image">Medicine Picture</label>
-                <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror" required>
+                <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror">
 
                 @error('image')
                 <span class="text-danger">{{ $message }}</span>

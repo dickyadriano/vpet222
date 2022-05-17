@@ -37,11 +37,12 @@
                             ->join('users', 'services.userID', '=', 'users.id')
                             ->where('orders.serviceID', '=', $row->serviceID)->get();
 
-                        $order = new \App\Models\Order();
+                        $service = new \App\Models\Order();
                         foreach ($tableOrder as $data){
-                            $order = $data;
+                            $service = $data;
                         }
                     @endphp
+                    <?php $count = $row->serviceID; ?>
                     <div class="col-xl-4 col-lg-4 mb-3">
                         <div class="card card-stats mb-4 mb-xl-0">
                             <div class="card-body">
@@ -53,7 +54,7 @@
                                         <img class="img-center userImg150" src="{{ asset('argon/argon/img/theme/'. $row->image) }}">
                                     </div>
                                     <div class="col">
-                                        <h5 class="card-title h2 mb-0">{{ $order->name }}</h5>
+                                        <h5 class="card-title h2 mb-0">{{ $service->name }}</h5>
                                         <span class="h2 font-weight-bold mb-0">@currency($row->totalPrice),-</span>
                                     </div>
                                     <div class="col-auto">
@@ -63,9 +64,9 @@
                                 </div>
                                 <div class="row" style="justify-content: right">
                                     @if($row->orderStatus == 'Accepted')
-                                        <button class="user_info btn btn-twitter" id="{{ $order->id }}" data-toggle="modal" data-target="#consultation_chat">Do Consultation with Doctor</button>
+                                        <button class="user_info btn btn-twitter" id="{{ $service->id }}" data-toggle="modal" data-target="#consultation_chat">Do Consultation with Doctor</button>
                                     @elseif($row->orderStatus == 'Completed')
-                                        <button type="button" class="btn btn-facebook mr-3" data-toggle="modal" data-target="#reviewService">Review Service</button>
+                                        <button type="button" class="btn btn-facebook mr-3" data-toggle="modal" data-target="#reviewService<?php echo $count; ?>">Review Service</button>
                                     @endif
                                 </div>
                             </div>
@@ -91,11 +92,11 @@
                     </div>
 
                     {{-- Modal Review Service --}}
-                    <div class="modal fade" id="reviewService" tabindex="-1" role="dialog" aria-labelledby="reviewServiceTitle" aria-hidden="true">
+                    <div class="modal fade" id="reviewService<?php echo $count; ?>" tabindex="-1" role="dialog" aria-labelledby="reviewServiceTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">Review</h5>
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Review {{ $row->serviceID }}</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -105,6 +106,7 @@
                                     <div class="modal-body">
                                         <input type="number" name="userID" value="{{ Auth::user()->id }}" hidden>
                                         <input type="number" name="serviceID" value="{{ $row->serviceID }}" hidden>
+                                        <input type="text" name="orderType" value="{{ $row->orderType }}" hidden>
                                         <div class="form-group">
                                             <label for="rate">Rate</label>
                                             <select name="rate" class="form-control" id="rate">

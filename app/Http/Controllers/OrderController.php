@@ -35,7 +35,7 @@ class OrderController extends Controller
 
         $showService = DB::table('orders')
             ->join('services', 'orders.serviceID', '=', 'services.id')
-            ->join('users', 'services.userID', '=', 'users.id')
+            ->where('services.userID', '=', Auth::user()->id)
             ->select('orders.*', 'services.serviceName')
             ->get();
 
