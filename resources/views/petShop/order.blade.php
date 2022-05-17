@@ -48,7 +48,6 @@
                         $user = $data;
                     }
                 @endphp
-                @if($row->orderStatus == 'Accepted')
                 <tr>
                     <td>{{$row->id}}</td>
                     <td>{{$user->username}}</td>
@@ -57,12 +56,14 @@
                     <td><span class="badge badge-pill badge-warning">{{$row->orderStatus}}</span></td>
                     <td class="align-middle">
                         <div class="row">
-                            <form action="{{ route('order.update', $row->id) }}" method="post" class="mx-1">
-                                @csrf
-                                @method('put')
-                                <input name="orderStatus" value="{{'Completed'}}" type="text" hidden readonly required>
-                                <button class="btn btn-success">Complete</button>
-                            </form>
+                            @if($row->orderStatus != 'Pending')
+                                <form action="{{ route('order.update', $row->id) }}" method="post" class="mx-1">
+                                    @csrf
+                                    @method('put')
+                                    <input name="orderStatus" value="{{'Completed'}}" type="text" hidden readonly required>
+                                    <button class="btn btn-success">Complete</button>
+                                </form>
+                            @endif
                             <form action="{{ route('order.update', $row->id) }}" method="post" class="mx-1">
                                 @csrf
                                 @method('put')
@@ -73,7 +74,6 @@
                         </div>
                     </td>
                 </tr>
-                @endif
             @endforeach
             </tbody>
         </table>
