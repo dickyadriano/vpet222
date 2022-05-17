@@ -91,8 +91,8 @@
                                 <span class="h2 font-weight-bold text-white mb-0">{{ $medicine }}</span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-blue text-white rounded-circle shadow">
-                                    <i class="fas fa-box"></i>
+                                <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                    <i class="fas fa-capsules"></i>
                                 </div>
                             </div>
                         </div>
@@ -108,8 +108,8 @@
                                 <span class="h2 font-weight-bold text-white mb-0">{{ $vaccine }}</span>
                             </div>
                             <div class="col-auto">
-                                <div class="icon icon-shape bg-blue text-white rounded-circle shadow">
-                                    <i class="fas fa-box"></i>
+                                <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                                    <i class="fas fa-syringe"></i>
                                 </div>
                             </div>
                         </div>
