@@ -21,7 +21,6 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $data_vetService = Service::all();
         $vet_data = DB::table('services')
             ->join('users', 'services.userID', '=', 'users.id')
             ->select('users.*', 'services.*')->get();
@@ -31,7 +30,7 @@ class ServiceController extends Controller
             ->select('users.*', 'services.*')->get();
 
         if (Auth::user()->type == 'veterinary'){
-            return view('veterinary.dashboard', compact('data_vetService'));
+            return view('veterinary.dashboard');
         }
         elseif (Auth::user()->type == 'admin'){
             return view('admin.verifyVet', compact('vet_data'));

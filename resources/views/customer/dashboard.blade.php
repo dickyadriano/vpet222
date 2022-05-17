@@ -217,6 +217,21 @@
                                         </div>
                                     </div>
                                 </div>
+                                @php
+                                    $data_review = DB::table('reviews')
+                                        ->where('reviews.productID','=', $row->id)
+                                        ->get();
+                                @endphp
+                                <h5 class="modal-title ml-3">Review</h5>
+                                <div class="anyClass">
+                                    @foreach($data_review as $review)
+                                        <div class="media p-3">
+                                            <div class="media-body list-group-item">
+                                                {{ $review->description }}
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
                                 <div class="modal-footer">
                                     <div class="form-group">
                                         <div class="input-group input-group-alternative mb-0">

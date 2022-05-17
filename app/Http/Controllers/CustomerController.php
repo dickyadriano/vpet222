@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
 use App\Models\Customer;
+use App\Models\Review;
 use App\Models\User;
 use Cassandra\Custom;
 use Illuminate\Http\Request;
@@ -31,7 +32,6 @@ class CustomerController extends Controller
      */
     public function index()
     {
-//        Message::dispatch('lorem ipsum dolor sit amet');
         $data_product = Product::all();
         $data_cart = Cart::all();
         $userId = Auth::user()->id;
