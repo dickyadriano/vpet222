@@ -261,3 +261,7 @@ td {
         margin-bottom: 15px !important;
     }
 }
+.anyClass {
+    height:100px;
+    overflow-y: scroll;
+}

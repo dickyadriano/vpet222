@@ -28,7 +28,6 @@
     <div class="container-fluid pt-3">
         <div class="row">
             @foreach($data_reminderVet as $data)
-                @if($data->createdBy == $data->name)
                 <div class="col-xl-3 col-md-4 col-sm-6 mb-5 mb-xl-0">
                     <div class="card bg-gradient-purple shadow">
                         <div class="card-body">
@@ -58,7 +57,6 @@
                         </div>
                     </div>
                 </div>
-                @endif
             @endforeach
         </div>
 
