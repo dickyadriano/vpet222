@@ -18,9 +18,8 @@
                         </nav>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
-                        <a href="{{ route('orderHistory') }}" class="btn btn-sm btn-neutral">
-                            Product Order History
-                        </a>
+                        <a href="{{ route('order.index') }}" class="btn btn-sm btn-neutral active">Order List</a>
+                        <a href="{{ route('orderHistory') }}" class="btn btn-sm btn-neutral">Product Order History</a>
                     </div>
                 </div>
             </div>

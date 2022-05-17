@@ -166,7 +166,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Request::is('order') ? 'active' : '' }}" href="{{ route('order.index') }}">
+                                <a class="nav-link {{ Request::is('order', 'petShop/orderHistory') ? 'active' : '' }}" href="{{ route('order.index') }}">
                                     <i class="ni ni-bag-17 text-primary"></i>
                                     <span class="nav-link-text">Order</span>
                                 </a>
