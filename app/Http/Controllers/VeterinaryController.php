@@ -102,6 +102,37 @@ class VeterinaryController extends Controller
         return back()->withStatus(__('Profile successfully updated.'));
     }
 
+    public function updateVetService(Request $request, Service $veterinary)
+    {
+        $this->validate($request, ['idCard' => 'mimes:jpeg,png,jpg,gif,svg']);
+        $this->validate($request, ['vetLicense' => 'mimes:jpeg,png,jpg,gif,svg']);
+
+        $veterinary->update($request->all());
+
+        if ($request->hasFile('idCard', 'vetLicense')){
+            $request->file('idCard', )->move('img/vetImage/idCard', $request->file('idCard', )->getClientOriginalName());
+            $request->file('vetLicense')->move('img/vetImage/license', $request->file('vetLicense')->getClientOriginalName());
+            $veterinary->idCard = $request->file('idCard')->getClientOriginalName();
+            $veterinary->vetLicense = $request->file('vetLicense')->getClientOriginalName();
+            $veterinary->save();
+        }
+
+        dd($request->all());
+
+//        if ($request->hasFile('idCard')){
+//            $request->file('idCard')->move('img/vetImage/idCard', $request->file('idCard')->getClientOriginalName());
+//            $veterinary->idCard = $request->file('idCard')->getClientOriginalName();
+//            $veterinary->save();
+//        }
+//        if ($request->hasFile('vetLicense')){
+//            $request->file('vetLicense')->move('img/vetImage/license', $request->file('vetLicense')->getClientOriginalName());
+//            $veterinary->vetLicense = $request->file('vetLicense')->getClientOriginalName();
+//            $veterinary->save();
+//        }
+
+        return redirect()->route('vet.index');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
