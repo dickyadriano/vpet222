@@ -51,7 +51,6 @@
                         $user = $data;
                     }
                 @endphp
-                @if($row->orderStatus == 'Accepted')
                     <tr>
                         <td>{{$row->id}}</td>
                         <td>{{$user->username}}</td>
@@ -76,7 +75,40 @@
                             </div>
                         </td>
                     </tr>
-                @endif
+                @endforeach
+            @foreach($showClinicVaccine as $row)
+                @php
+                    $tableUser = DB::table('users')->where('id', '=', $row->userID)->get();
+
+                    $user = new \App\Models\User();
+                    foreach ($tableUser as $data){
+                        $user = $data;
+                    }
+                @endphp
+                <tr>
+                    <td>{{$row->id}}</td>
+                    <td>{{$user->username}}</td>
+                    <td>{{$row->vaccineName}}</td>
+                    <td>{{$row->orderAmount}}</td>
+                    <td><span class="badge badge-pill badge-warning">{{$row->orderStatus}}</span></td>
+                    <td class="align-middle">
+                        <div class="row">
+                            <form action="{{ route('order.update', $row->id) }}" method="post" class="mx-1">
+                                @csrf
+                                @method('put')
+                                <input name="orderStatus" value="{{'Completed'}}" type="text" hidden readonly required>
+                                <button class="btn btn-success">Complete</button>
+                            </form>
+                            <form action="{{ route('order.update', $row->id) }}" method="post" class="mx-1">
+                                @csrf
+                                @method('put')
+                                <input name="orderStatus" value="{{'Cancelled'}}" type="text" hidden readonly required>
+                                <button class="btn btn-danger">Cancel</button>
+                            </form>
+                            <a href="{{ route('order.show', $row->id) }}" class="btn btn-primary mx-1">Info</a>
+                        </div>
+                    </td>
+                </tr>
             @endforeach
             </tbody>
         </table>

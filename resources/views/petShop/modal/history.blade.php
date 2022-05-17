@@ -48,22 +48,20 @@
                         $user = $data;
                     }
                 @endphp
-                @if($row->orderStatus != 'Wait for Payment')
-                    <tr>
-                        <td>{{$row->id}}</td>
-                        <td>{{$user->username}}</td>
-                        <td>{{$row->productName}}</td>
-                        <td>{{$row->orderAmount}}</td>
-                        <td>
-                            <span class="badge badge-pill {{ ($row->orderStatus === 'Completed') ? 'badge-success' : 'badge-warning' }}">{{ $row->orderStatus }}</span>
-                        </td>
-                        <td class="align-middle">
-                            <div class="row">
-                                <a href="{{ route('order.show', $row->id) }}" class="btn btn-primary">Info</a>
-                            </div>
-                        </td>
-                    </tr>
-                @endif
+                <tr>
+                    <td>{{$row->id}}</td>
+                    <td>{{$user->username}}</td>
+                    <td>{{$row->productName}}</td>
+                    <td>{{$row->orderAmount}}</td>
+                    <td>
+                        <span class="badge badge-pill {{ ($row->orderStatus === 'Completed') ? 'badge-success' : 'badge-warning' }}">{{ $row->orderStatus }}</span>
+                    </td>
+                    <td class="align-middle">
+                        <div class="row">
+                            <a href="{{ route('order.show', $row->id) }}" class="btn btn-primary">Info</a>
+                        </div>
+                    </td>
+                </tr>
             @endforeach
             </tbody>
         </table>

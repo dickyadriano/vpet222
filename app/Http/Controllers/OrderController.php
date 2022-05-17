@@ -28,6 +28,8 @@ class OrderController extends Controller
         $show = DB::table('orders')
             ->join('products', 'orders.productID', '=', 'products.id')
             ->join('users', 'products.userID', '=', 'users.id')
+            ->where('orders.orderStatus','=', 'Accepted')
+            ->orWhere('orders.orderStatus','=', 'Pending')
             ->select('orders.*', 'products.productName')
             ->get();
 
@@ -40,7 +42,17 @@ class OrderController extends Controller
         $showClinic = DB::table('orders')
             ->join('medicines', 'orders.medicineID', '=', 'medicines.id')
             ->join('users', 'medicines.userID', '=', 'users.id')
+            ->where('orders.orderStatus','=', 'Accepted')
+            ->orWhere('orders.orderStatus','=', 'Pending')
             ->select('orders.*', 'medicines.medicineName')
+            ->get();
+
+        $showClinicVaccine = DB::table('orders')
+            ->join('vaccines', 'orders.vaccineID', '=', 'vaccines.id')
+            ->join('users', 'vaccines.userID', '=', 'users.id')
+            ->where('orders.orderStatus','=', 'Accepted')
+            ->orWhere('orders.orderStatus','=', 'Pending')
+            ->select('orders.*', 'vaccines.vaccineName')
             ->get();
 
         $service_data = DB::table('orders')
@@ -106,14 +118,10 @@ class OrderController extends Controller
             return view('veterinary.order', compact('showService'));
         }
         elseif (Auth::user()->type == 'vetClinic'){
-            return view('vetClinic.order', compact('showClinic'),[
-                "title" => "Order"
-            ]);
+            return view('vetClinic.order', compact('showClinic', 'showClinicVaccine'));
         }
         elseif (Auth::user()->type == 'admin'){
-            return view('admin.payment', compact('payment_data'),[
-                "title" => "Payment"
-            ]);
+            return view('admin.payment', compact('payment_data'));
         }
         else{
             return redirect()->back();
@@ -126,18 +134,24 @@ class OrderController extends Controller
         $show = DB::table('orders')
             ->join('products', 'orders.productID', '=', 'products.id')
             ->join('users', 'products.userID', '=', 'users.id')
+            ->where('orders.orderStatus','=', 'Completed')
+            ->orWhere('orders.orderStatus','=', 'Reviewed')
             ->select('orders.*', 'products.productName')
             ->get();
 
         $showService = DB::table('orders')
             ->join('services', 'orders.serviceID', '=', 'services.id')
             ->join('users', 'services.userID', '=', 'users.id')
+            ->where('orders.orderStatus','=', 'Completed')
+            ->orWhere('orders.orderStatus','=', 'Reviewed')
             ->select('orders.*', 'services.serviceName')
             ->get();
 
         $showClinic = DB::table('orders')
             ->join('medicines', 'orders.medicineID', '=', 'medicines.id')
             ->join('users', 'medicines.userID', '=', 'users.id')
+            ->where('orders.orderStatus','=', 'Completed')
+            ->orWhere('orders.orderStatus','=', 'Reviewed')
             ->select('orders.*', 'medicines.medicineName')
             ->get();
 
