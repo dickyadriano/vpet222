@@ -112,7 +112,26 @@
 
     <div class="container mt--10 pb-5"></div>
     <div class="section section-components pb-0" id="section-components">
-        <h1 class="mx-4 bold text-indigo">Information, Tips and Tricks</h1>
+        <div class="row justify-content-center">
+            <h1 class="mx-4 bold text-indigo"><b>Find More Pet Needs Here</b></h1>
+        </div>
+        <div class="row justify-content-center">
+            <img src="{{asset('img/16544.jpg')}}" style="width: 200px; height: 200px">
+        </div>
+        <div class="row justify-content-center mb-5">
+            @if(Auth::check() == null)
+                <a class="btn bg-gradient-green text-white" href="{{ route('login') }}">Marketplace</a>
+            @else
+                <a class="btn bg-gradient-green text-white" href="{{ route('customer.index') }}">Marketplace</a>
+            @endif
+        </div>
+    </div>
+
+    <div class="container mt--10 pb-5"></div>
+    <div class="section section-components pb-0" id="section-components">
+        <div class="row justify-content-center">
+            <h1 class="mx-4 bold text-indigo"><b>Information, Tips and Tricks about <b class="text-green">Animals</b></b></h1>
+        </div>
 
         @php
             $showInfo = DB::table('information')->get();
