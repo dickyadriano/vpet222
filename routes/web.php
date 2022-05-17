@@ -84,6 +84,8 @@ Route::post('/admin/statusUpdateVet', [App\Http\Controllers\ServiceController::c
 Route::post('/admin/statusUpdate', [App\Http\Controllers\OrderController::class, 'updateStatus'])->name('update-statusOrder');
 Route::get('/admin/verifyVet', [App\Http\Controllers\AdminController::class, 'showVet'])->name('verify-vet');
 
+Route::put('/vet/verifyVet', [App\Http\Controllers\VeterinaryController::class, 'updateVetService'])->name('update-vet');
+
 //update profile
 Route::put('admin/profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\AdminController@update']);
 Route::put('customer/profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\CustomerController@update']);
