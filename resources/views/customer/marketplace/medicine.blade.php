@@ -171,7 +171,7 @@
                         <div class="card-body m-lg-0 m-sm-2 m-md-8">
                             <div class="row">
                                 <div class="col">
-                                    <img class="img-center img-thumbnail" src="{{ asset('img/medicineImage/'. $row['image']) }}">
+                                    <img class="img-center img-thumbnail" src="{{ asset('img/medicineImage/'. $row['image']) }}" style="height: 100px; width: 100px">
                                 </div>
                             </div>
                             <div class="row">
