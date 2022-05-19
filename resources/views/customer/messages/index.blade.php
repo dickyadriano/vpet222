@@ -19,13 +19,13 @@
 <div class="card-footer">
     <form id="message_form">
         <div class="input-group">
-            <div class="input-group-append">
-                <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
-            </div>
-            <input type="text" name="message" id="message_input" class="form-control type_msg" placeholder="Type your message..."></input>
-            <div class="input-group-append">
-                <button type="submit" id="message_send" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button>
-            </div>
+{{--            <div class="input-group-append">--}}
+{{--                <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>--}}
+{{--            </div>--}}
+            <input type="text" name="message" id="message_input" class="form-control type_msg" placeholder="Type your message... Press ENTER to send the message"></input>
+{{--            <div class="input-group-append">--}}
+{{--                <button type="submit" id="message_send" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button>--}}
+{{--            </div>--}}
         </div>
     </form>
 </div>
