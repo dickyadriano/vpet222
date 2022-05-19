@@ -150,5 +150,106 @@ class ServiceSeeder extends Seeder
                 'image' => 'caninedistemperadenovirus.jpg'
             ],
         ]);
+
+        DB::table('pet_cares')->insert([
+            [
+                'userID' => '4',
+                'packageName' => 'One Day Package',
+                'price' => '170000',
+                'packageDetail' => 'Services include (but are not limited to) feeding, exercising, grooming, providing company, monitoring health, administering medications or other special care. Less commonly, pet sitters offer live-in care which can also include the service of house sitting and property maintenance.',
+                'image' => 'one day.jpg'
+            ],
+        ]);
+        DB::table('pet_cares')->insert([
+            [
+                'userID' => '4',
+                'packageName' => 'Two Days Package',
+                'price' => '270000',
+                'packageDetail' => 'Services include (but are not limited to) feeding, exercising, grooming, providing company, monitoring health, administering medications or other special care. Less commonly, pet sitters offer live-in care which can also include the service of house sitting and property maintenance.',
+                'image' => 'two days.jpg'
+            ],
+        ]);
+        DB::table('pet_cares')->insert([
+            [
+                'userID' => '4',
+                'packageName' => 'Three Days Package',
+                'price' => '380000',
+                'packageDetail' => 'Services include (but are not limited to) feeding, exercising, grooming, providing company, monitoring health, administering medications or other special care. Less commonly, pet sitters offer live-in care which can also include the service of house sitting and property maintenance.',
+                'image' => 'three days.jpg'
+            ],
+        ]);
+        DB::table('pet_cares')->insert([
+            [
+                'userID' => '4',
+                'packageName' => 'One Week Package',
+                'price' => '800000',
+                'packageDetail' => 'Services include (but are not limited to) feeding, exercising, grooming, providing company, monitoring health, administering medications or other special care. Less commonly, pet sitters offer live-in care which can also include the service of house sitting and property maintenance.',
+                'image' => 'one week.jpg'
+            ],
+        ]);
+        DB::table('pet_cares')->insert([
+            [
+                'userID' => '4',
+                'packageName' => 'One Month Package',
+                'price' => '2000000',
+                'packageDetail' => 'Services include (but are not limited to) feeding, exercising, grooming, providing company, monitoring health, administering medications or other special care. Less commonly, pet sitters offer live-in care which can also include the service of house sitting and property maintenance.',
+                'image' => 'one month.jpg'
+            ],
+        ]);
+
+        DB::table('groomings')->insert([
+            [
+                'userID' => '4',
+                'groomingName' => 'First Package Happy PetShop',
+                'price' => '70000',
+                'groomingDetail' => 'Services include (but are not limited to) feeding, exercising, grooming, providing company, monitoring health, administering medications or other special care. Less commonly, pet sitters offer live-in care which can also include the service of house sitting and property maintenance.',
+                'image' => 'one day.jpg'
+            ],
+        ]);
+        DB::table('groomings')->insert([
+            [
+                'userID' => '4',
+                'groomingName' => 'Second Package Happy PetShop',
+                'price' => '80000',
+                'groomingDetail' => 'Services include (but are not limited to) feeding, exercising, grooming, providing company, monitoring health, administering medications or other special care. Less commonly, pet sitters offer live-in care which can also include the service of house sitting and property maintenance.',
+                'image' => '2days.jpg'
+            ],
+        ]);
+        DB::table('groomings')->insert([
+            [
+                'userID' => '4',
+                'groomingName' => 'Third Package Happy PetShop',
+                'price' => '90000',
+                'groomingDetail' => 'Services include (but are not limited to) feeding, exercising, grooming, providing company, monitoring health, administering medications or other special care. Less commonly, pet sitters offer live-in care which can also include the service of house sitting and property maintenance.',
+                'image' => '3days.jpg'
+            ],
+        ]);
+        DB::table('groomings')->insert([
+            [
+                'userID' => '4',
+                'groomingName' => 'Fourth Package Happy PetShop',
+                'price' => '90000',
+                'groomingDetail' => 'Services include (but are not limited to) feeding, exercising, grooming, providing company, monitoring health, administering medications or other special care. Less commonly, pet sitters offer live-in care which can also include the service of house sitting and property maintenance.',
+                'image' => '1week.png'
+            ],
+        ]);
+        DB::table('groomings')->insert([
+            [
+                'userID' => '4',
+                'groomingName' => 'Fifth Package Happy PetShop',
+                'price' => '100000',
+                'groomingDetail' => 'Services include (but are not limited to) feeding, exercising, grooming, providing company, monitoring health, administering medications or other special care. Less commonly, pet sitters offer live-in care which can also include the service of house sitting and property maintenance.',
+                'image' => '2week.jpg'
+            ],
+        ]);
+        DB::table('groomings')->insert([
+            [
+                'userID' => '4',
+                'groomingName' => 'Sixth Package Happy PetShop',
+                'price' => '110000',
+                'groomingDetail' => 'Services include (but are not limited to) feeding, exercising, grooming, providing company, monitoring health, administering medications or other special care. Less commonly, pet sitters offer live-in care which can also include the service of house sitting and property maintenance.',
+                'image' => '1 month.jpg'
+            ],
+        ]);
     }
 }
