@@ -82,7 +82,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mt--5 p-3 ">
+                                <div class="row mt--5 p-3 justify-content-center">
                                     <div class="col-auto">
                                         <button type="button" class="btn btn-google-plus" data-toggle="modal" data-target="#reminder">Set Reminder</button>
                                     </div>
